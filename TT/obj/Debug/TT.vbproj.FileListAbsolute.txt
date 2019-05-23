@@ -1,0 +1,258 @@
+C:\Users\juan_\Desktop\TT\TT\bin\Debug\TT.exe.config
+C:\Users\juan_\Desktop\TT\TT\bin\Debug\TT.exe
+C:\Users\juan_\Desktop\TT\TT\bin\Debug\TT.pdb
+C:\Users\juan_\Desktop\TT\TT\bin\Debug\TT.xml
+C:\Users\juan_\Desktop\TT\TT\obj\Debug\TT.vbprojAssemblyReference.cache
+C:\Users\juan_\Desktop\TT\TT\obj\Debug\TT.Form1.resources
+C:\Users\juan_\Desktop\TT\TT\obj\Debug\TT.Resources.resources
+C:\Users\juan_\Desktop\TT\TT\obj\Debug\TT.vbproj.GenerateResource.cache
+C:\Users\juan_\Desktop\TT\TT\obj\Debug\TT.vbproj.CoreCompileInputs.cache
+C:\Users\juan_\Desktop\TT\TT\obj\Debug\TT.exe
+C:\Users\juan_\Desktop\TT\TT\obj\Debug\TT.xml
+C:\Users\juan_\Desktop\TT\TT\obj\Debug\TT.pdb
+C:\Users\juan_\Desktop\TT\TT\obj\Debug\TT.frmProd.resources
+C:\Users\labinf10\Desktop\TT\TT\bin\Debug\TT.exe.config
+C:\Users\labinf10\Desktop\TT\TT\bin\Debug\TT.exe
+C:\Users\labinf10\Desktop\TT\TT\bin\Debug\TT.pdb
+C:\Users\labinf10\Desktop\TT\TT\bin\Debug\TT.xml
+C:\Users\labinf10\Desktop\TT\TT\obj\Debug\TT.vbprojResolveAssemblyReference.cache
+C:\Users\labinf10\Desktop\TT\TT\obj\Debug\TT.Form1.resources
+C:\Users\labinf10\Desktop\TT\TT\obj\Debug\TT.frmProd.resources
+C:\Users\labinf10\Desktop\TT\TT\obj\Debug\TT.Resources.resources
+C:\Users\labinf10\Desktop\TT\TT\obj\Debug\TT.vbproj.GenerateResource.Cache
+C:\Users\labinf10\Desktop\TT\TT\obj\Debug\TT.vbproj.CoreCompileInputs.cache
+C:\Users\labinf10\Desktop\TT\TT\obj\Debug\TT.exe
+C:\Users\labinf10\Desktop\TT\TT\obj\Debug\TT.xml
+C:\Users\labinf10\Desktop\TT\TT\obj\Debug\TT.pdb
+C:\Users\labinf10\Desktop\TT\TT\obj\Debug\TT.frmProd2.resources
+C:\Users\labinf10\Desktop\TT\TT\obj\Debug\TT.agregarProd.resources
+C:\Users\labinf10\Desktop\TT\TT\obj\Debug\TT.editarProd.resources
+C:\Users\labinf10\Desktop\TT\TT\obj\Debug\TT.frmVenta.resources
+C:\Users\juan_\Downloads\TT-20190410T202841Z-001\TT\TT\bin\Debug\TT.exe.config
+C:\Users\juan_\Downloads\TT-20190410T202841Z-001\TT\TT\bin\Debug\TT.exe
+C:\Users\juan_\Downloads\TT-20190410T202841Z-001\TT\TT\bin\Debug\TT.pdb
+C:\Users\juan_\Downloads\TT-20190410T202841Z-001\TT\TT\bin\Debug\TT.xml
+C:\Users\juan_\Downloads\TT-20190410T202841Z-001\TT\TT\obj\Debug\TT.vbprojAssemblyReference.cache
+C:\Users\juan_\Downloads\TT-20190410T202841Z-001\TT\TT\obj\Debug\TT.Form1.resources
+C:\Users\juan_\Downloads\TT-20190410T202841Z-001\TT\TT\obj\Debug\TT.frmProd2.resources
+C:\Users\juan_\Downloads\TT-20190410T202841Z-001\TT\TT\obj\Debug\TT.frmVenta.resources
+C:\Users\juan_\Downloads\TT-20190410T202841Z-001\TT\TT\obj\Debug\TT.frmProd.resources
+C:\Users\juan_\Downloads\TT-20190410T202841Z-001\TT\TT\obj\Debug\TT.Resources.resources
+C:\Users\juan_\Downloads\TT-20190410T202841Z-001\TT\TT\obj\Debug\TT.vbproj.GenerateResource.cache
+C:\Users\juan_\Downloads\TT-20190410T202841Z-001\TT\TT\obj\Debug\TT.vbproj.CoreCompileInputs.cache
+C:\Users\juan_\Downloads\TT-20190410T202841Z-001\TT\TT\obj\Debug\TT.exe
+C:\Users\juan_\Downloads\TT-20190410T202841Z-001\TT\TT\obj\Debug\TT.xml
+C:\Users\juan_\Downloads\TT-20190410T202841Z-001\TT\TT\obj\Debug\TT.pdb
+C:\Users\juan_\Downloads\TT-20190410T202841Z-001\TT\TT\obj\Debug\TT.formUsua.resources
+C:\Users\juan_\Downloads\TT-20190410T202841Z-001\TT\TT\obj\Debug\TT.frmProvee.resources
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\bin\Debug\TT.exe.config
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\bin\Debug\TT.exe
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\bin\Debug\TT.pdb
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\bin\Debug\TT.xml
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\obj\Debug\TT.vbprojAssemblyReference.cache
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\obj\Debug\TT.Form1.resources
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\obj\Debug\TT.formIngreso.resources
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\obj\Debug\TT.formUsua.resources
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\obj\Debug\TT.frmProd2.resources
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\obj\Debug\TT.frmProvee.resources
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\obj\Debug\TT.frmVenta.resources
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\obj\Debug\TT.frmProd.resources
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\obj\Debug\TT.Resources.resources
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\obj\Debug\TT.vbproj.GenerateResource.cache
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\obj\Debug\TT.vbproj.CoreCompileInputs.cache
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\obj\Debug\TT.exe
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\obj\Debug\TT.xml
+C:\Users\juan_\Desktop\TT[Version 2]\TT\TT\obj\Debug\TT.pdb
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\bin\Debug\TT.exe.config
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\bin\Debug\TT.exe
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\bin\Debug\TT.pdb
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\bin\Debug\TT.xml
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\obj\Debug\TT.vbprojAssemblyReference.cache
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\obj\Debug\TT.Form1.resources
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\obj\Debug\TT.formIngreso.resources
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\obj\Debug\TT.formTransacciones.resources
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\obj\Debug\TT.formUsua.resources
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\obj\Debug\TT.frmProd2.resources
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\obj\Debug\TT.frmProvee.resources
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\obj\Debug\TT.frmVenta.resources
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\obj\Debug\TT.frmProd.resources
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\obj\Debug\TT.Resources.resources
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\obj\Debug\TT.vbproj.GenerateResource.cache
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\obj\Debug\TT.vbproj.CoreCompileInputs.cache
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\obj\Debug\TT.exe
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\obj\Debug\TT.xml
+C:\Users\kevin\Desktop\TT[Version 3]\TT\TT\obj\Debug\TT.pdb
+C:\Users\kevin\Desktop\TT-Version4\TT\bin\Debug\TT.exe.config
+C:\Users\kevin\Desktop\TT-Version4\TT\bin\Debug\TT.exe
+C:\Users\kevin\Desktop\TT-Version4\TT\bin\Debug\TT.pdb
+C:\Users\kevin\Desktop\TT-Version4\TT\bin\Debug\TT.xml
+C:\Users\kevin\Desktop\TT-Version4\TT\obj\Debug\TT.vbprojAssemblyReference.cache
+C:\Users\kevin\Desktop\TT-Version4\TT\obj\Debug\TT.Form1.resources
+C:\Users\kevin\Desktop\TT-Version4\TT\obj\Debug\TT.formIngreso.resources
+C:\Users\kevin\Desktop\TT-Version4\TT\obj\Debug\TT.formTransacciones.resources
+C:\Users\kevin\Desktop\TT-Version4\TT\obj\Debug\TT.formUsua.resources
+C:\Users\kevin\Desktop\TT-Version4\TT\obj\Debug\TT.frmProd2.resources
+C:\Users\kevin\Desktop\TT-Version4\TT\obj\Debug\TT.frmProvee.resources
+C:\Users\kevin\Desktop\TT-Version4\TT\obj\Debug\TT.frmVenta.resources
+C:\Users\kevin\Desktop\TT-Version4\TT\obj\Debug\TT.frmProd.resources
+C:\Users\kevin\Desktop\TT-Version4\TT\obj\Debug\TT.Resources.resources
+C:\Users\kevin\Desktop\TT-Version4\TT\obj\Debug\TT.vbproj.GenerateResource.cache
+C:\Users\kevin\Desktop\TT-Version4\TT\obj\Debug\TT.vbproj.CoreCompileInputs.cache
+C:\Users\kevin\Desktop\TT-Version4\TT\obj\Debug\TT.exe
+C:\Users\kevin\Desktop\TT-Version4\TT\obj\Debug\TT.xml
+C:\Users\kevin\Desktop\TT-Version4\TT\obj\Debug\TT.pdb
+C:\Users\kevin\Desktop\TT-Version5\TT\bin\Debug\TT.exe.config
+C:\Users\kevin\Desktop\TT-Version5\TT\bin\Debug\TT.exe
+C:\Users\kevin\Desktop\TT-Version5\TT\bin\Debug\TT.pdb
+C:\Users\kevin\Desktop\TT-Version5\TT\bin\Debug\TT.xml
+C:\Users\kevin\Desktop\TT-Version5\TT\obj\Debug\TT.vbprojAssemblyReference.cache
+C:\Users\kevin\Desktop\TT-Version5\TT\obj\Debug\TT.Form1.resources
+C:\Users\kevin\Desktop\TT-Version5\TT\obj\Debug\TT.formIngreso.resources
+C:\Users\kevin\Desktop\TT-Version5\TT\obj\Debug\TT.formTransacciones.resources
+C:\Users\kevin\Desktop\TT-Version5\TT\obj\Debug\TT.formUsua.resources
+C:\Users\kevin\Desktop\TT-Version5\TT\obj\Debug\TT.frmProd2.resources
+C:\Users\kevin\Desktop\TT-Version5\TT\obj\Debug\TT.frmProvee.resources
+C:\Users\kevin\Desktop\TT-Version5\TT\obj\Debug\TT.frmVenta.resources
+C:\Users\kevin\Desktop\TT-Version5\TT\obj\Debug\TT.frmProd.resources
+C:\Users\kevin\Desktop\TT-Version5\TT\obj\Debug\TT.Resources.resources
+C:\Users\kevin\Desktop\TT-Version5\TT\obj\Debug\TT.vbproj.GenerateResource.cache
+C:\Users\kevin\Desktop\TT-Version5\TT\obj\Debug\TT.vbproj.CoreCompileInputs.cache
+C:\Users\kevin\Desktop\TT-Version5\TT\obj\Debug\TT.exe
+C:\Users\kevin\Desktop\TT-Version5\TT\obj\Debug\TT.xml
+C:\Users\kevin\Desktop\TT-Version5\TT\obj\Debug\TT.pdb
+C:\Users\kevin\Desktop\TT-Version6\TT\bin\Debug\TT.exe.config
+C:\Users\kevin\Desktop\TT-Version6\TT\bin\Debug\TT.exe
+C:\Users\kevin\Desktop\TT-Version6\TT\bin\Debug\TT.pdb
+C:\Users\kevin\Desktop\TT-Version6\TT\bin\Debug\TT.xml
+C:\Users\kevin\Desktop\TT-Version6\TT\obj\Debug\TT.vbprojAssemblyReference.cache
+C:\Users\kevin\Desktop\TT-Version6\TT\obj\Debug\TT.Form1.resources
+C:\Users\kevin\Desktop\TT-Version6\TT\obj\Debug\TT.formIngreso.resources
+C:\Users\kevin\Desktop\TT-Version6\TT\obj\Debug\TT.formTransacciones.resources
+C:\Users\kevin\Desktop\TT-Version6\TT\obj\Debug\TT.formUsua.resources
+C:\Users\kevin\Desktop\TT-Version6\TT\obj\Debug\TT.frmProd2.resources
+C:\Users\kevin\Desktop\TT-Version6\TT\obj\Debug\TT.frmProvee.resources
+C:\Users\kevin\Desktop\TT-Version6\TT\obj\Debug\TT.frmVenta.resources
+C:\Users\kevin\Desktop\TT-Version6\TT\obj\Debug\TT.frmProd.resources
+C:\Users\kevin\Desktop\TT-Version6\TT\obj\Debug\TT.Resources.resources
+C:\Users\kevin\Desktop\TT-Version6\TT\obj\Debug\TT.vbproj.GenerateResource.cache
+C:\Users\kevin\Desktop\TT-Version6\TT\obj\Debug\TT.vbproj.CoreCompileInputs.cache
+C:\Users\kevin\Desktop\TT-Version6\TT\obj\Debug\TT.exe
+C:\Users\kevin\Desktop\TT-Version6\TT\obj\Debug\TT.xml
+C:\Users\kevin\Desktop\TT-Version6\TT\obj\Debug\TT.pdb
+C:\Users\kevin\Desktop\TT-Version7\TT\bin\Debug\TT.exe.config
+C:\Users\kevin\Desktop\TT-Version7\TT\bin\Debug\TT.exe
+C:\Users\kevin\Desktop\TT-Version7\TT\bin\Debug\TT.pdb
+C:\Users\kevin\Desktop\TT-Version7\TT\bin\Debug\TT.xml
+C:\Users\kevin\Desktop\TT-Version7\TT\obj\Debug\TT.vbprojAssemblyReference.cache
+C:\Users\kevin\Desktop\TT-Version7\TT\obj\Debug\TT.Form1.resources
+C:\Users\kevin\Desktop\TT-Version7\TT\obj\Debug\TT.formIngreso.resources
+C:\Users\kevin\Desktop\TT-Version7\TT\obj\Debug\TT.formTransacciones.resources
+C:\Users\kevin\Desktop\TT-Version7\TT\obj\Debug\TT.formUsua.resources
+C:\Users\kevin\Desktop\TT-Version7\TT\obj\Debug\TT.frmProd2.resources
+C:\Users\kevin\Desktop\TT-Version7\TT\obj\Debug\TT.frmProvee.resources
+C:\Users\kevin\Desktop\TT-Version7\TT\obj\Debug\TT.frmVenta.resources
+C:\Users\kevin\Desktop\TT-Version7\TT\obj\Debug\TT.frmProd.resources
+C:\Users\kevin\Desktop\TT-Version7\TT\obj\Debug\TT.Resources.resources
+C:\Users\kevin\Desktop\TT-Version7\TT\obj\Debug\TT.vbproj.GenerateResource.cache
+C:\Users\kevin\Desktop\TT-Version7\TT\obj\Debug\TT.vbproj.CoreCompileInputs.cache
+C:\Users\kevin\Desktop\TT-Version7\TT\obj\Debug\TT.exe
+C:\Users\kevin\Desktop\TT-Version7\TT\obj\Debug\TT.xml
+C:\Users\kevin\Desktop\TT-Version7\TT\obj\Debug\TT.pdb
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\bin\Debug\TT.exe.config
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\bin\Debug\TT.exe
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\bin\Debug\TT.pdb
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\bin\Debug\TT.xml
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\obj\Debug\TT.vbprojAssemblyReference.cache
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\obj\Debug\TT.Form1.resources
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\obj\Debug\TT.formIngreso.resources
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\obj\Debug\TT.formTransacciones.resources
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\obj\Debug\TT.formUsua.resources
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\obj\Debug\TT.frmProd2.resources
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\obj\Debug\TT.frmProvee.resources
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\obj\Debug\TT.frmVenta.resources
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\obj\Debug\TT.frmProd.resources
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\obj\Debug\TT.Resources.resources
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\obj\Debug\TT.vbproj.GenerateResource.cache
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\obj\Debug\TT.vbproj.CoreCompileInputs.cache
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\obj\Debug\TT.exe
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\obj\Debug\TT.xml
+C:\Users\JUAN PABLO\Desktop\Trabajo Version 8\TT\obj\Debug\TT.pdb
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\bin\Debug\TT.exe.config
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\bin\Debug\TT.exe
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\bin\Debug\TT.pdb
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\bin\Debug\TT.xml
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\obj\Debug\TT.vbprojAssemblyReference.cache
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\obj\Debug\TT.Form1.resources
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\obj\Debug\TT.formIngreso.resources
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\obj\Debug\TT.formTransacciones.resources
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\obj\Debug\TT.formUsua.resources
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\obj\Debug\TT.frmProd2.resources
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\obj\Debug\TT.frmProvee.resources
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\obj\Debug\TT.frmVenta.resources
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\obj\Debug\TT.frmProd.resources
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\obj\Debug\TT.Resources.resources
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\obj\Debug\TT.vbproj.GenerateResource.cache
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\obj\Debug\TT.vbproj.CoreCompileInputs.cache
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\obj\Debug\TT.exe
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\obj\Debug\TT.xml
+C:\Users\JUAN PABLO\Source\Repos\TT2xD\Trabajo Version 8\TT\obj\Debug\TT.pdb
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\bin\Debug\TT.exe.config
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\bin\Debug\TT.exe
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\bin\Debug\TT.pdb
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\bin\Debug\TT.xml
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\obj\Debug\TT.vbprojAssemblyReference.cache
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\obj\Debug\TT.formIngreso.resources
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\obj\Debug\TT.frmProd2.resources
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\obj\Debug\TT.frmVenta.resources
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\obj\Debug\TT.frmProd.resources
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\obj\Debug\TT.Resources.resources
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\obj\Debug\TT.vbproj.GenerateResource.cache
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\obj\Debug\TT.vbproj.CoreCompileInputs.cache
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\obj\Debug\TT.exe
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\obj\Debug\TT.xml
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\obj\Debug\TT.pdb
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\obj\Debug\TT.PrincipalForm.resources
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\obj\Debug\TT.FormTamaño.resources
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\obj\Debug\TT.FrmTransacciones.resources
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\obj\Debug\TT.FrmUsuario.resources
+C:\Users\kevin\Desktop\TTT\Trabajo Version 8\TT\obj\Debug\TT.FrmProveedores.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\bin\Debug\TT.exe.config
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\bin\Debug\TT.exe
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\bin\Debug\TT.pdb
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\bin\Debug\TT.xml
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.vbprojAssemblyReference.cache
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FormTamaño.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.PrincipalForm.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.frmProd2.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.frmVenta.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.frmProd.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.Resources.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.vbproj.GenerateResource.cache
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.vbproj.CoreCompileInputs.cache
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.exe
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.xml
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.pdb
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FrmCate.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FrmDesc.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FrmClientes.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FrmEmpleados.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FrmProvee.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FrmUsers.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FrmHistoVenta.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FrmIngreso.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FrmAcerca.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FrmHistoAjustes.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FrmHistoCompra.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FrmStadict.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FrmCompra.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\bin\Debug\Interop.AcroPDFLib.dll
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\bin\Debug\AxInterop.AcroPDFLib.dll
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\Interop.AcroPDFLib.dll
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\AxInterop.AcroPDFLib.dll
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.vbproj.ResolveComReference.cache
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FrmBoleta.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FrmFactura.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FrmNotaCredito.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.FrmNotaDebito.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.frmAgreCliente.resources
+C:\Users\kevin\Desktop\TTV2\Trabajo Version 8\TT\obj\Debug\TT.frmAgreEmple.resources

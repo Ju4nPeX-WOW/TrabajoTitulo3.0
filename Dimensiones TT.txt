@@ -1,0 +1,41 @@
+FORM BORDER STYLE
+Ventanas 2rias.
+	-Size     : 1173 ; 670     -Size : 816;489
+	-Location :  150 ;  45	   -Location: 
+Btn Exit : 
+	-Size : 35;23
+	-Location : 1104,12
+MenuStrip : 
+	-Size : 1139;24
+	-Location : 0;40
+cmb buscar : 
+	-Size :210;21         
+	-Location : 12;75         - Location : 12; 108
+txt buscar :
+	-Size : 911;20
+	-Location : 228;76        - Location : 228; 108
+dgv :
+	-Size : 1127;269
+	-Location : 12;115        - Location : 12; 150
+tabcontrol :
+	-Size : 909;250
+	-Location : 12;398
+btn aceptar :
+	-Location : 975;444
+	-size : 132;43
+btn cancelar:
+	-Location : 975;509
+	-Size : 132;43
+btn eliminar :
+	-Location : 975;567
+	-Size : 132;43
+
+btn agregar : 
+	-Location : 1010;435
+	-Size     : 39;36
+btn eliminar: 
+	-Location : 1055;435
+	-Size     : 39;36
+btn editar  : 
+	-Location : 1100;435
+	-Size     : 39;36
