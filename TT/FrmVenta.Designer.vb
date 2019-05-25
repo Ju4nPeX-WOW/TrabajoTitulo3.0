@@ -22,19 +22,16 @@ Partial Class frmVenta
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmVenta))
         Me.lblVend = New System.Windows.Forms.Label()
-        Me.txtVende = New System.Windows.Forms.TextBox()
         Me.lblVenta = New System.Windows.Forms.Label()
         Me.lblRut = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblFecha = New System.Windows.Forms.Label()
         Me.txtSubto = New System.Windows.Forms.TextBox()
         Me.txtDesc = New System.Windows.Forms.TextBox()
         Me.txtTotal = New System.Windows.Forms.TextBox()
         Me.txtIva = New System.Windows.Forms.TextBox()
-        Me.txtFecha = New System.Windows.Forms.TextBox()
-        Me.txtHora = New System.Windows.Forms.TextBox()
-        Me.lblHora = New System.Windows.Forms.Label()
         Me.lblSubto = New System.Windows.Forms.Label()
         Me.lblDesc = New System.Windows.Forms.Label()
         Me.lblIva = New System.Windows.Forms.Label()
@@ -57,7 +54,11 @@ Partial Class frmVenta
         Me.chkBoleta = New System.Windows.Forms.CheckBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.BtnExit = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.cmbVendedor = New System.Windows.Forms.ComboBox()
+        Me.cmbClientes = New System.Windows.Forms.ComboBox()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.txtFecha = New System.Windows.Forms.TextBox()
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -72,13 +73,6 @@ Partial Class frmVenta
         Me.lblVend.Size = New System.Drawing.Size(56, 13)
         Me.lblVend.TabIndex = 0
         Me.lblVend.Text = "Vendedor:"
-        '
-        'txtVende
-        '
-        Me.txtVende.Location = New System.Drawing.Point(163, 74)
-        Me.txtVende.Name = "txtVende"
-        Me.txtVende.Size = New System.Drawing.Size(301, 20)
-        Me.txtVende.TabIndex = 1
         '
         'lblVenta
         '
@@ -99,14 +93,14 @@ Partial Class frmVenta
         Me.lblRut.TabIndex = 4
         Me.lblRut.Text = "Rut Cliente:"
         '
-        'Label1
+        'lblFecha
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(547, 79)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(40, 13)
-        Me.Label1.TabIndex = 7
-        Me.Label1.Text = "Fecha:"
+        Me.lblFecha.AutoSize = True
+        Me.lblFecha.Location = New System.Drawing.Point(547, 79)
+        Me.lblFecha.Name = "lblFecha"
+        Me.lblFecha.Size = New System.Drawing.Size(40, 13)
+        Me.lblFecha.TabIndex = 7
+        Me.lblFecha.Text = "Fecha:"
         '
         'txtSubto
         '
@@ -135,29 +129,6 @@ Partial Class frmVenta
         Me.txtIva.Name = "txtIva"
         Me.txtIva.Size = New System.Drawing.Size(117, 20)
         Me.txtIva.TabIndex = 11
-        '
-        'txtFecha
-        '
-        Me.txtFecha.Location = New System.Drawing.Point(598, 74)
-        Me.txtFecha.Name = "txtFecha"
-        Me.txtFecha.Size = New System.Drawing.Size(160, 20)
-        Me.txtFecha.TabIndex = 12
-        '
-        'txtHora
-        '
-        Me.txtHora.Location = New System.Drawing.Point(598, 100)
-        Me.txtHora.Name = "txtHora"
-        Me.txtHora.Size = New System.Drawing.Size(160, 20)
-        Me.txtHora.TabIndex = 13
-        '
-        'lblHora
-        '
-        Me.lblHora.AutoSize = True
-        Me.lblHora.Location = New System.Drawing.Point(553, 105)
-        Me.lblHora.Name = "lblHora"
-        Me.lblHora.Size = New System.Drawing.Size(33, 13)
-        Me.lblHora.TabIndex = 14
-        Me.lblHora.Text = "Hora:"
         '
         'lblSubto
         '
@@ -253,7 +224,7 @@ Partial Class frmVenta
         'txtPrecio
         '
         Me.txtPrecio.BackColor = System.Drawing.Color.Orange
-        Me.txtPrecio.Location = New System.Drawing.Point(364, 232)
+        Me.txtPrecio.Location = New System.Drawing.Point(468, 232)
         Me.txtPrecio.Name = "txtPrecio"
         Me.txtPrecio.Size = New System.Drawing.Size(100, 20)
         Me.txtPrecio.TabIndex = 27
@@ -262,7 +233,7 @@ Partial Class frmVenta
         '
         Me.lblPrecio.AutoSize = True
         Me.lblPrecio.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblPrecio.Location = New System.Drawing.Point(318, 235)
+        Me.lblPrecio.Location = New System.Drawing.Point(422, 235)
         Me.lblPrecio.Name = "lblPrecio"
         Me.lblPrecio.Size = New System.Drawing.Size(47, 13)
         Me.lblPrecio.TabIndex = 26
@@ -271,7 +242,7 @@ Partial Class frmVenta
         'txtDescProd
         '
         Me.txtDescProd.BackColor = System.Drawing.Color.Orange
-        Me.txtDescProd.Location = New System.Drawing.Point(592, 232)
+        Me.txtDescProd.Location = New System.Drawing.Point(696, 232)
         Me.txtDescProd.Name = "txtDescProd"
         Me.txtDescProd.Size = New System.Drawing.Size(100, 20)
         Me.txtDescProd.TabIndex = 29
@@ -280,7 +251,7 @@ Partial Class frmVenta
         '
         Me.lblDescProd.AutoSize = True
         Me.lblDescProd.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescProd.Location = New System.Drawing.Point(521, 235)
+        Me.lblDescProd.Location = New System.Drawing.Point(625, 235)
         Me.lblDescProd.Name = "lblDescProd"
         Me.lblDescProd.Size = New System.Drawing.Size(72, 13)
         Me.lblDescProd.TabIndex = 28
@@ -289,7 +260,7 @@ Partial Class frmVenta
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(824, 230)
+        Me.PictureBox1.Location = New System.Drawing.Point(279, 232)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(29, 22)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -299,7 +270,7 @@ Partial Class frmVenta
         'PictureBox2
         '
         Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(859, 230)
+        Me.PictureBox2.Location = New System.Drawing.Point(314, 232)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(29, 22)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -361,19 +332,40 @@ Partial Class frmVenta
         Me.BtnExit.Text = "X"
         Me.BtnExit.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'cmbVendedor
         '
-        Me.TextBox1.Location = New System.Drawing.Point(163, 107)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(301, 20)
-        Me.TextBox1.TabIndex = 68
+        Me.cmbVendedor.FormattingEnabled = True
+        Me.cmbVendedor.Location = New System.Drawing.Point(163, 74)
+        Me.cmbVendedor.Name = "cmbVendedor"
+        Me.cmbVendedor.Size = New System.Drawing.Size(301, 21)
+        Me.cmbVendedor.TabIndex = 69
+        '
+        'cmbClientes
+        '
+        Me.cmbClientes.FormattingEnabled = True
+        Me.cmbClientes.Location = New System.Drawing.Point(163, 102)
+        Me.cmbClientes.Name = "cmbClientes"
+        Me.cmbClientes.Size = New System.Drawing.Size(301, 21)
+        Me.cmbClientes.TabIndex = 70
+        '
+        'Timer1
+        '
+        '
+        'txtFecha
+        '
+        Me.txtFecha.Enabled = False
+        Me.txtFecha.Location = New System.Drawing.Point(598, 74)
+        Me.txtFecha.Name = "txtFecha"
+        Me.txtFecha.Size = New System.Drawing.Size(160, 20)
+        Me.txtFecha.TabIndex = 12
         '
         'frmVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1157, 631)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.cmbClientes)
+        Me.Controls.Add(Me.cmbVendedor)
         Me.Controls.Add(Me.BtnExit)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.chkBoleta)
@@ -396,17 +388,14 @@ Partial Class frmVenta
         Me.Controls.Add(Me.lblIva)
         Me.Controls.Add(Me.lblDesc)
         Me.Controls.Add(Me.lblSubto)
-        Me.Controls.Add(Me.lblHora)
-        Me.Controls.Add(Me.txtHora)
         Me.Controls.Add(Me.txtFecha)
         Me.Controls.Add(Me.txtIva)
         Me.Controls.Add(Me.txtTotal)
         Me.Controls.Add(Me.txtDesc)
         Me.Controls.Add(Me.txtSubto)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblFecha)
         Me.Controls.Add(Me.lblRut)
         Me.Controls.Add(Me.lblVenta)
-        Me.Controls.Add(Me.txtVende)
         Me.Controls.Add(Me.lblVend)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Location = New System.Drawing.Point(150, 45)
@@ -423,17 +412,13 @@ Partial Class frmVenta
     End Sub
 
     Friend WithEvents lblVend As Label
-    Friend WithEvents txtVende As TextBox
     Friend WithEvents lblVenta As Label
     Friend WithEvents lblRut As Label
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblFecha As Label
     Friend WithEvents txtSubto As TextBox
     Friend WithEvents txtDesc As TextBox
     Friend WithEvents txtTotal As TextBox
     Friend WithEvents txtIva As TextBox
-    Friend WithEvents txtFecha As TextBox
-    Friend WithEvents txtHora As TextBox
-    Friend WithEvents lblHora As Label
     Friend WithEvents lblSubto As Label
     Friend WithEvents lblDesc As Label
     Friend WithEvents lblIva As Label
@@ -456,5 +441,9 @@ Partial Class frmVenta
     Friend WithEvents chkBoleta As CheckBox
     Friend WithEvents Label5 As Label
     Friend WithEvents BtnExit As Button
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents cmbVendedor As ComboBox
+    Friend WithEvents cmbClientes As ComboBox
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents txtFecha As TextBox
+    Friend WithEvents Timer2 As Timer
 End Class
