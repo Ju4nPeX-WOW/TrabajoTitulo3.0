@@ -39,7 +39,6 @@ Partial Class frmVenta
         Me.lblDesc = New System.Windows.Forms.Label()
         Me.lblIva = New System.Windows.Forms.Label()
         Me.lblTotal = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -58,6 +57,7 @@ Partial Class frmVenta
         Me.chkBoleta = New System.Windows.Forms.CheckBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.BtnExit = New System.Windows.Forms.Button()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -194,14 +194,6 @@ Partial Class frmVenta
         Me.lblTotal.Size = New System.Drawing.Size(34, 13)
         Me.lblTotal.TabIndex = 18
         Me.lblTotal.Text = "Total:"
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(163, 100)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(301, 21)
-        Me.ComboBox1.TabIndex = 19
         '
         'Label2
         '
@@ -369,11 +361,19 @@ Partial Class frmVenta
         Me.BtnExit.Text = "X"
         Me.BtnExit.UseVisualStyleBackColor = True
         '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(163, 107)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(301, 20)
+        Me.TextBox1.TabIndex = 68
+        '
         'frmVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1157, 631)
+        Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.BtnExit)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.chkBoleta)
@@ -392,7 +392,6 @@ Partial Class frmVenta
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.lblTotal)
         Me.Controls.Add(Me.lblIva)
         Me.Controls.Add(Me.lblDesc)
@@ -439,7 +438,6 @@ Partial Class frmVenta
     Friend WithEvents lblDesc As Label
     Friend WithEvents lblIva As Label
     Friend WithEvents lblTotal As Label
-    Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
@@ -458,4 +456,5 @@ Partial Class frmVenta
     Friend WithEvents chkBoleta As CheckBox
     Friend WithEvents Label5 As Label
     Friend WithEvents BtnExit As Button
+    Friend WithEvents TextBox1 As TextBox
 End Class
