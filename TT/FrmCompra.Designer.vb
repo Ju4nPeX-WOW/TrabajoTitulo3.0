@@ -41,7 +41,7 @@ Partial Class FrmCompra
         Me.txtSubTotal = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblArchivo = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtArchivo = New System.Windows.Forms.TextBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -60,7 +60,7 @@ Partial Class FrmCompra
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(789, 446)
+        Me.Button2.Location = New System.Drawing.Point(821, 445)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(75, 23)
         Me.Button2.TabIndex = 80
@@ -95,9 +95,9 @@ Partial Class FrmCompra
         Me.lblIva.AutoSize = True
         Me.lblIva.Location = New System.Drawing.Point(657, 131)
         Me.lblIva.Name = "lblIva"
-        Me.lblIva.Size = New System.Drawing.Size(27, 13)
+        Me.lblIva.Size = New System.Drawing.Size(45, 13)
         Me.lblIva.TabIndex = 84
-        Me.lblIva.Text = "IVA:"
+        Me.lblIva.Text = "IVA      :"
         '
         'lblRut
         '
@@ -118,11 +118,11 @@ Partial Class FrmCompra
         'lblNumFolio
         '
         Me.lblNumFolio.AutoSize = True
-        Me.lblNumFolio.Location = New System.Drawing.Point(192, 129)
+        Me.lblNumFolio.Location = New System.Drawing.Point(188, 129)
         Me.lblNumFolio.Name = "lblNumFolio"
-        Me.lblNumFolio.Size = New System.Drawing.Size(57, 13)
+        Me.lblNumFolio.Size = New System.Drawing.Size(78, 13)
         Me.lblNumFolio.TabIndex = 81
-        Me.lblNumFolio.Text = "Num_folio:"
+        Me.lblNumFolio.Text = "Num_folio       :"
         '
         'txtRut
         '
@@ -142,7 +142,7 @@ Partial Class FrmCompra
         'txtPrecio
         '
         Me.txtPrecio.BackColor = System.Drawing.Color.Orange
-        Me.txtPrecio.Location = New System.Drawing.Point(461, 288)
+        Me.txtPrecio.Location = New System.Drawing.Point(468, 288)
         Me.txtPrecio.Name = "txtPrecio"
         Me.txtPrecio.Size = New System.Drawing.Size(100, 20)
         Me.txtPrecio.TabIndex = 94
@@ -160,7 +160,7 @@ Partial Class FrmCompra
         'txtCant
         '
         Me.txtCant.BackColor = System.Drawing.Color.Orange
-        Me.txtCant.Location = New System.Drawing.Point(248, 288)
+        Me.txtCant.Location = New System.Drawing.Point(257, 288)
         Me.txtCant.Name = "txtCant"
         Me.txtCant.Size = New System.Drawing.Size(100, 20)
         Me.txtCant.TabIndex = 92
@@ -194,7 +194,7 @@ Partial Class FrmCompra
         '
         'btn_guardar
         '
-        Me.btn_guardar.Location = New System.Drawing.Point(519, 524)
+        Me.btn_guardar.Location = New System.Drawing.Point(575, 509)
         Me.btn_guardar.Name = "btn_guardar"
         Me.btn_guardar.Size = New System.Drawing.Size(75, 23)
         Me.btn_guardar.TabIndex = 96
@@ -222,24 +222,24 @@ Partial Class FrmCompra
         'lblArchivo
         '
         Me.lblArchivo.AutoSize = True
-        Me.lblArchivo.Location = New System.Drawing.Point(254, 449)
+        Me.lblArchivo.Location = New System.Drawing.Point(282, 450)
         Me.lblArchivo.Name = "lblArchivo"
-        Me.lblArchivo.Size = New System.Drawing.Size(46, 13)
+        Me.lblArchivo.Size = New System.Drawing.Size(58, 13)
         Me.lblArchivo.TabIndex = 99
-        Me.lblArchivo.Text = "Archivo:"
+        Me.lblArchivo.Text = "ARCHIVO:"
         '
-        'TextBox1
+        'txtArchivo
         '
-        Me.TextBox1.Location = New System.Drawing.Point(306, 446)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(472, 20)
-        Me.TextBox1.TabIndex = 100
+        Me.txtArchivo.Location = New System.Drawing.Point(346, 447)
+        Me.txtArchivo.Name = "txtArchivo"
+        Me.txtArchivo.Size = New System.Drawing.Size(460, 20)
+        Me.txtArchivo.TabIndex = 100
         '
         'FrmCompra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 670)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtArchivo)
         Me.Controls.Add(Me.lblArchivo)
         Me.Controls.Add(Me.txtSubTotal)
         Me.Controls.Add(Me.Label1)
@@ -290,5 +290,5 @@ Partial Class FrmCompra
     Friend WithEvents txtSubTotal As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents lblArchivo As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtArchivo As TextBox
 End Class
