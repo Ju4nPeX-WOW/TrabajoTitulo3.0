@@ -44,6 +44,7 @@ Class Instructions
             command.CommandText = sentencia
             Console.WriteLine(sentencia)
             Dim reader As New OleDbDataAdapter
+            dataset.Clear()
             reader.SelectCommand = command
             reader.Fill(dataset)
 
