@@ -426,7 +426,6 @@ Partial Class frmProd2
         Me.mnsProd.Size = New System.Drawing.Size(1139, 24)
         Me.mnsProd.TabIndex = 60
         Me.mnsProd.Text = "MenuStrip1"
-        Me.mnsProd.UseWaitCursor = True
         '
         'tsmAgregar
         '
@@ -473,6 +472,7 @@ Partial Class frmProd2
         Me.Controls.Add(Me.dgvProd)
         Me.Controls.Add(Me.txtBuscarProd)
         Me.Controls.Add(Me.mnsProd)
+        Me.Location = New System.Drawing.Point(0, 0)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmProd2"

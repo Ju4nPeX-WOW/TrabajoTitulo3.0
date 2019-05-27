@@ -3,23 +3,32 @@
     Dim BsnCliente As New BsnCliente
     Dim dataset As New DataSet
 
+    Dim activeAgregar = False
+    Dim activeEditar = False
+    Dim activeEliminar = False
+
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
         Me.Close()
     End Sub
-
-
-
     Private Sub picAgregar_Click(sender As Object, e As EventArgs) Handles picAgregar.Click
         'EVENTO CLICK EN AGREGAR
-
-        frmAgreCliente.ShowDialog()    'form de agregar
-        recargarDGV()
+        activeAgregar = True
+        pnlComponentes.Enabled = True
+        pnlAcciones.Enabled = False
     End Sub
 
     Private Sub picEditar_Click(sender As Object, e As EventArgs) Handles picEditar.Click
+        pnlComponentes.Enabled = True
+        pnlAcciones.Enabled = False
+
+        txtRutSnDV.Enabled = False
+        txtDV.Enabled = False
+
+        activeEditar = True
+        dgvClientes.Enabled = False
+
+
         'EVENTO CLICK EN EDITAR 
-
-
         Try
 
             If dgvClientes.CurrentRow.Cells(0).Value.Equals(DBNull.Value) Then
@@ -59,23 +68,15 @@
             MsgBox("Ha ocurrido un error: " & ex.ToString)
         End Try
 
-        Dim frmAgre As New frmAgreCliente
+        txtRutSnDV.Text = Cliente.Rut
+        txtDV.Text = Cliente.obtenerDV(Cliente.Rut)
+        txtNombres.Text = Cliente.Nombres
+        txtApellidoP.Text = Cliente.ApelidoPaterno
+        txtApellidoM.Text = Cliente.ApellidoMaterno
+        tbDescuento.Value = Cliente.Descuento
 
-        frmAgre.Label5.Text = "EDITAR CLIENTE"
-        frmAgre.txtRutSnDV.Enabled = False
-        frmAgre.txtDV.Enabled = False
+        lblDescuento.Text = "Descuento: " & tbDescuento.Value
 
-        frmAgre.txtRutSnDV.Text = Cliente.Rut
-        frmAgre.txtDV.Text = Cliente.obtenerDV(Cliente.Rut)
-        frmAgre.txtNombres.Text = Cliente.Nombres
-        frmAgre.txtApellidoM.Text = Cliente.ApellidoMaterno
-        frmAgre.txtApellidoP.Text = Cliente.ApelidoPaterno
-        frmAgre.tbDescuento.Value = Cliente.Descuento
-        frmAgre.lblDescuento.Text = "DESCUENTO: " & Cliente.Descuento
-        frmAgre.btnAgregar.Text = "Editar"
-
-        frmAgre.ShowDialog()
-        recargarDGV()
 
     End Sub
 
@@ -98,7 +99,67 @@
         dgvClientes.DataSource = dataset.Tables(0).DefaultView 'los pone en el datagridview clientes
     End Sub
     Private Sub formUsua_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        pnlComponentes.Enabled = False
         recargarDGV()
     End Sub
 
+    Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
+        pnlComponentes.Enabled = False
+        pnlAcciones.Enabled = True
+        activeEditar = False
+        activeAgregar = False
+        txtRutSnDV.Enabled = True
+        txtDV.Enabled = True
+        dgvClientes.Enabled = True
+    End Sub
+
+    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
+
+        If activeAgregar Then
+            If txtRutSnDV.Text = "" Or txtDV.Text = "" Or txtNombres.Text = "" Or txtApellidoP.Text = "" Or txtApellidoM.Text = "" Or tbDescuento.Value = 0 Then
+                MsgBox("Por favor complete los campos requeridos...", vbCritical)
+            Else
+                If Not Cliente.validarRut(txtRutSnDV.Text, txtDV.Text) Then
+                    MsgBox("El RUT ingresado NO ES CORRECTO")
+                Else
+                    'Seteando el objeto clientes con sus caracteristicas
+                    Cliente.Rut = txtRutSnDV.Text
+                    Cliente.Nombres = txtNombres.Text
+                    Cliente.ApelidoPaterno = txtApellidoP.Text
+                    Cliente.ApellidoMaterno = txtApellidoM.Text
+                    Cliente.Descuento = tbDescuento.Value
+
+                    BsnCliente.agregarCliente(Cliente)
+
+                End If
+            End If
+        End If
+
+        If activeEditar Then
+
+            If txtRutSnDV.Text = "" Or txtDV.Text = "" Or txtNombres.Text = "" Or txtApellidoP.Text = "" Or txtApellidoM.Text = "" Or tbDescuento.Value = 0 Then
+                MsgBox("Por favor complete los campos requeridos...", vbCritical)
+            Else
+
+                Cliente.Rut = txtRutSnDV.Text
+                Cliente.Nombres = txtNombres.Text
+                Cliente.ApelidoPaterno = txtApellidoP.Text
+                Cliente.ApellidoMaterno = txtApellidoM.Text
+                Cliente.Descuento = tbDescuento.Value
+
+                BsnCliente.editarCliente(Cliente)
+            End If
+        End If
+
+        pnlComponentes.Enabled = True
+        pnlAcciones.Enabled = True
+        activeEditar = False
+        activeAgregar = False
+        dgvClientes.Enabled = True
+        recargarDGV()
+    End Sub
+
+    Private Sub tbDescuento_Scroll(sender As Object, e As EventArgs) Handles tbDescuento.Scroll
+        lblDescuento.Text = "Descuento: " & tbDescuento.Value
+    End Sub
 End Class

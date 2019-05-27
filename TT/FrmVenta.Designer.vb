@@ -363,6 +363,7 @@ Partial Class frmVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.ClientSize = New System.Drawing.Size(1157, 631)
         Me.Controls.Add(Me.cmbClientes)
         Me.Controls.Add(Me.cmbVendedor)
