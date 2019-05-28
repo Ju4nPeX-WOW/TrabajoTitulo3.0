@@ -23,6 +23,15 @@
         activeAgregar = True
         pnlAcciones.Enabled = False
         pnlComponentes.Enabled = True
+
+        txtRutSnDV.Text = ""
+        txtDV.Text = ""
+        txtNombres.Text = ""
+        txtApellidoP.Text = ""
+        txtApellidoM.Text = ""
+        txtCelu.Text = ""
+        txtFono.Text = ""
+
     End Sub
 
     Private Sub picEditar_Click_1(sender As Object, e As EventArgs) Handles picEditar.Click
@@ -91,6 +100,13 @@
         'MsgBox(response)
         If response = 6 Then
             BsnEmpleado.eliminarEmpleado(empleado)
+            txtRutSnDV.Text = ""
+            txtDV.Text = ""
+            txtNombres.Text = ""
+            txtApellidoP.Text = ""
+            txtApellidoM.Text = ""
+            txtCelu.Text = ""
+            txtFono.Text = ""
             recargarDGV()
         End If
     End Sub
@@ -113,6 +129,21 @@
                     empleado.TelefonoFijo = txtFono.Text
 
                     BsnEmpleado.agregarEmpleado(empleado)
+
+                    activeAgregar = False
+                    activeEditar = False
+                    pnlAcciones.Enabled = True
+                    pnlComponentes.Enabled = False
+
+                    txtRutSnDV.Text = ""
+                    txtDV.Text = ""
+                    txtNombres.Text = ""
+                    txtApellidoP.Text = ""
+                    txtApellidoM.Text = ""
+                    txtCelu.Text = ""
+                    txtFono.Text = ""
+
+                    recargarDGV()
                 End If
             End If
         End If
@@ -130,22 +161,25 @@
                 empleado.TelefonoFijo = txtFono.Text
 
                 BsnEmpleado.editarEmpleado(empleado)
+
+                activeAgregar = False
+                activeEditar = False
+                pnlAcciones.Enabled = True
+                pnlComponentes.Enabled = False
+
+                txtRutSnDV.Text = ""
+                txtDV.Text = ""
+                txtNombres.Text = ""
+                txtApellidoP.Text = ""
+                txtApellidoM.Text = ""
+                txtCelu.Text = ""
+                txtFono.Text = ""
+
+                recargarDGV()
+
             End If
 
         End If
-
-        activeAgregar = False
-        activeEditar = False
-        pnlAcciones.Enabled = True
-        pnlComponentes.Enabled = False
-
-        txtRutSnDV.Text = ""
-        txtDV.Text = ""
-        txtNombres.Text = ""
-        txtApellidoP.Text = ""
-        txtApellidoM.Text = ""
-        txtCelu.Text = ""
-        txtFono.Text = ""
 
     End Sub
 
