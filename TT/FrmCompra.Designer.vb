@@ -42,6 +42,7 @@ Partial Class FrmCompra
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblArchivo = New System.Windows.Forms.Label()
         Me.txtArchivo = New System.Windows.Forms.TextBox()
+        Me.lblUsuario = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -235,10 +236,21 @@ Partial Class FrmCompra
         Me.txtArchivo.Size = New System.Drawing.Size(460, 20)
         Me.txtArchivo.TabIndex = 100
         '
+        'lblUsuario
+        '
+        Me.lblUsuario.AutoSize = True
+        Me.lblUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUsuario.Location = New System.Drawing.Point(456, 55)
+        Me.lblUsuario.Name = "lblUsuario"
+        Me.lblUsuario.Size = New System.Drawing.Size(254, 25)
+        Me.lblUsuario.TabIndex = 101
+        Me.lblUsuario.Text = "INGRESO DE COMPRAS"
+        '
         'FrmCompra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 670)
+        Me.Controls.Add(Me.lblUsuario)
         Me.Controls.Add(Me.txtArchivo)
         Me.Controls.Add(Me.lblArchivo)
         Me.Controls.Add(Me.txtSubTotal)
@@ -291,4 +303,5 @@ Partial Class FrmCompra
     Friend WithEvents Label1 As Label
     Friend WithEvents lblArchivo As Label
     Friend WithEvents txtArchivo As TextBox
+    Friend WithEvents lblUsuario As Label
 End Class

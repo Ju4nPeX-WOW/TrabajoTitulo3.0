@@ -77,12 +77,14 @@
   <ItemGroup>
     <Compile Include="Bsn\BsnCategoria.vb" />
     <Compile Include="Bsn\BsnCliente.vb" />
+    <Compile Include="Bsn\BsnDescuentos.vb" />
     <Compile Include="Bsn\BsnDocumentos.vb" />
     <Compile Include="Bsn\BsnEmpleado.vb" />
     <Compile Include="Bsn\BsnProducto.vb" />
     <Compile Include="Bsn\BsnUsuario.vb" />
     <Compile Include="Dao\DaoCategoria.vb" />
     <Compile Include="Dao\DaoCliente.vb" />
+    <Compile Include="Dao\DaoDescuentos.vb" />
     <Compile Include="Dao\DaoEmpleado.vb" />
     <Compile Include="Dao\DaoProducto.vb" />
     <Compile Include="Dao\DaoUsuario.vb" />
