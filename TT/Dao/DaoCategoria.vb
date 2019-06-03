@@ -6,6 +6,10 @@
         Return instrucciones.Seleccionar("Categorias", "*", "")
     End Function
 
+    Public Function ObtenerCategorias()
+        Return instrucciones.SelectWithFalseDelete("Categorias", "*", "")
+    End Function
+
     Public Sub agregarCategoria(valorColumna As String)
         instrucciones.Insertar("Categorias", "nombre,codigo", valorColumna)
     End Sub

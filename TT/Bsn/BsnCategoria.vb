@@ -4,7 +4,7 @@
     Protected valorColumna As String
 
     Public Function ObtenerCategorias()
-        dataset = daoCategoria.ObtenerTodasCategorias
+        dataset = daoCategoria.ObtenerCategorias
         Return dataset
     End Function
 
