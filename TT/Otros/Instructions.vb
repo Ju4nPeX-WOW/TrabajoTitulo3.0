@@ -15,7 +15,9 @@ Class Instructions
         Try
             command.Connection = conexion.GetConexion()
             conexion.AbrirConexion()
+
             sentencia = "Select " & columnas & " from " & tabla & condicion
+            MsgBox(sentencia)
             command.CommandText = sentencia
             Console.WriteLine(sentencia)
             Dim reader As New OleDbDataAdapter
@@ -117,6 +119,26 @@ Class Instructions
 
         End Try
     End Sub
+
+    Public Function busquedaIncremental(columnas As String, tabla As String, columnaBusqueda As String, texto As String)
+        Try
+            command.Connection = conexion.GetConexion()
+            conexion.AbrirConexion()
+            sentencia = "SELECT " & columnas & " FROM " & tabla & " WHERE " & columnaBusqueda & " LIKE '%" & texto & "%'"
+            command.CommandText = sentencia
+            MsgBox(sentencia)
+            Dim reader As New OleDbDataAdapter
+            dataset.Clear()
+            reader.SelectCommand = command
+            reader.Fill(dataset)
+            conexion.CerrarConexion()
+
+        Catch ex As Exception
+            MsgBox("Error: " & ex.ToString)
+
+        End Try
+        Return dataset
+    End Function
 
 
     ' ELIMINADO 

@@ -39,7 +39,6 @@ Partial Class frmVenta
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.lblCant = New System.Windows.Forms.Label()
         Me.txtCant = New System.Windows.Forms.TextBox()
         Me.txtPrecio = New System.Windows.Forms.TextBox()
@@ -48,7 +47,6 @@ Partial Class frmVenta
         Me.lblDescProd = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.chkFactura = New System.Windows.Forms.CheckBox()
         Me.chkBoleta = New System.Windows.Forms.CheckBox()
@@ -59,10 +57,13 @@ Partial Class frmVenta
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.txtFecha = New System.Windows.Forms.TextBox()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.txtBuscar = New System.Windows.Forms.TextBox()
+        Me.dgvProductos = New System.Windows.Forms.DataGridView()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblVend
@@ -195,14 +196,6 @@ Partial Class frmVenta
         Me.Label4.TabIndex = 22
         Me.Label4.Text = "Producto:"
         '
-        'ComboBox2
-        '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(151, 187)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(736, 21)
-        Me.ComboBox2.TabIndex = 23
-        '
         'lblCant
         '
         Me.lblCant.AutoSize = True
@@ -277,18 +270,10 @@ Partial Class frmVenta
         Me.PictureBox2.TabIndex = 31
         Me.PictureBox2.TabStop = False
         '
-        'DataGridView1
-        '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(98, 263)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(789, 108)
-        Me.DataGridView1.TabIndex = 32
-        '
         'DataGridView2
         '
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(98, 390)
+        Me.DataGridView2.Location = New System.Drawing.Point(98, 394)
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.Size = New System.Drawing.Size(789, 118)
         Me.DataGridView2.TabIndex = 33
@@ -334,6 +319,8 @@ Partial Class frmVenta
         '
         'cmbVendedor
         '
+        Me.cmbVendedor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cmbVendedor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmbVendedor.FormattingEnabled = True
         Me.cmbVendedor.Location = New System.Drawing.Point(163, 74)
         Me.cmbVendedor.Name = "cmbVendedor"
@@ -342,6 +329,8 @@ Partial Class frmVenta
         '
         'cmbClientes
         '
+        Me.cmbClientes.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend
+        Me.cmbClientes.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cmbClientes.FormattingEnabled = True
         Me.cmbClientes.Location = New System.Drawing.Point(163, 102)
         Me.cmbClientes.Name = "cmbClientes"
@@ -359,12 +348,47 @@ Partial Class frmVenta
         Me.txtFecha.Size = New System.Drawing.Size(160, 20)
         Me.txtFecha.TabIndex = 12
         '
+        'txtBuscar
+        '
+        Me.txtBuscar.Location = New System.Drawing.Point(163, 183)
+        Me.txtBuscar.Name = "txtBuscar"
+        Me.txtBuscar.Size = New System.Drawing.Size(633, 20)
+        Me.txtBuscar.TabIndex = 71
+        '
+        'dgvProductos
+        '
+        Me.dgvProductos.AllowUserToAddRows = False
+        Me.dgvProductos.AllowUserToDeleteRows = False
+        Me.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders
+        Me.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.dgvProductos.Location = New System.Drawing.Point(98, 266)
+        Me.dgvProductos.MultiSelect = False
+        Me.dgvProductos.Name = "dgvProductos"
+        Me.dgvProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Me.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvProductos.Size = New System.Drawing.Size(789, 118)
+        Me.dgvProductos.TabIndex = 73
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(819, 172)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(68, 40)
+        Me.Button1.TabIndex = 74
+        Me.Button1.Text = "Buscar"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'frmVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.ClientSize = New System.Drawing.Size(1157, 631)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.dgvProductos)
+        Me.Controls.Add(Me.txtBuscar)
         Me.Controls.Add(Me.cmbClientes)
         Me.Controls.Add(Me.cmbVendedor)
         Me.Controls.Add(Me.BtnExit)
@@ -372,7 +396,6 @@ Partial Class frmVenta
         Me.Controls.Add(Me.chkBoleta)
         Me.Controls.Add(Me.chkFactura)
         Me.Controls.Add(Me.DataGridView2)
-        Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.txtDescProd)
@@ -381,7 +404,6 @@ Partial Class frmVenta
         Me.Controls.Add(Me.lblPrecio)
         Me.Controls.Add(Me.txtCant)
         Me.Controls.Add(Me.lblCant)
-        Me.Controls.Add(Me.ComboBox2)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -405,8 +427,8 @@ Partial Class frmVenta
         Me.Text = "frmVenta"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -427,7 +449,6 @@ Partial Class frmVenta
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents ComboBox2 As ComboBox
     Friend WithEvents lblCant As Label
     Friend WithEvents txtCant As TextBox
     Friend WithEvents txtPrecio As TextBox
@@ -436,7 +457,6 @@ Partial Class frmVenta
     Friend WithEvents lblDescProd As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents DataGridView2 As DataGridView
     Friend WithEvents chkFactura As CheckBox
     Friend WithEvents chkBoleta As CheckBox
@@ -447,4 +467,7 @@ Partial Class frmVenta
     Friend WithEvents Timer1 As Timer
     Friend WithEvents txtFecha As TextBox
     Friend WithEvents Timer2 As Timer
+    Friend WithEvents txtBuscar As TextBox
+    Friend WithEvents dgvProductos As DataGridView
+    Friend WithEvents Button1 As Button
 End Class

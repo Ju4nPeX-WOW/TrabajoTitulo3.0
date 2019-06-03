@@ -15,13 +15,21 @@
         Return instrucciones.SelectWithFalseDelete("Productos", "*", recondicion)
 
     End Function
-
+    Public Function ObtenerColumnasEspecificas(columnas)
+        Dim instrucciones As New Instructions
+        Return instrucciones.Seleccionar("Productos", columnas, " WHERE FALSE_DELETE = 0")
+    End Function
     Public Sub ModificarProducto(valorColumn As String, idproducto As String)
         Dim instrucciones As New Instructions
         Dim recondicion As String = "Id_producto = " & idproducto
         instrucciones.Modificar("Productos", valorColumn, recondicion)
 
     End Sub
+
+    Public Function busquedaIncremental(columnas, tabla, columnaBusqueda, texto)
+        Dim instrucciones As New Instructions
+        Return instrucciones.busquedaIncremental(columnas, "Productos", columnaBusqueda, texto)
+    End Function
 
     Public Sub AgregarProducto(valores As String)
         Dim instrucciones As New Instructions
