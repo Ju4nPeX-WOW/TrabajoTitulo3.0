@@ -39,7 +39,6 @@ Partial Class frmVenta
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
         Me.lblCant = New System.Windows.Forms.Label()
         Me.txtCant = New System.Windows.Forms.TextBox()
         Me.txtPrecio = New System.Windows.Forms.TextBox()
@@ -48,7 +47,6 @@ Partial Class frmVenta
         Me.lblDescProd = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.chkFactura = New System.Windows.Forms.CheckBox()
         Me.chkBoleta = New System.Windows.Forms.CheckBox()
@@ -59,10 +57,13 @@ Partial Class frmVenta
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.txtFecha = New System.Windows.Forms.TextBox()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
+        Me.txtBuscar = New System.Windows.Forms.TextBox()
+        Me.btnBuscar = New System.Windows.Forms.Button()
+        Me.dgvProductos = New System.Windows.Forms.DataGridView()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblVend
@@ -104,28 +105,28 @@ Partial Class frmVenta
         '
         'txtSubto
         '
-        Me.txtSubto.Location = New System.Drawing.Point(715, 517)
+        Me.txtSubto.Location = New System.Drawing.Point(628, 524)
         Me.txtSubto.Name = "txtSubto"
         Me.txtSubto.Size = New System.Drawing.Size(117, 20)
         Me.txtSubto.TabIndex = 8
         '
         'txtDesc
         '
-        Me.txtDesc.Location = New System.Drawing.Point(715, 543)
+        Me.txtDesc.Location = New System.Drawing.Point(628, 550)
         Me.txtDesc.Name = "txtDesc"
         Me.txtDesc.Size = New System.Drawing.Size(117, 20)
         Me.txtDesc.TabIndex = 9
         '
         'txtTotal
         '
-        Me.txtTotal.Location = New System.Drawing.Point(715, 595)
+        Me.txtTotal.Location = New System.Drawing.Point(628, 602)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.Size = New System.Drawing.Size(117, 20)
         Me.txtTotal.TabIndex = 10
         '
         'txtIva
         '
-        Me.txtIva.Location = New System.Drawing.Point(715, 569)
+        Me.txtIva.Location = New System.Drawing.Point(628, 576)
         Me.txtIva.Name = "txtIva"
         Me.txtIva.Size = New System.Drawing.Size(117, 20)
         Me.txtIva.TabIndex = 11
@@ -133,7 +134,7 @@ Partial Class frmVenta
         'lblSubto
         '
         Me.lblSubto.AutoSize = True
-        Me.lblSubto.Location = New System.Drawing.Point(641, 517)
+        Me.lblSubto.Location = New System.Drawing.Point(555, 526)
         Me.lblSubto.Name = "lblSubto"
         Me.lblSubto.Size = New System.Drawing.Size(49, 13)
         Me.lblSubto.TabIndex = 15
@@ -142,7 +143,7 @@ Partial Class frmVenta
         'lblDesc
         '
         Me.lblDesc.AutoSize = True
-        Me.lblDesc.Location = New System.Drawing.Point(641, 543)
+        Me.lblDesc.Location = New System.Drawing.Point(554, 550)
         Me.lblDesc.Name = "lblDesc"
         Me.lblDesc.Size = New System.Drawing.Size(62, 13)
         Me.lblDesc.TabIndex = 16
@@ -151,7 +152,7 @@ Partial Class frmVenta
         'lblIva
         '
         Me.lblIva.AutoSize = True
-        Me.lblIva.Location = New System.Drawing.Point(641, 572)
+        Me.lblIva.Location = New System.Drawing.Point(554, 579)
         Me.lblIva.Name = "lblIva"
         Me.lblIva.Size = New System.Drawing.Size(27, 13)
         Me.lblIva.TabIndex = 17
@@ -160,7 +161,7 @@ Partial Class frmVenta
         'lblTotal
         '
         Me.lblTotal.AutoSize = True
-        Me.lblTotal.Location = New System.Drawing.Point(641, 602)
+        Me.lblTotal.Location = New System.Drawing.Point(554, 609)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(34, 13)
         Me.lblTotal.TabIndex = 18
@@ -194,14 +195,6 @@ Partial Class frmVenta
         Me.Label4.Size = New System.Drawing.Size(53, 13)
         Me.Label4.TabIndex = 22
         Me.Label4.Text = "Producto:"
-        '
-        'ComboBox2
-        '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(220, 184)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(736, 21)
-        Me.ComboBox2.TabIndex = 23
         '
         'lblCant
         '
@@ -277,14 +270,6 @@ Partial Class frmVenta
         Me.PictureBox2.TabIndex = 31
         Me.PictureBox2.TabStop = False
         '
-        'DataGridView1
-        '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(167, 260)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(789, 108)
-        Me.DataGridView1.TabIndex = 32
-        '
         'DataGridView2
         '
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -296,7 +281,7 @@ Partial Class frmVenta
         'chkFactura
         '
         Me.chkFactura.AutoSize = True
-        Me.chkFactura.Location = New System.Drawing.Point(415, 539)
+        Me.chkFactura.Location = New System.Drawing.Point(328, 546)
         Me.chkFactura.Name = "chkFactura"
         Me.chkFactura.Size = New System.Drawing.Size(62, 17)
         Me.chkFactura.TabIndex = 34
@@ -306,7 +291,7 @@ Partial Class frmVenta
         'chkBoleta
         '
         Me.chkBoleta.AutoSize = True
-        Me.chkBoleta.Location = New System.Drawing.Point(415, 572)
+        Me.chkBoleta.Location = New System.Drawing.Point(328, 579)
         Me.chkBoleta.Name = "chkBoleta"
         Me.chkBoleta.Size = New System.Drawing.Size(56, 17)
         Me.chkBoleta.TabIndex = 35
@@ -317,7 +302,7 @@ Partial Class frmVenta
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(256, 549)
+        Me.Label5.Location = New System.Drawing.Point(169, 556)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(130, 24)
         Me.Label5.TabIndex = 36
@@ -359,12 +344,47 @@ Partial Class frmVenta
         Me.txtFecha.Size = New System.Drawing.Size(160, 20)
         Me.txtFecha.TabIndex = 12
         '
+        'txtBuscar
+        '
+        Me.txtBuscar.Location = New System.Drawing.Point(228, 184)
+        Me.txtBuscar.Name = "txtBuscar"
+        Me.txtBuscar.Size = New System.Drawing.Size(637, 20)
+        Me.txtBuscar.TabIndex = 71
+        '
+        'btnBuscar
+        '
+        Me.btnBuscar.Location = New System.Drawing.Point(885, 183)
+        Me.btnBuscar.Name = "btnBuscar"
+        Me.btnBuscar.Size = New System.Drawing.Size(71, 21)
+        Me.btnBuscar.TabIndex = 72
+        Me.btnBuscar.Text = "Buscar"
+        Me.btnBuscar.UseVisualStyleBackColor = True
+        '
+        'dgvProductos
+        '
+        Me.dgvProductos.AllowUserToAddRows = False
+        Me.dgvProductos.AllowUserToDeleteRows = False
+        Me.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders
+        Me.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvProductos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.dgvProductos.Location = New System.Drawing.Point(166, 257)
+        Me.dgvProductos.MultiSelect = False
+        Me.dgvProductos.Name = "dgvProductos"
+        Me.dgvProductos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Me.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvProductos.Size = New System.Drawing.Size(789, 118)
+        Me.dgvProductos.TabIndex = 73
+        '
         'frmVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.ClientSize = New System.Drawing.Size(1157, 631)
+        Me.Controls.Add(Me.dgvProductos)
+        Me.Controls.Add(Me.btnBuscar)
+        Me.Controls.Add(Me.txtBuscar)
         Me.Controls.Add(Me.cmbClientes)
         Me.Controls.Add(Me.cmbVendedor)
         Me.Controls.Add(Me.BtnExit)
@@ -372,7 +392,6 @@ Partial Class frmVenta
         Me.Controls.Add(Me.chkBoleta)
         Me.Controls.Add(Me.chkFactura)
         Me.Controls.Add(Me.DataGridView2)
-        Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.txtDescProd)
@@ -381,7 +400,6 @@ Partial Class frmVenta
         Me.Controls.Add(Me.lblPrecio)
         Me.Controls.Add(Me.txtCant)
         Me.Controls.Add(Me.lblCant)
-        Me.Controls.Add(Me.ComboBox2)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
@@ -405,8 +423,8 @@ Partial Class frmVenta
         Me.Text = "frmVenta"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -427,7 +445,6 @@ Partial Class frmVenta
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents ComboBox2 As ComboBox
     Friend WithEvents lblCant As Label
     Friend WithEvents txtCant As TextBox
     Friend WithEvents txtPrecio As TextBox
@@ -436,7 +453,6 @@ Partial Class frmVenta
     Friend WithEvents lblDescProd As Label
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents DataGridView2 As DataGridView
     Friend WithEvents chkFactura As CheckBox
     Friend WithEvents chkBoleta As CheckBox
@@ -447,4 +463,7 @@ Partial Class frmVenta
     Friend WithEvents Timer1 As Timer
     Friend WithEvents txtFecha As TextBox
     Friend WithEvents Timer2 As Timer
+    Friend WithEvents txtBuscar As TextBox
+    Friend WithEvents btnBuscar As Button
+    Friend WithEvents dgvProductos As DataGridView
 End Class

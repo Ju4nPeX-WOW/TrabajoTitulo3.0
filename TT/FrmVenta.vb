@@ -44,7 +44,7 @@
         End If
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         If txtBuscar.Text.Length > 0 Then
             Dim datasetIncremental As New DataSet
             datasetIncremental = BsnProducto.BusquedaIncremental("NOMBRE,PRECIO,STOCK,STOCK_CRITICO", "Productos", "Nombre", txtBuscar.Text)
@@ -61,4 +61,5 @@
 
         End If
     End Sub
+
 End Class
