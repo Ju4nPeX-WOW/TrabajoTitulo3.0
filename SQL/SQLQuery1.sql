@@ -433,7 +433,17 @@ INSERT INTO Ajuste_Stock(Id_producto,Fecha,Hora,Cantidad,Razon,Stock,Rut_emplead
 	VALUES(4,SYSDATETIME( ),SYSDATETIME( ),20,1,20,20093264) 
 INSERT INTO Ajuste_Stock(Id_producto,Fecha,Hora,Cantidad,Razon,Stock,Rut_empleado)
 	VALUES(5,SYSDATETIME( ),SYSDATETIME( ),8,1,8,20093264) 
- 
+
+
+INSERT INTO Descuentos(Id_producto,Fecha_inicio ,Fecha_termino ,Condicion)
+	VALUES(1,SYSDATETIME( ),'10/06/2019','05X02')   
+ INSERT INTO Descuentos(Id_producto,Fecha_inicio ,Fecha_termino ,Condicion)
+	VALUES(2,SYSDATETIME( ),'10/06/2019','10E4A')   
+
+
+
+
+	
 -- UPDATE TABLE 
 UPDATE Usuarios
 SET Permisos = '3'
@@ -457,3 +467,8 @@ delete from Productos
 
 
 select * from Usuarios  where rut_empleado = 20093264
+
+
+SELECT Descuentos.Id_descuento, Productos.Nombre, Descuentos.Fecha_inicio , Descuentos.Fecha_termino , Descuentos.Condicion  
+FROM Descuentos
+INNER JOIN Productos ON Descuentos.Id_producto=Productos.Id_producto;
