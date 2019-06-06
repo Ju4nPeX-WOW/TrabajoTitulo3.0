@@ -19,27 +19,36 @@ Partial Class FrmCate
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmCate))
         Me.BtnExitCat = New System.Windows.Forms.Button()
         Me.cmbBuscarCat = New System.Windows.Forms.ComboBox()
         Me.txtBuscarProdCat = New System.Windows.Forms.TextBox()
-        Me.mnsCat = New System.Windows.Forms.MenuStrip()
-        Me.tsmAgregarCat = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmEditarCat = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmEliminarCat = New System.Windows.Forms.ToolStripMenuItem()
-        Me.btnSimpleEliminarCat = New System.Windows.Forms.Button()
         Me.btnCanCat = New System.Windows.Forms.Button()
         Me.btnAceCat = New System.Windows.Forms.Button()
         Me.dgvCateg = New System.Windows.Forms.DataGridView()
         Me.lblId = New System.Windows.Forms.Label()
         Me.lblNombre = New System.Windows.Forms.Label()
         Me.txtCodigo = New System.Windows.Forms.TextBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dgvSubCat = New System.Windows.Forms.DataGridView()
         Me.txtNombre = New System.Windows.Forms.TextBox()
         Me.lblCodigo = New System.Windows.Forms.Label()
-        Me.mnsCat.SuspendLayout()
+        Me.lblCateBase = New System.Windows.Forms.Label()
+        Me.cmbCategorias = New System.Windows.Forms.ComboBox()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.AgregarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EditarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EliminarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.lblAuxCat = New System.Windows.Forms.Label()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.dgvSubSubCat = New System.Windows.Forms.DataGridView()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.cmbSubCategorias = New System.Windows.Forms.ComboBox()
+        Me.lblSubCate = New System.Windows.Forms.Label()
+        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
+        Me.lblaux = New System.Windows.Forms.Label()
         CType(Me.dgvCateg, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvSubCat, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.MenuStrip1.SuspendLayout()
+        CType(Me.dgvSubSubCat, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtnExitCat
@@ -67,50 +76,6 @@ Partial Class FrmCate
         Me.txtBuscarProdCat.Name = "txtBuscarProdCat"
         Me.txtBuscarProdCat.Size = New System.Drawing.Size(911, 20)
         Me.txtBuscarProdCat.TabIndex = 67
-        '
-        'mnsCat
-        '
-        Me.mnsCat.AutoSize = False
-        Me.mnsCat.Dock = System.Windows.Forms.DockStyle.None
-        Me.mnsCat.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAgregarCat, Me.tsmEditarCat, Me.tsmEliminarCat})
-        Me.mnsCat.Location = New System.Drawing.Point(0, 40)
-        Me.mnsCat.Name = "mnsCat"
-        Me.mnsCat.Size = New System.Drawing.Size(1139, 24)
-        Me.mnsCat.TabIndex = 68
-        Me.mnsCat.Text = "MenuStrip1"
-        Me.mnsCat.UseWaitCursor = True
-        '
-        'tsmAgregarCat
-        '
-        Me.tsmAgregarCat.Image = CType(resources.GetObject("tsmAgregarCat.Image"), System.Drawing.Image)
-        Me.tsmAgregarCat.Name = "tsmAgregarCat"
-        Me.tsmAgregarCat.Size = New System.Drawing.Size(77, 20)
-        Me.tsmAgregarCat.Text = "Agregar"
-        '
-        'tsmEditarCat
-        '
-        Me.tsmEditarCat.Image = CType(resources.GetObject("tsmEditarCat.Image"), System.Drawing.Image)
-        Me.tsmEditarCat.Name = "tsmEditarCat"
-        Me.tsmEditarCat.Size = New System.Drawing.Size(65, 20)
-        Me.tsmEditarCat.Text = "Editar"
-        '
-        'tsmEliminarCat
-        '
-        Me.tsmEliminarCat.Image = CType(resources.GetObject("tsmEliminarCat.Image"), System.Drawing.Image)
-        Me.tsmEliminarCat.Name = "tsmEliminarCat"
-        Me.tsmEliminarCat.Size = New System.Drawing.Size(78, 20)
-        Me.tsmEliminarCat.Text = "Eliminar"
-        '
-        'btnSimpleEliminarCat
-        '
-        Me.btnSimpleEliminarCat.Enabled = False
-        Me.btnSimpleEliminarCat.Location = New System.Drawing.Point(975, 567)
-        Me.btnSimpleEliminarCat.Name = "btnSimpleEliminarCat"
-        Me.btnSimpleEliminarCat.Size = New System.Drawing.Size(132, 43)
-        Me.btnSimpleEliminarCat.TabIndex = 75
-        Me.btnSimpleEliminarCat.Text = "ELIMINAR POR COMPLETO"
-        Me.btnSimpleEliminarCat.UseVisualStyleBackColor = True
-        Me.btnSimpleEliminarCat.Visible = False
         '
         'btnCanCat
         '
@@ -145,7 +110,7 @@ Partial Class FrmCate
         Me.dgvCateg.Name = "dgvCateg"
         Me.dgvCateg.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.dgvCateg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvCateg.Size = New System.Drawing.Size(509, 269)
+        Me.dgvCateg.Size = New System.Drawing.Size(360, 269)
         Me.dgvCateg.TabIndex = 71
         '
         'lblId
@@ -171,26 +136,26 @@ Partial Class FrmCate
         'txtCodigo
         '
         Me.txtCodigo.Enabled = False
-        Me.txtCodigo.Location = New System.Drawing.Point(216, 579)
+        Me.txtCodigo.Location = New System.Drawing.Point(216, 544)
         Me.txtCodigo.Name = "txtCodigo"
         Me.txtCodigo.Size = New System.Drawing.Size(262, 20)
         Me.txtCodigo.TabIndex = 76
         '
-        'DataGridView1
+        'dgvSubCat
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.DataGridView1.Location = New System.Drawing.Point(535, 115)
-        Me.DataGridView1.MultiSelect = False
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(604, 269)
-        Me.DataGridView1.TabIndex = 79
+        Me.dgvSubCat.AllowUserToAddRows = False
+        Me.dgvSubCat.AllowUserToDeleteRows = False
+        Me.dgvSubCat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvSubCat.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders
+        Me.dgvSubCat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvSubCat.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.dgvSubCat.Location = New System.Drawing.Point(394, 115)
+        Me.dgvSubCat.MultiSelect = False
+        Me.dgvSubCat.Name = "dgvSubCat"
+        Me.dgvSubCat.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Me.dgvSubCat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvSubCat.Size = New System.Drawing.Size(360, 269)
+        Me.dgvSubCat.TabIndex = 79
         '
         'txtNombre
         '
@@ -204,36 +169,183 @@ Partial Class FrmCate
         '
         Me.lblCodigo.AutoSize = True
         Me.lblCodigo.Enabled = False
-        Me.lblCodigo.Location = New System.Drawing.Point(90, 582)
+        Me.lblCodigo.Location = New System.Drawing.Point(90, 547)
         Me.lblCodigo.Name = "lblCodigo"
         Me.lblCodigo.Size = New System.Drawing.Size(55, 13)
         Me.lblCodigo.TabIndex = 81
         Me.lblCodigo.Text = "CODIGO :"
         '
+        'lblCateBase
+        '
+        Me.lblCateBase.AutoSize = True
+        Me.lblCateBase.Enabled = False
+        Me.lblCateBase.Location = New System.Drawing.Point(90, 608)
+        Me.lblCateBase.Name = "lblCateBase"
+        Me.lblCateBase.Size = New System.Drawing.Size(103, 13)
+        Me.lblCateBase.TabIndex = 82
+        Me.lblCateBase.Text = "CATEGORIA BASE:"
+        '
+        'cmbCategorias
+        '
+        Me.cmbCategorias.FormattingEnabled = True
+        Me.cmbCategorias.Location = New System.Drawing.Point(216, 637)
+        Me.cmbCategorias.Name = "cmbCategorias"
+        Me.cmbCategorias.Size = New System.Drawing.Size(262, 21)
+        Me.cmbCategorias.TabIndex = 83
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.AutoSize = False
+        Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgregarToolStripMenuItem, Me.EditarToolStripMenuItem, Me.EliminarToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 40)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(1139, 24)
+        Me.MenuStrip1.TabIndex = 84
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'AgregarToolStripMenuItem
+        '
+        Me.AgregarToolStripMenuItem.Image = Global.TT.My.Resources.Resources.add
+        Me.AgregarToolStripMenuItem.Name = "AgregarToolStripMenuItem"
+        Me.AgregarToolStripMenuItem.Size = New System.Drawing.Size(77, 20)
+        Me.AgregarToolStripMenuItem.Text = "Agregar"
+        '
+        'EditarToolStripMenuItem
+        '
+        Me.EditarToolStripMenuItem.Image = Global.TT.My.Resources.Resources.document
+        Me.EditarToolStripMenuItem.Name = "EditarToolStripMenuItem"
+        Me.EditarToolStripMenuItem.Size = New System.Drawing.Size(65, 20)
+        Me.EditarToolStripMenuItem.Text = "Editar"
+        '
+        'EliminarToolStripMenuItem
+        '
+        Me.EliminarToolStripMenuItem.Image = Global.TT.My.Resources.Resources.delete
+        Me.EliminarToolStripMenuItem.Name = "EliminarToolStripMenuItem"
+        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(78, 20)
+        Me.EliminarToolStripMenuItem.Text = "Eliminar"
+        '
+        'lblAuxCat
+        '
+        Me.lblAuxCat.AutoSize = True
+        Me.lblAuxCat.Enabled = False
+        Me.lblAuxCat.Location = New System.Drawing.Point(513, 547)
+        Me.lblAuxCat.Name = "lblAuxCat"
+        Me.lblAuxCat.Size = New System.Drawing.Size(0, 13)
+        Me.lblAuxCat.TabIndex = 85
+        Me.lblAuxCat.Visible = False
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(216, 608)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(159, 17)
+        Me.CheckBox1.TabIndex = 86
+        Me.CheckBox1.Text = "HACER CATEGORIA BASE"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
+        'dgvSubSubCat
+        '
+        Me.dgvSubSubCat.AllowUserToAddRows = False
+        Me.dgvSubSubCat.AllowUserToDeleteRows = False
+        Me.dgvSubSubCat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvSubSubCat.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders
+        Me.dgvSubSubCat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvSubSubCat.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.dgvSubSubCat.Location = New System.Drawing.Point(779, 115)
+        Me.dgvSubSubCat.MultiSelect = False
+        Me.dgvSubSubCat.Name = "dgvSubSubCat"
+        Me.dgvSubSubCat.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Me.dgvSubSubCat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvSubSubCat.Size = New System.Drawing.Size(360, 269)
+        Me.dgvSubSubCat.TabIndex = 87
+        '
+        'CheckBox2
+        '
+        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.Location = New System.Drawing.Point(659, 608)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(153, 17)
+        Me.CheckBox2.TabIndex = 90
+        Me.CheckBox2.Text = "HACER SUB CATEGORIA"
+        Me.CheckBox2.UseVisualStyleBackColor = True
+        '
+        'cmbSubCategorias
+        '
+        Me.cmbSubCategorias.FormattingEnabled = True
+        Me.cmbSubCategorias.Location = New System.Drawing.Point(659, 637)
+        Me.cmbSubCategorias.Name = "cmbSubCategorias"
+        Me.cmbSubCategorias.Size = New System.Drawing.Size(262, 21)
+        Me.cmbSubCategorias.TabIndex = 89
+        '
+        'lblSubCate
+        '
+        Me.lblSubCate.AutoSize = True
+        Me.lblSubCate.Enabled = False
+        Me.lblSubCate.Location = New System.Drawing.Point(533, 608)
+        Me.lblSubCate.Name = "lblSubCate"
+        Me.lblSubCate.Size = New System.Drawing.Size(97, 13)
+        Me.lblSubCate.TabIndex = 88
+        Me.lblSubCate.Text = "SUB CATEGORIA:"
+        '
+        'CheckBox3
+        '
+        Me.CheckBox3.AutoSize = True
+        Me.CheckBox3.Location = New System.Drawing.Point(93, 579)
+        Me.CheckBox3.Name = "CheckBox3"
+        Me.CheckBox3.Size = New System.Drawing.Size(147, 17)
+        Me.CheckBox3.TabIndex = 91
+        Me.CheckBox3.Text = "Modificar Nivel Categoria:"
+        Me.CheckBox3.UseVisualStyleBackColor = True
+        Me.CheckBox3.Visible = False
+        '
+        'lblaux
+        '
+        Me.lblaux.AutoSize = True
+        Me.lblaux.Enabled = False
+        Me.lblaux.Location = New System.Drawing.Point(457, 430)
+        Me.lblaux.Name = "lblaux"
+        Me.lblaux.Size = New System.Drawing.Size(10, 13)
+        Me.lblaux.TabIndex = 92
+        Me.lblaux.Text = " "
+        Me.lblaux.Visible = False
+        '
         'FrmCate
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 670)
+        Me.Controls.Add(Me.lblaux)
+        Me.Controls.Add(Me.CheckBox3)
+        Me.Controls.Add(Me.CheckBox2)
+        Me.Controls.Add(Me.cmbSubCategorias)
+        Me.Controls.Add(Me.lblSubCate)
+        Me.Controls.Add(Me.dgvSubSubCat)
+        Me.Controls.Add(Me.CheckBox1)
+        Me.Controls.Add(Me.lblAuxCat)
+        Me.Controls.Add(Me.cmbCategorias)
+        Me.Controls.Add(Me.lblCateBase)
         Me.Controls.Add(Me.lblCodigo)
         Me.Controls.Add(Me.txtNombre)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.dgvSubCat)
         Me.Controls.Add(Me.lblId)
         Me.Controls.Add(Me.lblNombre)
         Me.Controls.Add(Me.txtCodigo)
-        Me.Controls.Add(Me.btnSimpleEliminarCat)
         Me.Controls.Add(Me.btnCanCat)
         Me.Controls.Add(Me.btnAceCat)
         Me.Controls.Add(Me.dgvCateg)
         Me.Controls.Add(Me.BtnExitCat)
         Me.Controls.Add(Me.cmbBuscarCat)
         Me.Controls.Add(Me.txtBuscarProdCat)
-        Me.Controls.Add(Me.mnsCat)
+        Me.Controls.Add(Me.MenuStrip1)
         Me.Location = New System.Drawing.Point(0, 0)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "FrmCate"
-        Me.mnsCat.ResumeLayout(False)
-        Me.mnsCat.PerformLayout()
         CType(Me.dgvCateg, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvSubCat, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
+        CType(Me.dgvSubSubCat, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -242,18 +354,27 @@ Partial Class FrmCate
     Friend WithEvents BtnExitCat As Button
     Friend WithEvents cmbBuscarCat As ComboBox
     Friend WithEvents txtBuscarProdCat As TextBox
-    Friend WithEvents mnsCat As MenuStrip
-    Friend WithEvents tsmAgregarCat As ToolStripMenuItem
-    Friend WithEvents tsmEditarCat As ToolStripMenuItem
-    Friend WithEvents tsmEliminarCat As ToolStripMenuItem
-    Friend WithEvents btnSimpleEliminarCat As Button
     Friend WithEvents btnCanCat As Button
     Friend WithEvents btnAceCat As Button
     Friend WithEvents dgvCateg As DataGridView
     Friend WithEvents lblId As Label
     Friend WithEvents lblNombre As Label
     Friend WithEvents txtCodigo As TextBox
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgvSubCat As DataGridView
     Friend WithEvents txtNombre As TextBox
     Friend WithEvents lblCodigo As Label
+    Friend WithEvents lblCateBase As Label
+    Friend WithEvents cmbCategorias As ComboBox
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents AgregarToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents EditarToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents EliminarToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents lblAuxCat As Label
+    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents dgvSubSubCat As DataGridView
+    Friend WithEvents CheckBox2 As CheckBox
+    Friend WithEvents cmbSubCategorias As ComboBox
+    Friend WithEvents lblSubCate As Label
+    Friend WithEvents CheckBox3 As CheckBox
+    Friend WithEvents lblaux As Label
 End Class

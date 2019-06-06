@@ -95,6 +95,12 @@
     <Compile Include="Entidades\Producto.vb" />
     <Compile Include="Entidades\Usuario.vb" />
     <Compile Include="Enumeraciones\Enumeraciones.vb" />
+    <Compile Include="FrmProductos\FrmCate.designer.vb">
+      <DependentUpon>FrmCate.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProductos\FrmCate.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Otros\eztwain.vb" />
     <Compile Include="FrmAcerca.Designer.vb">
       <DependentUpon>FrmAcerca.vb</DependentUpon>
@@ -106,12 +112,6 @@
       <DependentUpon>FrmClientes.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmPersonas\FrmClientes.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmProductos\FrmCate.Designer.vb">
-      <DependentUpon>FrmCate.vb</DependentUpon>
-    </Compile>
-    <Compile Include="FrmProductos\FrmCate.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmProductos\FrmDesc.Designer.vb">

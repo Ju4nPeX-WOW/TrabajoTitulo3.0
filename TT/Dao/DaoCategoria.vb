@@ -3,27 +3,41 @@
 
     Dim instrucciones As New Instructions
     Public Function ObtenerTodasCategorias()
-        Return instrucciones.Seleccionar("Categorias", "*", "")
+        Return instrucciones.Seleccionar("Categorias", "*", "order by Codigo")
     End Function
-
     Public Function ObtenerCategorias()
-        Return instrucciones.SelectWithFalseDelete("Categorias", "*", "")
+        Return instrucciones.SelectWithFalseDelete("Categorias", "*", "order by Codigo ")
     End Function
 
-    Public Sub agregarCategoria(valorColumna As String)
+    Public Function ObtenerCategoriasBase()
+        Return instrucciones.SelectWithFalseDelete("Categorias", "*", "and Codigo Like '_000' ")
+    End Function
+
+    Public Function ObtenerSubCategorias(dig As String)
+        Return instrucciones.SelectWithFalseDelete("Categorias", "*", "and Codigo Like '" + dig + "[^0]00'")
+    End Function
+    Public Function ObtenerSubSubCategorias(dig As String)
+        Return instrucciones.SelectWithFalseDelete("Categorias", "*", "and Codigo Like '" + dig + "_[^0]'")
+    End Function
+
+    Public Sub AgregarCategoria(valorColumna As String)
         instrucciones.Insertar("Categorias", "nombre,codigo", valorColumna)
     End Sub
 
-    Public Sub editarCategoria(valorColumna As String, Categoria As Categoria)
+    Public Sub EditarCategoria(valorColumna As String, ID As String)
         'condicion es igual al identificador de la categoria para que en instrucciones,
         'el where sea igual a condicion... where = condicion
-        Dim condicion As String = " Id_categoria =" & Categoria.IdCateg
+        Dim condicion As String = " Id_categoria =" & ID
         instrucciones.Modificar("Categorias", valorColumna, condicion)
 
     End Sub
 
-    Public Sub eliminarCategoria(valorColumna As String)
+    Public Sub EliminarCategoria(valorColumna As String)
         instrucciones.Eliminar("Categorias", valorColumna)
     End Sub
+
+    Public Function ObtenerCodigo(ID As String)
+        Return instrucciones.SelectWithFalseDelete("Categorias", "Codigo", "and Id_categoria = " + ID)
+    End Function
 
 End Class
