@@ -42,8 +42,6 @@ Partial Class frmVenta
         Me.lblCant = New System.Windows.Forms.Label()
         Me.agregarCantidad = New System.Windows.Forms.PictureBox()
         Me.disminuirCantidad = New System.Windows.Forms.PictureBox()
-        Me.chkFactura = New System.Windows.Forms.CheckBox()
-        Me.chkBoleta = New System.Windows.Forms.CheckBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.BtnExit = New System.Windows.Forms.Button()
         Me.cmbVendedor = New System.Windows.Forms.ComboBox()
@@ -64,6 +62,7 @@ Partial Class frmVenta
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         CType(Me.agregarCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.disminuirCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -236,26 +235,6 @@ Partial Class frmVenta
         Me.disminuirCantidad.TabIndex = 31
         Me.disminuirCantidad.TabStop = False
         '
-        'chkFactura
-        '
-        Me.chkFactura.AutoSize = True
-        Me.chkFactura.Location = New System.Drawing.Point(328, 546)
-        Me.chkFactura.Name = "chkFactura"
-        Me.chkFactura.Size = New System.Drawing.Size(62, 17)
-        Me.chkFactura.TabIndex = 34
-        Me.chkFactura.Text = "Factura"
-        Me.chkFactura.UseVisualStyleBackColor = True
-        '
-        'chkBoleta
-        '
-        Me.chkBoleta.AutoSize = True
-        Me.chkBoleta.Location = New System.Drawing.Point(328, 579)
-        Me.chkBoleta.Name = "chkBoleta"
-        Me.chkBoleta.Size = New System.Drawing.Size(56, 17)
-        Me.chkBoleta.TabIndex = 35
-        Me.chkBoleta.Text = "Boleta"
-        Me.chkBoleta.UseVisualStyleBackColor = True
-        '
         'Label5
         '
         Me.Label5.AutoSize = True
@@ -419,12 +398,23 @@ Partial Class frmVenta
         Me.Label7.TabIndex = 79
         Me.Label7.Text = "Carro de compras"
         '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"Boleta", "Factura"})
+        Me.ComboBox1.Location = New System.Drawing.Point(305, 559)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(211, 21)
+        Me.ComboBox1.TabIndex = 80
+        Me.ComboBox1.Text = "Seleccione un tipo de venta..."
+        '
         'frmVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.ClientSize = New System.Drawing.Size(1157, 631)
+        Me.Controls.Add(Me.ComboBox1)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Label1)
@@ -438,8 +428,6 @@ Partial Class frmVenta
         Me.Controls.Add(Me.cmbVendedor)
         Me.Controls.Add(Me.BtnExit)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.chkBoleta)
-        Me.Controls.Add(Me.chkFactura)
         Me.Controls.Add(Me.disminuirCantidad)
         Me.Controls.Add(Me.agregarCantidad)
         Me.Controls.Add(Me.lblCant)
@@ -492,8 +480,6 @@ Partial Class frmVenta
     Friend WithEvents lblCant As Label
     Friend WithEvents agregarCantidad As PictureBox
     Friend WithEvents disminuirCantidad As PictureBox
-    Friend WithEvents chkFactura As CheckBox
-    Friend WithEvents chkBoleta As CheckBox
     Friend WithEvents Label5 As Label
     Friend WithEvents BtnExit As Button
     Friend WithEvents cmbVendedor As ComboBox
@@ -514,4 +500,5 @@ Partial Class frmVenta
     Friend WithEvents Label1 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
+    Friend WithEvents ComboBox1 As ComboBox
 End Class

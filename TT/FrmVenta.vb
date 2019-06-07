@@ -51,21 +51,6 @@
         txtTotal.Text = total
     End Sub
 
-    Private Sub btnAgregar_Click(sender As Object, e As EventArgs) Handles btnAgregar.Click
-        'Boton que lo que realiza es insertar el producto elegido en el datagridviewPRODUCTOS, hacia el datagridviewPRODUCTOSSELECCIONADOS.
-        If dgvProductos.CurrentRow.Index > -1 Then                                                                                                                                      'aqui iria el descuento raro
-            If nmudCantidad.Value > 0 Then
-                Dim fila() As String = {dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(0).Value, dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(1).Value, nmudCantidad.Value}
-                'agregando al otro datagridview
-                dgvProductosSeleccionados.Rows.Add(fila)
-                dgvProductosSeleccionados.ClearSelection()
-                'una vez que se ha agregado, se realiza el calculo del total del precio y se llenan los txt
-                calculoTotal()
-            Else
-                MsgBox("Ingrese una cantidad")
-            End If
-        End If
-    End Sub
     Private Sub dgvProductosSeleccionados_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgvProductosSeleccionados.UserDeletingRow
         'evento que sucede cuando se esta eliminando una fila del dgvPRODUCTOSSELECCIONADOS->CARRITO DE COMPRAS (cuando se apreta el boton suprimir)
         Dim total = Integer.Parse(txtTotal.Text)
@@ -94,6 +79,43 @@
             calculoTotal()
         Else
             MsgBox("Por favor agregue productos al carro de compras...")
+        End If
+    End Sub
+
+    Private Sub btnAgregar_MouseClick(sender As Object, e As MouseEventArgs) Handles btnAgregar.MouseClick
+        'Boton que lo que realiza es insertar el producto elegido en el datagridviewPRODUCTOS, hacia el datagridviewPRODUCTOSSELECCIONADOS.
+        If dgvProductos.CurrentRow.Index > -1 Then                                                                                                                                      'aqui iria el descuento raro
+            If nmudCantidad.Value > 0 Then
+                'guardamos los datos del producto seleccionado en el primer datagridview en un arreglo fila() para luego insertarla en el segundo datagridview
+                Dim fila() As String = {dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(0).Value, dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(1).Value, nmudCantidad.Value}
+                Dim existe As Boolean = False
+                If dgvProductosSeleccionados.Rows.Count > 0 Then
+                    For index = 0 To dgvProductosSeleccionados.Rows.Count - 1
+                        MsgBox(dgvProductosSeleccionados.Rows(index).Cells(0).Value & " " & fila(0))
+                        If dgvProductosSeleccionados.Rows(index).Cells(0).Value.Equals(fila(0)) Then
+                            dgvProductosSeleccionados.Rows(index).Cells(2).Value = (Integer.Parse(dgvProductosSeleccionados.Rows(index).Cells(2).Value) + Integer.Parse(fila(2))).ToString
+                            existe = True
+                        End If
+                    Next
+                    If existe = False Then
+                        dgvProductosSeleccionados.Rows.Add(fila)
+                    End If
+
+                Else
+                    'agregando el producto al segundo datagridview 
+                    dgvProductosSeleccionados.Rows.Add(fila)
+                End If
+
+
+
+                'limpiamos la seleccion
+                dgvProductosSeleccionados.ClearSelection()
+
+                'una vez que se ha agregado, se realiza el calculo del total del precio y se llenan los txt
+                calculoTotal()
+            Else
+                MsgBox("Ingrese una cantidad")
+            End If
         End If
     End Sub
 End Class
