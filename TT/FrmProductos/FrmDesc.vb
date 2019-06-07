@@ -48,5 +48,25 @@
         RellenarDataSet()
     End Sub
 
+    Private Sub dgvDescuentos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDescuentos.CellClick
+
+        Dim bsnDescuentos As New BsnDescuentos()
+        MsgBox(bsnDescuentos.Condicion(dgvDescuentos.CurrentRow.Cells.Item(4).Value.ToString))
+        Dim txt = bsnDescuentos.Condicion(dgvDescuentos.CurrentRow.Cells.Item(4).Value.ToString, 1000, 10)
+        Dim precio = txt(1)
+
+        txt = txt(0)
+        MsgBox(txt)
+        MsgBox(precio)
+
+        bsnDescuentos.Condicion(dgvDescuentos.CurrentRow.Cells.Item(4).Value.ToString)
+        bsnDescuentos.Condicion(dgvDescuentos.CurrentRow.Cells.Item(4).Value.ToString, 1000, 10)
+
+
+        'RellenarDatos(dgvSubCat.CurrentRow.Cells.Item(0).Value.ToString(),
+        'dgvSubCat.CurrentRow.Cells.Item(1).Value.ToString(),
+        '0dgvSubCat.CurrentRow.Cells.Item(2).Value.ToString())
+    End Sub
+
 
 End Class

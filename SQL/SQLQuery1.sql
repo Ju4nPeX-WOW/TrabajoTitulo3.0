@@ -452,6 +452,8 @@ WHERE Rut_empleado = '20093264'
 -- DELETE TABLE
 DELETE FROM Usuarios WHERE Contraseña = '12345';
 
+
+
 SELECT Id_producto,Nombre,Precio,Stock,Stock_critico FROM Productos where False_delete = 0 AND Id_producto = 1
 
 UPDATE Productos
@@ -469,6 +471,10 @@ delete from Productos
 select * from Usuarios  where rut_empleado = 20093264
 
 
-SELECT Descuentos.Id_descuento, Productos.Nombre, Descuentos.Fecha_inicio , Descuentos.Fecha_termino , Descuentos.Condicion  
+SELECT Descuentos.Id_descuento, Productos.Nombre, Descuentos.Fecha_inicio , Descuentos.Fecha_termino , Descuentos.Condicion  , Descuentos.Id_descuento 
 FROM Descuentos
-INNER JOIN Productos ON Descuentos.Id_producto=Productos.Id_producto;
+INNER JOIN Productos ON Descuentos.Id_producto=Productos.Id_producto
+
+select * from descuentos
+
+DELETE FROM Descuentos  WHERE Id_descuento =  3
