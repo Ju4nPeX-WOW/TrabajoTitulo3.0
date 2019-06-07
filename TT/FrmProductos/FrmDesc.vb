@@ -44,8 +44,37 @@
 
     End Sub
 
+    Private Sub RellenarCMB()
+        Dim bsnproducto As New BsnProducto
+        Dim dataset_1 As New DataSet
+        dataset_1 = bsnproducto.ObtenerColumnasEspecificas("Id_producto,Nombre")
+
+        cmbProducto.Items.Clear()
+        For i = 0 To dataset_1.Tables(0).Rows.Count - 1
+            cmbProducto.Items.Add(dataset_1.Tables(0)(i)(0).ToString + " - " + dataset_1.Tables(0)(i)(1))
+        Next
+
+        cmbP1Mayor.Items.Clear()
+        cmbP2Mayor.Items.Clear()
+        For i = 1 To 5
+            cmbP1Mayor.Items.Add((i).ToString)
+            cmbP2Mayor.Items.Add((i).ToString)
+
+        Next
+
+        cmbP1Porcentual.Items.Clear()
+        cmbP2Porcentual.Items.Clear()
+        For i = 1 To 100
+            cmbP1Porcentual.Items.Add(i.ToString)
+        Next
+        For i = 1 To 10
+            cmbP2Porcentual.Items.Add(i.ToString)
+        Next
+    End Sub
+
     Private Sub FrmDesc_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RellenarDataSet()
+        RellenarCMB()
     End Sub
 
     Private Sub dgvDescuentos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDescuentos.CellClick

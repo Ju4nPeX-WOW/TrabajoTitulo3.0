@@ -20,7 +20,6 @@ Partial Class FrmDesc
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmDesc))
-        Me.btnSimpleEliminar = New System.Windows.Forms.Button()
         Me.btnCan = New System.Windows.Forms.Button()
         Me.btnAce = New System.Windows.Forms.Button()
         Me.dgvDescuentos = New System.Windows.Forms.DataGridView()
@@ -50,17 +49,6 @@ Partial Class FrmDesc
         CType(Me.dgvDescuentos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.mnsDes.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'btnSimpleEliminar
-        '
-        Me.btnSimpleEliminar.Enabled = False
-        Me.btnSimpleEliminar.Location = New System.Drawing.Point(975, 567)
-        Me.btnSimpleEliminar.Name = "btnSimpleEliminar"
-        Me.btnSimpleEliminar.Size = New System.Drawing.Size(132, 43)
-        Me.btnSimpleEliminar.TabIndex = 84
-        Me.btnSimpleEliminar.Text = "ELIMINAR POR COMPLETO"
-        Me.btnSimpleEliminar.UseVisualStyleBackColor = True
-        Me.btnSimpleEliminar.Visible = False
         '
         'btnCan
         '
@@ -314,7 +302,6 @@ Partial Class FrmDesc
         Me.Controls.Add(Me.dtpInicio)
         Me.Controls.Add(Me.cmbProducto)
         Me.Controls.Add(Me.lblProducto)
-        Me.Controls.Add(Me.btnSimpleEliminar)
         Me.Controls.Add(Me.btnCan)
         Me.Controls.Add(Me.btnAce)
         Me.Controls.Add(Me.dgvDescuentos)
@@ -331,8 +318,6 @@ Partial Class FrmDesc
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents btnSimpleEliminar As Button
     Friend WithEvents btnCan As Button
     Friend WithEvents btnAce As Button
     Friend WithEvents dgvDescuentos As DataGridView
