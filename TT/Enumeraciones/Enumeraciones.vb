@@ -54,6 +54,11 @@
         Return result
     End Function
 
+    Public Function getIVA()
+        Dim result As String = "0.19"
+        Return result
+    End Function
+
 
 
 

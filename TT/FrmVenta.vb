@@ -7,6 +7,11 @@
 
     Protected BsnProducto As New BsnProducto
     Protected DaoProducto As New DaoProducto
+
+    Protected BsnVenta As New BsnVenta
+    Protected DaoVenta As New DaoVenta
+
+    Protected Enumeraciones As New Enumeraciones
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
         Me.Close()
     End Sub
@@ -14,7 +19,7 @@
         'rellenar combobox empleado
         Dim datasetEmpleados As DataSet = BsnEmpleado.obtenerTodosEmpleados
         cmbVendedor.DataSource = datasetEmpleados.Tables(0)
-        cmbVendedor.DisplayMember = "NOMBRES"
+        cmbVendedor.DisplayMember = "Rut_Empleado"
 
         Dim datasetClientes As DataSet = BsnCliente.obtenerTodosClientes
         cmbClientes.DataSource = datasetClientes.Tables(0)
@@ -74,6 +79,7 @@
     End Sub
 
     Private Sub agregarCantidad_MouseClick(sender As Object, e As MouseEventArgs) Handles agregarCantidad.MouseClick
+
         If dgvProductosSeleccionados.Rows.Count > 0 Then
             dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(2).Value = dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(2).Value + 1
             calculoTotal()
@@ -91,7 +97,6 @@
                 Dim existe As Boolean = False
                 If dgvProductosSeleccionados.Rows.Count > 0 Then
                     For index = 0 To dgvProductosSeleccionados.Rows.Count - 1
-                        MsgBox(dgvProductosSeleccionados.Rows(index).Cells(0).Value & " " & fila(0))
                         If dgvProductosSeleccionados.Rows(index).Cells(0).Value.Equals(fila(0)) Then
                             dgvProductosSeleccionados.Rows(index).Cells(2).Value = (Integer.Parse(dgvProductosSeleccionados.Rows(index).Cells(2).Value) + Integer.Parse(fila(2))).ToString
                             existe = True
@@ -107,15 +112,87 @@
                 End If
 
 
-
-                'limpiamos la seleccion
-                dgvProductosSeleccionados.ClearSelection()
-
                 'una vez que se ha agregado, se realiza el calculo del total del precio y se llenan los txt
                 calculoTotal()
             Else
                 MsgBox("Ingrese una cantidad")
             End If
         End If
+    End Sub
+
+    Private Sub btnRealizarVenta_Click(sender As Object, e As EventArgs) Handles btnRealizarVenta.Click
+        Dim pal As String = ""
+        Dim contador As Byte = 1
+        Dim isCorrect As Boolean = True
+
+        If cmbVendedor.Text = "" Then
+            pal = contador & "- Ingrese un vendedor. " & vbCrLf
+            contador = contador + 1
+            isCorrect = False
+        End If
+
+        If dgvProductosSeleccionados.Rows.Count <= 0 Then
+            pal = pal & contador & "- Ingrese productos en carro de compras. " & vbCrLf
+            contador = contador + 1
+            isCorrect = False
+        End If
+
+        If cmbTipoVenta.SelectedIndex < 0 Then
+            pal = pal & contador & "- Seleccione un tipo de venta. " & vbCrLf
+            contador = contador + 1
+            isCorrect = False
+        End If
+
+        If cmbMetodoPago.SelectedIndex < 0 Then
+            pal = pal & contador & "-Seleccione un metodo de pago. " & vbCrLf
+            isCorrect = False
+        End If
+
+        If Not isCorrect Then
+            MsgBox(pal, vbInformation, "Error")
+        Else
+            'insertar en Venta
+
+            '           num_venta
+            '           rut_cliente
+            '           rut_empleado
+            '           fecha ->DaoVenta como string converter(date,SYSDATE())
+            '           hora  ->DaoVenta como string converter(time,SYSDATE())
+            '           subtotal
+            '           descuento
+            '           total
+            '           iva
+            '           medio_pago
+            '           factura
+            '           boleta
+            '           nota_credito
+            '           nota_debito
+            Dim medio_pago As Byte = Enumeraciones.MedioPago(cmbMetodoPago.Text)
+            Dim tipo_venta As Byte = cmbTipoVenta.SelectedIndex '-> dentro de bsnVenta if-> 1 boleta
+
+            BsnVenta.realizarVenta(cmbClientes.Text, cmbVendedor.Text, txtSubto.Text, txtDesc.Text, txtTotal.Text, Enumeraciones.getIVA, medio_pago, tipo_venta)
+
+
+            'Insertar en Detalle_Venta
+            '           Id_Producto ( con el for ) 
+            '           cantidad
+            '           Precio
+            '           Subtotal
+            '           descuento
+            '           Total
+
+            For index = 0 To dgvProductosSeleccionados.Rows.Count - 1
+
+            Next
+
+        End If
+
+
+
+    End Sub
+
+    Private Sub frmVenta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
+        MsgBox("keypress")
+
     End Sub
 End Class
