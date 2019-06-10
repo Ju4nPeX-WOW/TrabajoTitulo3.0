@@ -20,7 +20,6 @@ Partial Class FrmDesc
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmDesc))
-        Me.btnSimpleEliminar = New System.Windows.Forms.Button()
         Me.btnCan = New System.Windows.Forms.Button()
         Me.btnAce = New System.Windows.Forms.Button()
         Me.dgvDescuentos = New System.Windows.Forms.DataGridView()
@@ -31,20 +30,25 @@ Partial Class FrmDesc
         Me.tsmAgregarCat = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmEditarCat = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmEliminarCat = New System.Windows.Forms.ToolStripMenuItem()
+        Me.lblProducto = New System.Windows.Forms.Label()
+        Me.cmbProducto = New System.Windows.Forms.ComboBox()
+        Me.dtpInicio = New System.Windows.Forms.DateTimePicker()
+        Me.lblFechaInicio = New System.Windows.Forms.Label()
+        Me.lblFechaTermino = New System.Windows.Forms.Label()
+        Me.dtpTermino = New System.Windows.Forms.DateTimePicker()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.cbxPorcentual = New System.Windows.Forms.CheckBox()
+        Me.cbxMayor = New System.Windows.Forms.CheckBox()
+        Me.cmbP1Mayor = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.cmbP2Mayor = New System.Windows.Forms.ComboBox()
+        Me.cmbP1Porcentual = New System.Windows.Forms.ComboBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.cmbP2Porcentual = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         CType(Me.dgvDescuentos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.mnsDes.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'btnSimpleEliminar
-        '
-        Me.btnSimpleEliminar.Enabled = False
-        Me.btnSimpleEliminar.Location = New System.Drawing.Point(975, 567)
-        Me.btnSimpleEliminar.Name = "btnSimpleEliminar"
-        Me.btnSimpleEliminar.Size = New System.Drawing.Size(132, 43)
-        Me.btnSimpleEliminar.TabIndex = 84
-        Me.btnSimpleEliminar.Text = "ELIMINAR POR COMPLETO"
-        Me.btnSimpleEliminar.UseVisualStyleBackColor = True
-        Me.btnSimpleEliminar.Visible = False
         '
         'btnCan
         '
@@ -141,11 +145,163 @@ Partial Class FrmDesc
         Me.tsmEliminarCat.Size = New System.Drawing.Size(78, 20)
         Me.tsmEliminarCat.Text = "Eliminar"
         '
+        'lblProducto
+        '
+        Me.lblProducto.AutoSize = True
+        Me.lblProducto.Location = New System.Drawing.Point(85, 444)
+        Me.lblProducto.Name = "lblProducto"
+        Me.lblProducto.Size = New System.Drawing.Size(53, 13)
+        Me.lblProducto.TabIndex = 85
+        Me.lblProducto.Text = "Producto:"
+        '
+        'cmbProducto
+        '
+        Me.cmbProducto.FormattingEnabled = True
+        Me.cmbProducto.Location = New System.Drawing.Point(190, 441)
+        Me.cmbProducto.Name = "cmbProducto"
+        Me.cmbProducto.Size = New System.Drawing.Size(200, 21)
+        Me.cmbProducto.TabIndex = 86
+        '
+        'dtpInicio
+        '
+        Me.dtpInicio.Location = New System.Drawing.Point(190, 485)
+        Me.dtpInicio.Name = "dtpInicio"
+        Me.dtpInicio.Size = New System.Drawing.Size(200, 20)
+        Me.dtpInicio.TabIndex = 87
+        '
+        'lblFechaInicio
+        '
+        Me.lblFechaInicio.AutoSize = True
+        Me.lblFechaInicio.Location = New System.Drawing.Point(85, 485)
+        Me.lblFechaInicio.Name = "lblFechaInicio"
+        Me.lblFechaInicio.Size = New System.Drawing.Size(86, 13)
+        Me.lblFechaInicio.TabIndex = 88
+        Me.lblFechaInicio.Text = "Fecha de Inicio :"
+        '
+        'lblFechaTermino
+        '
+        Me.lblFechaTermino.AutoSize = True
+        Me.lblFechaTermino.Location = New System.Drawing.Point(85, 542)
+        Me.lblFechaTermino.Name = "lblFechaTermino"
+        Me.lblFechaTermino.Size = New System.Drawing.Size(99, 13)
+        Me.lblFechaTermino.TabIndex = 90
+        Me.lblFechaTermino.Text = "Fecha de Termino :"
+        '
+        'dtpTermino
+        '
+        Me.dtpTermino.Location = New System.Drawing.Point(190, 542)
+        Me.dtpTermino.Name = "dtpTermino"
+        Me.dtpTermino.Size = New System.Drawing.Size(200, 20)
+        Me.dtpTermino.TabIndex = 89
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(432, 444)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(60, 13)
+        Me.Label4.TabIndex = 91
+        Me.Label4.Text = "Condicion :"
+        '
+        'cbxPorcentual
+        '
+        Me.cbxPorcentual.AutoSize = True
+        Me.cbxPorcentual.Location = New System.Drawing.Point(455, 527)
+        Me.cbxPorcentual.Name = "cbxPorcentual"
+        Me.cbxPorcentual.Size = New System.Drawing.Size(99, 17)
+        Me.cbxPorcentual.TabIndex = 92
+        Me.cbxPorcentual.Text = "PORCENTUAL"
+        Me.cbxPorcentual.UseVisualStyleBackColor = True
+        '
+        'cbxMayor
+        '
+        Me.cbxMayor.AutoSize = True
+        Me.cbxMayor.Location = New System.Drawing.Point(455, 467)
+        Me.cbxMayor.Name = "cbxMayor"
+        Me.cbxMayor.Size = New System.Drawing.Size(338, 17)
+        Me.cbxMayor.TabIndex = 93
+        Me.cbxMayor.Text = "MAYOR CONTENIDO DE PRODUCTO POR EL MISMO PRECIO"
+        Me.cbxMayor.UseVisualStyleBackColor = True
+        '
+        'cmbP1Mayor
+        '
+        Me.cmbP1Mayor.FormattingEnabled = True
+        Me.cmbP1Mayor.Location = New System.Drawing.Point(474, 490)
+        Me.cmbP1Mayor.Name = "cmbP1Mayor"
+        Me.cmbP1Mayor.Size = New System.Drawing.Size(44, 21)
+        Me.cmbP1Mayor.TabIndex = 94
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(525, 493)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(133, 13)
+        Me.Label5.TabIndex = 96
+        Me.Label5.Text = "productos por el precio de "
+        '
+        'cmbP2Mayor
+        '
+        Me.cmbP2Mayor.FormattingEnabled = True
+        Me.cmbP2Mayor.Location = New System.Drawing.Point(663, 490)
+        Me.cmbP2Mayor.Name = "cmbP2Mayor"
+        Me.cmbP2Mayor.Size = New System.Drawing.Size(44, 21)
+        Me.cmbP2Mayor.TabIndex = 97
+        '
+        'cmbP1Porcentual
+        '
+        Me.cmbP1Porcentual.FormattingEnabled = True
+        Me.cmbP1Porcentual.Location = New System.Drawing.Point(477, 550)
+        Me.cmbP1Porcentual.Name = "cmbP1Porcentual"
+        Me.cmbP1Porcentual.Size = New System.Drawing.Size(44, 21)
+        Me.cmbP1Porcentual.TabIndex = 98
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(527, 553)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(94, 13)
+        Me.Label6.TabIndex = 99
+        Me.Label6.Text = "% descuento en la"
+        '
+        'cmbP2Porcentual
+        '
+        Me.cmbP2Porcentual.FormattingEnabled = True
+        Me.cmbP2Porcentual.Location = New System.Drawing.Point(627, 550)
+        Me.cmbP2Porcentual.Name = "cmbP2Porcentual"
+        Me.cmbP2Porcentual.Size = New System.Drawing.Size(44, 21)
+        Me.cmbP2Porcentual.TabIndex = 100
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(677, 553)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(42, 13)
+        Me.Label7.TabIndex = 101
+        Me.Label7.Text = "unidad."
+        '
         'FrmDesc
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 670)
-        Me.Controls.Add(Me.btnSimpleEliminar)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.cmbP2Porcentual)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.cmbP1Porcentual)
+        Me.Controls.Add(Me.cmbP2Mayor)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.cmbP1Mayor)
+        Me.Controls.Add(Me.cbxMayor)
+        Me.Controls.Add(Me.cbxPorcentual)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.lblFechaTermino)
+        Me.Controls.Add(Me.dtpTermino)
+        Me.Controls.Add(Me.lblFechaInicio)
+        Me.Controls.Add(Me.dtpInicio)
+        Me.Controls.Add(Me.cmbProducto)
+        Me.Controls.Add(Me.lblProducto)
         Me.Controls.Add(Me.btnCan)
         Me.Controls.Add(Me.btnAce)
         Me.Controls.Add(Me.dgvDescuentos)
@@ -162,8 +318,6 @@ Partial Class FrmDesc
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents btnSimpleEliminar As Button
     Friend WithEvents btnCan As Button
     Friend WithEvents btnAce As Button
     Friend WithEvents dgvDescuentos As DataGridView
@@ -174,4 +328,20 @@ Partial Class FrmDesc
     Friend WithEvents tsmAgregarCat As ToolStripMenuItem
     Friend WithEvents tsmEditarCat As ToolStripMenuItem
     Friend WithEvents tsmEliminarCat As ToolStripMenuItem
+    Friend WithEvents lblProducto As Label
+    Friend WithEvents cmbProducto As ComboBox
+    Friend WithEvents dtpInicio As DateTimePicker
+    Friend WithEvents lblFechaInicio As Label
+    Friend WithEvents lblFechaTermino As Label
+    Friend WithEvents dtpTermino As DateTimePicker
+    Friend WithEvents Label4 As Label
+    Friend WithEvents cbxPorcentual As CheckBox
+    Friend WithEvents cbxMayor As CheckBox
+    Friend WithEvents cmbP1Mayor As ComboBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents cmbP2Mayor As ComboBox
+    Friend WithEvents cmbP1Porcentual As ComboBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents cmbP2Porcentual As ComboBox
+    Friend WithEvents Label7 As Label
 End Class
