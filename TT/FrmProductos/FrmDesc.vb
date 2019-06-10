@@ -42,6 +42,7 @@
             dgvDescuentos.Rows(0).Selected = False
         End If
 
+
     End Sub
 
     Private Sub RellenarCMB()
@@ -90,6 +91,12 @@
 
         bsnDescuentos.Condicion(dgvDescuentos.CurrentRow.Cells.Item(4).Value.ToString)
         bsnDescuentos.Condicion(dgvDescuentos.CurrentRow.Cells.Item(4).Value.ToString, 1000, 10)
+
+
+
+        MsgBox(DateTime.Now.ToString("dd/MM/yyyy"))
+        dtpInicio.Value = DateTime.Now.ToString("dd/MM/yyyy")
+        dtpTermino.Value = dgvDescuentos.CurrentRow.Cells.Item(3).Value.ToString()
 
 
         'RellenarDatos(dgvSubCat.CurrentRow.Cells.Item(0).Value.ToString(),
