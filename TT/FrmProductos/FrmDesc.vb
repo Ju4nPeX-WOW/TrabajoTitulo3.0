@@ -1,5 +1,20 @@
 ﻿Public Class FrmDesc
 
+    Protected usuario As Usuario '------------------------>Recepción del usuario que usa el sistema
+    Protected descuento As Descuento '------------------------>Recepción del usuario que usa el sistema
+
+    Protected aux As Short       '------------------------>auxiliar donde guarda el id
+    Protected Validaciones As New Validaciones
+
+
+    Protected activeAgregar As Boolean = False  'cuando el usuario presiona el boton del menu strip agregar se torna verdadero
+    Protected activeEditar As Boolean = False   'cuando el usuario presiona el boton del menu strip editar se torna verdadero
+    Protected activeEliminar As Boolean = False 'cuando el usuario presiona el boton del menu strip eliminar se torna verdadero
+    'Esto no quiere decir que se bloqueen, sino que en los procedimientos tsm[Agregar-editar-eliminar]
+
+
+
+
     Protected dataset As New DataSet
     Private Sub BtnExitDes_Click(sender As Object, e As EventArgs) Handles BtnExitDes.Click
         Me.Close()
@@ -18,7 +33,7 @@
         Me.dgvDescuentos.DefaultCellStyle.BackColor = Color.Beige
         Me.dgvDescuentos.ColumnCount = 5
         Me.dgvDescuentos.Columns(0).Name = "Id"
-        Me.dgvDescuentos.Columns(1).Name = "Nombre"
+        Me.dgvDescuentos.Columns(1).Name = "Producto"
         Me.dgvDescuentos.Columns(2).Name = "Fecha Inicio"
         Me.dgvDescuentos.Columns(3).Name = "Fecha Termino"
         Me.dgvDescuentos.Columns(4).Name = "Condicion"
@@ -81,28 +96,81 @@
     Private Sub dgvDescuentos_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvDescuentos.CellClick
 
         Dim bsnDescuentos As New BsnDescuentos()
-        MsgBox(bsnDescuentos.Condicion(dgvDescuentos.CurrentRow.Cells.Item(4).Value.ToString))
-        Dim txt = bsnDescuentos.Condicion(dgvDescuentos.CurrentRow.Cells.Item(4).Value.ToString, 1000, 10)
-        Dim precio = txt(1)
 
-        txt = txt(0)
-        MsgBox(txt)
-        MsgBox(precio)
+
+
+        MsgBox(bsnDescuentos.Condicion(dgvDescuentos.CurrentRow.Cells.Item(4).Value.ToString))
 
         bsnDescuentos.Condicion(dgvDescuentos.CurrentRow.Cells.Item(4).Value.ToString)
         bsnDescuentos.Condicion(dgvDescuentos.CurrentRow.Cells.Item(4).Value.ToString, 1000, 10)
 
 
 
-        MsgBox(DateTime.Now.ToString("dd/MM/yyyy"))
+        lblIdDescuento.Text = dgvDescuentos.CurrentRow.Cells.Item(0).Value.ToString()
         dtpInicio.Value = DateTime.Now.ToString("dd/MM/yyyy")
         dtpTermino.Value = dgvDescuentos.CurrentRow.Cells.Item(3).Value.ToString()
 
 
-        'RellenarDatos(dgvSubCat.CurrentRow.Cells.Item(0).Value.ToString(),
-        'dgvSubCat.CurrentRow.Cells.Item(1).Value.ToString(),
-        '0dgvSubCat.CurrentRow.Cells.Item(2).Value.ToString())
+
     End Sub
 
+    Private Sub tsmAgregarCat_Click(sender As Object, e As EventArgs) Handles tsmAgregarCat.Click
+        activeAgregar = True
+        activeEditar = False
+        activeEliminar = False
 
+    End Sub
+
+    Private Sub tsmEditarCat_Click(sender As Object, e As EventArgs) Handles tsmEditarCat.Click
+        activeAgregar = False
+        activeEditar = True
+        activeEliminar = False
+    End Sub
+
+    Private Sub tsmEliminarCat_Click(sender As Object, e As EventArgs) Handles tsmEliminarCat.Click
+        activeAgregar = False
+        activeEditar = False
+        activeEliminar = True
+
+        Dim bsnDescuento As New BsnDescuentos
+        bsnDescuento.DarFin(lblIdDescuento.Text)
+
+
+    End Sub
+
+    Private Sub btnAce_Click(sender As Object, e As EventArgs) Handles btnAce.Click
+
+        Dim ObjetoDescuento As New Descuento()
+
+        Dim id_des, id_prod, fec_ini, fec_ter, con As String
+        id_des = ""
+        id_prod = ""
+        fec_ini = ""
+        fec_ter = ""
+        con = ""
+
+        If activeAgregar Then
+            id_prod = cmbProducto.SelectedItem.ToString()
+            id_prod = id_prod.Substring(0, InStr(1, id_prod, "-") - 1)
+            fec_ini = dgvDescuentos.CurrentRow.Cells.Item(2).Value.ToString()
+            fec_ter = dgvDescuentos.CurrentRow.Cells.Item(3).Value.ToString()
+            con = condicion
+
+        ElseIf activeEditar Then
+            id_des = lblIdDescuento.Text
+            id_prod = cmbProducto.SelectedItem.ToString()
+            id_prod = id_prod.Substring(0, InStr(1, id_prod, "-") - 1)
+            fec_ter = dgvDescuentos.CurrentRow.Cells.Item(3).Value.ToString()
+            con = condicion
+        End If
+
+        'Rellenemos El Objeto
+        ObjetoDescuento.IdDescuento = id_des
+        ObjetoDescuento.IdProducto = id_prod
+        ObjetoDescuento.FechaInicio = fec_ini
+        ObjetoDescuento.FechaTermino = fec_ter
+        ObjetoDescuento.Condicion = con
+
+
+    End Sub
 End Class

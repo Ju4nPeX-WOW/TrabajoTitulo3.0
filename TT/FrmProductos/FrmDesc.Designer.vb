@@ -46,6 +46,7 @@ Partial Class FrmDesc
         Me.Label6 = New System.Windows.Forms.Label()
         Me.cmbP2Porcentual = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.lblIdDescuento = New System.Windows.Forms.Label()
         CType(Me.dgvDescuentos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.mnsDes.SuspendLayout()
         Me.SuspendLayout()
@@ -143,7 +144,7 @@ Partial Class FrmDesc
         Me.tsmEliminarCat.Image = CType(resources.GetObject("tsmEliminarCat.Image"), System.Drawing.Image)
         Me.tsmEliminarCat.Name = "tsmEliminarCat"
         Me.tsmEliminarCat.Size = New System.Drawing.Size(78, 20)
-        Me.tsmEliminarCat.Text = "Eliminar"
+        Me.tsmEliminarCat.Text = "Finalizar"
         '
         'lblProducto
         '
@@ -282,10 +283,20 @@ Partial Class FrmDesc
         Me.Label7.TabIndex = 101
         Me.Label7.Text = "unidad."
         '
+        'lblIdDescuento
+        '
+        Me.lblIdDescuento.AutoSize = True
+        Me.lblIdDescuento.Location = New System.Drawing.Point(580, 406)
+        Me.lblIdDescuento.Name = "lblIdDescuento"
+        Me.lblIdDescuento.Size = New System.Drawing.Size(0, 13)
+        Me.lblIdDescuento.TabIndex = 102
+        Me.lblIdDescuento.Visible = False
+        '
         'FrmDesc
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 670)
+        Me.Controls.Add(Me.lblIdDescuento)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.cmbP2Porcentual)
         Me.Controls.Add(Me.Label6)
@@ -344,4 +355,5 @@ Partial Class FrmDesc
     Friend WithEvents Label6 As Label
     Friend WithEvents cmbP2Porcentual As ComboBox
     Friend WithEvents Label7 As Label
+    Friend WithEvents lblIdDescuento As Label
 End Class
