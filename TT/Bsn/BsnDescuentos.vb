@@ -6,6 +6,14 @@
         Return daoDescuentos.ObtenerDescuentos()
     End Function
 
+    Public Sub AgregarDescuento(objeto As Descuento)
+        daoDescuentos.AgregarDescuento(objeto)
+    End Sub
+
+    Public Sub ModificarDescuento(objeto As Descuento)
+        daoDescuentos.ModificarDescuento(objeto)
+    End Sub
+
     Public Function Condicion(Cod As String)
         Dim tipo, p1, p2 As String
         p1 = Int(Cod.Substring(0, 2))
