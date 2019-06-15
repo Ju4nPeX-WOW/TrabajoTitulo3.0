@@ -490,3 +490,5 @@ Values (2,'12/06/2019','13/06/2019','02X03')
 
 SET DATEFORMAT dmy;  
 GO  
+
+Select Nombre,Precio as Valor from Productos where False_delete= 0
