@@ -80,6 +80,7 @@
     <Compile Include="Bsn\BsnDescuentos.vb" />
     <Compile Include="Bsn\BsnDocumentos.vb" />
     <Compile Include="Bsn\BsnEmpleado.vb" />
+    <Compile Include="Bsn\BsnEstadistica.vb" />
     <Compile Include="Bsn\BsnProducto.vb" />
     <Compile Include="Bsn\BsnUsuario.vb" />
     <Compile Include="Bsn\BsnVenta.vb" />
@@ -87,9 +88,11 @@
     <Compile Include="Dao\DaoCliente.vb" />
     <Compile Include="Dao\DaoDescuentos.vb" />
     <Compile Include="Dao\DaoEmpleado.vb" />
+    <Compile Include="Dao\DaoEstadistica.vb" />
     <Compile Include="Dao\DaoProducto.vb" />
     <Compile Include="Dao\DaoUsuario.vb" />
     <Compile Include="Dao\DaoVenta.vb" />
+    <Compile Include="Entidades\Descuento.vb" />
     <Compile Include="Entidades\Categoria.vb" />
     <Compile Include="Entidades\Cliente.vb" />
     <Compile Include="Entidades\Empleado.vb" />

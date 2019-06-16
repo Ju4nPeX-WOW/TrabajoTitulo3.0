@@ -6,14 +6,20 @@
         Return daoDescuentos.ObtenerDescuentos()
     End Function
 
+    Public Sub AgregarDescuento(objeto As Descuento)
+        daoDescuentos.AgregarDescuento(objeto)
+    End Sub
 
+    Public Sub ModificarDescuento(objeto As Descuento)
+        daoDescuentos.ModificarDescuento(objeto)
+    End Sub
 
     Public Function Condicion(Cod As String)
         Dim tipo, p1, p2 As String
         p1 = Int(Cod.Substring(0, 2))
         tipo = Cod.Substring(2, 1)
         p2 = Int(Cod.Substring(3, 2))
-        Dim text As String = ""
+        Dim text = ""
         If tipo.Equals("X") Then
 
             text = (p1).ToString + " productos al precio de " + (p2).ToString
@@ -26,6 +32,8 @@
         Return text
 
     End Function
+
+
 
     Public Function Condicion(cod As String, precio As Integer, cant As Integer)
         Dim p1 = Int(cod.Substring(0, 2))
@@ -72,4 +80,12 @@
 
     End Function
 
+
+    Public Sub DarFin(id_descuento As String)
+        daoDescuentos.DarFin(id_descuento)
+    End Sub
+
+    Public Function ObtenerIdProducto(id_descuento As String)
+        Return daoDescuentos.ObtenerIdProducto(id_descuento)
+    End Function
 End Class

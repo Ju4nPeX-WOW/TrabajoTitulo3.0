@@ -471,10 +471,24 @@ delete from Productos
 select * from Usuarios  where rut_empleado = 20093264
 
 
-SELECT Descuentos.Id_descuento, Productos.Nombre, Descuentos.Fecha_inicio , Descuentos.Fecha_termino , Descuentos.Condicion  , Descuentos.Id_descuento 
+SELECT Descuentos.Id_descuento, Productos.Nombre, Descuentos.Fecha_inicio , Descuentos.Fecha_termino , Descuentos.Condicion  , Descuentos.Id_producto
 FROM Descuentos
 INNER JOIN Productos ON Descuentos.Id_producto=Productos.Id_producto
 
 select * from descuentos
 
 DELETE FROM Descuentos  WHERE Id_descuento =  3
+
+
+UPDATE Descuentos
+SET Fecha_termino = '11/06/2019'
+WHERE Id_producto = 4
+
+Insert Into Descuentos (Id_producto,Fecha_inicio,Fecha_termino,Condicion)
+Values (2,'12/06/2019','13/06/2019','02X03')
+
+
+SET DATEFORMAT dmy;  
+GO  
+
+Select Nombre,Precio as Valor from Productos where False_delete= 0
