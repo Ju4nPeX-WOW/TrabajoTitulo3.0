@@ -3,9 +3,16 @@
 Public Class Conexion
     Protected conexion As New OleDbConnection
     Protected stringConexion As String = "Provider=sqloledb;" &
-                     "Data Source=(local);" & 'en tu caso seria KEVIN-PC o algo asi 
+                     "Data Source=(local)\BASEDEDATOS;" & 'en tu caso seria KEVIN-PC o algo asi 
                      "Initial Catalog=BDALBERDI;" &
                      "User Id=admin;Password=admin"
+
+    Public Function getStringConexion()
+        Dim conexion = "Data Source=(local)\BASEDEDATOS;" & 'en tu caso seria KEVIN-PC o algo asi 
+                     "Initial Catalog=BDALBERDI;" &
+                     "User Id=admin;Password=admin"
+        Return conexion
+    End Function
 
     Public Sub AbrirConexion()
         Try
@@ -28,7 +35,6 @@ Public Class Conexion
         conexion.ConnectionString = stringConexion
         Console.WriteLine("holi1")
         Return conexion
-
     End Function
 
 End Class

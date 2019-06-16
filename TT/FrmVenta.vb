@@ -12,10 +12,16 @@
     Protected DaoVenta As New DaoVenta
 
     Protected Enumeraciones As New Enumeraciones
+
+    Dim Instructions As New Instructions 'es una clase y no es publica
+
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
         Me.Close()
     End Sub
     Private Sub frmVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        lblTransaccion.Text = (BsnVenta.obtenerUltimaVenta + 1).ToString
+
         'rellenar combobox empleado
         Dim datasetEmpleados As DataSet = BsnEmpleado.obtenerTodosEmpleados
         cmbVendedor.DataSource = datasetEmpleados.Tables(0)
@@ -25,7 +31,7 @@
         cmbClientes.DataSource = datasetClientes.Tables(0)
         cmbClientes.DisplayMember = "Rut_cliente"
 
-        Dim datasetProductos As DataSet = BsnProducto.ObtenerColumnasEspecificas(" NOMBRE,PRECIO,STOCK,STOCK_CRITICO")
+        Dim datasetProductos As DataSet = BsnProducto.ObtenerColumnasEspecificas("ID_PRODUCTO,NOMBRE,PRECIO,STOCK,STOCK_CRITICO")
         dgvProductos.DataSource = datasetProductos.Tables(0).DefaultView
 
         Timer1.Enabled = True
@@ -38,35 +44,46 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         If txtBuscar.Text.Length > 0 Then
             Dim datasetIncremental As New DataSet
-            datasetIncremental = BsnProducto.BusquedaIncremental("NOMBRE,PRECIO,STOCK,STOCK_CRITICO", "Productos", "Nombre", txtBuscar.Text)
+            datasetIncremental = BsnProducto.BusquedaIncremental("ID_PRODUCTO,NOMBRE,PRECIO,STOCK,STOCK_CRITICO", "Productos", "Nombre", txtBuscar.Text)
             dgvProductos.DataSource = datasetIncremental.Tables(0).DefaultView
         End If
     End Sub
     Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
         If txtBuscar.Text.Length = 0 Then
-            Dim datasetProductos As DataSet = BsnProducto.ObtenerColumnasEspecificas(" NOMBRE,PRECIO,STOCK,STOCK_CRITICO ")
+            Dim datasetProductos As DataSet = BsnProducto.ObtenerColumnasEspecificas("ID_PRODUCTO,NOMBRE,PRECIO,STOCK,STOCK_CRITICO ")
             dgvProductos.DataSource = datasetProductos.Tables(0).DefaultView
         End If
     End Sub
     Public Sub calculoTotal()
+        Dim subtotal As Integer = 0
+        Dim descuento As Integer = 0 'aqui NASA
         Dim total As Integer = 0
+
         For index = 0 To (dgvProductosSeleccionados.Rows.Count - 1) Step 1
-            total = total + (dgvProductosSeleccionados.Rows(index).Cells(1).Value * dgvProductosSeleccionados.Rows(index).Cells(2).Value)
+            subtotal = subtotal + (dgvProductosSeleccionados.Rows(index).Cells(2).Value * dgvProductosSeleccionados.Rows(index).Cells(3).Value)
         Next
+        txtSubto.Text = subtotal
+
+        total = subtotal + ((subtotal * Enumeraciones.getIVA()) / 100)
         txtTotal.Text = total
+
     End Sub
 
     Private Sub dgvProductosSeleccionados_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgvProductosSeleccionados.UserDeletingRow
         'evento que sucede cuando se esta eliminando una fila del dgvPRODUCTOSSELECCIONADOS->CARRITO DE COMPRAS (cuando se apreta el boton suprimir)
-        Dim total = Integer.Parse(txtTotal.Text)
-        total = total - (dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(1).Value * dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(2).Value)
+        Dim subtotal As Integer = Integer.Parse(txtSubto.Text)
+        Dim total As Integer = 0
+        subtotal = subtotal - (dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(2).Value * dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(3).Value)
+        txtSubto.Text = subtotal
+
+        total = subtotal + ((subtotal * 19) / 100)
         txtTotal.Text = total
     End Sub
     Private Sub disminuirCantidad_MouseClick(sender As Object, e As MouseEventArgs) Handles disminuirCantidad.MouseClick
         'Evento que ocurre cuando se selecciona el boton de disminuir la cantidad
         If dgvProductosSeleccionados.Rows.Count > 0 Then
-            dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(2).Value = dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(2).Value - 1
-            If dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(2).Value = 0 Then
+            dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(3).Value = dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(3).Value - 1
+            If dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(3).Value = 0 Then
                 'si el usuario disminuyo el producto hasta que llego a cero, pues, se elimina de la tabla
                 dgvProductosSeleccionados.Rows.RemoveAt(dgvProductosSeleccionados.CurrentRow.Index)
                 calculoTotal()
@@ -81,7 +98,7 @@
     Private Sub agregarCantidad_MouseClick(sender As Object, e As MouseEventArgs) Handles agregarCantidad.MouseClick
 
         If dgvProductosSeleccionados.Rows.Count > 0 Then
-            dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(2).Value = dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(2).Value + 1
+            dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(3).Value = dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(3).Value + 1
             calculoTotal()
         Else
             MsgBox("Por favor agregue productos al carro de compras...")
@@ -93,12 +110,12 @@
         If dgvProductos.CurrentRow.Index > -1 Then                                                                                                                                      'aqui iria el descuento raro
             If nmudCantidad.Value > 0 Then
                 'guardamos los datos del producto seleccionado en el primer datagridview en un arreglo fila() para luego insertarla en el segundo datagridview
-                Dim fila() As String = {dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(0).Value, dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(1).Value, nmudCantidad.Value}
+                Dim fila() As String = {dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(0).Value, dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(1).Value, dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(2).Value, nmudCantidad.Value}
                 Dim existe As Boolean = False
                 If dgvProductosSeleccionados.Rows.Count > 0 Then
                     For index = 0 To dgvProductosSeleccionados.Rows.Count - 1
-                        If dgvProductosSeleccionados.Rows(index).Cells(0).Value.Equals(fila(0)) Then
-                            dgvProductosSeleccionados.Rows(index).Cells(2).Value = (Integer.Parse(dgvProductosSeleccionados.Rows(index).Cells(2).Value) + Integer.Parse(fila(2))).ToString
+                        If dgvProductosSeleccionados.Rows(index).Cells(1).Value.Equals(fila(1)) Then
+                            dgvProductosSeleccionados.Rows(index).Cells(3).Value = (Integer.Parse(dgvProductosSeleccionados.Rows(index).Cells(3).Value) + Integer.Parse(fila(3))).ToString
                             existe = True
                         End If
                     Next
@@ -163,16 +180,14 @@
             '           total
             '           iva
             '           medio_pago
-            '           factura
-            '           boleta
-            '           nota_credito
-            '           nota_debito
+            '           factura -> en BsnVenta
+            '           boleta -> en BsnVenta
+            '           nota_credito -> en BsnVenta
+            '           nota_debito -> en BsnVenta
             Dim medio_pago As Byte = Enumeraciones.MedioPago(cmbMetodoPago.Text)
             Dim tipo_venta As Byte = cmbTipoVenta.SelectedIndex '-> dentro de bsnVenta if-> 1 boleta
 
             BsnVenta.realizarVenta(cmbClientes.Text, cmbVendedor.Text, txtSubto.Text, txtDesc.Text, txtTotal.Text, Enumeraciones.getIVA, medio_pago, tipo_venta)
-
-
             'Insertar en Detalle_Venta
             '           Id_Producto ( con el for ) 
             '           cantidad
@@ -181,9 +196,11 @@
             '           descuento
             '           Total
 
-            For index = 0 To dgvProductosSeleccionados.Rows.Count - 1
 
-            Next
+            BsnVenta.detalleVenta(dgvProductosSeleccionados, txtSubto.Text, txtDesc.Text, txtTotal.Text, BsnVenta.obtenerUltimaVenta)
+
+            lblTransaccion.Text = (BsnVenta.obtenerUltimaVenta + 1).ToString
+
 
         End If
 
@@ -193,6 +210,5 @@
 
     Private Sub frmVenta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
         MsgBox("keypress")
-
     End Sub
 End Class

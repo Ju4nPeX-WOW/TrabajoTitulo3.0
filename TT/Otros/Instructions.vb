@@ -1,5 +1,6 @@
 ﻿Imports System.Data
 Imports System.Data.OleDb
+Imports System.Data.SqlClient
 
 Class Instructions
 
@@ -163,6 +164,23 @@ Class Instructions
     End Sub
 
 
+    Public Function obtenerNumeroVenta()
+
+        Dim cnn As SqlConnection = Nothing
+        Dim cmd As SqlCommand = Nothing
+
+        Dim ultimaVenta As Integer = 0
+        Try
+            cnn = New SqlConnection(conexion.getStringConexion)
+            cmd = New SqlCommand("SELECT NUM_VENTA FROM VENTAS WHERE NUM_VENTA = (SELECT MAX(NUM_VENTA) FROM VENTAS)", cnn)
+            cnn.Open()
+            ultimaVenta = CInt(cmd.ExecuteScalar())
+            cnn.Close()
+        Catch ex As Exception
+            MsgBox("error: " & ex.ToString)
+        End Try
+        Return ultimaVenta
+    End Function
 
 End Class
 

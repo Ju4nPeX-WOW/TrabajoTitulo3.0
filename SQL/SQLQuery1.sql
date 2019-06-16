@@ -75,7 +75,7 @@ Create Table Ventas(--OJO POR DONDE EMPIEZA
 	Subtotal int,								-- (7)
 	Descuento int,								-- (7)
 	Total int,									-- (7)
-	Iva int,									-- (7)
+	Iva smallint,									-- (7)
 	Medio_pago tinyint,							-- (1)
 	Factura bit,								-- (1)
 	Boleta bit,									-- (1)
@@ -97,7 +97,7 @@ Create Table Venta_Error(
 	Subtotal int,								-- (7)
 	Descuento int,								-- (7)
 	Total int,									-- (7)
-	Iva int										-- (7)
+	Iva smallint										-- (7)
 )
 Create Table Detalle_Venta_Error(
 	Id_error SMALLINT  not null,				-- (4)
@@ -184,7 +184,7 @@ Create Table Factura_Compra(
 	Num_folio int not null,						-- (6)
 	Rut_proveedor int not null,					-- (8)
 	Fecha date,									-- (7)
-	Iva int,									-- (7)
+	Iva smallint,									-- (7)
     Total int									-- (7)
 )
 Create Table Detalle_Factura_Compra(

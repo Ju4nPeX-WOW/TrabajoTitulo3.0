@@ -18,6 +18,7 @@
         '           boleta
         '           nota_credito
         '           nota_debito
+
         Dim columnas As String = ""
         columnas = "Rut_cliente,Rut_empleado,Fecha,Hora,Subtotal,Descuento,Total,Iva,Medio_pago,Factura,Boleta,Nota_credito,Nota_debito"
         Dim valores As String = ""
@@ -37,9 +38,37 @@
             '                  Factura       ,  Boleta   ,  Nota_credito , Nota_debito
             valores = valores & tipo_venta & "," & "0" & "," & "0" & "," & "0"
         End If
+
         DaoVenta.realizarVenta(columnas, valores)
 
     End Sub
 
+    Public Sub detalleVenta(productosSeleccionados As DataGridView, subtotal As String, descuento As String, total As String, num_venta As String)
+
+        'Insertar en Detalle_Venta
+        '           Id_Producto ( con el for ) 
+        '           cantidad
+        '           Precio
+        '           Subtotal //
+        '           descuento //
+        '           Total //
+        Dim idProducto As String = ""
+        Dim cantidad As String = ""
+        Dim precio As String = ""
+
+
+        For index = 0 To productosSeleccionados.Rows.Count - 1
+
+            idProducto = productosSeleccionados.Rows(index).Cells(0).Value
+            precio = productosSeleccionados.Rows(index).Cells(2).Value
+            cantidad = productosSeleccionados.Rows(index).Cells(3).Value
+
+            DaoVenta.detalleVenta(num_venta, idProducto, cantidad, precio, subtotal, descuento, total)
+        Next
+    End Sub
+
+    Public Function obtenerUltimaVenta()
+        Return DaoVenta.obtenerUltimaVenta()
+    End Function
 
 End Class
