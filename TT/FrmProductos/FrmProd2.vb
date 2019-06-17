@@ -31,6 +31,16 @@ Public Class frmProd2
     End Sub
 
 
+    Private Function CrearColeccionTMS()
+        Dim coleccion As New List(Of Object)
+        coleccion.Add(tsmAgregar)
+        coleccion.Add(tsmEditar)
+        coleccion.Add(tsmEliminar)
+
+        Return coleccion
+
+    End Function
+
     Public Sub DesbloquearBotonesProd(page As String) 'Metodo para tabProductos
 
 
@@ -121,17 +131,7 @@ Public Class frmProd2
         btnCan.Enabled = False
     End Sub
 
-    Public Sub OpcionesMenuStripProd(estado As String)
-        If (estado = "bloqueadas") Then
-            tsmAgregar.Enabled = False
-            tsmEditar.Enabled = False
-            tsmEliminar.Enabled = False
-        ElseIf (estado = "desbloqueadas") Then
-            tsmAgregar.Enabled = True
-            tsmEditar.Enabled = True
-            tsmEliminar.Enabled = True
-        End If
-    End Sub
+
     Public Sub LimpiarControl1(page As String)
         If page.Equals("Simple") Or page.Equals("Simple-y-Avanzado") Then
             '//LIMPIAR SIMPLE
@@ -169,7 +169,7 @@ Public Class frmProd2
             TabControl1.Enabled = False                       'Bloqueo del tabcontrol1 ya que no se selecciona ninguna funcion agregar editar eliminar
             TabControl1.SelectedTab = tbpSimple               'El predeterminado para mostrar el tabsimple
             bloquearBotonesProd("Simple-y-Avanzado")
-            OpcionesMenuStripProd("desbloqueadas")  'se desbloquean las opciones AGREGAR - EDITAR - ELIMINAR
+            OpcionesMenuStrip(listaTSMDelForm, "desbloqueadas")  'se desbloquean las opciones AGREGAR - EDITAR - ELIMINAR
 
         ElseIf activeAgregar Then                       'Si se presiona el boton agregar del menu strip  
 
@@ -217,6 +217,7 @@ Public Class frmProd2
 
 
         'MsgBox("permiso" & usuario.Permisos)
+        listaTSMDelForm = CrearColeccionTMS()
         name_no_definido()                                      'Al iniciar el form, se bloquean todos los componentes excepto los menuStrip
         RellenarDataSet()                                       'Se rellena un dataset con todos los productos
 
@@ -227,12 +228,12 @@ Public Class frmProd2
             TabControl1.Visible = False
             btnAce.Visible = False
             btnCan.Visible = False
-            OpcionesMenuStripProd("bloqueadas")
+            OpcionesMenuStrip(listaDeObjetosForm, "bloqueadas")
         Else
             TabControl1.Visible = True
             btnAce.Visible = True
             btnCan.Visible = True
-            OpcionesMenuStripProd("desbloquedas")
+            OpcionesMenuStrip(listaDeObjetosForm, "desbloquedas")
         End If
 
 
@@ -257,7 +258,7 @@ Public Class frmProd2
         MsgBox("Agregando")
         name_no_definido()
         RellenarCmbRazon()
-        OpcionesMenuStripProd("bloqueadas")
+        OpcionesMenuStrip(listaTSMDelForm, "bloqueadas")
     End Sub
 
     Private Sub tsmEditar_Click(sender As Object, e As EventArgs) Handles tsmEditar.Click
@@ -267,7 +268,7 @@ Public Class frmProd2
         MsgBox("Editan")
         name_no_definido()
         RellenarCmbRazon()
-        OpcionesMenuStripProd("bloqueadas")
+        OpcionesMenuStrip(listaTSMDelForm, "bloqueadas")
     End Sub
 
     Private Sub tsmEliminar_Click(sender As Object, e As EventArgs) Handles tsmEliminar.Click
@@ -277,7 +278,7 @@ Public Class frmProd2
         MsgBox("Elimi")
         name_no_definido()
         RellenarCmbRazon()
-        OpcionesMenuStripProd("bloqueadas")
+        OpcionesMenuStrip(listaTSMDelForm, "bloqueadas")
     End Sub
 
     '#####################################################
@@ -414,11 +415,7 @@ Public Class frmProd2
     End Sub
 
     Private Sub btnSimpleEliminar_Click(sender As Object, e As EventArgs) Handles btnSimpleEliminar.Click
-        Dim style = MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2 Or MsgBoxStyle.Critical
-        Dim response = MsgBox("¿Está seguro de eliminar?", style, "ALERTA DE ELIMINACION") '6->SI  7->NO'
-        'MsgBox(response)
-
-        If response = 6 Then
+        If Validaciones.ConfirmarEliminacion = 6 Then
             Dim bsnProducto As New BsnProducto
             Dim producto As New Producto
             producto = RellenarObjeto(TabControl1.SelectedTab.Text) ' - -> retorna objeto??

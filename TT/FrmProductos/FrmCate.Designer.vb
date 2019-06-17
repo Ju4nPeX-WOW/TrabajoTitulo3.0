@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class FrmCate
-    Inherits TT.FormTamaño
+    Inherits TT.FormBase
 
     'Form invalida a Dispose para limpiar la lista de componentes.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -34,9 +34,9 @@ Partial Class FrmCate
         Me.lblCateBase = New System.Windows.Forms.Label()
         Me.cmbCategorias = New System.Windows.Forms.ComboBox()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.AgregarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EditarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EliminarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmAgregar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmEditar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmEliminar = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblAuxCat = New System.Windows.Forms.Label()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.dgvSubSubCat = New System.Windows.Forms.DataGridView()
@@ -197,33 +197,33 @@ Partial Class FrmCate
         '
         Me.MenuStrip1.AutoSize = False
         Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AgregarToolStripMenuItem, Me.EditarToolStripMenuItem, Me.EliminarToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAgregar, Me.tsmEditar, Me.tsmEliminar})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 40)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1139, 24)
         Me.MenuStrip1.TabIndex = 84
         Me.MenuStrip1.Text = "MenuStrip1"
         '
-        'AgregarToolStripMenuItem
+        'tsmAgregar
         '
-        Me.AgregarToolStripMenuItem.Image = Global.TT.My.Resources.Resources.add
-        Me.AgregarToolStripMenuItem.Name = "AgregarToolStripMenuItem"
-        Me.AgregarToolStripMenuItem.Size = New System.Drawing.Size(77, 20)
-        Me.AgregarToolStripMenuItem.Text = "Agregar"
+        Me.tsmAgregar.Image = Global.TT.My.Resources.Resources.add
+        Me.tsmAgregar.Name = "tsmAgregar"
+        Me.tsmAgregar.Size = New System.Drawing.Size(77, 20)
+        Me.tsmAgregar.Text = "Agregar"
         '
-        'EditarToolStripMenuItem
+        'tsmEditar
         '
-        Me.EditarToolStripMenuItem.Image = Global.TT.My.Resources.Resources.document
-        Me.EditarToolStripMenuItem.Name = "EditarToolStripMenuItem"
-        Me.EditarToolStripMenuItem.Size = New System.Drawing.Size(65, 20)
-        Me.EditarToolStripMenuItem.Text = "Editar"
+        Me.tsmEditar.Image = Global.TT.My.Resources.Resources.document
+        Me.tsmEditar.Name = "tsmEditar"
+        Me.tsmEditar.Size = New System.Drawing.Size(65, 20)
+        Me.tsmEditar.Text = "Editar"
         '
-        'EliminarToolStripMenuItem
+        'tsmEliminar
         '
-        Me.EliminarToolStripMenuItem.Image = Global.TT.My.Resources.Resources.delete
-        Me.EliminarToolStripMenuItem.Name = "EliminarToolStripMenuItem"
-        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(78, 20)
-        Me.EliminarToolStripMenuItem.Text = "Eliminar"
+        Me.tsmEliminar.Image = Global.TT.My.Resources.Resources.delete
+        Me.tsmEliminar.Name = "tsmEliminar"
+        Me.tsmEliminar.Size = New System.Drawing.Size(78, 20)
+        Me.tsmEliminar.Text = "Eliminar"
         '
         'lblAuxCat
         '
@@ -366,9 +366,9 @@ Partial Class FrmCate
     Friend WithEvents lblCateBase As Label
     Friend WithEvents cmbCategorias As ComboBox
     Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents AgregarToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents EditarToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents EliminarToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents tsmAgregar As ToolStripMenuItem
+    Friend WithEvents tsmEditar As ToolStripMenuItem
+    Friend WithEvents tsmEliminar As ToolStripMenuItem
     Friend WithEvents lblAuxCat As Label
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents dgvSubSubCat As DataGridView

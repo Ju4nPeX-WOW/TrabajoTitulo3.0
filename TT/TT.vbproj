@@ -81,6 +81,7 @@
     <Compile Include="Bsn\BsnDocumentos.vb" />
     <Compile Include="Bsn\BsnEmpleado.vb" />
     <Compile Include="Bsn\BsnEstadistica.vb" />
+    <Compile Include="Bsn\BsnGeneral.vb" />
     <Compile Include="Bsn\BsnProducto.vb" />
     <Compile Include="Bsn\BsnUsuario.vb" />
     <Compile Include="Bsn\BsnVenta.vb" />
@@ -167,10 +168,10 @@
     <Compile Include="FrmPersonas\FrmUsers.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmAsPlantilla\FormTamaño.Designer.vb">
-      <DependentUpon>FormTamaño.vb</DependentUpon>
+    <Compile Include="FrmAsPlantilla\FormBase.Designer.vb">
+      <DependentUpon>FormBase.vb</DependentUpon>
     </Compile>
-    <Compile Include="FrmAsPlantilla\FormTamaño.vb">
+    <Compile Include="FrmAsPlantilla\FormBase.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PrincipalForm.vb">
@@ -299,8 +300,8 @@
     <EmbeddedResource Include="FrmPersonas\FrmUsers.resx">
       <DependentUpon>FrmUsers.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmAsPlantilla\FormTamaño.resx">
-      <DependentUpon>FormTamaño.vb</DependentUpon>
+    <EmbeddedResource Include="FrmAsPlantilla\FormBase.resx">
+      <DependentUpon>FormBase.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrincipalForm.resx">
       <DependentUpon>PrincipalForm.vb</DependentUpon>

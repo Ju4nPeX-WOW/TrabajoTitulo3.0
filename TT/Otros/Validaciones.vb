@@ -61,4 +61,10 @@
         End If
         Return _correcto
     End Function
+
+    Public Function ConfirmarEliminacion()
+        Dim style = MsgBoxStyle.YesNo Or MsgBoxStyle.DefaultButton2 Or MsgBoxStyle.Critical
+        Dim response = MsgBox("¿Está seguro de eliminar?", style, "ALERTA DE ELIMINACION") '6->SI  7->NO'
+        Return response
+    End Function
 End Class
