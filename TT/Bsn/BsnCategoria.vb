@@ -36,7 +36,10 @@
     End Sub
 
     Public Sub EditarCategoria(Categoria As Categoria)
-        valorColumna = "nombre='" & Categoria.NomCateg & "', codigo=" & Categoria.CodCateg
+        valorColumna = "nombre='" & Categoria.NomCateg & "', codigo='" & Categoria.CodCateg & "'"
+        Console.WriteLine(valorColumna)
+        Console.WriteLine(Categoria.IdCateg)
+
         daoCategoria.EditarCategoria(valorColumna, Categoria.IdCateg)
     End Sub
 
@@ -60,10 +63,19 @@
 
             While Not (found)
                 cont2 = cont2 + 1000
+                ''transformar
+                Dim num As New Enumeraciones
+                Dim auxcod As String = ""
+                If cont2 > 9000 Then
+                    auxcod = num.CODCAD1(cont2)
+                Else
+                    auxcod = cont2.ToString
+                End If
 
                 For i = 0 To dataset.Tables(0).Rows.Count - 1
-                    Console.WriteLine("CONT2 : " + cont2.ToString + "    " + dataset.Tables(0)(i)(2).ToString)
-                    If (cont2.ToString).Equals(dataset.Tables(0)(i)(2).ToString) Then
+                    Console.WriteLine("CONT2 : " + auxcod + "    " + dataset.Tables(0)(i)(2).ToString)
+
+                    If (auxcod).Equals(dataset.Tables(0)(i)(2).ToString) Then
 
                         found = True
 
@@ -73,12 +85,12 @@
 
                 If found Then
                     found = False
-                    If cont2 = 9000 Then
+                    If cont2 = 15000 Then
                         found = True
                     End If
                 Else
                     found = True
-                    cod = cont2.ToString
+                    cod = auxcod
                     Console.WriteLine("COD : " + cod)
                 End If
 
@@ -106,14 +118,24 @@
             While Not (found)
                 cont2 = cont2 + 100
 
+                ''transformar
+                Dim num As New Enumeraciones
+                Dim auxcod As String = ""
+                If cont2 > 900 Then
+                    auxcod = num.CODCAD2(cont2)
+                Else
+                    auxcod = cont2.ToString
+                End If
+
+
                 For i = 0 To dataset.Tables(0).Rows.Count - 1
                     Console.WriteLine("?? : " + dataset.Tables(0)(i)(0).ToString)
                     Console.WriteLine("ID : " + dataset.Tables(0)(i)(1).ToString)
                     Console.WriteLine("Nombre : " + dataset.Tables(0)(i)(2).ToString)
                     Console.WriteLine("COD : " + dataset.Tables(0)(i)(3).ToString)
 
-                    Console.WriteLine("CONT2 : " + dig + cont2.ToString + "   COD ? : " + dataset.Tables(0)(i)(0).ToString)
-                    If (dig + cont2.ToString).Equals(dataset.Tables(0)(i)(0).ToString) Then
+                    Console.WriteLine("CONT2 : " + dig + auxcod + "   COD ? : " + dataset.Tables(0)(i)(0).ToString)
+                    If (dig + auxcod).Equals(dataset.Tables(0)(i)(0).ToString) Then
 
                         found = True
 
@@ -125,12 +147,12 @@
 
                 If found Then
                     found = False
-                    If cont2 = 900 Then
+                    If cont2 = 1500 Then
                         found = True
                     End If
                 Else
                     found = True
-                    cod = dig + cont2.ToString
+                    cod = dig + auxcod
                     Console.WriteLine("COD : " + cod)
                 End If
 
@@ -210,11 +232,26 @@
 
 
     Public Function ObtenerCodigo(ID As String)
+        MsgBox("id?" & ID)
         dataset = daoCategoria.ObtenerCodigo(ID)
         Dim cod As String
         cod = dataset.Tables(0)(0)(0).ToString
         Console.Write(cod)
         Return cod
     End Function
+
+    Public Sub EliminarTodo()
+        daoCategoria.EliminarTodo()
+    End Sub
+
+    Public Sub InsertarTodo(list As List(Of String()))
+        Dim valorColumna As String = ""
+        For i = 0 To list.Count - 1
+            valorColumna = "'" & list(i)(0) & "','" & list(i)(1) & "'"
+            daoCategoria.AgregarCategoria(valorColumna)
+        Next
+
+
+    End Sub
 
 End Class

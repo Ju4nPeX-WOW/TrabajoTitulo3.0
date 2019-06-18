@@ -90,6 +90,7 @@ Class Instructions
 
 
             MsgBox(sentencia)
+            Console.WriteLine(sentencia)
             command.ExecuteNonQuery()
             conexion.CerrarConexion()
         Catch ex As Exception
@@ -148,6 +149,26 @@ Class Instructions
             command.Connection = conexion.GetConexion()
             conexion.AbrirConexion()
             sentencia = "DELETE FROM " & tabla & " WHERE " & condicion
+            command.CommandText = sentencia
+            MsgBox(sentencia)
+            command.ExecuteNonQuery()
+
+            conexion.CerrarConexion()
+
+
+        Catch ex As Exception
+            Console.WriteLine("SE HA PRODUCIDO UN ERROR AL ELIMINAR")
+            Console.WriteLine(ex)
+
+        End Try
+
+    End Sub
+
+    Public Sub EliminarTodo(tabla As String)
+        Try
+            command.Connection = conexion.GetConexion()
+            conexion.AbrirConexion()
+            sentencia = "DELETE FROM " & tabla
             command.CommandText = sentencia
             MsgBox(sentencia)
             command.ExecuteNonQuery()

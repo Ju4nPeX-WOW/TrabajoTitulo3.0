@@ -60,6 +60,43 @@
     End Function
 
 
+    Public Function CODCAD1(num As Integer)
+        Dim result As String = 0
+        Dim list = {{10000, "A000"},
+                    {11000, "B000"},
+                    {12000, "C000"},
+                    {13000, "D000"},
+                    {14000, "E000"},
+                    {15000, "F000"}}
+
+        Console.WriteLine(list.Length)
+        For i = 0 To list.GetUpperBound(0)
+            Console.WriteLine(i)
+            If list(i, 0) = num Then
+                result = list(i, 1)
+            End If
+        Next
+        Return result
+    End Function
+
+    Public Function CODCAD2(num As Integer)
+        Dim result As String = 0
+        Dim list = {{1000, "A00"},
+                    {1100, "B00"},
+                    {1200, "C00"},
+                    {1300, "D00"},
+                    {1400, "E00"},
+                    {1500, "F00"}}
+
+        Console.WriteLine(list.Length)
+        For i = 0 To list.GetUpperBound(0)
+            Console.WriteLine(i)
+            If list(i, 0) = num Then
+                result = list(i, 1)
+            End If
+        Next
+        Return result
+    End Function
 
 
 End Class

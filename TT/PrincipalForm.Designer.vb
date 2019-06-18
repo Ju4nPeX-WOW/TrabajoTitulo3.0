@@ -46,6 +46,7 @@ Partial Class PrincipalForm
         Me.AJUSTESToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Principal_Help = New System.Windows.Forms.ToolStripMenuItem()
         Me.SALIRToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BtnResetCat = New System.Windows.Forms.Button()
         Me.MenuStrip2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -221,11 +222,21 @@ Partial Class PrincipalForm
         Me.SALIRToolStripMenuItem.Size = New System.Drawing.Size(65, 40)
         Me.SALIRToolStripMenuItem.Text = "SALIR"
         '
+        'BtnResetCat
+        '
+        Me.BtnResetCat.Location = New System.Drawing.Point(22, 435)
+        Me.BtnResetCat.Name = "BtnResetCat"
+        Me.BtnResetCat.Size = New System.Drawing.Size(128, 23)
+        Me.BtnResetCat.TabIndex = 4
+        Me.BtnResetCat.Text = "Resetear Categorias"
+        Me.BtnResetCat.UseVisualStyleBackColor = True
+        '
         'PrincipalForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1053, 710)
+        Me.Controls.Add(Me.BtnResetCat)
         Me.Controls.Add(Me.MenuStrip2)
         Me.Name = "PrincipalForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -260,4 +271,5 @@ Partial Class PrincipalForm
     Friend WithEvents COMPRASToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AJUSTESToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SALIRToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BtnResetCat As Button
 End Class

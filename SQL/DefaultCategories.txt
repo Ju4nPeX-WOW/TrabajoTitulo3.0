@@ -1,0 +1,92 @@
+###DEFAULT CATEGORIES###
+## USAR EN INSTALACION ##
+#CATEGORIAS
+Construccion y Reparacion;1000;
+Pisos, Pinturas y Terminaciones;2000;
+Herramientas y Maquinarias;3000;
+Baño y Cocina;4000;
+ElectroHogar y Climatización;5000;
+Muebles y Organización;6000;
+Decoración e Iluminación;7000;
+Aire Libre, Jardín y Mascotas;8000;
+Auto;9000;
+Limpieza;A000;
+Seguridad;B000;
+#SUBCATEGORIAS
+Materiales de Construccion;1100;
+Fijaciones y Adhesivos;1200;
+Gasfiteria;1300;
+Electricidad;1400;
+---
+Pisos y Revestimientos;2100;
+Pinturas;2200;
+Adhesivos y Frague;2300;
+Tiradores, Cerraduras y Quicallería;2400;
+Puertas;2500;
+Ventanas;2600;
+---
+Caja de Herramientas y Organizadores;3100;
+Herramientas de Medicion y Trazado;3200;
+Herramientas Electricas e Inalambricas;3300;
+Herramientas Manuales;3400;
+Herramientas por Especialidad;3500;
+Herramientas y Maquinarias de Jardin;3600;
+Maquinarias y Complementos;3700;
+Maquinarias y Herramientas Constructor;3800;
+---
+Baño;4100;
+Cocina;4200;
+Complementos de Baño;4300;
+Menaje;4400;
+---
+Aire Condicionado y Ventilacion;5100;
+Calefaccion;5200;
+Electrodomesticos de Cocina;5300;
+Electrodomesticos del Hogar;5400;
+Encimeras, Hornos y Cocinas;5500;
+Linea Blanca;5600;
+TV y Video;5700;
+---
+Camas y colchones;6100;
+Muebles;6200;
+Muebles de Comedor;6300;
+Muebles de Dormitorios;6400;
+Muebles de Living y Sala de Estar;6500;
+Muebles de Oficina y Escritorios;6600;
+Muebles de Terraza;6700;
+Organizacion;6800;
+---
+Decoracion;7100;
+Iluminacion;7200;
+Manualidades, Artes y Hobbits;7300;
+Mundo Bebe;7400;
+Mundo Infantil;7500;
+---
+Camping;8100;
+Iluminación y Climatización Exterior;8200;
+Jardin;8300;
+Juegos y Deporte;8400;
+Mascotas;8500;
+Parrillas;8600;
+Piscina, Spa e Infables;8700;
+Terrazas;8800;
+---
+Accesorios Exterior Autos;9100;
+Accesorios Interior Autos;9200;
+Audio y Video para Autos;9300;
+Baterias para Autos;9400;
+Equipos para Taller Mecanico;9500;
+Limpieza para Autos;9600;
+Neumaticos y Llantas;9700;
+Otros Accesorios Automovil;9800;
+
+
+
+
+
+
+
+
+
+
+

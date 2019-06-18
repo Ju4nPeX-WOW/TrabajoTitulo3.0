@@ -67,4 +67,15 @@
         Dim response = MsgBox("¿Está seguro de eliminar?", style, "ALERTA DE ELIMINACION") '6->SI  7->NO'
         Return response
     End Function
+
+    Public Function ConfirmarConContraseña()
+        Dim solicitarPassword As New PasswordDialogBox
+        Dim key = False
+        solicitarPassword.ShowDialog()
+
+        If solicitarPassword.Password.Equals("admin") Then
+            key = True
+        End If
+        Return key
+    End Function
 End Class

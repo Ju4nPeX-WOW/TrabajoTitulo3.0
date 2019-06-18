@@ -33,11 +33,20 @@
     End Sub
 
     Public Sub EliminarCategoria(valorColumna As String)
+        'Primero eliminamos las conexion Producto - Categoria
+        instrucciones.Eliminar("Producto_Categoria", valorColumna)
         instrucciones.Eliminar("Categorias", valorColumna)
     End Sub
 
     Public Function ObtenerCodigo(ID As String)
         Return instrucciones.SelectWithFalseDelete("Categorias", "Codigo", "and Id_categoria = " + ID)
     End Function
+
+    Public Sub EliminarTodo()
+        instrucciones.EliminarTodo("Producto_Categoria")
+        instrucciones.EliminarTodo("Categorias")
+    End Sub
+
+
 
 End Class

@@ -107,6 +107,8 @@
     <Compile Include="FrmProductos\FrmCate.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Otros\Archivos.vb" />
+    <Compile Include="Otros\DefaultData.vb" />
     <Compile Include="Otros\eztwain.vb" />
     <Compile Include="FrmAcerca.Designer.vb">
       <DependentUpon>FrmAcerca.vb</DependentUpon>
@@ -172,6 +174,9 @@
       <DependentUpon>FormBase.vb</DependentUpon>
     </Compile>
     <Compile Include="FrmAsPlantilla\FormBase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Otros\PasswordDialogBox.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PrincipalForm.vb">

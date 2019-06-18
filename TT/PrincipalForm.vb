@@ -148,4 +148,10 @@ Public Class PrincipalForm
         Dim formNotaDebito As New FrmNotaDebito
         formNotaDebito.ShowDialog()
     End Sub
+
+    Private Sub BtnResetCat_Click(sender As Object, e As EventArgs) Handles BtnResetCat.Click
+
+        Dim DD As New DefaultData
+        DD.EstablecerCategorias()
+    End Sub
 End Class
