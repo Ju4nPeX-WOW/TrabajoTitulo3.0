@@ -42,39 +42,16 @@
         Dim coleccion As New List(Of Object)
         'LABELES
         coleccion.AddRange({lblId, lblNombre, lblCodigo, lblCateBase, lblSubCate})
-        'coleccion.Add(lblId)
-        'coleccion.Add(lblNombre)
-        'coleccion.Add(lblCodigo)
-        'coleccion.Add(lblCateBase)
-        'coleccion.Add(lblSubCate)
 
         'TXT , COMBO y NUD
         coleccion.AddRange({txtNombre,
                            btnAceCat, btnCanCat})
-        'coleccion.Add(txtCodigo)
-        'coleccion.Add(txtNombre)
-
-        'coleccion.Add(cmbCategorias)
-        'coleccion.Add(cmbSubCategorias)
-
-
-        'coleccion.Add(CheckBox1)
-        'coleccion.Add(CheckBox2)
-
-        'coleccion.Add(btnAceCat)
-        'coleccion.Add(btnCanCat)
 
         Return coleccion
 
     End Function
     Private Function CrearColeccionRellenable()
         Dim coleccion As New List(Of Object)
-
-
-        'coleccion.Add(lblaux)
-        'coleccion.Add(lblId)
-        'coleccion.Add(txtNombre)
-        'coleccion.Add(txtCodigo)
 
         coleccion.AddRange({lblaux, lblId, txtNombre, txtCodigo})
 
@@ -83,10 +60,8 @@
     End Function
     Private Function CrearColeccionTMS()
         Dim coleccion As New List(Of Object)
+
         coleccion.AddRange({tsmAgregar, tsmEditar, tsmEliminar})
-        'coleccion.Add(tsmAgregar)
-        'coleccion.Add(tsmEditar)
-        'coleccion.Add(tsmEliminar)
 
         Return coleccion
 
@@ -162,15 +137,15 @@
                 dgvCateg.CurrentRow.Cells.Item(1).Value.ToString(),
                 dgvCateg.CurrentRow.Cells.Item(2).Value.ToString()}
 
-        RellenarDatos(listaDeObjetosRellenables, l) 'Se rellenan los label's y textbox's con el item seleccionado
+        MyBase.RellenarDatos(listaDeObjetosRellenables, l) 'Se rellenan los label's y textbox's con el item seleccionado
 
-        SeleccionarCMB(cmbCategorias, dgvCateg.CurrentRow.Cells.Item(0).Value.ToString())
+        MyBase.SeleccionarCMB(cmbCategorias, dgvCateg.CurrentRow.Cells.Item(0).Value.ToString())
 
         ObtenerDataSet(2, ObtenerDigito(dgvCateg.CurrentRow.Cells.Item(2).Value.ToString(), 1))
 
         EstadoVar() ' Variable que uso para ver si al eliminar categoria, no afecto a subs categorias . Lo mismo con mover de nivel al editar
 
-        RellenarDGV(dataset_padre, dgvSubCat)
+        MyBase.RellenarDGV(dataset_padre, dgvSubCat)
 
         If Not activeAgregar Then
             CheckBox3.Checked = False 'quitar el check al MODIFICAR NIVEL CAT
@@ -196,13 +171,13 @@
                 dgvSubCat.CurrentRow.Cells.Item(1).Value.ToString(),
                 dgvSubCat.CurrentRow.Cells.Item(2).Value.ToString()}
 
-        RellenarDatos(listaDeObjetosRellenables, l) 'Se rellenan los label's y textbox's con el item seleccionado
+        MyBase.RellenarDatos(listaDeObjetosRellenables, l) 'Se rellenan los label's y textbox's con el item seleccionado
         If Not activeAgregar Then
             CheckBox3.Checked = False 'quitar el check al MODIFICAR NIVEL CAT
         End If
 
 
-        SeleccionarCMB(cmbSubCategorias, dgvSubCat.CurrentRow.Cells.Item(0).Value.ToString())
+        MyBase.SeleccionarCMB(cmbSubCategorias, dgvSubCat.CurrentRow.Cells.Item(0).Value.ToString())
 
         ObtenerDataSet(3, ObtenerDigito(dgvSubCat.CurrentRow.Cells.Item(2).Value.ToString(), 2))
 
@@ -210,7 +185,7 @@
         ' Igual si modifico su nivel 
 
 
-        RellenarDGV(dataset_padre, dgvSubSubCat)
+        MyBase.RellenarDGV(dataset_padre, dgvSubSubCat)
 
     End Sub
 
@@ -233,7 +208,7 @@
 
         AfectoSubCat = True
 
-        RellenarDatos(listaDeObjetosRellenables, l) 'Se rellenan los label's y textbox's con el item seleccionado
+        MyBase.RellenarDatos(listaDeObjetosRellenables, l) 'Se rellenan los label's y textbox's con el item seleccionado
         If Not activeAgregar Then
             CheckBox3.Checked = False 'quitar el check al MODIFICAR NIVEL CAT
         End If
@@ -268,8 +243,6 @@
     End Sub
 
 
-
-
     Private Function ObtenerCod(name As String)
         Dim cod As String = "0"
         For i = 0 To dataset_padre.Tables(0).Rows.Count - 1
@@ -284,27 +257,23 @@
     End Function
 
     Private Sub AgregarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles tsmAgregar.Click
-        OpcionesMenuStrip(listaTSMDelForm, "bloqueadas")
+        MyBase.OpcionesMenuStrip(listaTSMDelForm, "bloqueadas")
 
         ''agregar
         activeAgregar = True
         activeEditar = False
         activeEliminar = False
 
-        DesbloquearBotones(listaDeObjetosForm)
+        MyBase.DesbloquearBotones(listaDeObjetosForm)
 
-        txtNombre.Text = ""
-        txtCodigo.Text = ""
-
-
-
-        Desabilitar()
+        MyBase.BloquearBotones(ColeccionNivelCategoria)
+        CheckBox3.Enabled = False
 
         dgvCateg.ClearSelection()
         dgvSubCat.Rows.Clear()
         dgvSubSubCat.Rows.Clear()
 
-        LimpiarDatos(listaDeObjetosRellenables, {"", "ID CATEGORIA :", "", ""})
+        MyBase.LimpiarDatos(listaDeObjetosRellenables, {"", "ID CATEGORIA :", "", ""})
         cmbCategorias.Text = ""
         cmbSubCategorias.Items.Clear()
         CheckBox3.Checked = True
@@ -313,16 +282,16 @@
 
     Private Sub EditarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles tsmEditar.Click
         If lblaux.Text.Equals("") Then
-            MsgBox("SELECCIONE ELEMENTTO")
+            MsgBox("SELECCIONE ELEMENTO")
         Else
-            OpcionesMenuStrip(listaTSMDelForm, "bloqueadas")
-            BloquearBotones(ColeccionNivelCategoria)
+            MyBase.OpcionesMenuStrip(listaTSMDelForm, "bloqueadas")
+            MyBase.BloquearBotones(ColeccionNivelCategoria)
 
             ''editar
             activeAgregar = False
             activeEditar = True
             activeEliminar = False
-            DesbloquearBotones(listaDeObjetosForm)
+            MyBase.DesbloquearBotones(listaDeObjetosForm)
 
             'Desabilitar()
             CheckBox3.Visible = True
@@ -381,27 +350,23 @@
 
         '' ID DEL CMB SELECCIONADO
         Dim idCMB As String = ""
-        MsgBox("ANTES DEL CICLO")
         If CheckBox3.Checked And Not CheckBox1.Checked Then
-            MsgBox("PRIMER IF")
 
             idCMB = cmbCategorias.SelectedItem.ToString()
             idCMB = idCMB.Substring(0, InStr(1, idCMB, "-") - 1)
 
             If Not CheckBox2.Checked Then
-                MsgBox("2DO IF")
 
                 idCMB = cmbSubCategorias.SelectedItem.ToString()
                 idCMB = idCMB.Substring(0, InStr(1, idCMB, "-") - 1)
 
             End If
         End If
-        MsgBox("ID CMB CMB " & idCMB)
+        'MsgBox("ID CMB CMB " & idCMB)
 
 
         ''LO COMPLICADO -> CODIGO
         If activeAgregar Then
-            MsgBox("aagg")
             _codigo = ObtenerCodigoAInsertar("", idCMB)
         Else
             If activeEditar And CheckBox3.Checked Then
@@ -414,10 +379,6 @@
 
             End If
         End If
-
-
-
-
 
         ''Cargar datos en objeto Categoria
         categoria.IdCateg = _id
@@ -432,17 +393,13 @@
                 bsnCategoria.AgregarCategoria(categoria)
             ElseIf activeEditar And Not lblaux.Text.Equals("") Then ''la parte lblaux -> deberia eliminarse
 
-                MsgBox("MODIFICANDO PAPU")
 
-                MsgBox("CODIGO CATEGORIA : " + categoria.CodCateg)
+                'MsgBox("CODIGO CATEGORIA : " + categoria.CodCateg)
                 bsnCategoria.EditarCategoria(categoria)
 
             End If
 
         End If
-
-
-
 
         Reset()
     End Sub
@@ -452,7 +409,7 @@
         If cmbSubCategorias.Items.Count = 0 Then
             CheckBox2.Checked = True
         End If
-        MsgBox(cmbSubCategorias.Items.Count)
+        'MsgBox(cmbSubCategorias.Items.Count)
 
         If Not CheckBox2.Checked Then
             cmbSubCategorias.Enabled = True
@@ -464,7 +421,6 @@
 
     End Sub
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
-        MsgBox("check 1 here")
         If cmbCategorias.Items.Count = 0 Then
             CheckBox1.Checked = True
         End If
@@ -535,60 +491,7 @@
     End Sub
 
 
-
-    Private Sub Recargar()
-        'INTENTAR PARA DESPUES
-        CleanDGV()
-        'EstructurarDGV(dgvCateg)
-        ObtenerDataSet(1, "")
-        RellenarDGV(dataset_padre, dgvCateg)
-
-        RellenarCMB(1, "")
-
-        If dgv1 And (Not dgv2) And (Not dgv3) Then
-            MsgBox(indexCodDGV1)
-            If Not activeEliminar Then
-                dgvCateg.Rows(indexCodDGV1).Selected = True
-            End If
-        ElseIf dgv1 And dgv2 And (Not dgv3) Then
-            MsgBox(indexCodDGV1)
-
-            MsgBox(indexCodDGV2)
-
-            If Not activeEliminar Then
-                dgvCateg.Rows(indexCodDGV1).Selected = True
-                dgvSubCat.Rows(indexCodDGV2).Selected = True
-            Else
-                dgvCateg.Rows(indexCodDGV1).Selected = True
-            End If
-
-        ElseIf dgv1 And dgv2 And dgv3 Then
-            MsgBox(indexCodDGV1)
-
-            MsgBox(indexCodDGV2)
-
-            MsgBox(indexCodDGV3)
-
-            If Not activeEliminar Then
-                dgvCateg.Rows(indexCodDGV1).Selected = True
-                dgvSubCat.Rows(indexCodDGV2).Selected = True
-                dgvSubSubCat.Rows(indexCodDGV3).Selected = True
-            Else
-                dgvCateg.Rows(indexCodDGV1).Selected = True
-                dgvSubCat.Rows(indexCodDGV2).Selected = True
-
-
-
-            End If
-
-
-
-        End If
-
-    End Sub
-
     Private Sub CheckBox3_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox3.CheckedChanged
-        MsgBox("check 3 here")
 
         If CheckBox3.Checked Then
             If activeEditar Then
@@ -604,23 +507,11 @@
         If CheckBox3.Checked Then
             'LO QUE SUCEDE AL ESTAR CHECKED
 
-
             CheckBox1.Enabled = True
             CheckBox1.Checked = True
         Else
-            CheckBox1.Enabled = False
-            'CheckBox1.Checked = False
-            cmbCategorias.Enabled = False
-            CheckBox2.Enabled = False
-            'CheckBox2.Checked = False
-            cmbSubCategorias.Enabled = False
+            MyBase.BloquearBotones(ColeccionNivelCategoria)
         End If
-
-
-
-
-
-
     End Sub
 
 
@@ -631,16 +522,17 @@
         'Estructurar y Rellenar DGV
         EstructurarDGV(dgvCateg)
         ObtenerDataSet(1, "")
-        RellenarDGV(dataset_padre, dgvCateg)
+        MyBase.RellenarDGV(dataset_padre, dgvCateg)
         RellenarCMB(1, "")
         'Limpiar TXT's - LABEL's - CMB's
-        LimpiarDatos(listaDeObjetosRellenables, {"", "ID CATEGORIA :", "", ""})
+        MyBase.LimpiarDatos(listaDeObjetosRellenables, {"", "ID CATEGORIA :", "", ""})
         cmbCategorias.Text = ""
         cmbSubCategorias.Text = ""
         'BLOQUEOS
-        BloquearBotones(listaDeObjetosForm)
-        Desabilitar()
-        OpcionesMenuStrip(listaTSMDelForm, "desbloqueadas")
+        MyBase.BloquearBotones(listaDeObjetosForm)
+        MyBase.BloquearBotones(ColeccionNivelCategoria)
+        CheckBox3.Enabled = False
+        MyBase.OpcionesMenuStrip(listaTSMDelForm, "desbloqueadas")
         CheckBox3.Visible = False
         CheckBox3.Checked = False
 
@@ -658,10 +550,6 @@
 
     Private Function ColeccionNivelCategoria()
         Dim CNC As New List(Of Object)
-        'Dim matris As Object() = {CheckBox1, CheckBox2, cmbCategorias, cmbSubCategorias}
-        'For i = 0 To matris.Count - 1
-        'CNC.Add(i)
-        'Next
         CNC.AddRange({CheckBox1, CheckBox2, cmbCategorias, cmbSubCategorias})
         Return CNC
     End Function
@@ -670,50 +558,9 @@
     '###############  MEJORA MEJORA MEJORA MEJORA MEJORA MEJORA MEJORA ######################################
     '########################################################################################################
 
-    Sub Desabilitar()
-        CheckBox3.Enabled = False
-        CheckBox2.Enabled = False
-        CheckBox1.Enabled = False
-
-        cmbCategorias.Enabled = False
-        cmbSubCategorias.Enabled = False
-
-    End Sub
-    Sub HabilitarNiveles()
-        MsgBox("habilitando")
-        'CHECK BOX 3
-        If CheckBox3.Checked Then
-            'LO QUE SUCEDE AL ESTAR CHECKED
-
-
-            CheckBox1.Enabled = True
-            'CheckBox1.Checked = True
-        Else
-            CheckBox1.Enabled = False
-            CheckBox1.Checked = False
-        End If
-
-        'CHECK BOX 1 
-        If Not CheckBox1.Checked Then
-            cmbCategorias.Enabled = True
-            CheckBox2.Enabled = True
-            CheckBox2.Checked = True
-        Else
-            cmbCategorias.Enabled = False
-            CheckBox2.Enabled = False
-            CheckBox2.Checked = False
-        End If
-
-        'CHECK BOX 2
-        If Not CheckBox2.Checked Then
-            cmbSubCategorias.Enabled = True
-
-        Else
-            cmbSubCategorias.Enabled = False
-        End If
-    End Sub
 
     Function DeterminarNivelCategoria(c As String)
+        'SE DETERNMINA EL NIVEL DE LA CATERIA A MODIFICAR
         Dim nivel As Byte = 0
         If Not c.Substring(3, 1).Equals("0") Then
             nivel = 3
@@ -725,39 +572,12 @@
             nivel = 1
         End If
 
-        MsgBox("La categoria esta en el nivel: " & nivel)
+        'MsgBox("La categoria esta en el nivel: " & nivel)
         Return nivel
     End Function
 
-    Sub HabilitarBotonAceptar()
-        If Not CheckBox1.Checked Then
-            If Not cmbCategorias.SelectedItem.ToString.Equals("") Then
-                btnAceCat.Enabled = True
-            End If
-        End If
-
-        If Not CheckBox2.Checked Then
-            If Not cmbSubCategorias.SelectedItem.ToString.Equals("") Then
-                btnAceCat.Enabled = True
-            End If
-        End If
-
-        ''VALIDAR QUE LOS TXT NO ESTEN VACIOS
-    End Sub
-
-    Sub Validar()
-        Dim valido As Boolean = False
-        If activeAgregar Then
-
-        End If
-
-        If activeEditar Then
-
-        End If
-    End Sub
-
     Function ObtenerCodigoAInsertar(cod As String, id_cmb As String)
-        MsgBox("DENTRO De OBTENER CODIGO -> ENTRADA COD: " & cod & " ID_CMB: " & id_cmb)
+        'MsgBox("DENTRO De OBTENER CODIGO -> ENTRADA COD: " & cod & " ID_CMB: " & id_cmb)
         Dim bsnCategoria As New BsnCategoria
 
         Dim NivelCat As Byte = 0
@@ -774,8 +594,7 @@
 
         If CheckBox3.Checked Then
             If CheckBox1.Checked Then
-                MsgBox("Agregando en primer nivel")
-                MsgBox(meCod.Substring(1, 3))
+                'MsgBox(meCod.Substring(1, 3))
                 If meCod.Substring(1, 3).Equals("000") Then
 
 
@@ -783,7 +602,6 @@
 
 
                 If NivelCat = 1 Then
-                    MsgBox("Deberia mantenerse sin mas")
                     'MANTENER COD 
                     codFinal = meCod
                 Else
@@ -791,7 +609,7 @@
 
                 End If
                 ''ObtenerCodCat()
-                MsgBox(codFinal)
+                'MsgBox(codFinal)
 
 
 
@@ -801,8 +619,7 @@
 
                 ''Seleccionar Item Del CMD CAT
                 If CheckBox2.Checked Then
-                    MsgBox("nivel: " & NivelCat)
-                    MsgBox("2 IDCMB" & id_cmb)
+                    'MsgBox("2 IDCMB" & id_cmb)
 
                     dig = bsnCategoria.ObtenerCodigo(id_cmb)
                     dig = ObtenerDigito(dig, 1)
@@ -823,7 +640,7 @@
                     '' obtener digito
 
                     ''ObtenerSubCodCat()
-                    MsgBox(codFinal)
+                    'MsgBox(codFinal)
 
 
                 Else
@@ -848,7 +665,6 @@
 
 
                     ''ObtenerSubSubCat()
-                    MsgBox("SUB")
 
 
 

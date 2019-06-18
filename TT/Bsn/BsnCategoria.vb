@@ -232,7 +232,6 @@
 
 
     Public Function ObtenerCodigo(ID As String)
-        MsgBox("id?" & ID)
         dataset = daoCategoria.ObtenerCodigo(ID)
         Dim cod As String
         cod = dataset.Tables(0)(0)(0).ToString
