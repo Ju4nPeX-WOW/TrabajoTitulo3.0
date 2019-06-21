@@ -44,8 +44,8 @@ Class Instructions
             command.Connection = conexion.GetConexion()
             conexion.AbrirConexion()
             sentencia = "SELECT " & columnas & " FROM " & tabla & " WHERE False_delete = 0 " & condicion
+            MsgBox(sentencia)
             command.CommandText = sentencia
-            Console.WriteLine(sentencia)
             Dim reader As New OleDbDataAdapter
             dataset.Clear()
             reader.SelectCommand = command
@@ -55,8 +55,8 @@ Class Instructions
 
 
         Catch ex As Exception
-            Console.WriteLine("SE HA PRODUCIDO UN ERROR EN 'SelectWithFalseDelete'")
-            Console.WriteLine(ex)
+            MsgBox("SE HA PRODUCIDO UN ERROR EN 'SelectWithFalseDelete' " & ex.ToString)
+
 
         End Try
         Return dataset

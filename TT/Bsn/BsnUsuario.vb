@@ -1,6 +1,6 @@
 ﻿Public Class BsnUsuario
     Protected dataset As New DataSet
-
+    Dim DaoUsuario As New DaoUsuario
 
 
 
@@ -33,6 +33,9 @@
         Return aux
     End Function
 
+    Public Function obtenerUsuarios()
+        Return DaoUsuario.ObtenerTodosLosUsuarios()
+    End Function
 
 
     Public Function ObtenerUsuario(usernamem As Integer, password As String)
@@ -52,5 +55,20 @@
         Return usuario
     End Function
 
+    Public Sub agregarUsuario(rutEmpleado As String, contraseña As String, permisos As Byte)
+
+        Dim valores As String = "Rut_empleado =" & rutEmpleado & ", contraseña ='" & contraseña & "' AND permisos=" & permisos
+        DaoUsuario.agregarUsuario(valores)
+    End Sub
+
+    Public Sub editarUsuario(Usuario As Usuario)
+        Dim columnaValor As String = "Contraseña ='" & Usuario.Password & "', permisos=" & Usuario.Permisos
+        DaoUsuario.editarUsuario(columnaValor, Usuario)
+
+    End Sub
+
+    Public Sub eliminarUsuario(rutEmpleado As String)
+        DaoUsuario.eliminarUsuario(rutEmpleado)
+    End Sub
 
 End Class

@@ -22,16 +22,24 @@ Partial Class FrmUsers
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmUsers))
         Me.BtnExit = New System.Windows.Forms.Button()
         Me.lblUsuario = New System.Windows.Forms.Label()
-        Me.dgvProv = New System.Windows.Forms.DataGridView()
         Me.picEditar = New System.Windows.Forms.PictureBox()
         Me.picEliminar = New System.Windows.Forms.PictureBox()
-        Me.picAgregar = New System.Windows.Forms.PictureBox()
         Me.txtProv = New System.Windows.Forms.TextBox()
         Me.cmbProv = New System.Windows.Forms.ComboBox()
-        CType(Me.dgvProv, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.dgvUsua = New System.Windows.Forms.DataGridView()
+        Me.pnlComponentes = New System.Windows.Forms.Panel()
+        Me.btnCancelar = New System.Windows.Forms.Button()
+        Me.btnAceptar = New System.Windows.Forms.Button()
+        Me.cmbPermisos = New System.Windows.Forms.ComboBox()
+        Me.txtContraseña = New System.Windows.Forms.TextBox()
+        Me.txtRut = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblRut = New System.Windows.Forms.Label()
         CType(Me.picEditar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picEliminar, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picAgregar, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvUsua, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlComponentes.SuspendLayout()
         Me.SuspendLayout()
         '
         'BtnExit
@@ -53,18 +61,10 @@ Partial Class FrmUsers
         Me.lblUsuario.TabIndex = 69
         Me.lblUsuario.Text = "USUARIOS"
         '
-        'dgvProv
-        '
-        Me.dgvProv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvProv.Location = New System.Drawing.Point(12, 150)
-        Me.dgvProv.Name = "dgvProv"
-        Me.dgvProv.Size = New System.Drawing.Size(1127, 269)
-        Me.dgvProv.TabIndex = 68
-        '
         'picEditar
         '
         Me.picEditar.Image = CType(resources.GetObject("picEditar.Image"), System.Drawing.Image)
-        Me.picEditar.Location = New System.Drawing.Point(1100, 435)
+        Me.picEditar.Location = New System.Drawing.Point(992, 442)
         Me.picEditar.Name = "picEditar"
         Me.picEditar.Size = New System.Drawing.Size(39, 36)
         Me.picEditar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -74,22 +74,12 @@ Partial Class FrmUsers
         'picEliminar
         '
         Me.picEliminar.Image = CType(resources.GetObject("picEliminar.Image"), System.Drawing.Image)
-        Me.picEliminar.Location = New System.Drawing.Point(1055, 435)
+        Me.picEliminar.Location = New System.Drawing.Point(1055, 442)
         Me.picEliminar.Name = "picEliminar"
         Me.picEliminar.Size = New System.Drawing.Size(39, 36)
         Me.picEliminar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.picEliminar.TabIndex = 73
         Me.picEliminar.TabStop = False
-        '
-        'picAgregar
-        '
-        Me.picAgregar.Image = CType(resources.GetObject("picAgregar.Image"), System.Drawing.Image)
-        Me.picAgregar.Location = New System.Drawing.Point(1010, 435)
-        Me.picAgregar.Name = "picAgregar"
-        Me.picAgregar.Size = New System.Drawing.Size(39, 36)
-        Me.picAgregar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.picAgregar.TabIndex = 72
-        Me.picAgregar.TabStop = False
         '
         'txtProv
         '
@@ -106,23 +96,126 @@ Partial Class FrmUsers
         Me.cmbProv.Size = New System.Drawing.Size(210, 21)
         Me.cmbProv.TabIndex = 78
         '
+        'dgvUsua
+        '
+        Me.dgvUsua.AllowUserToAddRows = False
+        Me.dgvUsua.AllowUserToDeleteRows = False
+        Me.dgvUsua.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvUsua.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders
+        Me.dgvUsua.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvUsua.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.dgvUsua.Location = New System.Drawing.Point(14, 162)
+        Me.dgvUsua.MultiSelect = False
+        Me.dgvUsua.Name = "dgvUsua"
+        Me.dgvUsua.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Me.dgvUsua.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvUsua.Size = New System.Drawing.Size(1127, 269)
+        Me.dgvUsua.TabIndex = 80
+        '
+        'pnlComponentes
+        '
+        Me.pnlComponentes.Controls.Add(Me.btnCancelar)
+        Me.pnlComponentes.Controls.Add(Me.btnAceptar)
+        Me.pnlComponentes.Controls.Add(Me.cmbPermisos)
+        Me.pnlComponentes.Controls.Add(Me.txtContraseña)
+        Me.pnlComponentes.Controls.Add(Me.txtRut)
+        Me.pnlComponentes.Controls.Add(Me.Label1)
+        Me.pnlComponentes.Controls.Add(Me.Label3)
+        Me.pnlComponentes.Controls.Add(Me.lblRut)
+        Me.pnlComponentes.Enabled = False
+        Me.pnlComponentes.Location = New System.Drawing.Point(16, 484)
+        Me.pnlComponentes.Name = "pnlComponentes"
+        Me.pnlComponentes.Size = New System.Drawing.Size(1127, 174)
+        Me.pnlComponentes.TabIndex = 81
+        '
+        'btnCancelar
+        '
+        Me.btnCancelar.Location = New System.Drawing.Point(790, 105)
+        Me.btnCancelar.Name = "btnCancelar"
+        Me.btnCancelar.Size = New System.Drawing.Size(163, 43)
+        Me.btnCancelar.TabIndex = 9
+        Me.btnCancelar.Text = "Cancelar"
+        Me.btnCancelar.UseVisualStyleBackColor = True
+        '
+        'btnAceptar
+        '
+        Me.btnAceptar.Location = New System.Drawing.Point(790, 29)
+        Me.btnAceptar.Name = "btnAceptar"
+        Me.btnAceptar.Size = New System.Drawing.Size(163, 43)
+        Me.btnAceptar.TabIndex = 8
+        Me.btnAceptar.Text = "Aceptar"
+        Me.btnAceptar.UseVisualStyleBackColor = True
+        '
+        'cmbPermisos
+        '
+        Me.cmbPermisos.FormattingEnabled = True
+        Me.cmbPermisos.Items.AddRange(New Object() {"1", "2", "3"})
+        Me.cmbPermisos.Location = New System.Drawing.Point(385, 105)
+        Me.cmbPermisos.Name = "cmbPermisos"
+        Me.cmbPermisos.Size = New System.Drawing.Size(236, 21)
+        Me.cmbPermisos.TabIndex = 7
+        '
+        'txtContraseña
+        '
+        Me.txtContraseña.Location = New System.Drawing.Point(385, 54)
+        Me.txtContraseña.Name = "txtContraseña"
+        Me.txtContraseña.Size = New System.Drawing.Size(236, 20)
+        Me.txtContraseña.TabIndex = 6
+        '
+        'txtRut
+        '
+        Me.txtRut.Enabled = False
+        Me.txtRut.Location = New System.Drawing.Point(79, 54)
+        Me.txtRut.Name = "txtRut"
+        Me.txtRut.Size = New System.Drawing.Size(166, 20)
+        Me.txtRut.TabIndex = 4
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(299, 57)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(64, 13)
+        Me.Label1.TabIndex = 3
+        Me.Label1.Text = "Contraseña:"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(299, 113)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(52, 13)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "Permisos:"
+        '
+        'lblRut
+        '
+        Me.lblRut.AutoSize = True
+        Me.lblRut.Location = New System.Drawing.Point(30, 59)
+        Me.lblRut.Name = "lblRut"
+        Me.lblRut.Size = New System.Drawing.Size(27, 13)
+        Me.lblRut.TabIndex = 0
+        Me.lblRut.Text = "Rut:"
+        '
         'FrmUsers
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 670)
+        Me.Controls.Add(Me.pnlComponentes)
+        Me.Controls.Add(Me.dgvUsua)
         Me.Controls.Add(Me.txtProv)
         Me.Controls.Add(Me.cmbProv)
         Me.Controls.Add(Me.BtnExit)
         Me.Controls.Add(Me.picEditar)
         Me.Controls.Add(Me.picEliminar)
-        Me.Controls.Add(Me.picAgregar)
         Me.Controls.Add(Me.lblUsuario)
-        Me.Controls.Add(Me.dgvProv)
+        Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "FrmUsers"
-        CType(Me.dgvProv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picEditar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picEliminar, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picAgregar, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvUsua, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlComponentes.ResumeLayout(False)
+        Me.pnlComponentes.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -131,9 +224,17 @@ Partial Class FrmUsers
     Friend WithEvents BtnExit As Button
     Friend WithEvents picEditar As PictureBox
     Friend WithEvents picEliminar As PictureBox
-    Friend WithEvents picAgregar As PictureBox
     Friend WithEvents lblUsuario As Label
-    Friend WithEvents dgvProv As DataGridView
     Friend WithEvents txtProv As TextBox
     Friend WithEvents cmbProv As ComboBox
+    Friend WithEvents dgvUsua As DataGridView
+    Friend WithEvents pnlComponentes As Panel
+    Friend WithEvents btnCancelar As Button
+    Friend WithEvents btnAceptar As Button
+    Friend WithEvents cmbPermisos As ComboBox
+    Friend WithEvents txtContraseña As TextBox
+    Friend WithEvents txtRut As TextBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents lblRut As Label
 End Class
