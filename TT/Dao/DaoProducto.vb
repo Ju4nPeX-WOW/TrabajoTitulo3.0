@@ -4,7 +4,15 @@
 
     Public Function ObtenerTodosLosProductos()
         Dim instrucciones As New Instructions
-        Return instrucciones.SelectWithFalseDelete("Productos", "Id_producto,Nombre,Precio,Stock,Stock_critico", "")
+        Dim tabla = "Productos as p 
+LEFT JOIN Producto_Categoria as pc ON p.Id_producto = pc.Id_producto
+LEFT JOIN Categorias as c ON c.Id_categoria = pc.Id_categoria 
+WHERE p.False_delete = 0"
+        Dim columnas = "p.Id_producto as Id ,
+	p.Nombre as Producto, 
+	c.Nombre as Categoria, 
+	p.Precio ,p.Stock , p.Stock_critico"
+        Return instrucciones.Seleccionar(tabla, columnas, "")
 
     End Function
 

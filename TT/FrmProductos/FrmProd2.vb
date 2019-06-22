@@ -259,6 +259,8 @@ Public Class frmProd2
         name_no_definido()
         RellenarCmbRazon()
         OpcionesMenuStrip(listaTSMDelForm, "bloqueadas")
+        'bloqueo de cmv categorias 
+        cmbAvanzadoCat.Enabled = False
     End Sub
 
     Private Sub tsmEditar_Click(sender As Object, e As EventArgs) Handles tsmEditar.Click
@@ -346,10 +348,11 @@ Public Class frmProd2
     End Function
 
     Private Sub btnAce_Click(sender As Object, e As EventArgs) Handles btnAce.Click
+        Dim bsnProductoCategoria As New BsnProductoCategoria
+
         Dim producto As Producto
         If activeAgregar Then   'Si se esta agregando un producto            
             Dim bsnProducto As New BsnProducto
-
             If TabControl1.SelectedTab.Text.Equals("Simple") Then
                 'si es tab es simple, quiere decir que el usuario esta agregando cantidad, por lo que 
                 'se modifica el stock del producto, no es que se agregue uno a la coleccion.
@@ -362,6 +365,9 @@ Public Class frmProd2
                 Else
                     producto = RellenarObjeto(TabControl1.SelectedTab.Text) ' - -> retorna objeto??            
                     bsnProducto.ModificarProducto(producto, cmbAvanzadoRazon.SelectedItem, usuario.Rut)
+
+                    'bsnProductoCategoria.RelacionarProductoconCategoria(cmbAvanzadoCat.SelectedItem, producto.IdProducto)
+
                 End If
             ElseIf TabControl1.SelectedTab.Text.Equals("Avanzado") Then
                 'Aqui si se agrega el producto a la coleccion
@@ -390,6 +396,9 @@ Public Class frmProd2
                 MsgBox("correcto")
                 producto = RellenarObjeto(TabControl1.SelectedTab.Text)
                 bsnProducto.ModificarProducto(producto, cmbAvanzadoRazon.SelectedItem, usuario.Rut)
+
+                BsnProductoCategoria.RelacionarProductoconCategoria(cmbAvanzadoCat.SelectedItem, producto.IdProducto)
+
             End If
         ElseIf activeEliminar Then
             MsgBox("Eliminar --> Version Modificar ")
@@ -402,6 +411,9 @@ Public Class frmProd2
             Else
                 producto = RellenarObjeto(TabControl1.SelectedTab.Text)
                 bsnProducto.ModificarProducto(producto, cmbAvanzadoRazon.SelectedItem, usuario.Rut)
+
+                'BsnProductoCategoria.RelacionarProductoconCategoria(cmbAvanzadoCat.SelectedItem, producto.IdProducto)
+
             End If
 
         End If
@@ -420,6 +432,7 @@ Public Class frmProd2
             Dim producto As New Producto
             producto = RellenarObjeto(TabControl1.SelectedTab.Text) ' - -> retorna objeto??
             bsnProducto.EliminarProducto(producto, usuario.Rut)
+            'Eliminar de la tabla
             RellenarDataSet()
         End If
         activeAgregar = False
@@ -471,18 +484,18 @@ Public Class frmProd2
             '//RELLENAR SIMPLE
             lblSimpleId.Text = "ID PRODUCTO : " & dgvProd.Rows(indice).Cells(0).Value.ToString()
             lblSimpleProd.Text = "PRODUCTO     : " & dgvProd.Rows(indice).Cells(1).Value.ToString()
-            lblSimplePrecio.Text = "PRECIO              :$" & dgvProd.Rows(indice).Cells(2).Value.ToString()
-            lblSimpleStock.Text = "STOCK               :" & dgvProd.Rows(indice).Cells(3).Value.ToString()
-            lblSimpleStockCrit.Text = "STOCK CRITICO       :" & dgvProd.Rows(indice).Cells(4).Value.ToString()
+            lblSimplePrecio.Text = "PRECIO              :$" & dgvProd.Rows(indice).Cells(3).Value.ToString()
+            lblSimpleStock.Text = "STOCK               :" & dgvProd.Rows(indice).Cells(4).Value.ToString()
+            lblSimpleStockCrit.Text = "STOCK CRITICO       :" & dgvProd.Rows(indice).Cells(5).Value.ToString()
             lblSimpleCat.Text = "CATEGORIA    : "
         End If
         If page.Equals("Avanzado") Or page.Equals("Simple-y-Avanzado") Then
             '//RELLENAR AVANZADO
             lblAvanzadoId.Text = "ID PRODUCTO : " & dgvProd.Rows(indice).Cells(0).Value.ToString()
             txtAvanzadoProd.Text = dgvProd.Rows(indice).Cells(1).Value.ToString()
-            txtAvanzadoPrecio.Text = dgvProd.Rows(indice).Cells(2).Value.ToString()
-            txtAvanzadoStock.Text = dgvProd.Rows(indice).Cells(3).Value.ToString()
-            txtAvanzadoStockCrit.Text = dgvProd.Rows(indice).Cells(4).Value.ToString()
+            txtAvanzadoPrecio.Text = dgvProd.Rows(indice).Cells(3).Value.ToString()
+            txtAvanzadoStock.Text = dgvProd.Rows(indice).Cells(4).Value.ToString()
+            txtAvanzadoStockCrit.Text = dgvProd.Rows(indice).Cells(5).Value.ToString()
         End If
     End Sub
 
@@ -561,12 +574,17 @@ Public Class frmProd2
         Else
             MsgBox(txtAvanzadoPrecio.Text.Length & " txtavanzadoprecio")
             If (page.Equals("Avanzado")) Then   'si esta en la pantalla avanzada
-                If (txtAvanzadoPrecio.Text = "" Or txtAvanzadoProd.Text = "" Or txtAvanzadoStock.Text = "" Or txtAvanzadoStockCrit.Text = "" Or cmbAvanzadoCat.SelectedIndex = -1 Or cmbAvanzadoRazon.SelectedIndex = -1) Then
+
+                If (txtAvanzadoPrecio.Text = "" Or txtAvanzadoProd.Text = "" Or txtAvanzadoStock.Text = "" Or txtAvanzadoStockCrit.Text = "" Or cmbAvanzadoCat.SelectedIndex = -1) Then
+                    correcto = False
+                    MsgBox("incorrecto")
+                End If
+                If activeAgregar And cmbAvanzadoRazon.SelectedIndex = -1 Then
                     correcto = False
                     MsgBox("incorrecto")
                 End If
             End If
-        End If
+            End If
         Return correcto
     End Function
 
@@ -577,5 +595,7 @@ Public Class frmProd2
         'Me.Dispose()
     End Sub
 
+    Private Sub cmbAvanzadoCat_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbAvanzadoCat.SelectedIndexChanged
 
+    End Sub
 End Class

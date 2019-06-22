@@ -4,11 +4,11 @@
 Construccion y Reparacion;1000;
 Pisos, Pinturas y Terminaciones;2000;
 Herramientas y Maquinarias;3000;
-Baño y Cocina;4000;
-ElectroHogar y Climatización;5000;
-Muebles y Organización;6000;
-Decoración e Iluminación;7000;
-Aire Libre, Jardín y Mascotas;8000;
+Bano y Cocina;4000;
+ElectroHogar y Climatizacion;5000;
+Muebles y Organizacion;6000;
+Decoracion e Iluminacion;7000;
+Aire Libre, Jardin y Mascotas;8000;
 Auto;9000;
 Limpieza;A000;
 Seguridad;B000;
@@ -21,7 +21,7 @@ Electricidad;1400;
 Pisos y Revestimientos;2100;
 Pinturas;2200;
 Adhesivos y Frague;2300;
-Tiradores, Cerraduras y Quicallería;2400;
+Tiradores, Cerraduras y Quicalleria;2400;
 Puertas;2500;
 Ventanas;2600;
 ---
@@ -34,9 +34,9 @@ Herramientas y Maquinarias de Jardin;3600;
 Maquinarias y Complementos;3700;
 Maquinarias y Herramientas Constructor;3800;
 ---
-Baño;4100;
+Bano;4100;
 Cocina;4200;
-Complementos de Baño;4300;
+Complementos de Bano;4300;
 Menaje;4400;
 ---
 Aire Condicionado y Ventilacion;5100;
@@ -63,7 +63,7 @@ Mundo Bebe;7400;
 Mundo Infantil;7500;
 ---
 Camping;8100;
-Iluminación y Climatización Exterior;8200;
+Iluminacion y Climatizacion Exterior;8200;
 Jardin;8300;
 Juegos y Deporte;8400;
 Mascotas;8500;

@@ -319,9 +319,9 @@ ALTER TABLE Factura_Venta
 	ADD CONSTRAINT fk_facturaVenta_venta 
 	FOREIGN KEY(Num_venta) REFERENCES Ventas(Num_venta);
 
-ALTER TABLE Categoria_PC
-	ADD CONSTRAINT fk_Categoria_productoCategoria
-	FOREIGN KEY(Id_categoria) REFERENCES Producto_Categoria(Id_categoria);
+--ALTER TABLE Categoria_PC
+--	ADD CONSTRAINT fk_Categoria_productoCategoria
+--	FOREIGN KEY(Id_categoria) REFERENCES Producto_Categoria(Id_categoria);
 ALTER TABLE Producto_Categoria
 	ADD CONSTRAINT fk_productoCategoria_producto 
 	FOREIGN KEY(Id_producto) REFERENCES Productos(Id_producto);
@@ -502,5 +502,42 @@ SELECT * FROM Producto_Categoria
 
 
 UPDATE Categorias 
-SET nombre='mm',codigo=D100
+SET nombre='mm',codigo= 'D100'
 WHERE Id_categoria=233
+
+Select * from Usuarios where  Rut_empleado = 20107427 AND Contraseña = ''or '1'='1'
+
+
+SELECT Id_producto,Nombre,Precio,Stock,Stock_critico FROM Productos WHERE False_delete = 0 
+
+
+
+ 
+
+
+
+SELECT 
+	p.Id_producto as Id ,
+	p.Nombre as Producto, 
+	c.Nombre as Categoria, 
+	p.Precio ,p.Stock , p.Stock_critico
+FROM Productos as p 
+LEFT JOIN Producto_Categoria as pc ON p.Id_producto = pc.Id_producto
+LEFT JOIN Categorias as c ON c.Id_categoria = pc.Id_categoria 
+WHERE p.False_delete = 0
+
+ 
+DBCC CHECKIDENT ('Categorias', RESEED,0)
+
+
+
+INSERT INTO Producto_Categoria 
+VALUES ((SELECT Id_categoria FROM Categorias WHERE nombre = 'Bano y Cocina' ), 1)
+
+
+SELECT Id_categoria FROM Categorias WHERE nombre = 'Bano y Cocina'
+
+ 
+INSERT INTO Productos(Nombre) values ('intento')
+SELECT @@IDENTITY AS 'Identity';
+ 

@@ -2,6 +2,7 @@
 
 
     Dim instrucciones As New Instructions
+
     Public Function ObtenerTodasCategorias()
         Return instrucciones.Seleccionar("Categorias", "*", "order by Codigo")
     End Function
@@ -45,6 +46,8 @@
     Public Sub EliminarTodo()
         instrucciones.EliminarTodo("Producto_Categoria")
         instrucciones.EliminarTodo("Categorias")
+        'REESTRABLECER ID
+        instrucciones.ReiniciarIdentity("Categorias")
     End Sub
 
 

@@ -595,10 +595,7 @@
         If CheckBox3.Checked Then
             If CheckBox1.Checked Then
                 'MsgBox(meCod.Substring(1, 3))
-                If meCod.Substring(1, 3).Equals("000") Then
 
-
-                End If
 
 
                 If NivelCat = 1 Then

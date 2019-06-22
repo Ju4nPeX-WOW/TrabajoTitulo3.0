@@ -44,6 +44,7 @@ Class Instructions
             command.Connection = conexion.GetConexion()
             conexion.AbrirConexion()
             sentencia = "SELECT " & columnas & " FROM " & tabla & " WHERE False_delete = 0 " & condicion
+
             command.CommandText = sentencia
             Console.WriteLine(sentencia)
             Dim reader As New OleDbDataAdapter
@@ -202,6 +203,27 @@ Class Instructions
         End Try
         Return ultimaVenta
     End Function
+
+    Public Sub ReiniciarIdentity(tabla As String)
+        Try
+            command.Connection = conexion.GetConexion()
+            conexion.AbrirConexion()
+            sentencia = "DBCC CHECKIDENT ('" & tabla & "', RESEED,0)"
+            command.CommandText = sentencia
+            MsgBox(sentencia)
+            command.ExecuteNonQuery()
+
+            conexion.CerrarConexion()
+
+
+        Catch ex As Exception
+            Console.WriteLine("SE HA PRODUCIDO RESETAR IDENTITY")
+            Console.WriteLine(ex)
+
+        End Try
+
+    End Sub
+
 
 End Class
 
