@@ -196,16 +196,9 @@
             '           descuento
             '           Total
 
-
             BsnVenta.detalleVenta(dgvProductosSeleccionados, txtSubto.Text, txtDesc.Text, txtTotal.Text, BsnVenta.obtenerUltimaVenta)
-
             lblTransaccion.Text = (BsnVenta.obtenerUltimaVenta + 1).ToString
-
-
         End If
-
-
-
     End Sub
 
     Private Sub frmVenta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress

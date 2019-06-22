@@ -356,7 +356,6 @@ C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.FrmHistoVenta.resou
 C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.FrmProvee.resources
 C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.FrmStadict.resources
 C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.FrmUsers.resources
-C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.FormTamaño.resources
 C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.PrincipalForm.resources
 C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.frmAgreCliente.resources
 C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.frmAgreEmple.resources
@@ -376,3 +375,4 @@ C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.exe
 C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.xml
 C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.pdb
 C:\Users\kevin\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.FormBase.resources
+C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.FormBase.resources

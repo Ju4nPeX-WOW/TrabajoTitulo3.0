@@ -4,6 +4,7 @@ Public Class Usuario
     Protected _blanckUsuario As Boolean = True
     Protected _idUsuario As Short
     Protected _permisos As Short
+    Protected _password As String
 
 
     Public Property IdUsuario()
@@ -12,6 +13,15 @@ Public Class Usuario
         End Get
         Set(value)
             _idUsuario = value
+        End Set
+    End Property
+
+    Public Property Password() As String
+        Get
+            Return _password
+        End Get
+        Set(ByVal value As String)
+            _password = value
         End Set
     End Property
 
