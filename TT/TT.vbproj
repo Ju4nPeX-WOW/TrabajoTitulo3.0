@@ -181,6 +181,7 @@
     <Compile Include="Otros\PasswordDialogBox.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Otros\Validacionesv2.vb" />
     <Compile Include="PrincipalForm.vb">
       <SubType>Form</SubType>
     </Compile>

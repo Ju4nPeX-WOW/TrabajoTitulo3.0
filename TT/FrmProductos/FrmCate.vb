@@ -21,6 +21,7 @@
     Private AfectoSubCat As Boolean = False
     Private idaux As String = ""
     Private indexCodDGV1, indexCodDGV2, indexCodDGV3 As Short
+    Private validacion As New Validacionesv2
 
 
     Private Sub BtnExitCat_Click(sender As Object, e As EventArgs) Handles BtnExitCat.Click
@@ -28,6 +29,8 @@
     End Sub
 
     Private Sub FrmCate_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'ESTABLECER MAXIMO
+        txtNombre.MaxLength = validacion.MaxOtroNombre
         'CREACION DE COLECCIONES
         listaDeObjetosForm = CrearColeccion() 'se carga la lista con los objetos del formulario
         listaTSMDelForm = CrearColeccionTMS() 'se carga la lista con los tsm
@@ -554,6 +557,12 @@
         Return CNC
     End Function
 
+    Private Sub txtNombre_TextChanged(sender As Object, e As EventArgs) Handles txtNombre.TextChanged
+
+    End Sub
+
+
+
     '########################################################################################################
     '###############  MEJORA MEJORA MEJORA MEJORA MEJORA MEJORA MEJORA ######################################
     '########################################################################################################
@@ -672,6 +681,9 @@
         Return codFinal
     End Function
 
+    Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombre.KeyPress
+        e.Handled = validacion.IOtroNombre(e)
+    End Sub
 End Class
 
 

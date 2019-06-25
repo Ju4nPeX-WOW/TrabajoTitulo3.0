@@ -4,7 +4,7 @@
     Dim usuario As New Usuario
     Dim BsnEmpleado As New BsnEmpleado
     Dim BsnUsuario As New BsnUsuario
-
+    Dim validacion As New Validacionesv2
     Dim dataset As New DataSet
 
     Dim activeAgregar As Boolean = False
@@ -14,6 +14,16 @@
         dgvEmpleados.DataSource = dataset.Tables(0).DefaultView
     End Sub
     Private Sub formUsua_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'establecer maximos
+        txtRutSnDV.MaxLength = validacion.MaxRut
+        txtDV.MaxLength = validacion.MaxRutVerificador
+        txtNombres.MaxLength = validacion.MaxNombrePersona
+        txtApellidoM.MaxLength = validacion.MaxApellido
+        txtApellidoP.MaxLength = validacion.MaxApellido
+        txtCelu.MaxLength = validacion.MaxTelefonoC
+        txtFono.MaxLength = validacion.MaxTelefonoF
+
+
         recargarDGV()
         pnlComponentes.Enabled = False
     End Sub
@@ -193,5 +203,34 @@
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
         pnlComponentes.Enabled = False
         pnlAcciones.Enabled = True
+    End Sub
+
+    Private Sub txtRutSnDV_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtRutSnDV.KeyPress
+        e.Handled = validacion.IRut(e)
+    End Sub
+
+    Private Sub txtDV_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDV.KeyPress
+        e.Handled = validacion.IRutVerificador(e)
+    End Sub
+
+    Private Sub txtNombres_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombres.KeyPress
+        e.Handled = validacion.INombrePersona(e)
+    End Sub
+
+    Private Sub txtApellidoP_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtApellidoP.KeyPress
+        e.Handled = validacion.IApellido(e)
+    End Sub
+
+    Private Sub txtApellidoM_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtApellidoM.KeyPress
+        e.Handled = validacion.IApellido(e)
+    End Sub
+    Private Sub txtCelu_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCelu.KeyPress
+        e.Handled = validacion.ITelefonoC(e)
+
+    End Sub
+
+    Private Sub txtFono_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtFono.KeyPress
+        e.Handled = validacion.ITelefonoF(e)
+
     End Sub
 End Class

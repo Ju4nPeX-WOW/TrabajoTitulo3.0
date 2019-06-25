@@ -5,6 +5,7 @@ Public Class frmProd2
     Protected usuario As Usuario '------------------------>Recepción del usuario que usa el sistema
     Protected aux As Short       '------------------------>auxiliar donde guarda el id
     Protected Validaciones As New Validaciones
+    Protected Validaciones2 As New Validacionesv2
 
 
     Protected activeAgregar As Boolean = False  'cuando el usuario presiona el boton del menu strip agregar se torna verdadero
@@ -212,6 +213,14 @@ Public Class frmProd2
         End If
     End Sub
     Private Sub frmProd2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Establecer Maximos
+        txtAvanzadoPrecio.MaxLength = Validaciones2.MaxPrecio
+        txtAvanzadoProd.MaxLength = Validaciones2.MaxOtroNombre
+        txtAvanzadoStock.MaxLength = Validaciones2.MaxStock
+        txtAvanzadoStockCrit.MaxLength = Validaciones2.MaxStockCritico
+
+
+
 
 
 
@@ -527,35 +536,20 @@ Public Class frmProd2
     '#######################################
     '       VALIDACION
     '#######################################
-    Private Sub txtAvanzadoPrecio_KeyPress(sender As Object, e As KeyPressEventArgs)
-        condicion = 10
-        largo = txtAvanzadoPrecio.Text.Length
-        If Not (Validaciones.soloNumeros(largo, e, condicion)) Then
-            e.Handled = True
-        End If
+    Private Sub txtAvanzadoPrecio_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAvanzadoPrecio.KeyPress
+        e.Handled = Validaciones2.IPrecio(e)
+    End Sub
 
+    Private Sub txtAvanzadoProd_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAvanzadoProd.KeyPress
+        e.Handled = Validaciones2.IOtroNombre(e)
     End Sub
-    Private Sub txtAvanzadoProd_KeyPress(sender As Object, e As KeyPressEventArgs)
-        condicion = 10
-        largo = txtAvanzadoProd.Text.Length
-        If Not (Validaciones.numerosYLetras(largo, e, condicion)) Then
-            e.Handled = True
-        End If
 
+    Private Sub txtAvanzadoStock_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAvanzadoStock.KeyPress
+        e.Handled = Validaciones2.IStock(e)
     End Sub
-    Private Sub txtAvanzadoStock_KeyPress(sender As Object, e As KeyPressEventArgs)
-        condicion = 10
-        largo = txtAvanzadoStock.Text.Length
-        If Not (Validaciones.soloNumeros(largo, e, condicion)) Then
-            e.Handled = True
-        End If
-    End Sub
-    Private Sub txtAvanzadoStockCrit_KeyPress(sender As Object, e As KeyPressEventArgs)
-        condicion = 10
-        largo = txtAvanzadoStockCrit.Text.Length
-        If Not (Validaciones.soloNumeros(largo, e, condicion)) Then
-            e.Handled = True
-        End If
+
+    Private Sub txtAvanzadoStockCrit_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtAvanzadoStockCrit.KeyPress
+        e.Handled = Validaciones2.IStockCritico(e)
     End Sub
 
     Public Sub cmbSimpleRazon_SelectedIndexChanged(sender As Object, e As EventArgs)
@@ -565,26 +559,38 @@ Public Class frmProd2
     End Sub
 
     Public Function validacionesAlClickearAceptar(page As String)
+        'validar que no esten vacios
+
+        'validar que se cumpla con el minimo
         Dim correcto As Boolean = True
         If (page.Equals("Simple")) Then     'si esta en la pestaña simple
             'solo el combobox razon
             If (cmbSimpleRazon.SelectedIndex = -1) Then
+                MsgBox("Por favor seleccione RAZON")
                 correcto = False
             End If
         Else
             MsgBox(txtAvanzadoPrecio.Text.Length & " txtavanzadoprecio")
             If (page.Equals("Avanzado")) Then   'si esta en la pantalla avanzada
-
-                If (txtAvanzadoPrecio.Text = "" Or txtAvanzadoProd.Text = "" Or txtAvanzadoStock.Text = "" Or txtAvanzadoStockCrit.Text = "" Or cmbAvanzadoCat.SelectedIndex = -1) Then
-                    correcto = False
-                    MsgBox("incorrecto")
+                Dim ListaAValidar As New List(Of String())
+                ListaAValidar.Add({"precio", txtAvanzadoPrecio.Text})
+                ListaAValidar.Add({"nombre", txtAvanzadoProd.Text})
+                ListaAValidar.Add({"stock", txtAvanzadoStock.Text})
+                ListaAValidar.Add({"stock critico", txtAvanzadoStockCrit.Text})
+                Dim receptor = Validaciones2.Val(ListaAValidar)
+                correcto = receptor(0)
+                If Not correcto Then
+                    MsgBox(receptor(1))
                 End If
+
+
+            End If
                 If activeAgregar And cmbAvanzadoRazon.SelectedIndex = -1 Then
                     correcto = False
-                    MsgBox("incorrecto")
+                    MsgBox("Por favor seleccione RAZON")
                 End If
-            End If
-            End If
+
+        End If
         Return correcto
     End Function
 
@@ -595,7 +601,9 @@ Public Class frmProd2
         'Me.Dispose()
     End Sub
 
-    Private Sub cmbAvanzadoCat_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbAvanzadoCat.SelectedIndexChanged
 
-    End Sub
+
+
+
+
 End Class

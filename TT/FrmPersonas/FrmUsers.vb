@@ -1,7 +1,7 @@
 ﻿Public Class FrmUsers
     Dim dataset As New DataSet
     Dim BsnUsuario As New BsnUsuario
-
+    Dim validacion As New Validacionesv2
     Dim BsnEmpleado As New BsnEmpleado
 
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
@@ -9,6 +9,10 @@
     End Sub
 
     Private Sub FrmUsers_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'establecer maximos
+        txtRut.MaxLength = validacion.MaxRut
+        txtDV.MaxLength = validacion.MaxRutVerificador
+        txtContraseña.MaxLength = validacion.MaxPassword
 
         dataset = BsnUsuario.obtenerUsuarios()
         dgvUsua.DataSource = dataset.Tables(0).DefaultView
@@ -109,5 +113,16 @@
             'MsgBox(fila(0) & " " & fila(1) & " " & fila(2) & " " & fila(3))
             cmbPermisos.SelectedIndex = CInt(fila(3)) - 1
         End If
+    End Sub
+
+
+    Private Sub txtRut_KeyPress(sender As Object, e As KeyPressEventArgs)
+        e.Handled = validacion.IRut(e)
+
+    End Sub
+
+    Private Sub txtContraseña_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtContraseña.KeyPress
+        e.Handled = validacion.IPassword(e)
+
     End Sub
 End Class

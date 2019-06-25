@@ -44,8 +44,6 @@ Partial Class frmVenta
         Me.disminuirCantidad = New System.Windows.Forms.PictureBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.BtnExit = New System.Windows.Forms.Button()
-        Me.cmbVendedor = New System.Windows.Forms.ComboBox()
-        Me.cmbClientes = New System.Windows.Forms.ComboBox()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.txtFecha = New System.Windows.Forms.TextBox()
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
@@ -67,6 +65,12 @@ Partial Class frmVenta
         Me.btnRealizarVenta = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.cmbMetodoPago = New System.Windows.Forms.ComboBox()
+        Me.txtDV = New System.Windows.Forms.TextBox()
+        Me.txtRutSnDV = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.txtVendedor = New System.Windows.Forms.TextBox()
+        Me.txtNombreCliente = New System.Windows.Forms.TextBox()
+        Me.lblNombreCliente = New System.Windows.Forms.Label()
         CType(Me.agregarCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.disminuirCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -261,22 +265,6 @@ Partial Class frmVenta
         Me.BtnExit.Text = "X"
         Me.BtnExit.UseVisualStyleBackColor = True
         '
-        'cmbVendedor
-        '
-        Me.cmbVendedor.FormattingEnabled = True
-        Me.cmbVendedor.Location = New System.Drawing.Point(123, 67)
-        Me.cmbVendedor.Name = "cmbVendedor"
-        Me.cmbVendedor.Size = New System.Drawing.Size(301, 21)
-        Me.cmbVendedor.TabIndex = 69
-        '
-        'cmbClientes
-        '
-        Me.cmbClientes.FormattingEnabled = True
-        Me.cmbClientes.Location = New System.Drawing.Point(123, 95)
-        Me.cmbClientes.Name = "cmbClientes"
-        Me.cmbClientes.Size = New System.Drawing.Size(301, 21)
-        Me.cmbClientes.TabIndex = 70
-        '
         'Timer1
         '
         '
@@ -454,12 +442,70 @@ Partial Class frmVenta
         Me.cmbMetodoPago.TabIndex = 83
         Me.cmbMetodoPago.Text = "Seleccione un metodo de pago..."
         '
+        'txtDV
+        '
+        Me.txtDV.Location = New System.Drawing.Point(290, 99)
+        Me.txtDV.MaxLength = 1
+        Me.txtDV.Name = "txtDV"
+        Me.txtDV.Size = New System.Drawing.Size(51, 20)
+        Me.txtDV.TabIndex = 101
+        '
+        'txtRutSnDV
+        '
+        Me.txtRutSnDV.Location = New System.Drawing.Point(123, 99)
+        Me.txtRutSnDV.MaxLength = 8
+        Me.txtRutSnDV.Name = "txtRutSnDV"
+        Me.txtRutSnDV.Size = New System.Drawing.Size(145, 20)
+        Me.txtRutSnDV.TabIndex = 99
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(274, 101)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(10, 13)
+        Me.Label2.TabIndex = 100
+        Me.Label2.Text = "-"
+        '
+        'txtVendedor
+        '
+        Me.txtVendedor.Enabled = False
+        Me.txtVendedor.Location = New System.Drawing.Point(120, 67)
+        Me.txtVendedor.MaxLength = 8
+        Me.txtVendedor.Name = "txtVendedor"
+        Me.txtVendedor.Size = New System.Drawing.Size(221, 20)
+        Me.txtVendedor.TabIndex = 102
+        '
+        'txtNombreCliente
+        '
+        Me.txtNombreCliente.Enabled = False
+        Me.txtNombreCliente.Location = New System.Drawing.Point(497, 99)
+        Me.txtNombreCliente.MaxLength = 8
+        Me.txtNombreCliente.Name = "txtNombreCliente"
+        Me.txtNombreCliente.Size = New System.Drawing.Size(221, 20)
+        Me.txtNombreCliente.TabIndex = 104
+        '
+        'lblNombreCliente
+        '
+        Me.lblNombreCliente.AutoSize = True
+        Me.lblNombreCliente.Location = New System.Drawing.Point(393, 102)
+        Me.lblNombreCliente.Name = "lblNombreCliente"
+        Me.lblNombreCliente.Size = New System.Drawing.Size(82, 13)
+        Me.lblNombreCliente.TabIndex = 103
+        Me.lblNombreCliente.Text = "Nombre Cliente:"
+        '
         'frmVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.ClientSize = New System.Drawing.Size(1157, 631)
+        Me.Controls.Add(Me.txtNombreCliente)
+        Me.Controls.Add(Me.lblNombreCliente)
+        Me.Controls.Add(Me.txtVendedor)
+        Me.Controls.Add(Me.txtDV)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.txtRutSnDV)
         Me.Controls.Add(Me.cmbMetodoPago)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.btnRealizarVenta)
@@ -473,8 +519,6 @@ Partial Class frmVenta
         Me.Controls.Add(Me.dgvProductos)
         Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.txtBuscar)
-        Me.Controls.Add(Me.cmbClientes)
-        Me.Controls.Add(Me.cmbVendedor)
         Me.Controls.Add(Me.BtnExit)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.disminuirCantidad)
@@ -531,8 +575,6 @@ Partial Class frmVenta
     Friend WithEvents disminuirCantidad As PictureBox
     Friend WithEvents Label5 As Label
     Friend WithEvents BtnExit As Button
-    Friend WithEvents cmbVendedor As ComboBox
-    Friend WithEvents cmbClientes As ComboBox
     Friend WithEvents Timer1 As Timer
     Friend WithEvents txtFecha As TextBox
     Friend WithEvents Timer2 As Timer
@@ -554,4 +596,10 @@ Partial Class frmVenta
     Friend WithEvents Precio As DataGridViewTextBoxColumn
     Friend WithEvents Cantidad As DataGridViewTextBoxColumn
     Friend WithEvents Descuento As DataGridViewTextBoxColumn
+    Friend WithEvents txtDV As TextBox
+    Friend WithEvents txtRutSnDV As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents txtVendedor As TextBox
+    Friend WithEvents txtNombreCliente As TextBox
+    Friend WithEvents lblNombreCliente As Label
 End Class

@@ -98,5 +98,64 @@
         Return result
     End Function
 
+    Public Function LimiteMax(elemento As String)
+        Dim result As Short = 0
+        Dim list = {{"rut", 8},
+                    {"password", 8},
+                    {"nombre persona", 20},
+                    {"apellido", 20},
+                    {"telefono fijo", 8},
+                    {"telefono celular", 9},
+                    {"email", 30},
+                    {"direccion", 30},
+                    {"numero de venta", 6},
+                    {"precio", 7},
+                    {"numero de folio", 7},
+                    {"nombre", 50},
+                    {"codigo producto", 13},
+                    {"stock", 3},
+                    {"stock critico", 3},
+                    {"digito verificador", 1}}
+
+
+        Console.WriteLine(list.Length)
+        For i = 0 To list.GetUpperBound(0)
+            Console.WriteLine(i)
+            If list(i, 0).ToString.Equals(elemento) Then
+                result = list(i, 1)
+            End If
+        Next
+        Return result
+    End Function
+
+
+    Public Function LimiteMin(elemento As String)
+        Dim result As Short = 0
+        Dim list = {{"rut", 8},
+                    {"password", 8},
+                    {"nombre persona", 5},
+                    {"apellido", 1},
+                    {"telefono fijo", 8},
+                    {"telefono celular", 9},
+                    {"email", 10},
+                    {"direccion", 5},
+                    {"numero de venta", 6},
+                    {"precio", 3},
+                    {"numero de folio", 7},
+                    {"nombre", 5},
+                    {"codigo producto", 13},
+                    {"stock", 1},
+                    {"stock critico", 1},
+                    {"digito verificador", 1}}
+
+        Console.WriteLine(list.Length)
+        For i = 0 To list.GetUpperBound(0)
+            Console.WriteLine(i)
+            If list(i, 0).ToString.Equals(elemento) Then
+                result = list(i, 1)
+            End If
+        Next
+        Return result
+    End Function
 
 End Class

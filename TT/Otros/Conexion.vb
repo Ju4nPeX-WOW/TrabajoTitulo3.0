@@ -3,7 +3,7 @@
 Public Class Conexion
     Protected conexion As New OleDbConnection
     Protected stringConexion As String = "Provider=sqloledb;" &
-                     "Data Source=(local)\BASEDEDATOS;" & 'en tu caso seria KEVIN-PC o algo asi 
+                     "Data Source=(local);" & 'en tu caso seria KEVIN-PC o algo asi 
                      "Initial Catalog=BDALBERDI;" &
                      "User Id=admin;Password=admin"
 

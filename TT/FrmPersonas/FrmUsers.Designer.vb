@@ -32,10 +32,12 @@ Partial Class FrmUsers
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.cmbPermisos = New System.Windows.Forms.ComboBox()
         Me.txtContraseña = New System.Windows.Forms.TextBox()
-        Me.txtRut = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lblRut = New System.Windows.Forms.Label()
+        Me.txtDV = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.txtRut = New System.Windows.Forms.TextBox()
         CType(Me.picEditar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picEliminar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvUsua, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -114,11 +116,13 @@ Partial Class FrmUsers
         '
         'pnlComponentes
         '
+        Me.pnlComponentes.Controls.Add(Me.txtDV)
+        Me.pnlComponentes.Controls.Add(Me.Label7)
+        Me.pnlComponentes.Controls.Add(Me.txtRut)
         Me.pnlComponentes.Controls.Add(Me.btnCancelar)
         Me.pnlComponentes.Controls.Add(Me.btnAceptar)
         Me.pnlComponentes.Controls.Add(Me.cmbPermisos)
         Me.pnlComponentes.Controls.Add(Me.txtContraseña)
-        Me.pnlComponentes.Controls.Add(Me.txtRut)
         Me.pnlComponentes.Controls.Add(Me.Label1)
         Me.pnlComponentes.Controls.Add(Me.Label3)
         Me.pnlComponentes.Controls.Add(Me.lblRut)
@@ -162,14 +166,6 @@ Partial Class FrmUsers
         Me.txtContraseña.Size = New System.Drawing.Size(236, 20)
         Me.txtContraseña.TabIndex = 6
         '
-        'txtRut
-        '
-        Me.txtRut.Enabled = False
-        Me.txtRut.Location = New System.Drawing.Point(79, 54)
-        Me.txtRut.Name = "txtRut"
-        Me.txtRut.Size = New System.Drawing.Size(166, 20)
-        Me.txtRut.TabIndex = 4
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -196,6 +192,31 @@ Partial Class FrmUsers
         Me.lblRut.Size = New System.Drawing.Size(27, 13)
         Me.lblRut.TabIndex = 0
         Me.lblRut.Text = "Rut:"
+        '
+        'txtDV
+        '
+        Me.txtDV.Location = New System.Drawing.Point(228, 54)
+        Me.txtDV.MaxLength = 1
+        Me.txtDV.Name = "txtDV"
+        Me.txtDV.Size = New System.Drawing.Size(51, 20)
+        Me.txtDV.TabIndex = 100
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(212, 56)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(10, 13)
+        Me.Label7.TabIndex = 99
+        Me.Label7.Text = "-"
+        '
+        'txtRut
+        '
+        Me.txtRut.Location = New System.Drawing.Point(61, 54)
+        Me.txtRut.MaxLength = 8
+        Me.txtRut.Name = "txtRut"
+        Me.txtRut.Size = New System.Drawing.Size(145, 20)
+        Me.txtRut.TabIndex = 98
         '
         'FrmUsers
         '
@@ -233,8 +254,10 @@ Partial Class FrmUsers
     Friend WithEvents btnAceptar As Button
     Friend WithEvents cmbPermisos As ComboBox
     Friend WithEvents txtContraseña As TextBox
-    Friend WithEvents txtRut As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents lblRut As Label
+    Friend WithEvents txtDV As TextBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents txtRut As TextBox
 End Class

@@ -13,30 +13,38 @@
 
     Protected Enumeraciones As New Enumeraciones
 
+    Dim Validacion As New Validacionesv2
     Dim Instructions As New Instructions 'es una clase y no es publica
 
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
         Me.Close()
     End Sub
     Private Sub frmVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'establecer maximos
+        txtBuscar.MaxLength = Validacion.MaxOtroNombre
+        txtRutSnDV.MaxLength = Validacion.MaxRut
+        txtDV.MaxLength = Validacion.MaxRutVerificador
 
         lblTransaccion.Text = (BsnVenta.obtenerUltimaVenta + 1).ToString
 
         'rellenar combobox empleado
         Dim datasetEmpleados As DataSet = BsnEmpleado.obtenerTodosEmpleados
-        cmbVendedor.DataSource = datasetEmpleados.Tables(0)
-        cmbVendedor.DisplayMember = "Rut_Empleado"
+        'cmbVendedor.DataSource = datasetEmpleados.Tables(0)
+        'cmbVendedor.DisplayMember = "Rut_Empleado"
 
         Dim datasetClientes As DataSet = BsnCliente.obtenerTodosClientes
-        cmbClientes.DataSource = datasetClientes.Tables(0)
-        cmbClientes.DisplayMember = "Rut_cliente"
+        'cmbClientes.DataSource = datasetClientes.Tables(0)
+        'cmbClientes.DisplayMember = "Rut_cliente"
 
         Dim datasetProductos As DataSet = BsnProducto.ObtenerColumnasEspecificas("ID_PRODUCTO,NOMBRE,PRECIO,STOCK,STOCK_CRITICO")
         dgvProductos.DataSource = datasetProductos.Tables(0).DefaultView
 
         Timer1.Enabled = True
-        cmbVendedor.Text = ""
-        cmbClientes.Text = ""
+        txtVendedor.Text = ""
+        txtRutSnDV.Text = ""
+        txtDV.Text = ""
+        txtNombreCliente.Text = ""
+
     End Sub
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         txtFecha.Text = DateTime.Now
@@ -142,11 +150,7 @@
         Dim contador As Byte = 1
         Dim isCorrect As Boolean = True
 
-        If cmbVendedor.Text = "" Then
-            pal = contador & "- Ingrese un vendedor. " & vbCrLf
-            contador = contador + 1
-            isCorrect = False
-        End If
+
 
         If dgvProductosSeleccionados.Rows.Count <= 0 Then
             pal = pal & contador & "- Ingrese productos en carro de compras. " & vbCrLf
@@ -187,7 +191,7 @@
             Dim medio_pago As Byte = Enumeraciones.MedioPago(cmbMetodoPago.Text)
             Dim tipo_venta As Byte = cmbTipoVenta.SelectedIndex '-> dentro de bsnVenta if-> 1 boleta
 
-            BsnVenta.realizarVenta(cmbClientes.Text, cmbVendedor.Text, txtSubto.Text, txtDesc.Text, txtTotal.Text, Enumeraciones.getIVA, medio_pago, tipo_venta)
+            BsnVenta.realizarVenta(txtRutSnDV.Text, txtVendedor.Text, txtSubto.Text, txtDesc.Text, txtTotal.Text, Enumeraciones.getIVA, medio_pago, tipo_venta)
             'Insertar en Detalle_Venta
             '           Id_Producto ( con el for ) 
             '           cantidad
@@ -201,7 +205,21 @@
         End If
     End Sub
 
-    Private Sub frmVenta_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Me.KeyPress
-        MsgBox("keypress")
+
+
+
+
+    'VALIDACION AL MOMENTO
+    Private Sub txtBuscar_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtBuscar.KeyPress
+        e.Handled = Validacion.IOtroNombre(e)
+    End Sub
+
+    Private Sub txtDV_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDV.KeyPress
+        e.Handled = Validacion.IRutVerificador(e)
+    End Sub
+
+    Private Sub txtRutSnDV_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtRutSnDV.KeyPress
+        e.Handled = Validacion.IRut(e)
+
     End Sub
 End Class

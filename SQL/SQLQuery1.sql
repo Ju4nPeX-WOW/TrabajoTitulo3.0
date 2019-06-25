@@ -35,7 +35,8 @@ CREATE TABLE Usuarios(
 	Id_usuario tinyint not null IDENTITY(1,1) , -- (2)
 	Rut_empleado int not null  UNIQUE,          -- (8)
 	Contraseña varchar(8) not null,             -- (8)
-	Permisos tinyint                           -- (2)->(1)?
+	Permisos tinyint,                           -- (2)->(1)?
+	False_delete bit default 0					-- (1)
  
 )
 CREATE TABLE Empleados(

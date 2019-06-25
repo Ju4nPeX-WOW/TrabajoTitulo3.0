@@ -29,7 +29,6 @@ Partial Class FrmCompra
         Me.lblRut = New System.Windows.Forms.Label()
         Me.txtNumFolio = New System.Windows.Forms.TextBox()
         Me.lblNumFolio = New System.Windows.Forms.Label()
-        Me.txtRut = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.txtPrecio = New System.Windows.Forms.TextBox()
         Me.lblPrecio = New System.Windows.Forms.Label()
@@ -43,6 +42,9 @@ Partial Class FrmCompra
         Me.lblArchivo = New System.Windows.Forms.Label()
         Me.txtArchivo = New System.Windows.Forms.TextBox()
         Me.lblUsuario = New System.Windows.Forms.Label()
+        Me.txtDV = New System.Windows.Forms.TextBox()
+        Me.txtRutSnDV = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -113,7 +115,7 @@ Partial Class FrmCompra
         '
         Me.txtNumFolio.Location = New System.Drawing.Point(273, 126)
         Me.txtNumFolio.Name = "txtNumFolio"
-        Me.txtNumFolio.Size = New System.Drawing.Size(301, 20)
+        Me.txtNumFolio.Size = New System.Drawing.Size(218, 20)
         Me.txtNumFolio.TabIndex = 82
         '
         'lblNumFolio
@@ -124,13 +126,6 @@ Partial Class FrmCompra
         Me.lblNumFolio.Size = New System.Drawing.Size(78, 13)
         Me.lblNumFolio.TabIndex = 81
         Me.lblNumFolio.Text = "Num_folio       :"
-        '
-        'txtRut
-        '
-        Me.txtRut.Location = New System.Drawing.Point(273, 157)
-        Me.txtRut.Name = "txtRut"
-        Me.txtRut.Size = New System.Drawing.Size(301, 20)
-        Me.txtRut.TabIndex = 88
         '
         'DataGridView1
         '
@@ -216,9 +211,9 @@ Partial Class FrmCompra
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.Location = New System.Drawing.Point(629, 291)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(69, 13)
+        Me.Label1.Size = New System.Drawing.Size(62, 13)
         Me.Label1.TabIndex = 97
-        Me.Label1.Text = "SubPrecio:"
+        Me.Label1.Text = "SubTotal:"
         '
         'lblArchivo
         '
@@ -231,6 +226,7 @@ Partial Class FrmCompra
         '
         'txtArchivo
         '
+        Me.txtArchivo.Enabled = False
         Me.txtArchivo.Location = New System.Drawing.Point(346, 447)
         Me.txtArchivo.Name = "txtArchivo"
         Me.txtArchivo.Size = New System.Drawing.Size(460, 20)
@@ -246,10 +242,38 @@ Partial Class FrmCompra
         Me.lblUsuario.TabIndex = 101
         Me.lblUsuario.Text = "INGRESO DE COMPRAS"
         '
+        'txtDV
+        '
+        Me.txtDV.Location = New System.Drawing.Point(440, 157)
+        Me.txtDV.MaxLength = 1
+        Me.txtDV.Name = "txtDV"
+        Me.txtDV.Size = New System.Drawing.Size(51, 20)
+        Me.txtDV.TabIndex = 105
+        '
+        'txtRutSnDV
+        '
+        Me.txtRutSnDV.Location = New System.Drawing.Point(273, 157)
+        Me.txtRutSnDV.MaxLength = 8
+        Me.txtRutSnDV.Name = "txtRutSnDV"
+        Me.txtRutSnDV.Size = New System.Drawing.Size(145, 20)
+        Me.txtRutSnDV.TabIndex = 103
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(424, 159)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(10, 13)
+        Me.Label7.TabIndex = 104
+        Me.Label7.Text = "-"
+        '
         'FrmCompra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 670)
+        Me.Controls.Add(Me.txtDV)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.txtRutSnDV)
         Me.Controls.Add(Me.lblUsuario)
         Me.Controls.Add(Me.txtArchivo)
         Me.Controls.Add(Me.lblArchivo)
@@ -263,7 +287,6 @@ Partial Class FrmCompra
         Me.Controls.Add(Me.lblCant)
         Me.Controls.Add(Me.ComboBox2)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.txtRut)
         Me.Controls.Add(Me.lblTotal)
         Me.Controls.Add(Me.txtTotal)
         Me.Controls.Add(Me.txtIva)
@@ -290,7 +313,6 @@ Partial Class FrmCompra
     Friend WithEvents lblRut As Label
     Friend WithEvents txtNumFolio As TextBox
     Friend WithEvents lblNumFolio As Label
-    Friend WithEvents txtRut As TextBox
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents txtPrecio As TextBox
     Friend WithEvents lblPrecio As Label
@@ -304,4 +326,7 @@ Partial Class FrmCompra
     Friend WithEvents lblArchivo As Label
     Friend WithEvents txtArchivo As TextBox
     Friend WithEvents lblUsuario As Label
+    Friend WithEvents txtDV As TextBox
+    Friend WithEvents txtRutSnDV As TextBox
+    Friend WithEvents Label7 As Label
 End Class
