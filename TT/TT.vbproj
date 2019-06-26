@@ -82,6 +82,7 @@
     <Compile Include="Bsn\BsnEmpleado.vb" />
     <Compile Include="Bsn\BsnEstadistica.vb" />
     <Compile Include="Bsn\BsnGeneral.vb" />
+    <Compile Include="Bsn\BsnHistoAjustes.vb" />
     <Compile Include="Bsn\BsnProducto.vb" />
     <Compile Include="Bsn\BsnProductoCategoria.vb" />
     <Compile Include="Bsn\BsnUsuario.vb" />
@@ -91,6 +92,7 @@
     <Compile Include="Dao\DaoDescuentos.vb" />
     <Compile Include="Dao\DaoEmpleado.vb" />
     <Compile Include="Dao\DaoEstadistica.vb" />
+    <Compile Include="Dao\DaoHistoAjustes.vb" />
     <Compile Include="Dao\DaoProducto.vb" />
     <Compile Include="Dao\DaoProductoCategoria.vb" />
     <Compile Include="Dao\DaoUsuario.vb" />
