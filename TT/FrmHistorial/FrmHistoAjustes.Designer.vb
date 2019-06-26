@@ -25,15 +25,15 @@ Partial Class FrmHistoAjustes
         Me.BtnExitCat = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.btnAceptar = New System.Windows.Forms.Button()
-        Me.dgvStock = New System.Windows.Forms.DataGridView()
         Me.dgvPrecios = New System.Windows.Forms.DataGridView()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.dgvStock = New System.Windows.Forms.DataGridView()
+        Me.btnAceptar = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        CType(Me.dgvPrecios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
         CType(Me.dgvStock, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvPrecios, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblUsuario
@@ -91,6 +91,23 @@ Partial Class FrmHistoAjustes
         Me.TabPage1.Text = "Precios"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'dgvPrecios
+        '
+        Me.dgvPrecios.AllowUserToAddRows = False
+        Me.dgvPrecios.AllowUserToDeleteRows = False
+        Me.dgvPrecios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvPrecios.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders
+        Me.dgvPrecios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvPrecios.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.dgvPrecios.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.dgvPrecios.Location = New System.Drawing.Point(13, 19)
+        Me.dgvPrecios.MultiSelect = False
+        Me.dgvPrecios.Name = "dgvPrecios"
+        Me.dgvPrecios.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Me.dgvPrecios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvPrecios.Size = New System.Drawing.Size(1100, 274)
+        Me.dgvPrecios.TabIndex = 75
+        '
         'TabPage2
         '
         Me.TabPage2.Controls.Add(Me.dgvStock)
@@ -101,15 +118,6 @@ Partial Class FrmHistoAjustes
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Stock"
         Me.TabPage2.UseVisualStyleBackColor = True
-        '
-        'btnAceptar
-        '
-        Me.btnAceptar.Location = New System.Drawing.Point(850, 102)
-        Me.btnAceptar.Name = "btnAceptar"
-        Me.btnAceptar.Size = New System.Drawing.Size(75, 23)
-        Me.btnAceptar.TabIndex = 80
-        Me.btnAceptar.Text = "Aceptar"
-        Me.btnAceptar.UseVisualStyleBackColor = True
         '
         'dgvStock
         '
@@ -128,22 +136,14 @@ Partial Class FrmHistoAjustes
         Me.dgvStock.Size = New System.Drawing.Size(1100, 274)
         Me.dgvStock.TabIndex = 74
         '
-        'dgvPrecios
+        'btnAceptar
         '
-        Me.dgvPrecios.AllowUserToAddRows = False
-        Me.dgvPrecios.AllowUserToDeleteRows = False
-        Me.dgvPrecios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvPrecios.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders
-        Me.dgvPrecios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvPrecios.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.dgvPrecios.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.dgvPrecios.Location = New System.Drawing.Point(13, 19)
-        Me.dgvPrecios.MultiSelect = False
-        Me.dgvPrecios.Name = "dgvPrecios"
-        Me.dgvPrecios.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
-        Me.dgvPrecios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvPrecios.Size = New System.Drawing.Size(1100, 274)
-        Me.dgvPrecios.TabIndex = 75
+        Me.btnAceptar.Location = New System.Drawing.Point(850, 102)
+        Me.btnAceptar.Name = "btnAceptar"
+        Me.btnAceptar.Size = New System.Drawing.Size(75, 23)
+        Me.btnAceptar.TabIndex = 80
+        Me.btnAceptar.Text = "Aceptar"
+        Me.btnAceptar.UseVisualStyleBackColor = True
         '
         'FrmHistoAjustes
         '
@@ -159,9 +159,9 @@ Partial Class FrmHistoAjustes
         Me.Name = "FrmHistoAjustes"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
+        CType(Me.dgvPrecios, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
         CType(Me.dgvStock, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvPrecios, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
