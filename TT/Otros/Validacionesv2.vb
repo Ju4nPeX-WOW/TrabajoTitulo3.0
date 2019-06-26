@@ -198,4 +198,10 @@
         Return {cumple, aviso}
     End Function
 
+    Public Function ValidarRut(rut As String, dv As String)
+        Dim persona As New Persona
+        Dim correcto As Boolean = persona.validarRut(rut, dv)
+        Return correcto
+    End Function
+
 End Class

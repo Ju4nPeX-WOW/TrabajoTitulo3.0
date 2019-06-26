@@ -5,13 +5,13 @@
 
     Protected aux As Short       '------------------------>auxiliar donde guarda el id
     Protected Validaciones As New Validaciones
-
+    Protected Validacion As New Validacionesv2
 
     Protected activeAgregar As Boolean = False  'cuando el usuario presiona el boton del menu strip agregar se torna verdadero
     Protected activeEditar As Boolean = False   'cuando el usuario presiona el boton del menu strip editar se torna verdadero
     Protected activeEliminar As Boolean = False 'cuando el usuario presiona el boton del menu strip eliminar se torna verdadero
     'Esto no quiere decir que se bloqueen, sino que en los procedimientos tsm[Agregar-editar-eliminar]
-
+    Dim auxtermino As String = ""
 
 
 
@@ -109,6 +109,8 @@
     End Sub
 
     Private Sub FrmDesc_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'largo
+        cmbProducto.MaxLength = Validacion.MaxOtroNombre
         BuildDGV()
         RellenarDataSet()
         RellenarCMB()
@@ -130,6 +132,7 @@
         lblIdDescuento.Text = dgvDescuentos.CurrentRow.Cells.Item(0).Value.ToString()
         dtpInicio.Value = DateTime.Now.ToString("dd/MM/yyyy")
         dtpTermino.Value = dgvDescuentos.CurrentRow.Cells.Item(3).Value.ToString()
+        auxTermino = dgvDescuentos.CurrentRow.Cells.Item(3).Value.ToString()
 
 
 
@@ -144,12 +147,15 @@
 
     End Sub
 
-    Private Sub TsmEditarCat_Click(sender As Object, e As EventArgs) Handles tsmEditarCat.Click
+    Private Sub TsmEditarCat_Click(sender As Object, e As EventArgs) Handles tsmExtenderCat.Click
         activeAgregar = False
         activeEditar = True
         activeEliminar = False
 
-        DesbloquearBotones()
+        dtpTermino.Enabled = True
+        btnAce.Enabled = True
+        btnCan.Enabled = True
+
     End Sub
 
     Private Sub TsmEliminarCat_Click(sender As Object, e As EventArgs) Handles tsmEliminarCat.Click
@@ -171,47 +177,50 @@
         '   No deben poder editarse los descuentos que ya caducaron, no tiene sentido el editarlos
         '   Deben ser creados de nuevos, para saber si han caducado se tiene que evaluar la fecha de termino
         '   Dar termino un descuento, se queda el descuento hasta el dia actual, se finaliza así xD.
+        If RealizarValidacion() Then
 
+            Dim ObjetoDescuento As New Descuento()
 
-        Dim ObjetoDescuento As New Descuento()
+            Dim id_des, id_prod, fec_ini, fec_ter, con As String
+            id_des = ""
+            id_prod = ""
+            fec_ini = ""
+            fec_ter = ""
+            con = ""
 
-        Dim id_des, id_prod, fec_ini, fec_ter, con As String
-        id_des = ""
-        id_prod = ""
-        fec_ini = ""
-        fec_ter = ""
-        con = ""
+            If activeAgregar Then
+                id_prod = cmbProducto.SelectedItem.ToString()
+                id_prod = id_prod.Substring(0, InStr(1, id_prod, "-") - 1)
+                fec_ini = dtpInicio.Value.ToShortDateString
+                fec_ter = dtpTermino.Value.ToShortDateString
+                con = GetCondicion()
 
-        If activeAgregar Then
-            id_prod = cmbProducto.SelectedItem.ToString()
-            id_prod = id_prod.Substring(0, InStr(1, id_prod, "-") - 1)
-            fec_ini = dtpInicio.Value.ToShortDateString
-            fec_ter = dtpTermino.Value.ToShortDateString
-            con = GetCondicion()
+            ElseIf activeEditar Then
+                id_des = lblIdDescuento.Text
+                id_prod = cmbProducto.SelectedItem.ToString()
+                id_prod = id_prod.Substring(0, InStr(1, id_prod, "-") - 1)
+                fec_ini = dtpInicio.Value.ToShortDateString
+                fec_ter = dtpTermino.Value.ToShortDateString
+                con = GetCondicion()
+            End If
 
-        ElseIf activeEditar Then
-            id_des = lblIdDescuento.Text
-            id_prod = cmbProducto.SelectedItem.ToString()
-            id_prod = id_prod.Substring(0, InStr(1, id_prod, "-") - 1)
-            fec_ini = dtpInicio.Value.ToShortDateString
-            fec_ter = dtpTermino.Value.ToShortDateString
-            con = GetCondicion()
+            'Rellenemos El Objeto
+            ObjetoDescuento.IdDescuento = id_des
+            ObjetoDescuento.IdProducto = id_prod
+            ObjetoDescuento.FechaInicio = fec_ini
+            ObjetoDescuento.FechaTermino = fec_ter
+            ObjetoDescuento.Condicion = con
+
+            Dim bsnDescuento As New BsnDescuentos
+
+            If activeAgregar Then
+                bsnDescuento.AgregarDescuento(ObjetoDescuento)
+            ElseIf activeEditar Then
+                bsnDescuento.ModificarDescuento(ObjetoDescuento)
+            End If
+
         End If
 
-        'Rellenemos El Objeto
-        ObjetoDescuento.IdDescuento = id_des
-        ObjetoDescuento.IdProducto = id_prod
-        ObjetoDescuento.FechaInicio = fec_ini
-        ObjetoDescuento.FechaTermino = fec_ter
-        ObjetoDescuento.Condicion = con
-
-        Dim bsnDescuento As New BsnDescuentos
-
-        If activeAgregar Then
-            bsnDescuento.AgregarDescuento(ObjetoDescuento)
-        ElseIf activeEditar Then
-            bsnDescuento.ModificarDescuento(ObjetoDescuento)
-        End If
         RellenarDataSet()
 
         BloquearBotones()
@@ -237,4 +246,55 @@
         Return p1 + tipo + p2
 
     End Function
+
+
+
+    Private Sub cmbProducto_TextChanged(sender As Object, e As EventArgs) Handles cmbProducto.TextChanged
+        Dim datasetIncremental As New DataSet
+        Dim bsnproducto As New BsnProducto
+        datasetIncremental = BsnProducto.BusquedaIncremental("ID_PRODUCTO,NOMBRE", "Productos", "Nombre", cmbProducto.Text)
+        cmbProducto.DataSource = datasetIncremental.Tables(0).DefaultView
+    End Sub
+
+    Private Sub cmbProducto_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbProducto.KeyPress
+        e.Handled = Validacion.IOtroNombre(e)
+    End Sub
+
+    Private Function RealizarValidacion()
+        Dim cumple As Boolean = False
+        'VALIDAR QUE NO SE EDITEN DESCUENTOS CADUCADOS
+        If activeAgregar Then
+            If cmbProducto.SelectedIndex > 0 Then
+                If cbxMayor.Checked And cmbP1Mayor.SelectedIndex > 0 And cmbP2Mayor.SelectedIndex > 0 Then
+                    cumple = True
+
+                ElseIf cbxPorcentual.Checked And cmbP2Porcentual.SelectedIndex > 0 And cmbP2Porcentual.SelectedIndex > 0 Then
+                    cumple = True
+                Else
+                    MsgBox("SR USUARIO INGRESE CORRECTAMENTE LA CONDICION")
+                End If
+            Else
+                MsgBox("SR USUARIO SELECCIONE EL PRODUCTO AL CUAL APLICARA DESCUENTO")
+            End If
+
+
+
+        ElseIf activeEditar Then
+            If dtpTermino.Value.ToShortDateString >= DateTime.Now Then
+                If Not dtpTermino.Value.ToShortDateString < auxtermino Then
+                    cumple = True
+                Else
+                    MsgBox("SR USUARIO PUEDE REDUCIR EL TIMEPO DE VALIDES DEL DESCUENTO")
+                End If
+            Else
+                MsgBox("SR USUARIO NO SE PUEDEN EXTENDER DESCUENTOS FINALIZADOS")
+            End If
+
+        End If
+        Return cumple
+    End Function
+
+
 End Class
+
+

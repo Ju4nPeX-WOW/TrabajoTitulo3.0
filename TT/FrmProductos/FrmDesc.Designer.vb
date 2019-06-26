@@ -28,7 +28,7 @@ Partial Class FrmDesc
         Me.txtBuscarProdCat = New System.Windows.Forms.TextBox()
         Me.mnsDes = New System.Windows.Forms.MenuStrip()
         Me.tsmAgregarCat = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmEditarCat = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmExtenderCat = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmEliminarCat = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblProducto = New System.Windows.Forms.Label()
         Me.cmbProducto = New System.Windows.Forms.ComboBox()
@@ -117,7 +117,7 @@ Partial Class FrmDesc
         '
         Me.mnsDes.AutoSize = False
         Me.mnsDes.Dock = System.Windows.Forms.DockStyle.None
-        Me.mnsDes.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAgregarCat, Me.tsmEditarCat, Me.tsmEliminarCat})
+        Me.mnsDes.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAgregarCat, Me.tsmExtenderCat, Me.tsmEliminarCat})
         Me.mnsDes.Location = New System.Drawing.Point(0, 40)
         Me.mnsDes.Name = "mnsDes"
         Me.mnsDes.Size = New System.Drawing.Size(1139, 24)
@@ -132,12 +132,12 @@ Partial Class FrmDesc
         Me.tsmAgregarCat.Size = New System.Drawing.Size(77, 20)
         Me.tsmAgregarCat.Text = "Agregar"
         '
-        'tsmEditarCat
+        'tsmExtenderCat
         '
-        Me.tsmEditarCat.Image = CType(resources.GetObject("tsmEditarCat.Image"), System.Drawing.Image)
-        Me.tsmEditarCat.Name = "tsmEditarCat"
-        Me.tsmEditarCat.Size = New System.Drawing.Size(65, 20)
-        Me.tsmEditarCat.Text = "Editar"
+        Me.tsmExtenderCat.Image = CType(resources.GetObject("tsmExtenderCat.Image"), System.Drawing.Image)
+        Me.tsmExtenderCat.Name = "tsmExtenderCat"
+        Me.tsmExtenderCat.Size = New System.Drawing.Size(80, 20)
+        Me.tsmExtenderCat.Text = "Extender"
         '
         'tsmEliminarCat
         '
@@ -337,7 +337,7 @@ Partial Class FrmDesc
     Friend WithEvents txtBuscarProdCat As TextBox
     Friend WithEvents mnsDes As MenuStrip
     Friend WithEvents tsmAgregarCat As ToolStripMenuItem
-    Friend WithEvents tsmEditarCat As ToolStripMenuItem
+    Friend WithEvents tsmExtenderCat As ToolStripMenuItem
     Friend WithEvents tsmEliminarCat As ToolStripMenuItem
     Friend WithEvents lblProducto As Label
     Friend WithEvents cmbProducto As ComboBox

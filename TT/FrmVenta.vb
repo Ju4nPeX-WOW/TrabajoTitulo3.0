@@ -146,32 +146,8 @@
     End Sub
 
     Private Sub btnRealizarVenta_Click(sender As Object, e As EventArgs) Handles btnRealizarVenta.Click
-        Dim pal As String = ""
-        Dim contador As Byte = 1
-        Dim isCorrect As Boolean = True
-
-
-
-        If dgvProductosSeleccionados.Rows.Count <= 0 Then
-            pal = pal & contador & "- Ingrese productos en carro de compras. " & vbCrLf
-            contador = contador + 1
-            isCorrect = False
-        End If
-
-        If cmbTipoVenta.SelectedIndex < 0 Then
-            pal = pal & contador & "- Seleccione un tipo de venta. " & vbCrLf
-            contador = contador + 1
-            isCorrect = False
-        End If
-
-        If cmbMetodoPago.SelectedIndex < 0 Then
-            pal = pal & contador & "-Seleccione un metodo de pago. " & vbCrLf
-            isCorrect = False
-        End If
-
-        If Not isCorrect Then
-            MsgBox(pal, vbInformation, "Error")
-        Else
+        'Validar ->
+        If RealizarValidacion Then
             'insertar en Venta
 
             '           num_venta
@@ -202,7 +178,11 @@
 
             BsnVenta.detalleVenta(dgvProductosSeleccionados, txtSubto.Text, txtDesc.Text, txtTotal.Text, BsnVenta.obtenerUltimaVenta)
             lblTransaccion.Text = (BsnVenta.obtenerUltimaVenta + 1).ToString
+
+
         End If
+
+
     End Sub
 
 
@@ -222,4 +202,52 @@
         e.Handled = Validacion.IRut(e)
 
     End Sub
+
+    Private Function RealizarValidacion()
+
+        Dim cumple As Boolean = False
+        'VALIDAR QUE LOS CAMPOS NO ESTEN VACIOS
+        Dim ListaText As New List(Of String())
+        ListaText.Add({"rut", txtRutSnDV.Text})
+        ListaText.Add({"digito verificador", txtDV.Text})
+        ListaText.Add({"nombre", txtBuscar.Text})
+
+        Dim receptor = Validacion.Val(ListaText) '<- INGRESAR LISTA DE TXT BOX 
+        If receptor(0) Then
+            'VALIDAR QUE LOS CMD , SI EXISTEN U OTRO ELEMENTO CUMPLE CON LA VAL
+            If Not dgvProductosSeleccionados.RowCount <> 0 Then
+
+                'VALIDAR QUE LOS DATOS CUMPLAN ESTRUTURA -> RUT O EMAIL
+                If Validacion.ValidarRut(txtRutSnDV.Text, txtDV.Text) Then '<- INGRESAR RUT Y DV
+                    cumple = True
+
+                    Dim pal As String = ""
+                    Dim contador As Byte = 1
+
+                    If cmbTipoVenta.SelectedIndex < 0 Then
+                        pal = pal & contador & "- Seleccione un tipo de venta. " & vbCrLf
+                        contador = contador + 1
+                        cumple = False
+                    End If
+
+                    If cmbMetodoPago.SelectedIndex < 0 Then
+                        pal = pal & contador & "-Seleccione un metodo de pago. " & vbCrLf
+                        cumple = False
+                    End If
+
+                    If Not cumple Then
+                        MsgBox(pal, vbInformation, "Error")
+                    End If
+                Else
+                    MsgBox("SR USUARIO EL RUT NO ES VALIDO")
+                End If
+            Else
+                MsgBox("SR USUARIO FALTA QUE SELECCIONE LOS PRODUCTOS")
+            End If
+        Else
+            MsgBox(receptor(1))
+        End If
+        Return cumple
+    End Function
+
 End Class

@@ -332,78 +332,82 @@
     End Sub
 
     Private Sub BtnAceCat_Click(sender As Object, e As EventArgs) Handles btnAceCat.Click
-        Dim categoria As New Categoria
-        Dim bsnCategoria As New BsnCategoria
+        'primero a validar
+        If Realizarvalidacion() Then
+            Dim categoria As New Categoria
+            Dim bsnCategoria As New BsnCategoria
 
-        ''Declaramos las var auxiliares
-        Dim _id, _nombre, _codigo As String
-
-
-
-        ''Primero el Id
-        If activeAgregar Then
-            _id = ""
-        ElseIf activeEditar Then
-            _id = lblaux.Text
-        End If
-
-        ''Segundo el nombre
-        _nombre = txtNombre.Text
+            ''Declaramos las var auxiliares
+            Dim _id, _nombre, _codigo As String
 
 
-        '' ID DEL CMB SELECCIONADO
-        Dim idCMB As String = ""
-        If CheckBox3.Checked And Not CheckBox1.Checked Then
 
-            idCMB = cmbCategorias.SelectedItem.ToString()
-            idCMB = idCMB.Substring(0, InStr(1, idCMB, "-") - 1)
+            ''Primero el Id
+            If activeAgregar Then
+                _id = ""
+            ElseIf activeEditar Then
+                _id = lblaux.Text
+            End If
 
-            If Not CheckBox2.Checked Then
+            ''Segundo el nombre
+            _nombre = txtNombre.Text
 
-                idCMB = cmbSubCategorias.SelectedItem.ToString()
+
+            '' ID DEL CMB SELECCIONADO
+            Dim idCMB As String = ""
+            If CheckBox3.Checked And Not CheckBox1.Checked Then
+
+                idCMB = cmbCategorias.SelectedItem.ToString()
                 idCMB = idCMB.Substring(0, InStr(1, idCMB, "-") - 1)
 
+                If Not CheckBox2.Checked Then
+
+                    idCMB = cmbSubCategorias.SelectedItem.ToString()
+                    idCMB = idCMB.Substring(0, InStr(1, idCMB, "-") - 1)
+
+                End If
             End If
-        End If
-        'MsgBox("ID CMB CMB " & idCMB)
+            'MsgBox("ID CMB CMB " & idCMB)
 
 
-        ''LO COMPLICADO -> CODIGO
-        If activeAgregar Then
-            _codigo = ObtenerCodigoAInsertar("", idCMB)
-        Else
-            If activeEditar And CheckBox3.Checked Then
-                _codigo = ObtenerCodigoAInsertar(txtCodigo.Text, idCMB)
-
-
+            ''LO COMPLICADO -> CODIGO
+            If activeAgregar Then
+                _codigo = ObtenerCodigoAInsertar("", idCMB)
             Else
-                _codigo = txtCodigo.Text
+                If activeEditar And CheckBox3.Checked Then
+                    _codigo = ObtenerCodigoAInsertar(txtCodigo.Text, idCMB)
 
 
-            End If
-        End If
-
-        ''Cargar datos en objeto Categoria
-        categoria.IdCateg = _id
-        categoria.NomCateg = _nombre
-        categoria.CodCateg = _codigo
+                Else
+                    _codigo = txtCodigo.Text
 
 
-        If categoria.CodCateg.Equals("0") Then
-            MsgBox("SR USUARIO: Excedio el limite permitido de Categorias")
-        Else
-            If activeAgregar Then 'Si se esta agregando un categoria       
-                bsnCategoria.AgregarCategoria(categoria)
-            ElseIf activeEditar And Not lblaux.Text.Equals("") Then ''la parte lblaux -> deberia eliminarse
-
-
-                'MsgBox("CODIGO CATEGORIA : " + categoria.CodCateg)
-                bsnCategoria.EditarCategoria(categoria)
-
+                End If
             End If
 
-        End If
+            ''Cargar datos en objeto Categoria
+            categoria.IdCateg = _id
+            categoria.NomCateg = _nombre
+            categoria.CodCateg = _codigo
 
+
+            If categoria.CodCateg.Equals("0") Then
+                MsgBox("SR USUARIO: Excedio el limite permitido de Categorias")
+            Else
+                If activeAgregar Then 'Si se esta agregando un categoria       
+                    bsnCategoria.AgregarCategoria(categoria)
+                ElseIf activeEditar And Not lblaux.Text.Equals("") Then ''la parte lblaux -> deberia eliminarse
+
+
+                    'MsgBox("CODIGO CATEGORIA : " + categoria.CodCateg)
+                    bsnCategoria.EditarCategoria(categoria)
+
+                End If
+
+            End If
+
+
+        End If
         Reset()
     End Sub
 
@@ -684,6 +688,31 @@
     Private Sub txtNombre_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtNombre.KeyPress
         e.Handled = validacion.IOtroNombre(e)
     End Sub
+
+    Private Function RealizarValidacion()
+        Dim cumple As Boolean = False
+        'VALIDAR QUE LOS CAMPOS NO ESTEN VACIOS
+        Dim ListaText As New List(Of String())
+        ListaText.Add({"nombre", txtNombre.Text})
+
+        Dim receptor = validacion.Val(ListaText) '<- INGRESAR LISTA DE TXT BOX 
+        If receptor(0) Then
+            'VALIDAR QUE LOS CMD , SI EXISTEN U OTRO ELEMENTO CUMPLE CON LA VAL
+            If activeAgregar And (CheckBox1.Checked Or CheckBox2.Checked Or cmbCategorias.SelectedIndex < 0 Or cmbSubCategorias.SelectedIndex < 0) Then
+                cumple = True
+            ElseIf activeEditar And Not txtCodigo.Equals("") Then
+                cumple = True
+            Else
+                MsgBox("SR USUARIO TIENE QUE SELECCIONAR EL NIVEL DE LA CATEGORIA")
+
+            End If
+
+        Else
+            MsgBox(receptor(1))
+        End If
+        Return cumple
+    End Function
+
 End Class
 
 

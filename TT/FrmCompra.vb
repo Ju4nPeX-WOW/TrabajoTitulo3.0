@@ -1,5 +1,8 @@
 ﻿Public Class FrmCompra
     Dim validacion As New Validacionesv2
+    Dim persona As New Persona
+    Dim bsnproducto As New BsnProducto
+
     Private Sub BtnExitCat_Click(sender As Object, e As EventArgs) Handles BtnExitCat.Click
         Me.Close()
     End Sub
@@ -68,12 +71,14 @@
         txtDV.MaxLength = validacion.MaxRutVerificador
         txtIva.MaxLength = validacion.MaxPrecio
         txtTotal.MaxLength = validacion.MaxPrecio
+        txtBuscar.MaxLength = validacion.MaxOtroNombre
         txtCant.MaxLength = validacion.MaxStock
-        txtPrecio = validacion.MaxPrecio
-        txtSubTotal = validacion.MaxPrecio
+        txtPrecio.MaxLength = validacion.MaxPrecio
+        txtSubTotal.MaxLength = validacion.MaxPrecio
 
 
-
+        Dim datasetProductos As DataSet = bsnproducto.ObtenerColumnasEspecificas("ID_PRODUCTO,NOMBRE")
+        dgvBusqueda.DataSource = datasetProductos.Tables(0).DefaultView
     End Sub
 
 
@@ -101,15 +106,110 @@
         e.Handled = validacion.IPrecio(e)
     End Sub
 
-    Private Sub txtCant_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCant.KeyPress
+    Private Sub txtBuscar_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtBuscar.KeyPress
+        e.Handled = validacion.IOtroNombre(e)
+    End Sub
+    Private Sub txtCant_KeyPress(sender As Object, e As KeyPressEventArgs)
         e.Handled = validacion.IStock(e)
     End Sub
 
-    Private Sub txtPrecio_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPrecio.KeyPress
+    Private Sub txtPrecio_KeyPress(sender As Object, e As KeyPressEventArgs)
         e.Handled = validacion.IPrecio(e)
     End Sub
 
-    Private Sub txtSubTotal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtSubTotal.KeyPress
+    Private Sub txtSubTotal_KeyPress(sender As Object, e As KeyPressEventArgs)
         e.Handled = validacion.IPrecio(e)
     End Sub
+    Private Sub txtSubTotal_Click(sender As Object, e As EventArgs) Handles txtSubTotal.Click
+        txtSubTotal.Text = (Integer.Parse(txtPrecio.Text) * Integer.Parse(txtCant.Text)).ToString
+    End Sub
+
+
+    'BOTON DE GUARDAR
+    Private Sub btn_guardar_Click(sender As Object, e As EventArgs) Handles btn_guardar.Click
+        'DEBEMOS DE VALIDAR SI SE PROCEDE A REGISTRAR LA INFORMACION
+        If RealizarValidacion() Then
+            'GUARDAR DATOS
+
+        End If
+    End Sub
+
+    Private Function RealizarValidacion()
+        Dim cumple As Boolean = False
+        'VALIDAR QUE LOS CAMPOS NO ESTEN VACIOS
+        Dim ListaText As New List(Of String())
+        ListaText.Add({"numero de folio", txtNumFolio.Text})
+        ListaText.Add({"rut", txtRutSnDV.Text})
+        ListaText.Add({"digito verificador", txtDV.Text})
+        ListaText.Add({"precio", txtIva.Text})
+        ListaText.Add({"precio", txtTotal.Text})
+        ListaText.Add({"nombre", txtBuscar.Text})
+        ListaText.Add({"cantidad", txtCant.Text})
+        ListaText.Add({"precio", txtPrecio.Text})
+        ListaText.Add({"precio", txtSubTotal.Text})
+        Dim receptor = validacion.Val(ListaText) '<- INGRESAR LISTA DE TXT BOX 
+        If receptor(0) Then
+            'VALIDAR QUE LOS CMD , SI EXISTEN U OTRO ELEMENTO CUMPLE CON LA VAL
+            If Not txtArchivo.Text.Equals("") Or dgvProductosSeleccionados.RowCount <> 0 Then
+
+                'VALIDAR QUE LOS DATOS CUMPLAN ESTRUTURA -> RUT O EMAIL
+                If validacion.ValidarRut(txtRutSnDV.Text, txtDV.Text) Then '<- INGRESAR RUT Y DV
+                    cumple = True
+                Else
+                    MsgBox("SR USUARIO EL RUT NO ES VALIDO")
+                End If
+            Else
+                MsgBox("SR USUARIO FALTA QUE SELECCIONE LOS PRODUCTOS 
+                        O QUE SUBA LA COPIA DE LA FACTURA          ")
+            End If
+        Else
+            MsgBox(receptor(1))
+        End If
+        Return cumple
+    End Function
+
+    Private Sub btnBuscar_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
+        If txtBuscar.Text.Length > 0 Then
+            Dim datasetIncremental As New DataSet
+            datasetIncremental = bsnproducto.BusquedaIncremental("ID_PRODUCTO,NOMBRE", "Productos", "Nombre", txtBuscar.Text)
+            dgvBusqueda.DataSource = datasetIncremental.Tables(0).DefaultView
+        Else
+            Dim datasetProductos As DataSet = bsnproducto.ObtenerColumnasEspecificas("ID_PRODUCTO,NOMBRE")
+            dgvBusqueda.DataSource = datasetProductos.Tables(0).DefaultView
+
+        End If
+    End Sub
+
+    Private Sub btnAgregar_MouseClick(sender As Object, e As MouseEventArgs) Handles btnAgregar.MouseClick
+        'Boton que lo que realiza es insertar el producto elegido en el datagridviewPRODUCTOS, hacia el datagridviewPRODUCTOSSELECCIONADOS.
+        If dgvBusqueda.CurrentRow.Index > -1 And Not txtPrecio.Text.Equals("") And Not txtCant.Text.Equals("") And Not txtTotal.Text.Equals("") Then                                                                                                                                      'aqui iria el descuento raro
+            'guardamos los datos del producto seleccionado en el primer datagridview en un arreglo fila() para luego insertarla en el segundo datagridview
+            Dim fila() As String = {dgvBusqueda.Rows(dgvBusqueda.CurrentRow.Index).Cells(0).Value, dgvBusqueda.Rows(dgvBusqueda.CurrentRow.Index).Cells(1).Value, txtPrecio.Text, txtCant.Text, txtSubTotal.Text}
+            Dim existe As Boolean = False
+            If dgvProductosSeleccionados.Rows.Count > 0 Then
+                For index = 0 To dgvProductosSeleccionados.Rows.Count - 1
+                    If dgvProductosSeleccionados.Rows(index).Cells(1).Value.Equals(fila(1)) Then
+                        dgvProductosSeleccionados.Rows(index).Cells(3).Value = (Integer.Parse(dgvProductosSeleccionados.Rows(index).Cells(3).Value) + Integer.Parse(fila(3))).ToString
+                        existe = True
+                    End If
+                Next
+                If existe = False Then
+                    dgvProductosSeleccionados.Rows.Add(fila)
+                End If
+
+            Else
+                'agregando el producto al segundo datagridview 
+                dgvProductosSeleccionados.Rows.Add(fila)
+            End If
+        Else
+            MsgBox("SR USUARIO COMPLETE LOS CAMPOS FALTANTES")
+
+        End If
+    End Sub
+
+
+
+
+
+
 End Class
