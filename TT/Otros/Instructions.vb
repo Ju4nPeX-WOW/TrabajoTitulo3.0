@@ -16,8 +16,8 @@ Class Instructions
         Try
             command.Connection = conexion.GetConexion()
             conexion.AbrirConexion()
-            dataset.Reset() ' comenta esta linea...
-            'dataset.Clear() ' y descomenta esta linea, luego abre historial de ajustes y cambia de pestañas...veras algo extraño. luego de eso comenta esta linea y descomenta la de arriba
+            'dataset.Reset() ' comenta esta linea...
+            dataset.Clear() ' y descomenta esta linea, luego abre historial de ajustes y cambia de pestañas...veras algo extraño. luego de eso comenta esta linea y descomenta la de arriba
             sentencia = "Select " & columnas & " from " & tabla & condicion
             MsgBox(sentencia)
             command.CommandText = sentencia
