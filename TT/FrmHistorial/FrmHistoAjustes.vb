@@ -30,6 +30,7 @@
     Private Sub FrmHistoAjustes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         rellenarCmb()
         dataset = BsnHistoAjustes.obtHistPrecios()
+        dgvPrecios.Rows.Clear()
         dgvPrecios.DataSource = dataset.Tables(0).DefaultView
     End Sub
 
