@@ -122,41 +122,28 @@
 
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
 
-        If activeAgregar Then
-            If txtRutSnDV.Text = "" Or txtDV.Text = "" Or txtNombres.Text = "" Or txtApellidoP.Text = "" Or txtApellidoM.Text = "" Or tbDescuento.Value = 0 Then
-                MsgBox("Por favor complete los campos requeridos...", vbCritical)
-            Else
-                If Not Cliente.validarRut(txtRutSnDV.Text, txtDV.Text) Then
-                    MsgBox("El RUT ingresado NO ES CORRECTO")
-                Else
-                    'Seteando el objeto clientes con sus caracteristicas
-                    Cliente.Rut = txtRutSnDV.Text
-                    Cliente.Nombres = txtNombres.Text
-                    Cliente.ApelidoPaterno = txtApellidoP.Text
-                    Cliente.ApellidoMaterno = txtApellidoM.Text
-                    Cliente.Descuento = tbDescuento.Value
+        'VALIDAR 
+        If RealizarValidacion() Then
+            'Seteando el objeto clientes con sus caracteristicas
 
-                    BsnCliente.agregarCliente(Cliente)
+            Cliente.Rut = txtRutSnDV.Text
+            Cliente.Nombres = txtNombres.Text
+            Cliente.ApelidoPaterno = txtApellidoP.Text
+            Cliente.ApellidoMaterno = txtApellidoM.Text
+            Cliente.Descuento = tbDescuento.Value
 
-                End If
+            If activeAgregar Then
+                BsnCliente.agregarCliente(Cliente)
+
+
             End If
-        End If
 
-        If activeEditar Then
-
-            If txtRutSnDV.Text = "" Or txtDV.Text = "" Or txtNombres.Text = "" Or txtApellidoP.Text = "" Or txtApellidoM.Text = "" Or tbDescuento.Value = 0 Then
-                MsgBox("Por favor complete los campos requeridos...", vbCritical)
-            Else
-
-                Cliente.Rut = txtRutSnDV.Text
-                Cliente.Nombres = txtNombres.Text
-                Cliente.ApelidoPaterno = txtApellidoP.Text
-                Cliente.ApellidoMaterno = txtApellidoM.Text
-                Cliente.Descuento = tbDescuento.Value
-
+            If activeEditar Then
                 BsnCliente.editarCliente(Cliente)
+
             End If
         End If
+
 
         pnlComponentes.Enabled = True
         pnlAcciones.Enabled = True
@@ -191,4 +178,34 @@
     Private Sub txtApellidoM_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtApellidoM.KeyPress
         e.Handled = validacion.IApellido(e)
     End Sub
+
+    Private Function RealizarValidacion()
+        Dim cumple As Boolean = False
+        'VALIDAR QUE LOS CAMPOS NO ESTEN VACIOS
+        Dim ListaText As New List(Of String())
+        ListaText.Add({"rut", txtRutSnDV.Text})
+        ListaText.Add({"digito verificador", txtDV.Text})
+        ListaText.Add({"nombre persona", txtNombres.Text})
+        ListaText.Add({"apellido", txtApellidoM.Text})
+        ListaText.Add({"apellido", txtApellidoP.Text})
+
+
+        Dim receptor = validacion.Val(ListaText) '<- INGRESAR LISTA DE TXT BOX 
+        If receptor(0) Then
+            'VALIDAR QUE LOS CMD , SI EXISTEN U OTRO ELEMENTO CUMPLE CON LA VAL
+
+            'VALIDAR QUE LOS DATOS CUMPLAN ESTRUTURA -> RUT O EMAIL
+            If validacion.ValidarRut(txtRutSnDV.Text, txtDV.Text) Then '<- INGRESAR RUT Y DV
+                cumple = True
+            Else
+                MsgBox("SR ADMINISTRADOR EL RUT NO ES VALIDO")
+            End If
+        Else
+            MsgBox(receptor(1))
+        End If
+
+
+        Return cumple
+    End Function
+
 End Class

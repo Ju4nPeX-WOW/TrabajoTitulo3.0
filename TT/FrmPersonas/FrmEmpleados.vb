@@ -127,76 +127,48 @@
 
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
 
-        If activeAgregar Then
-            If txtRutSnDV.Text = "" Or txtDV.Text = "" Or txtNombres.Text = "" Then
-                MsgBox("Por favor complete los campos requeridos...", vbCritical)
-            Else
-                If Not empleado.validarRut(txtRutSnDV.Text, txtDV.Text) Then
-                    MsgBox("El RUT ingresado NO ES CORRECTO")
-                Else
-                    'Seteando el objeto clientes con sus caracteristicas
-                    empleado.Rut = txtRutSnDV.Text
-                    empleado.Nombres = txtNombres.Text
-                    empleado.ApelidoPaterno = txtApellidoP.Text
-                    empleado.ApellidoMaterno = txtApellidoM.Text
-                    empleado.TelefonoCelular = txtCelu.Text
-                    empleado.TelefonoFijo = txtFono.Text
+        'realizar validacion
+        If RealizarValidacion() Then
+            'Seteando el objeto clientes con sus caracteristicas
+            empleado.Rut = txtRutSnDV.Text
+            empleado.Nombres = txtNombres.Text
+            empleado.ApelidoPaterno = txtApellidoP.Text
+            empleado.ApellidoMaterno = txtApellidoM.Text
+            empleado.TelefonoCelular = txtCelu.Text
+            empleado.TelefonoFijo = txtFono.Text
 
-                    BsnEmpleado.agregarEmpleado(empleado)
-                    Dim passEmpleado As String = empleado.Rut.ToString.Substring(0, 4)
-                    BsnUsuario.agregarUsuario(empleado.Rut, passEmpleado, 4)
+            If activeAgregar Then
+
+                BsnEmpleado.agregarEmpleado(empleado)
+                Dim passEmpleado As String = empleado.Rut.ToString.Substring(0, 4)
+                BsnUsuario.agregarUsuario(empleado.Rut, passEmpleado, 4)
 
 
-                    activeAgregar = False
-                    activeEditar = False
-                    pnlAcciones.Enabled = True
-                    pnlComponentes.Enabled = False
-
-                    txtRutSnDV.Text = ""
-                    txtDV.Text = ""
-                    txtNombres.Text = ""
-                    txtApellidoP.Text = ""
-                    txtApellidoM.Text = ""
-                    txtCelu.Text = ""
-                    txtFono.Text = ""
-
-                    recargarDGV()
-                End If
             End If
-        End If
 
-        If activeEditar Then
-            If txtRutSnDV.Text = "" Or txtDV.Text = "" Or txtNombres.Text = "" Then
-                MsgBox("Por favor complete los campos requeridos...", vbCritical)
-            Else
-
-                empleado.Rut = txtRutSnDV.Text
-                empleado.Nombres = txtNombres.Text
-                empleado.ApelidoPaterno = txtApellidoP.Text
-                empleado.ApellidoMaterno = txtApellidoM.Text
-                empleado.TelefonoCelular = txtCelu.Text
-                empleado.TelefonoFijo = txtFono.Text
+            If activeEditar Then
 
                 BsnEmpleado.editarEmpleado(empleado)
 
-                activeAgregar = False
-                activeEditar = False
-                pnlAcciones.Enabled = True
-                pnlComponentes.Enabled = False
 
-                txtRutSnDV.Text = ""
-                txtDV.Text = ""
-                txtNombres.Text = ""
-                txtApellidoP.Text = ""
-                txtApellidoM.Text = ""
-                txtCelu.Text = ""
-                txtFono.Text = ""
-
-                recargarDGV()
 
             End If
-
         End If
+
+        activeAgregar = False
+        activeEditar = False
+        pnlAcciones.Enabled = True
+        pnlComponentes.Enabled = False
+
+        txtRutSnDV.Text = ""
+        txtDV.Text = ""
+        txtNombres.Text = ""
+        txtApellidoP.Text = ""
+        txtApellidoM.Text = ""
+        txtCelu.Text = ""
+        txtFono.Text = ""
+
+        recargarDGV()
 
     End Sub
 
@@ -233,4 +205,38 @@
         e.Handled = validacion.ITelefonoF(e)
 
     End Sub
+
+    Private Function RealizarValidacion()
+        Dim cumple As Boolean = False
+        'VALIDAR QUE LOS CAMPOS NO ESTEN VACIOS
+        Dim ListaText As New List(Of String())
+        ListaText.Add({"rut", txtRutSnDV.Text})
+        ListaText.Add({"digito verificador", txtDV.Text})
+        ListaText.Add({"nombre persona", txtNombres.Text})
+        ListaText.Add({"apellido", txtApellidoM.Text})
+        ListaText.Add({"apellido", txtApellidoP.Text})
+        ListaText.Add({"telefono fijo", txtCelu.Text})
+        ListaText.Add({"telefono celular", txtFono.Text})
+
+
+
+        Dim receptor = validacion.Val(ListaText) '<- INGRESAR LISTA DE TXT BOX 
+        If receptor(0) Then
+            'VALIDAR QUE LOS CMD , SI EXISTEN U OTRO ELEMENTO CUMPLE CON LA VAL
+
+            'VALIDAR QUE LOS DATOS CUMPLAN ESTRUTURA -> RUT O EMAIL
+            If validacion.ValidarRut(txtRutSnDV.Text, txtDV.Text) Then '<- INGRESAR RUT Y DV
+                cumple = True
+            Else
+                MsgBox("SR ADMINISTRADOR EL RUT NO ES VALIDO")
+            End If
+        Else
+            MsgBox(receptor(1))
+        End If
+
+
+        Return cumple
+    End Function
+
+
 End Class

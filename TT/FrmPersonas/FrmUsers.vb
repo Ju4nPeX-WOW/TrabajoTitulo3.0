@@ -64,6 +64,10 @@
     End Sub
 
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
+        'PRIMERO VALIDAR
+        If REALIZARVALIDACION() Then
+
+        End If
         If dgvUsua.Rows.Count > 0 Then
             Dim pal As String = ""
             Dim contador As Byte = 0
@@ -116,13 +120,48 @@
     End Sub
 
 
-    Private Sub txtRut_KeyPress(sender As Object, e As KeyPressEventArgs)
-        e.Handled = validacion.IRut(e)
 
+
+
+
+    Private Sub txtRut_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtRut.KeyPress
+        e.Handled = validacion.IRut(e)
     End Sub
 
+    Private Sub txtDV_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtDV.KeyPress
+        e.Handled = validacion.IRutVerificador(e)
+    End Sub
     Private Sub txtContraseña_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtContraseña.KeyPress
         e.Handled = validacion.IPassword(e)
-
     End Sub
+
+    Private Function RealizarValidacion()
+        Dim cumple As Boolean = False
+        'VALIDAR QUE LOS CAMPOS NO ESTEN VACIOS
+        Dim ListaText As New List(Of String())
+        ListaText.Add({"rut", txtRut.Text})
+        ListaText.Add({"digito verificador", txtDV.Text})
+        ListaText.Add({"password", txtContraseña.Text})
+        Dim receptor = validacion.Val(ListaText) '<- INGRESAR LISTA DE TXT BOX 
+        If receptor(0) Then
+            'VALIDAR QUE LOS CMD , SI EXISTEN U OTRO ELEMENTO CUMPLE CON LA VAL
+            If Not cmbPermisos.SelectedIndex < 0 Then
+
+                'VALIDAR QUE LOS DATOS CUMPLAN ESTRUTURA -> RUT O EMAIL
+                If validacion.ValidarRut(txtRut.Text, txtDV.Text) Then '<- INGRESAR RUT Y DV
+                    cumple = True
+                Else
+                    MsgBox("SR ADMINISTRADOR EL RUT NO ES VALIDO")
+                End If
+            Else
+                MsgBox("SR ADMINISTRADOR POR FAVOR ESTABLESCA LOS PERMISOS")
+            End If
+        Else
+            MsgBox(receptor(1))
+        End If
+
+
+        Return cumple
+    End Function
+
 End Class

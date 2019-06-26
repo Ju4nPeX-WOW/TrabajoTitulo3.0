@@ -28,6 +28,9 @@ Partial Class FrmUsers
         Me.cmbProv = New System.Windows.Forms.ComboBox()
         Me.dgvUsua = New System.Windows.Forms.DataGridView()
         Me.pnlComponentes = New System.Windows.Forms.Panel()
+        Me.txtDV = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.txtRut = New System.Windows.Forms.TextBox()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.cmbPermisos = New System.Windows.Forms.ComboBox()
@@ -35,9 +38,6 @@ Partial Class FrmUsers
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lblRut = New System.Windows.Forms.Label()
-        Me.txtDV = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.txtRut = New System.Windows.Forms.TextBox()
         CType(Me.picEditar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picEliminar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvUsua, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -132,6 +132,31 @@ Partial Class FrmUsers
         Me.pnlComponentes.Size = New System.Drawing.Size(1127, 174)
         Me.pnlComponentes.TabIndex = 81
         '
+        'txtDV
+        '
+        Me.txtDV.Location = New System.Drawing.Point(228, 54)
+        Me.txtDV.MaxLength = 1
+        Me.txtDV.Name = "txtDV"
+        Me.txtDV.Size = New System.Drawing.Size(51, 20)
+        Me.txtDV.TabIndex = 100
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(212, 56)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(10, 13)
+        Me.Label7.TabIndex = 99
+        Me.Label7.Text = "-"
+        '
+        'txtRut
+        '
+        Me.txtRut.Location = New System.Drawing.Point(61, 54)
+        Me.txtRut.MaxLength = 8
+        Me.txtRut.Name = "txtRut"
+        Me.txtRut.Size = New System.Drawing.Size(145, 20)
+        Me.txtRut.TabIndex = 98
+        '
         'btnCancelar
         '
         Me.btnCancelar.Location = New System.Drawing.Point(790, 105)
@@ -192,31 +217,6 @@ Partial Class FrmUsers
         Me.lblRut.Size = New System.Drawing.Size(27, 13)
         Me.lblRut.TabIndex = 0
         Me.lblRut.Text = "Rut:"
-        '
-        'txtDV
-        '
-        Me.txtDV.Location = New System.Drawing.Point(228, 54)
-        Me.txtDV.MaxLength = 1
-        Me.txtDV.Name = "txtDV"
-        Me.txtDV.Size = New System.Drawing.Size(51, 20)
-        Me.txtDV.TabIndex = 100
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(212, 56)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(10, 13)
-        Me.Label7.TabIndex = 99
-        Me.Label7.Text = "-"
-        '
-        'txtRut
-        '
-        Me.txtRut.Location = New System.Drawing.Point(61, 54)
-        Me.txtRut.MaxLength = 8
-        Me.txtRut.Name = "txtRut"
-        Me.txtRut.Size = New System.Drawing.Size(145, 20)
-        Me.txtRut.TabIndex = 98
         '
         'FrmUsers
         '
