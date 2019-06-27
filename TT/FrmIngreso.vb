@@ -1,6 +1,8 @@
 ﻿Imports System.ComponentModel
 
 Public Class FrmIngreso
+    Dim validacion As New Validacionesv2
+
     Dim Validaciones As New Validaciones()
     Dim bsnUsuario As New BsnUsuario
 
@@ -11,7 +13,7 @@ Public Class FrmIngreso
                 MsgBox("Ingreso Correcto")
                 'Pienso que podría mandar la instancia de objeto del usuario para usar la info en el menu de opciones, y ver que opciones tiene el usuario
                 Dim formprincipal As New PrincipalForm()
-                formprincipal.RecibirUsuario(bsnUsuario.ObtenerUsuario(txtUsua.Text, txtContra.Text))
+                formprincipal.RecibirUsuario(bsnUsuario.ObtenerUsuarioEmpleado(txtUsua.Text, txtContra.Text))
 
 
                 Me.Hide()
@@ -38,20 +40,10 @@ Public Class FrmIngreso
     End Sub
 
     Private Sub txtUsua_KeyPress(sender As Object, evento As KeyPressEventArgs) Handles txtUsua.KeyPress
-        Dim largo As Byte = txtUsua.Text.Length
-        Dim condicion As Byte = 8
-        Dim correcto As Boolean = Validaciones.soloNumeros(largo, evento, condicion) 'retorna true si esta todo correcto
-        If Not (correcto) Then
-            evento.Handled = True
-        End If
+        evento.Handled = validacion.MaxRut
     End Sub
     Private Sub txtContra_KeyPress(sender As Object, evento As KeyPressEventArgs) Handles txtContra.KeyPress
-        Dim largo As Byte = txtContra.Text.Length
-        Dim condicion As Byte = 10
-        Dim correcto As Boolean = Validaciones.soloLetras(largo, evento, condicion)
-        If Not (correcto) Then
-            evento.Handled = True
-        End If
+        evento.Handled = validacion.MaxPassword
     End Sub
 
 

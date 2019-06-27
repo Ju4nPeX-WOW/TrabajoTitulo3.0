@@ -11,6 +11,7 @@ Class Instructions
 
 
 
+
     'SELECCION SIMPLE
     Public Function Seleccionar(tabla As String, columnas As String, condicion As String)
         Try
@@ -189,20 +190,25 @@ Class Instructions
 
     Public Function obtenerNumeroVenta()
 
-        Dim cnn As SqlConnection = Nothing
-        Dim cmd As SqlCommand = Nothing
-
-        Dim ultimaVenta As Integer = 0
         Try
-            cnn = New SqlConnection(conexion.getStringConexion)
-            cmd = New SqlCommand("SELECT NUM_VENTA FROM VENTAS WHERE NUM_VENTA = (SELECT MAX(NUM_VENTA) FROM VENTAS)", cnn)
-            cnn.Open()
-            ultimaVenta = CInt(cmd.ExecuteScalar())
-            cnn.Close()
+            command.Connection = conexion.GetConexion()
+            conexion.AbrirConexion()
+            sentencia = "SELECT MAX(NUM_VENTA)FROM VENTAS"
+            command.CommandText = sentencia
+            MsgBox(sentencia)
+            Dim reader As New OleDbDataAdapter
+            dataset.Clear()
+            reader.SelectCommand = command
+            reader.Fill(dataset)
+            conexion.CerrarConexion()
+
         Catch ex As Exception
-            MsgBox("error: " & ex.ToString)
+            MsgBox("Error: " & ex.ToString)
+
         End Try
-        Return ultimaVenta
+
+
+        Return dataset
     End Function
 
     Public Sub ReiniciarIdentity(tabla As String)

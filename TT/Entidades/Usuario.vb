@@ -1,6 +1,6 @@
 ﻿
 Public Class Usuario
-    Inherits Persona
+    Inherits Empleado
     Protected _blanckUsuario As Boolean = True
     Protected _idUsuario As Short
     Protected _permisos As Short

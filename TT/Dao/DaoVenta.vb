@@ -16,7 +16,7 @@
         'Me da error, debe ser que char solo acepta ciertos caracteres
     End Sub
     Public Function obtenerUltimaVenta()
-        Return Instructions.obtenerNumeroVenta()
+        Return Instructions.Seleccionar("Ventas", "MAX(NUM_VENTA)", "")
     End Function
 
 End Class

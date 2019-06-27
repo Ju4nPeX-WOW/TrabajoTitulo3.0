@@ -29,6 +29,16 @@
         instrucciones.FalseDelete(tabla, condicion)
     End Sub
 
+    Public Function ObtenerUsuarioEmpleado(condicion As String)
+        Dim recondicion As String = " As US
+        Left Join EMPLEADOS AS EM ON US.Rut_empleado = EM.Rut_empleado
+        WHERE US.False_delete!= 1 and " & condicion
+        Dim columnas As String = "US.Id_usuario , US.Rut_empleado , US.Permisos ,EM.Nombres , Apellido_p , Apellido_m "
+        'Return instrucciones.SelectWithFalseDelete("Usuarios", "*", recondicion)
+        Return instrucciones.Seleccionar("Usuarios", columnas, recondicion)
+
+
+    End Function
 
 
 End Class

@@ -1,4 +1,6 @@
 ﻿Public Class frmVenta
+    Private _usuario As New Usuario
+
     Protected BsnEmpleado As New BsnEmpleado
     Protected DaoEmpleado As New DaoEmpleado
 
@@ -14,7 +16,13 @@
     Protected Enumeraciones As New Enumeraciones
 
     Dim Validacion As New Validacionesv2
+
     Dim Instructions As New Instructions 'es una clase y no es publica
+    Public Sub RecibirUsuario(objeto As Usuario)
+        _usuario = objeto 'del form ingreso se recibe el objeto que es el usuario que ingreso al sistema 
+        MsgBox(_usuario.Nombres)
+    End Sub
+
 
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
         Me.Close()
@@ -24,9 +32,9 @@
         txtBuscar.MaxLength = Validacion.MaxOtroNombre
         txtRutSnDV.MaxLength = Validacion.MaxRut
         txtDV.MaxLength = Validacion.MaxRutVerificador
-
         lblTransaccion.Text = (BsnVenta.obtenerUltimaVenta + 1).ToString
-
+        MsgBox(_usuario.Nombres)
+        txtVendedor.Text = _usuario.Nombres + " " + _usuario.ApelidoPaterno + " " + _usuario.ApellidoMaterno
         'rellenar combobox empleado
         Dim datasetEmpleados As DataSet = BsnEmpleado.obtenerTodosEmpleados
         'cmbVendedor.DataSource = datasetEmpleados.Tables(0)
@@ -40,7 +48,6 @@
         dgvProductos.DataSource = datasetProductos.Tables(0).DefaultView
 
         Timer1.Enabled = True
-        txtVendedor.Text = ""
         txtRutSnDV.Text = ""
         txtDV.Text = ""
         txtNombreCliente.Text = ""
@@ -147,7 +154,7 @@
 
     Private Sub btnRealizarVenta_Click(sender As Object, e As EventArgs) Handles btnRealizarVenta.Click
         'Validar ->
-        If RealizarValidacion Then
+        If RealizarValidacion() Then
             'insertar en Venta
 
             '           num_venta

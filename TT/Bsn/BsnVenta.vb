@@ -68,7 +68,17 @@
     End Sub
 
     Public Function obtenerUltimaVenta()
-        Return DaoVenta.obtenerUltimaVenta()
+        Dim ultimaVenta As Integer = 0
+        Dim dataset As New DataSet
+        dataset = DaoVenta.obtenerUltimaVenta()
+        Try
+            If dataset.Tables(0).Rows.Count - 1 Then
+                ultimaVenta = dataset.Tables(0)(0)(0)
+            End If
+        Catch ex As Exception
+            MsgBox("Error: " & ex.ToString)
+        End Try
+        Return ultimaVenta
     End Function
 
 End Class

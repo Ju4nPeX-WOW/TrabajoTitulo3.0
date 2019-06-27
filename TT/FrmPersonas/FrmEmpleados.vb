@@ -1,5 +1,5 @@
 ﻿Public Class FrmEmpleados
-
+    Dim _usuario As New Usuario
     Dim empleado As New Empleado
     Dim usuario As New Usuario
     Dim BsnEmpleado As New BsnEmpleado
@@ -9,6 +9,13 @@
 
     Dim activeAgregar As Boolean = False
     Dim activeEditar As Boolean = False
+
+    Public Sub RecibirUsuario(objeto As Usuario)
+        _usuario = objeto 'del form ingreso se recibe el objeto que es el usuario que ingreso al sistema 
+        MsgBox(_usuario.Nombres)
+    End Sub
+
+
     Public Sub recargarDGV()
         dataset = BsnEmpleado.obtenerTodosEmpleados()
         dgvEmpleados.DataSource = dataset.Tables(0).DefaultView
@@ -26,6 +33,7 @@
 
         recargarDGV()
         pnlComponentes.Enabled = False
+        Reset()
     End Sub
 
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
@@ -237,6 +245,13 @@
 
         Return cumple
     End Function
+
+    Private Sub Reset()
+        Dim permiso As New Permisos
+        picAgregar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "EMPLEADOS", "AGREGAR", "")
+        picEditar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "EMPLEADOS", "EDITAR", "")
+        picEliminar = permiso.OtorgarAcceso(_usuario.Permisos, "EMPLEADOS", "ELIMINAR", "")
+    End Sub
 
 
 End Class

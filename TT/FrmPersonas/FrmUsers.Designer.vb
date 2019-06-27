@@ -38,10 +38,12 @@ Partial Class FrmUsers
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lblRut = New System.Windows.Forms.Label()
+        Me.picAgregar = New System.Windows.Forms.PictureBox()
         CType(Me.picEditar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picEliminar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvUsua, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlComponentes.SuspendLayout()
+        CType(Me.picAgregar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BtnExit
@@ -66,7 +68,7 @@ Partial Class FrmUsers
         'picEditar
         '
         Me.picEditar.Image = CType(resources.GetObject("picEditar.Image"), System.Drawing.Image)
-        Me.picEditar.Location = New System.Drawing.Point(992, 442)
+        Me.picEditar.Location = New System.Drawing.Point(1010, 442)
         Me.picEditar.Name = "picEditar"
         Me.picEditar.Size = New System.Drawing.Size(39, 36)
         Me.picEditar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -218,10 +220,21 @@ Partial Class FrmUsers
         Me.lblRut.TabIndex = 0
         Me.lblRut.Text = "Rut:"
         '
+        'picAgregar
+        '
+        Me.picAgregar.Image = CType(resources.GetObject("picAgregar.Image"), System.Drawing.Image)
+        Me.picAgregar.Location = New System.Drawing.Point(965, 442)
+        Me.picAgregar.Name = "picAgregar"
+        Me.picAgregar.Size = New System.Drawing.Size(39, 36)
+        Me.picAgregar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.picAgregar.TabIndex = 82
+        Me.picAgregar.TabStop = False
+        '
         'FrmUsers
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 670)
+        Me.Controls.Add(Me.picAgregar)
         Me.Controls.Add(Me.pnlComponentes)
         Me.Controls.Add(Me.dgvUsua)
         Me.Controls.Add(Me.txtProv)
@@ -237,6 +250,7 @@ Partial Class FrmUsers
         CType(Me.dgvUsua, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlComponentes.ResumeLayout(False)
         Me.pnlComponentes.PerformLayout()
+        CType(Me.picAgregar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -260,4 +274,5 @@ Partial Class FrmUsers
     Friend WithEvents txtDV As TextBox
     Friend WithEvents Label7 As Label
     Friend WithEvents txtRut As TextBox
+    Friend WithEvents picAgregar As PictureBox
 End Class

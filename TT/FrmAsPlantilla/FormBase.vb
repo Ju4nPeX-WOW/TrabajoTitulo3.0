@@ -1,4 +1,6 @@
 ﻿Public Class FormBase
+    Private _usuario As New Usuario
+
 
     Protected listaDeObjetosForm As List(Of Object) ' Lista de objetos en la cual hare refencia a los elementos del form
     'botones - txtbox - label's , etc . Existe un FormBase del cual se heredan 

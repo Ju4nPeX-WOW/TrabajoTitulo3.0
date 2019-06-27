@@ -6,6 +6,13 @@
     Dim activeAgregar = False
     Dim activeEditar = False
     Dim activeEliminar = False
+    Dim _usuario As New Usuario
+
+    Public Sub RecibirUsuario(objeto As Usuario)
+        _usuario = objeto 'del form ingreso se recibe el objeto que es el usuario que ingreso al sistema 
+        MsgBox(_usuario.Nombres)
+    End Sub
+
 
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
         Me.Close()
@@ -108,6 +115,7 @@
 
         pnlComponentes.Enabled = False
         recargarDGV()
+        Reset()
     End Sub
 
     Private Sub btnCancelar_Click(sender As Object, e As EventArgs) Handles btnCancelar.Click
@@ -207,5 +215,10 @@
 
         Return cumple
     End Function
-
+    Private Sub reset()
+        Dim permiso As New Permisos
+        picAgregar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "CLIENTES", "AGREGAR", "")
+        picEditar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "CLIENTES", "EDITAR", "")
+        picEliminar = permiso.OtorgarAcceso(_usuario.Permisos, "CLIENTES", "ELIMINAR", "")
+    End Sub
 End Class

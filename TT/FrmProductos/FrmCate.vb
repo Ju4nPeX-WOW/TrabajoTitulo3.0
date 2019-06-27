@@ -1,7 +1,7 @@
 ﻿Public Class FrmCate
 
 
-    Protected usuario As Usuario '------------------------>Recepción del usuario que usa el sistema
+    Private _usuario As New Usuario    '------------------------>Recepción del usuario que usa el sistema
     Protected aux As Short       '------------------------>auxiliar donde guarda el id
     Protected Validaciones As New Validaciones
 
@@ -24,6 +24,12 @@
     Private validacion As New Validacionesv2
 
 
+
+    Public Sub RecibirUsuario(objeto As Usuario)
+        _usuario = objeto 'del form ingreso se recibe el objeto que es el usuario que ingreso al sistema 
+        MsgBox(_usuario.Nombres)
+    End Sub
+
     Private Sub BtnExitCat_Click(sender As Object, e As EventArgs) Handles BtnExitCat.Click
         Me.Close()
     End Sub
@@ -37,6 +43,8 @@
         listaDeObjetosRellenables = CrearColeccionRellenable()
 
         'SE ESTABLECEN CONFIGURACION POR DEFECTO
+
+        MsgBox("HOLA : " & _usuario.Nombres)
         Reset()
 
     End Sub
@@ -539,7 +547,14 @@
         MyBase.BloquearBotones(listaDeObjetosForm)
         MyBase.BloquearBotones(ColeccionNivelCategoria)
         CheckBox3.Enabled = False
-        MyBase.OpcionesMenuStrip(listaTSMDelForm, "desbloqueadas")
+        'bloque por permisos
+        Dim permiso As New Permisos
+        tsmAgregar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "CATEGORIAS", "AGREGAR", "")
+        tsmEditar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "CATEGORIAS", "EDITAR", "")
+        tsmEliminar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "CATEGORIAS", "ELIMINAR", "")
+
+        'MyBase.OpcionesMenuStrip(listaTSMDelForm, "desbloqueadas")
+
         CheckBox3.Visible = False
         CheckBox3.Checked = False
 

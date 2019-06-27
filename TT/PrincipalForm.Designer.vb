@@ -90,19 +90,19 @@ Partial Class PrincipalForm
         'PRODUCTOSToolStripMenuItem2
         '
         Me.PRODUCTOSToolStripMenuItem2.Name = "PRODUCTOSToolStripMenuItem2"
-        Me.PRODUCTOSToolStripMenuItem2.Size = New System.Drawing.Size(146, 22)
+        Me.PRODUCTOSToolStripMenuItem2.Size = New System.Drawing.Size(180, 22)
         Me.PRODUCTOSToolStripMenuItem2.Text = "PRODUCTOS"
         '
         'CATEGORIASToolStripMenuItem1
         '
         Me.CATEGORIASToolStripMenuItem1.Name = "CATEGORIASToolStripMenuItem1"
-        Me.CATEGORIASToolStripMenuItem1.Size = New System.Drawing.Size(146, 22)
+        Me.CATEGORIASToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
         Me.CATEGORIASToolStripMenuItem1.Text = "CATEGORIAS"
         '
         'DESCUENTOSToolStripMenuItem1
         '
         Me.DESCUENTOSToolStripMenuItem1.Name = "DESCUENTOSToolStripMenuItem1"
-        Me.DESCUENTOSToolStripMenuItem1.Size = New System.Drawing.Size(146, 22)
+        Me.DESCUENTOSToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
         Me.DESCUENTOSToolStripMenuItem1.Text = "DESCUENTOS"
         '
         'Principal_Personas
@@ -117,25 +117,25 @@ Partial Class PrincipalForm
         'USUARIOSToolStripMenuItem
         '
         Me.USUARIOSToolStripMenuItem.Name = "USUARIOSToolStripMenuItem"
-        Me.USUARIOSToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.USUARIOSToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.USUARIOSToolStripMenuItem.Text = "USUARIOS"
         '
         'EMPLEADOSToolStripMenuItem1
         '
         Me.EMPLEADOSToolStripMenuItem1.Name = "EMPLEADOSToolStripMenuItem1"
-        Me.EMPLEADOSToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.EMPLEADOSToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
         Me.EMPLEADOSToolStripMenuItem1.Text = "EMPLEADOS"
         '
         'CLIENTESToolStripMenuItem
         '
         Me.CLIENTESToolStripMenuItem.Name = "CLIENTESToolStripMenuItem"
-        Me.CLIENTESToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CLIENTESToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CLIENTESToolStripMenuItem.Text = "CLIENTES"
         '
         'PROVEEDORESToolStripMenuItem2
         '
         Me.PROVEEDORESToolStripMenuItem2.Name = "PROVEEDORESToolStripMenuItem2"
-        Me.PROVEEDORESToolStripMenuItem2.Size = New System.Drawing.Size(152, 22)
+        Me.PROVEEDORESToolStripMenuItem2.Size = New System.Drawing.Size(180, 22)
         Me.PROVEEDORESToolStripMenuItem2.Text = "PROVEEDORES"
         '
         'Principal_Estadisticas
@@ -191,19 +191,19 @@ Partial Class PrincipalForm
         'VENTASToolStripMenuItem
         '
         Me.VENTASToolStripMenuItem.Name = "VENTASToolStripMenuItem"
-        Me.VENTASToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.VENTASToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.VENTASToolStripMenuItem.Text = "VENTAS"
         '
         'COMPRASToolStripMenuItem
         '
         Me.COMPRASToolStripMenuItem.Name = "COMPRASToolStripMenuItem"
-        Me.COMPRASToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.COMPRASToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.COMPRASToolStripMenuItem.Text = "COMPRAS"
         '
         'AJUSTESToolStripMenuItem
         '
         Me.AJUSTESToolStripMenuItem.Name = "AJUSTESToolStripMenuItem"
-        Me.AJUSTESToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.AJUSTESToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.AJUSTESToolStripMenuItem.Text = "AJUSTES"
         '
         'Principal_Help

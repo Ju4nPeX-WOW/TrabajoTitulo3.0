@@ -27,9 +27,9 @@ Partial Class FrmDesc
         Me.cmbBuscarCat = New System.Windows.Forms.ComboBox()
         Me.txtBuscarProdCat = New System.Windows.Forms.TextBox()
         Me.mnsDes = New System.Windows.Forms.MenuStrip()
-        Me.tsmAgregarCat = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmExtenderCat = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmEliminarCat = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmAgregar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmExtender = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmFinalizar = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblProducto = New System.Windows.Forms.Label()
         Me.cmbProducto = New System.Windows.Forms.ComboBox()
         Me.dtpInicio = New System.Windows.Forms.DateTimePicker()
@@ -117,7 +117,7 @@ Partial Class FrmDesc
         '
         Me.mnsDes.AutoSize = False
         Me.mnsDes.Dock = System.Windows.Forms.DockStyle.None
-        Me.mnsDes.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAgregarCat, Me.tsmExtenderCat, Me.tsmEliminarCat})
+        Me.mnsDes.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAgregar, Me.tsmExtender, Me.tsmFinalizar})
         Me.mnsDes.Location = New System.Drawing.Point(0, 40)
         Me.mnsDes.Name = "mnsDes"
         Me.mnsDes.Size = New System.Drawing.Size(1139, 24)
@@ -125,26 +125,26 @@ Partial Class FrmDesc
         Me.mnsDes.Text = "MenuStrip1"
         Me.mnsDes.UseWaitCursor = True
         '
-        'tsmAgregarCat
+        'tsmAgregar
         '
-        Me.tsmAgregarCat.Image = CType(resources.GetObject("tsmAgregarCat.Image"), System.Drawing.Image)
-        Me.tsmAgregarCat.Name = "tsmAgregarCat"
-        Me.tsmAgregarCat.Size = New System.Drawing.Size(77, 20)
-        Me.tsmAgregarCat.Text = "Agregar"
+        Me.tsmAgregar.Image = CType(resources.GetObject("tsmAgregar.Image"), System.Drawing.Image)
+        Me.tsmAgregar.Name = "tsmAgregar"
+        Me.tsmAgregar.Size = New System.Drawing.Size(77, 20)
+        Me.tsmAgregar.Text = "Agregar"
         '
-        'tsmExtenderCat
+        'tsmExtender
         '
-        Me.tsmExtenderCat.Image = CType(resources.GetObject("tsmExtenderCat.Image"), System.Drawing.Image)
-        Me.tsmExtenderCat.Name = "tsmExtenderCat"
-        Me.tsmExtenderCat.Size = New System.Drawing.Size(80, 20)
-        Me.tsmExtenderCat.Text = "Extender"
+        Me.tsmExtender.Image = CType(resources.GetObject("tsmExtender.Image"), System.Drawing.Image)
+        Me.tsmExtender.Name = "tsmExtender"
+        Me.tsmExtender.Size = New System.Drawing.Size(80, 20)
+        Me.tsmExtender.Text = "Extender"
         '
-        'tsmEliminarCat
+        'tsmFinalizar
         '
-        Me.tsmEliminarCat.Image = CType(resources.GetObject("tsmEliminarCat.Image"), System.Drawing.Image)
-        Me.tsmEliminarCat.Name = "tsmEliminarCat"
-        Me.tsmEliminarCat.Size = New System.Drawing.Size(78, 20)
-        Me.tsmEliminarCat.Text = "Finalizar"
+        Me.tsmFinalizar.Image = CType(resources.GetObject("tsmFinalizar.Image"), System.Drawing.Image)
+        Me.tsmFinalizar.Name = "tsmFinalizar"
+        Me.tsmFinalizar.Size = New System.Drawing.Size(78, 20)
+        Me.tsmFinalizar.Text = "Finalizar"
         '
         'lblProducto
         '
@@ -336,9 +336,9 @@ Partial Class FrmDesc
     Friend WithEvents cmbBuscarCat As ComboBox
     Friend WithEvents txtBuscarProdCat As TextBox
     Friend WithEvents mnsDes As MenuStrip
-    Friend WithEvents tsmAgregarCat As ToolStripMenuItem
-    Friend WithEvents tsmExtenderCat As ToolStripMenuItem
-    Friend WithEvents tsmEliminarCat As ToolStripMenuItem
+    Friend WithEvents tsmAgregar As ToolStripMenuItem
+    Friend WithEvents tsmExtender As ToolStripMenuItem
+    Friend WithEvents tsmFinalizar As ToolStripMenuItem
     Friend WithEvents lblProducto As Label
     Friend WithEvents cmbProducto As ComboBox
     Friend WithEvents dtpInicio As DateTimePicker

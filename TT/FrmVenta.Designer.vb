@@ -68,9 +68,9 @@ Partial Class frmVenta
         Me.txtDV = New System.Windows.Forms.TextBox()
         Me.txtRutSnDV = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtVendedor = New System.Windows.Forms.TextBox()
         Me.txtNombreCliente = New System.Windows.Forms.TextBox()
         Me.lblNombreCliente = New System.Windows.Forms.Label()
+        Me.txtVendedor = New System.Windows.Forms.TextBox()
         CType(Me.agregarCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.disminuirCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -467,15 +467,6 @@ Partial Class frmVenta
         Me.Label2.TabIndex = 100
         Me.Label2.Text = "-"
         '
-        'txtVendedor
-        '
-        Me.txtVendedor.Enabled = False
-        Me.txtVendedor.Location = New System.Drawing.Point(120, 67)
-        Me.txtVendedor.MaxLength = 8
-        Me.txtVendedor.Name = "txtVendedor"
-        Me.txtVendedor.Size = New System.Drawing.Size(221, 20)
-        Me.txtVendedor.TabIndex = 102
-        '
         'txtNombreCliente
         '
         Me.txtNombreCliente.Enabled = False
@@ -494,15 +485,23 @@ Partial Class frmVenta
         Me.lblNombreCliente.TabIndex = 103
         Me.lblNombreCliente.Text = "Nombre Cliente:"
         '
+        'txtVendedor
+        '
+        Me.txtVendedor.Enabled = False
+        Me.txtVendedor.Location = New System.Drawing.Point(123, 67)
+        Me.txtVendedor.Name = "txtVendedor"
+        Me.txtVendedor.Size = New System.Drawing.Size(218, 20)
+        Me.txtVendedor.TabIndex = 105
+        '
         'frmVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.ClientSize = New System.Drawing.Size(1157, 631)
+        Me.Controls.Add(Me.txtVendedor)
         Me.Controls.Add(Me.txtNombreCliente)
         Me.Controls.Add(Me.lblNombreCliente)
-        Me.Controls.Add(Me.txtVendedor)
         Me.Controls.Add(Me.txtDV)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtRutSnDV)
@@ -599,7 +598,7 @@ Partial Class frmVenta
     Friend WithEvents txtDV As TextBox
     Friend WithEvents txtRutSnDV As TextBox
     Friend WithEvents Label2 As Label
-    Friend WithEvents txtVendedor As TextBox
     Friend WithEvents txtNombreCliente As TextBox
     Friend WithEvents lblNombreCliente As Label
+    Friend WithEvents txtVendedor As TextBox
 End Class

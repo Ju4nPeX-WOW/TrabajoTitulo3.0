@@ -1,8 +1,15 @@
 ﻿Public Class FrmUsers
+    Private _usuario As New Usuario
     Dim dataset As New DataSet
     Dim BsnUsuario As New BsnUsuario
     Dim validacion As New Validacionesv2
     Dim BsnEmpleado As New BsnEmpleado
+
+
+    Public Sub RecibirUsuario(objeto As Usuario)
+        _usuario = objeto 'del form ingreso se recibe el objeto que es el usuario que ingreso al sistema 
+        MsgBox(_usuario.Nombres)
+    End Sub
 
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
         Me.Close()
@@ -18,7 +25,7 @@
         dgvUsua.DataSource = dataset.Tables(0).DefaultView
 
 
-
+        reset()
     End Sub
 
     Public Sub recargarDGV()
@@ -65,7 +72,7 @@
 
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
         'PRIMERO VALIDAR
-        If REALIZARVALIDACION() Then
+        If RealizarValidacion() Then
 
         End If
         If dgvUsua.Rows.Count > 0 Then
@@ -163,5 +170,10 @@
 
         Return cumple
     End Function
-
+    Private Sub reset()
+        Dim permiso As New Permisos
+        picEditar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "USUARIOS", "AGREGAR", "")
+        picEditar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "USUARIOS", "EDITAR", "")
+        picEliminar = permiso.OtorgarAcceso(_usuario.Permisos, "USUARIOS", "ELIMINAR", "")
+    End Sub
 End Class

@@ -43,7 +43,8 @@
         Dim result As String = ""
         Dim list = {{"Empleado lvl 1", 1},
                     {"Empleado lvl 2", 2},
-                    {"Administrador", 3}}
+                    {"Empleado lvl 3", 3},
+                    {"Administrador", 4}}
         Console.WriteLine(list.Length)
         For i = 0 To list.GetUpperBound(0)
             Console.WriteLine(i)

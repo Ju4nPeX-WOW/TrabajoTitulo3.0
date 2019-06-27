@@ -1,6 +1,6 @@
 ﻿Public Class FrmDesc
 
-    Protected usuario As Usuario '------------------------>Recepción del usuario que usa el sistema
+    Private _usuario As New Usuario '------------------------>Recepción del usuario que usa el sistema
     Protected descuento As Descuento '------------------------>Recepción del usuario que usa el sistema
 
     Protected aux As Short       '------------------------>auxiliar donde guarda el id
@@ -16,6 +16,12 @@
 
 
     Protected dataset As New DataSet
+    Public Sub RecibirUsuario(objeto As Usuario)
+        _usuario = objeto 'del form ingreso se recibe el objeto que es el usuario que ingreso al sistema 
+        MsgBox(_usuario.Nombres)
+    End Sub
+
+
     Private Sub BtnExitDes_Click(sender As Object, e As EventArgs) Handles BtnExitDes.Click
         Me.Close()
     End Sub
@@ -111,6 +117,11 @@
     Private Sub FrmDesc_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'largo
         cmbProducto.MaxLength = Validacion.MaxOtroNombre
+
+
+        reset()
+
+
         BuildDGV()
         RellenarDataSet()
         RellenarCMB()
@@ -138,7 +149,7 @@
 
     End Sub
 
-    Private Sub TsmAgregarCat_Click(sender As Object, e As EventArgs) Handles tsmAgregarCat.Click
+    Private Sub TsmAgregarCat_Click(sender As Object, e As EventArgs) Handles tsmAgregar.Click
         activeAgregar = True
         activeEditar = False
         activeEliminar = False
@@ -147,7 +158,7 @@
 
     End Sub
 
-    Private Sub TsmEditarCat_Click(sender As Object, e As EventArgs) Handles tsmExtenderCat.Click
+    Private Sub TsmEditarCat_Click(sender As Object, e As EventArgs) Handles tsmExtender.Click
         activeAgregar = False
         activeEditar = True
         activeEliminar = False
@@ -158,7 +169,7 @@
 
     End Sub
 
-    Private Sub TsmEliminarCat_Click(sender As Object, e As EventArgs) Handles tsmEliminarCat.Click
+    Private Sub TsmEliminarCat_Click(sender As Object, e As EventArgs) Handles tsmFinalizar.Click
         activeAgregar = False
         activeEditar = False
         activeEliminar = True
@@ -293,7 +304,14 @@
         End If
         Return cumple
     End Function
+    Private Sub reset()
+        Dim permiso As New Permisos
 
+        tsmAgregar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "DESCUENTOS", "AGREGAR", "")
+        tsmExtender.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "DESCUENTOS", "EXTENDER", "")
+        tsmFinalizar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "DESCUENTOS", "FINALIZAR", "")
+
+    End Sub
 
 End Class
 

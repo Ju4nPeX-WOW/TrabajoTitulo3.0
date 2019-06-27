@@ -2,7 +2,7 @@
 
 Public Class frmProd2
 
-    Protected usuario As Usuario '------------------------>Recepción del usuario que usa el sistema
+    Protected usuario As Usuario  '------------------------>Recepción del usuario que usa el sistema
     Protected aux As Short       '------------------------>auxiliar donde guarda el id
     Protected Validaciones As New Validaciones
     Protected Validaciones2 As New Validacionesv2
@@ -24,12 +24,6 @@ Public Class frmProd2
     Protected largo As Short
 
 
-    Public Sub RecibirUsuario(objeto As Usuario)
-        usuario = objeto 'del form ingreso se recibe el objeto que es el usuario que ingreso al sistema
-        'MsgBox("ID-USUARIO : " & usuario.IdUsuario)
-
-
-    End Sub
 
 
     Private Function CrearColeccionTMS()
@@ -245,9 +239,23 @@ Public Class frmProd2
             OpcionesMenuStrip(listaDeObjetosForm, "desbloquedas")
         End If
 
-
+        Reset()
 
     End Sub
+
+    Private Sub Reset()
+        Dim permiso As New Permisos
+        tsmAgregar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "AGREGAR", "")
+        tsmEditar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "EDITAR", "")
+        tsmEliminar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "EDITAR", "")
+
+        tbpSimple.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "AGREGAR", "SIMPLE")
+        tbpAvanzado.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "AGREGAR", "AVANZADO")
+
+
+        btnSimpleEliminar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "ELIMINAR", "ELIMINAR")
+    End Sub
+
 
 
 

@@ -93,6 +93,7 @@
     <Compile Include="Dao\DaoEmpleado.vb" />
     <Compile Include="Dao\DaoEstadistica.vb" />
     <Compile Include="Dao\DaoHistoAjustes.vb" />
+    <Compile Include="Dao\DaoPermisos.vb" />
     <Compile Include="Dao\DaoProducto.vb" />
     <Compile Include="Dao\DaoProductoCategoria.vb" />
     <Compile Include="Dao\DaoUsuario.vb" />
@@ -183,6 +184,7 @@
     <Compile Include="Otros\PasswordDialogBox.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Otros\Permisos.vb" />
     <Compile Include="Otros\Validacionesv2.vb" />
     <Compile Include="PrincipalForm.vb">
       <SubType>Form</SubType>
