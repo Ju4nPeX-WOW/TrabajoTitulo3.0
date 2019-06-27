@@ -93,26 +93,9 @@
         Next
     End Sub
 
-    Public Sub DesbloquearBotones()
-        'LABELES
-
-        'TXT , COMBO y NUD
 
 
 
-
-        btnAce.Enabled = True
-        btnCan.Enabled = True
-    End Sub
-
-    Public Sub BloquearBotones()
-        'LABELES
-
-        'TXT , COMBO y NUD
-
-        btnAce.Enabled = False
-        btnAce.Enabled = False
-    End Sub
 
     Private Sub FrmDesc_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'largo
@@ -154,7 +137,10 @@
         activeEditar = False
         activeEliminar = False
 
-        DesbloquearBotones()
+        btnAce.Enabled = True
+        btnCan.Enabled = True
+
+
 
     End Sub
 
@@ -169,7 +155,7 @@
 
     End Sub
 
-    Private Sub TsmEliminarCat_Click(sender As Object, e As EventArgs) Handles tsmFinalizar.Click
+    Private Sub TsmFinalizarCat_Click(sender As Object, e As EventArgs) Handles tsmFinalizar.Click
         activeAgregar = False
         activeEditar = False
         activeEliminar = True
@@ -234,7 +220,8 @@
 
         RellenarDataSet()
 
-        BloquearBotones()
+        btnAce.Enabled = False
+        btnCan.Enabled = False
 
     End Sub
 

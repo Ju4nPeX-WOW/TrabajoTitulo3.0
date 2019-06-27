@@ -180,7 +180,7 @@ Partial Class FrmUsers
         'cmbPermisos
         '
         Me.cmbPermisos.FormattingEnabled = True
-        Me.cmbPermisos.Items.AddRange(New Object() {"1", "2", "3"})
+        Me.cmbPermisos.Items.AddRange(New Object() {"1", "2", "3", "4"})
         Me.cmbPermisos.Location = New System.Drawing.Point(385, 105)
         Me.cmbPermisos.Name = "cmbPermisos"
         Me.cmbPermisos.Size = New System.Drawing.Size(236, 21)

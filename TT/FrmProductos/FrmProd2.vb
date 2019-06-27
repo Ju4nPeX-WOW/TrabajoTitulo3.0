@@ -2,11 +2,11 @@
 
 Public Class frmProd2
 
-    Protected usuario As Usuario  '------------------------>Recepción del usuario que usa el sistema
+    Private usuario As New Usuario '------------------------>Recepción del usuario que usa el sistema
     Protected aux As Short       '------------------------>auxiliar donde guarda el id
     Protected Validaciones As New Validaciones
     Protected Validaciones2 As New Validacionesv2
-
+    Private permiso As New Permisos
 
     Protected activeAgregar As Boolean = False  'cuando el usuario presiona el boton del menu strip agregar se torna verdadero
     Protected activeEditar As Boolean = False   'cuando el usuario presiona el boton del menu strip editar se torna verdadero
@@ -25,22 +25,25 @@ Public Class frmProd2
 
 
 
-
-    Private Function CrearColeccionTMS()
-        Dim coleccion As New List(Of Object)
-        coleccion.Add(tsmAgregar)
-        coleccion.Add(tsmEditar)
-        coleccion.Add(tsmEliminar)
-
-        Return coleccion
-
-    End Function
-
-    Public Sub DesbloquearBotonesProd(page As String) 'Metodo para tabProductos
+    Public Sub RecibirUsuario(objeto As Empleado)
+        usuario = objeto 'del form ingreso se recibe el objeto que es el usuario que ingreso al sistema
+        'MsgBox("ID-USUARIO : " & usuario.IdUsuario)
 
 
-        'page equivale a la pestaña seleccionada en el tabcontrol1
-        'MsgBox(TabControl1.SelectedTab.Text)
+    End Sub
+    Private Sub BloquearTMS()
+        tsmAgregar.Enabled = False
+        tsmEditar.Enabled = False
+        tsmEliminar.Enabled = False
+    End Sub
+    Private Sub DesbloquearTMS()
+
+        tsmAgregar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "AGREGAR", "")
+        tsmEditar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "EDITAR", "")
+        tsmEliminar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "ELIMINAR", "")
+    End Sub
+
+    Public Sub DesbloquearBotonesProd(page As String) 'Metodo para tabProductos 
         If page.Equals("Simple") Or page.Equals("Simple-y-Avanzado") Then        'equivale al tabSimple
             'MsgBox("entre 1")
             'LABELES
@@ -150,13 +153,18 @@ Public Class frmProd2
 
         End If
     End Sub
-    Public Sub name_no_definido()
+    Public Sub Reset()
         cmbAvanzadoRazon.Items.Clear() 'Limpieza del combobox Razon AVANZADO pero para administradores, se eliminan todos los items
         cmbSimpleRazon.Items.Clear()   'Limpieza del combobox Razon pero para USUARIOS, se eliminan los items
 
-        TabControl1.Enabled = True 'Tabcontrol1 es en el que el usuario puede modificar el precio o escribir en los textbox 
-        tbpSimple.Enabled = True   'TabcontrolSimple habilitado para interactuar
-        tbpAvanzado.Enabled = True 'TabcontrolAvanzado habilitado para interactuar
+        TabControl1.Enabled = True
+        TabControl1.Visible = True
+        'Tabcontrol1 es en el que el usuario puede modificar el precio o escribir en los textbox 
+
+        tbpSimple.Enabled = True
+        'TabcontrolSimple habilitado para interactuar
+        tbpAvanzado.Enabled = True
+        'TabcontrolAvanzado habilitado para interactuar
 
         Dim enumeracion As New Enumeraciones
         If (Not activeAgregar) And (Not activeEditar) And (Not activeEliminar) Then 'Si es que no se presiona ningun boton del menuStrip o se presiona aceptar/cancelar            
@@ -164,7 +172,12 @@ Public Class frmProd2
             TabControl1.Enabled = False                       'Bloqueo del tabcontrol1 ya que no se selecciona ninguna funcion agregar editar eliminar
             TabControl1.SelectedTab = tbpSimple               'El predeterminado para mostrar el tabsimple
             bloquearBotonesProd("Simple-y-Avanzado")
-            OpcionesMenuStrip(listaTSMDelForm, "desbloqueadas")  'se desbloquean las opciones AGREGAR - EDITAR - ELIMINAR
+            tsmAgregar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "AGREGAR", "")
+            tsmEditar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "EDITAR", "")
+            tsmEliminar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "EDITAR", "")
+
+
+            'se desbloquean las opciones AGREGAR - EDITAR - ELIMINAR DEPENDIENDO LOS PERMISOS
 
         ElseIf activeAgregar Then                       'Si se presiona el boton agregar del menu strip  
 
@@ -174,6 +187,12 @@ Public Class frmProd2
             lblAvanzadoId.Visible = False
             LimpiarControl1("Avanzado")
             'Limpiar control avanzado equivale a limpiar TODO los txt y labeles
+
+            tbpSimple.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "AGREGAR", "SIMPLE")
+            'TabcontrolSimple habilitado para interactuar
+            tbpAvanzado.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "AGREGAR", "AVANZADO")
+            'TabcontrolAvanzado habilitado para interactuar
+
 
         ElseIf activeEditar Then                 'Si se apreta el boton editar del menu strip
 
@@ -193,18 +212,19 @@ Public Class frmProd2
             bloquearBotonesProd("Avanzado")         'bloquear la seccion avanzada
             DesbloquearBotonesProd("Simple")        'desbloquear la seccion simple
 
-            'MsgBox(usuario.Permisos)
-            If usuario.Permisos = 3 Then            'Si el usuario es ADMINISTRADOR
-                btnSimpleEliminar.Visible = True    'el boton de eliminar por completo se hace visible
-                btnSimpleEliminar.Enabled = True    'se le activa el boton de eliminar por completo
-            Else
-                If usuario.Permisos <> 3 Then           'Si el usuario es un empleado
-                    btnSimpleEliminar.Visible = False   'No se le muestra el boton eliminar por completo
-                    btnSimpleEliminar.Enabled = False   'No se le activa el boton eliminar por completo
-                End If
-            End If
+            btnSimpleEliminar.Visible = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "ELIMINAR", "ELIMINAR")
+            btnSimpleEliminar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "ELIMINAR", "ELIMINAR")
+
+
 
         End If
+
+        RellenarDataSet()                                       'Se rellenan los dataset
+
+
+
+
+
     End Sub
     Private Sub frmProd2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Establecer Maximos
@@ -220,41 +240,15 @@ Public Class frmProd2
 
 
         'MsgBox("permiso" & usuario.Permisos)
-        listaTSMDelForm = CrearColeccionTMS()
-        name_no_definido()                                      'Al iniciar el form, se bloquean todos los componentes excepto los menuStrip
-        RellenarDataSet()                                       'Se rellena un dataset con todos los productos
+        Reset()                                      'Al iniciar el form, se bloquean todos los componentes excepto los menuStrip
 
 
 
         TabControl1.SelectedTab = tbpSimple
-        If usuario.Permisos < 2 Then
-            TabControl1.Visible = False
-            btnAce.Visible = False
-            btnCan.Visible = False
-            OpcionesMenuStrip(listaDeObjetosForm, "bloqueadas")
-        Else
-            TabControl1.Visible = True
-            btnAce.Visible = True
-            btnCan.Visible = True
-            OpcionesMenuStrip(listaDeObjetosForm, "desbloquedas")
-        End If
 
-        Reset()
 
     End Sub
 
-    Private Sub Reset()
-        Dim permiso As New Permisos
-        tsmAgregar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "AGREGAR", "")
-        tsmEditar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "EDITAR", "")
-        tsmEliminar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "EDITAR", "")
-
-        tbpSimple.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "AGREGAR", "SIMPLE")
-        tbpAvanzado.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "AGREGAR", "AVANZADO")
-
-
-        btnSimpleEliminar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "ELIMINAR", "ELIMINAR")
-    End Sub
 
 
 
@@ -273,9 +267,9 @@ Public Class frmProd2
         activeEditar = False
         activeEliminar = False
         MsgBox("Agregando")
-        name_no_definido()
+        Reset()
         RellenarCmbRazon()
-        OpcionesMenuStrip(listaTSMDelForm, "bloqueadas")
+        BloquearTMS()
         'bloqueo de cmv categorias 
         cmbAvanzadoCat.Enabled = False
     End Sub
@@ -285,9 +279,9 @@ Public Class frmProd2
         activeEditar = True
         activeEliminar = False
         MsgBox("Editan")
-        name_no_definido()
+        Reset()
         RellenarCmbRazon()
-        OpcionesMenuStrip(listaTSMDelForm, "bloqueadas")
+        BloquearTMS()
     End Sub
 
     Private Sub tsmEliminar_Click(sender As Object, e As EventArgs) Handles tsmEliminar.Click
@@ -295,9 +289,9 @@ Public Class frmProd2
         activeEditar = False
         activeEliminar = True
         MsgBox("Elimi")
-        name_no_definido()
+        Reset()
         RellenarCmbRazon()
-        OpcionesMenuStrip(listaTSMDelForm, "bloqueadas")
+        BloquearTMS()
     End Sub
 
     '#####################################################
@@ -308,8 +302,7 @@ Public Class frmProd2
         activeAgregar = False
         activeEditar = False
         activeEliminar = False
-        name_no_definido()
-
+        Reset()
     End Sub
 
     Private Sub RellenarDataSet()
@@ -436,11 +429,10 @@ Public Class frmProd2
         End If
 
         LimpiarControl1("Simple-y-Avanzado")
-        RellenarDataSet()
         activeAgregar = False
         activeEditar = False
         activeEliminar = False
-        name_no_definido()
+        Reset()
     End Sub
 
     Private Sub btnSimpleEliminar_Click(sender As Object, e As EventArgs) Handles btnSimpleEliminar.Click
@@ -450,12 +442,11 @@ Public Class frmProd2
             producto = RellenarObjeto(TabControl1.SelectedTab.Text) ' - -> retorna objeto??
             bsnProducto.EliminarProducto(producto, usuario.Rut)
             'Eliminar de la tabla
-            RellenarDataSet()
         End If
         activeAgregar = False
         activeEditar = False
         activeEliminar = False
-        name_no_definido()
+        Reset()
     End Sub
     Private Sub RellenarCmbRazon()
         cmbAvanzadoRazon.Items.Clear()

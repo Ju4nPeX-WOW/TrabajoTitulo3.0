@@ -250,7 +250,7 @@
         Dim permiso As New Permisos
         picAgregar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "EMPLEADOS", "AGREGAR", "")
         picEditar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "EMPLEADOS", "EDITAR", "")
-        picEliminar = permiso.OtorgarAcceso(_usuario.Permisos, "EMPLEADOS", "ELIMINAR", "")
+        picEliminar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "EMPLEADOS", "ELIMINAR", "")
     End Sub
 
 

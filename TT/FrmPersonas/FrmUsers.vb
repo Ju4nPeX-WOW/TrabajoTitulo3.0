@@ -117,12 +117,12 @@
 
     Private Sub dgvUsua_SelectionChanged(sender As Object, e As EventArgs) Handles dgvUsua.SelectionChanged
         If dgvUsua.CurrentRow.Index > -1 Then
-            Dim fila() As String = {dgvUsua.Rows(dgvUsua.CurrentRow.Index).Cells(0).Value, dgvUsua.Rows(dgvUsua.CurrentRow.Index).Cells(1).Value, dgvUsua.Rows(dgvUsua.CurrentRow.Index).Cells(2).Value, dgvUsua.Rows(dgvUsua.CurrentRow.Index).Cells(3).Value}
-            txtRut.Text = fila(1)
-            txtContraseña.Text = fila(2)
-            'setear el combobox    
-            'MsgBox(fila(0) & " " & fila(1) & " " & fila(2) & " " & fila(3))
-            cmbPermisos.SelectedIndex = CInt(fila(3)) - 1
+            ' Dim fila() As String = {dgvUsua.Rows(dgvUsua.CurrentRow.Index).Cells(0).Value, dgvUsua.Rows(dgvUsua.CurrentRow.Index).Cells(1).Value, dgvUsua.Rows(dgvUsua.CurrentRow.Index).Cells(2).Value, dgvUsua.Rows(dgvUsua.CurrentRow.Index).Cells(3).Value}
+
+
+            txtRut.Text = dgvUsua.Rows(dgvUsua.CurrentRow.Index).Cells(1).Value.ToString
+            txtContraseña.Text = dgvUsua.Rows(dgvUsua.CurrentRow.Index).Cells(2).Value.ToString
+            cmbPermisos.SelectedIndex = Integer.Parse(dgvUsua.Rows(dgvUsua.CurrentRow.Index).Cells(3).Value) - 1
         End If
     End Sub
 
@@ -174,6 +174,6 @@
         Dim permiso As New Permisos
         picEditar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "USUARIOS", "AGREGAR", "")
         picEditar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "USUARIOS", "EDITAR", "")
-        picEliminar = permiso.OtorgarAcceso(_usuario.Permisos, "USUARIOS", "ELIMINAR", "")
+        picEliminar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "USUARIOS", "ELIMINAR", "")
     End Sub
 End Class

@@ -68,6 +68,7 @@ Public Class PrincipalForm
 
     Private Sub PRODUCTOSToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles PRODUCTOSToolStripMenuItem2.Click
         Dim formproducto As New frmProd2
+        formproducto.RecibirUsuario(_usuario)
         formproducto.ShowDialog()
 
 
@@ -85,13 +86,13 @@ Public Class PrincipalForm
 
     Private Sub PROVEEDORESToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles PROVEEDORESToolStripMenuItem2.Click
         Dim FrmProveedores As New FrmProvee
-
+        FrmProveedores.RecibirUsuario(_usuario)
         FrmProveedores.ShowDialog()
     End Sub
 
     Private Sub USUARIOSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles USUARIOSToolStripMenuItem.Click
         Dim FrmUsuario As New FrmUsers
-
+        FrmUsuario.RecibirUsuario(_usuario)
         FrmUsuario.ShowDialog()
     End Sub
 

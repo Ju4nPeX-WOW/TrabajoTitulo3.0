@@ -39,7 +39,6 @@
         txtNombre.MaxLength = validacion.MaxOtroNombre
         'CREACION DE COLECCIONES
         listaDeObjetosForm = CrearColeccion() 'se carga la lista con los objetos del formulario
-        listaTSMDelForm = CrearColeccionTMS() 'se carga la lista con los tsm
         listaDeObjetosRellenables = CrearColeccionRellenable()
 
         'SE ESTABLECEN CONFIGURACION POR DEFECTO
@@ -69,14 +68,13 @@
         Return coleccion
 
     End Function
-    Private Function CrearColeccionTMS()
-        Dim coleccion As New List(Of Object)
+    Private Sub BloquearTMS()
+        tsmAgregar.Enabled = False
+        tsmEditar.Enabled = False
+        tsmEliminar.Enabled = False
 
-        coleccion.AddRange({tsmAgregar, tsmEditar, tsmEliminar})
 
-        Return coleccion
-
-    End Function
+    End Sub
 
 
     Private Sub ObtenerDataSet(n As Short, dig As String)
@@ -268,7 +266,7 @@
     End Function
 
     Private Sub AgregarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles tsmAgregar.Click
-        MyBase.OpcionesMenuStrip(listaTSMDelForm, "bloqueadas")
+        BloquearTMS()
 
         ''agregar
         activeAgregar = True
@@ -295,7 +293,7 @@
         If lblaux.Text.Equals("") Then
             MsgBox("SELECCIONE ELEMENTO")
         Else
-            MyBase.OpcionesMenuStrip(listaTSMDelForm, "bloqueadas")
+            BloquearTMS()
             MyBase.BloquearBotones(ColeccionNivelCategoria)
 
             ''editar
@@ -347,13 +345,12 @@
 
             ''Declaramos las var auxiliares
             Dim _id, _nombre, _codigo As String
-
+            _id = ""
 
 
             ''Primero el Id
-            If activeAgregar Then
-                _id = ""
-            ElseIf activeEditar Then
+
+            If activeEditar Then
                 _id = lblaux.Text
             End If
 
@@ -553,7 +550,6 @@
         tsmEditar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "CATEGORIAS", "EDITAR", "")
         tsmEliminar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "CATEGORIAS", "ELIMINAR", "")
 
-        'MyBase.OpcionesMenuStrip(listaTSMDelForm, "desbloqueadas")
 
         CheckBox3.Visible = False
         CheckBox3.Checked = False
