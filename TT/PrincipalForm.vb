@@ -1,8 +1,17 @@
 ﻿Imports System.ComponentModel
+Imports System.IO
 
 Public Class PrincipalForm
     Protected _aux As String
     Protected _callLog As Boolean = False
+    Private fileStock As String
+    Private ciclo As Short = 0
+    Private ciclop As Short = 0
+    Dim nlimp As Integer = 0
+    Dim key As Boolean = False
+    'Dim nlimp As Integer = 0
+
+
 
     Private _usuario As New Usuario
 
@@ -217,5 +226,70 @@ Public Class PrincipalForm
     Private Sub PrincipalForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         BloquearTodo()
         Permisos()
+        fileStock = OpenFile()
+        TimerStock.Enabled = True
+        'lbl_EstadoStock.Text = "que pasaghjklñ{ghjkl"
     End Sub
+
+    Private Sub TimerStock_Tick(sender As Object, e As EventArgs) Handles TimerStock.Tick
+        ciclop = ciclop + 1
+
+        If ciclop = 3 Then
+            ciclop = 1
+        End If
+
+        If fileStock.Length <> 0 Then
+            If ciclo < fileStock.Length Then
+
+
+                lbl_EstadoStock.Text = lbl_EstadoStock.Text + fileStock.Substring(ciclo, 1)
+                ciclo = ciclo + 1
+
+            Else
+                'limpiar 
+                lbl_EstadoStock.Text = lbl_EstadoStock.Text + " "
+                nlimp = nlimp + 1
+
+            End If
+        End If
+
+
+        If ciclo > 214 Then
+            If nlimp = 0 Then
+                If lbl_EstadoStock.Text.Length <> 0 Then
+                    lbl_EstadoStock.Text = lbl_EstadoStock.Text.Substring(1)
+                End If
+            ElseIf ciclop = 2 Then
+                If lbl_EstadoStock.Text.Length <> 0 Then
+                    lbl_EstadoStock.Text = lbl_EstadoStock.Text.Substring(1)
+                End If
+
+            End If
+        End If
+
+
+        If nlimp > 400 Then
+            ciclo = 0
+            nlimp = 0
+            key = False
+            lbl_EstadoStock.Text = ""
+            fileStock = OpenFile()
+
+
+        End If
+
+
+        TimerStock.Start()
+
+
+
+    End Sub
+    Private Function OpenFile()
+        Dim folderPath = My.Computer.FileSystem.SpecialDirectories.Desktop + "\TrabajoTitulo3.0\Files\StockCritico.txt"
+        Dim archivo As New StreamReader(folderPath)
+        Dim mensaje = archivo.ReadToEnd
+        archivo.Close()
+        Return mensaje
+    End Function
+
 End Class

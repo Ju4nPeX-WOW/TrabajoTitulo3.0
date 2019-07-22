@@ -22,6 +22,7 @@ Partial Class PrincipalForm
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.MenuStrip2 = New System.Windows.Forms.MenuStrip()
         Me.Principal_Venta = New System.Windows.Forms.ToolStripMenuItem()
         Me.Principal_Compra = New System.Windows.Forms.ToolStripMenuItem()
@@ -47,6 +48,8 @@ Partial Class PrincipalForm
         Me.Principal_Help = New System.Windows.Forms.ToolStripMenuItem()
         Me.SALIRToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BtnResetCat = New System.Windows.Forms.Button()
+        Me.TimerStock = New System.Windows.Forms.Timer(Me.components)
+        Me.lbl_EstadoStock = New System.Windows.Forms.Label()
         Me.MenuStrip2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -90,19 +93,19 @@ Partial Class PrincipalForm
         'PRODUCTOSToolStripMenuItem2
         '
         Me.PRODUCTOSToolStripMenuItem2.Name = "PRODUCTOSToolStripMenuItem2"
-        Me.PRODUCTOSToolStripMenuItem2.Size = New System.Drawing.Size(180, 22)
+        Me.PRODUCTOSToolStripMenuItem2.Size = New System.Drawing.Size(146, 22)
         Me.PRODUCTOSToolStripMenuItem2.Text = "PRODUCTOS"
         '
         'CATEGORIASToolStripMenuItem1
         '
         Me.CATEGORIASToolStripMenuItem1.Name = "CATEGORIASToolStripMenuItem1"
-        Me.CATEGORIASToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.CATEGORIASToolStripMenuItem1.Size = New System.Drawing.Size(146, 22)
         Me.CATEGORIASToolStripMenuItem1.Text = "CATEGORIAS"
         '
         'DESCUENTOSToolStripMenuItem1
         '
         Me.DESCUENTOSToolStripMenuItem1.Name = "DESCUENTOSToolStripMenuItem1"
-        Me.DESCUENTOSToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.DESCUENTOSToolStripMenuItem1.Size = New System.Drawing.Size(146, 22)
         Me.DESCUENTOSToolStripMenuItem1.Text = "DESCUENTOS"
         '
         'Principal_Personas
@@ -117,25 +120,25 @@ Partial Class PrincipalForm
         'USUARIOSToolStripMenuItem
         '
         Me.USUARIOSToolStripMenuItem.Name = "USUARIOSToolStripMenuItem"
-        Me.USUARIOSToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.USUARIOSToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.USUARIOSToolStripMenuItem.Text = "USUARIOS"
         '
         'EMPLEADOSToolStripMenuItem1
         '
         Me.EMPLEADOSToolStripMenuItem1.Name = "EMPLEADOSToolStripMenuItem1"
-        Me.EMPLEADOSToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.EMPLEADOSToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.EMPLEADOSToolStripMenuItem1.Text = "EMPLEADOS"
         '
         'CLIENTESToolStripMenuItem
         '
         Me.CLIENTESToolStripMenuItem.Name = "CLIENTESToolStripMenuItem"
-        Me.CLIENTESToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CLIENTESToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.CLIENTESToolStripMenuItem.Text = "CLIENTES"
         '
         'PROVEEDORESToolStripMenuItem2
         '
         Me.PROVEEDORESToolStripMenuItem2.Name = "PROVEEDORESToolStripMenuItem2"
-        Me.PROVEEDORESToolStripMenuItem2.Size = New System.Drawing.Size(180, 22)
+        Me.PROVEEDORESToolStripMenuItem2.Size = New System.Drawing.Size(152, 22)
         Me.PROVEEDORESToolStripMenuItem2.Text = "PROVEEDORES"
         '
         'Principal_Estadisticas
@@ -158,25 +161,25 @@ Partial Class PrincipalForm
         'BOLETAToolStripMenuItem
         '
         Me.BOLETAToolStripMenuItem.Name = "BOLETAToolStripMenuItem"
-        Me.BOLETAToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BOLETAToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
         Me.BOLETAToolStripMenuItem.Text = "BOLETA"
         '
         'FACTURAToolStripMenuItem
         '
         Me.FACTURAToolStripMenuItem.Name = "FACTURAToolStripMenuItem"
-        Me.FACTURAToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.FACTURAToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
         Me.FACTURAToolStripMenuItem.Text = "FACTURA"
         '
         'NOTACREDITOToolStripMenuItem
         '
         Me.NOTACREDITOToolStripMenuItem.Name = "NOTACREDITOToolStripMenuItem"
-        Me.NOTACREDITOToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.NOTACREDITOToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
         Me.NOTACREDITOToolStripMenuItem.Text = "NOTA CREDITO"
         '
         'NOTADEBITOToolStripMenuItem
         '
         Me.NOTADEBITOToolStripMenuItem.Name = "NOTADEBITOToolStripMenuItem"
-        Me.NOTADEBITOToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.NOTADEBITOToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
         Me.NOTADEBITOToolStripMenuItem.Text = "NOTA DEBITO"
         '
         'Principal_Historial
@@ -191,19 +194,19 @@ Partial Class PrincipalForm
         'VENTASToolStripMenuItem
         '
         Me.VENTASToolStripMenuItem.Name = "VENTASToolStripMenuItem"
-        Me.VENTASToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.VENTASToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
         Me.VENTASToolStripMenuItem.Text = "VENTAS"
         '
         'COMPRASToolStripMenuItem
         '
         Me.COMPRASToolStripMenuItem.Name = "COMPRASToolStripMenuItem"
-        Me.COMPRASToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.COMPRASToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
         Me.COMPRASToolStripMenuItem.Text = "COMPRAS"
         '
         'AJUSTESToolStripMenuItem
         '
         Me.AJUSTESToolStripMenuItem.Name = "AJUSTESToolStripMenuItem"
-        Me.AJUSTESToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AJUSTESToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
         Me.AJUSTESToolStripMenuItem.Text = "AJUSTES"
         '
         'Principal_Help
@@ -231,11 +234,28 @@ Partial Class PrincipalForm
         Me.BtnResetCat.Text = "Resetear Categorias"
         Me.BtnResetCat.UseVisualStyleBackColor = True
         '
+        'TimerStock
+        '
+        '
+        'lbl_EstadoStock
+        '
+        Me.lbl_EstadoStock.AutoEllipsis = True
+        Me.lbl_EstadoStock.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lbl_EstadoStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.lbl_EstadoStock.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.lbl_EstadoStock.ForeColor = System.Drawing.SystemColors.ButtonFace
+        Me.lbl_EstadoStock.Location = New System.Drawing.Point(0, 690)
+        Me.lbl_EstadoStock.Name = "lbl_EstadoStock"
+        Me.lbl_EstadoStock.Size = New System.Drawing.Size(1053, 20)
+        Me.lbl_EstadoStock.TabIndex = 5
+        Me.lbl_EstadoStock.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'PrincipalForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1053, 710)
+        Me.Controls.Add(Me.lbl_EstadoStock)
         Me.Controls.Add(Me.BtnResetCat)
         Me.Controls.Add(Me.MenuStrip2)
         Me.Name = "PrincipalForm"
@@ -272,4 +292,6 @@ Partial Class PrincipalForm
     Friend WithEvents AJUSTESToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SALIRToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BtnResetCat As Button
+    Friend WithEvents TimerStock As Timer
+    Friend WithEvents lbl_EstadoStock As Label
 End Class
