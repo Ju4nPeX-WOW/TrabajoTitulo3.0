@@ -76,6 +76,7 @@ Public Class BsnProducto
         Dim valores As String
         valores = id_producto & ",SYSDATETIME( ),SYSDATETIME( )," & cantidad & "," & razon & "," & stock & "," & rut_usuario
         daoProducto.AjustarStock(valores)
+        'here
     End Sub
     Public Sub EliminarProducto(producto As Producto, rut_usuario As Integer)
         Dim daoProducto As New DaoProducto

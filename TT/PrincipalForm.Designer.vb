@@ -243,6 +243,7 @@ Partial Class PrincipalForm
         Me.lbl_EstadoStock.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.lbl_EstadoStock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.lbl_EstadoStock.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.lbl_EstadoStock.Font = New System.Drawing.Font("Lucida Console", 8.5!)
         Me.lbl_EstadoStock.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.lbl_EstadoStock.Location = New System.Drawing.Point(0, 690)
         Me.lbl_EstadoStock.Name = "lbl_EstadoStock"
