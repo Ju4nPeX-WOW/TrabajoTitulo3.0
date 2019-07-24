@@ -43,7 +43,7 @@
 
     End Sub
 
-    Public Sub detalleVenta(productosSeleccionados As DataGridView, subtotal As String, descuento As String, total As String, num_venta As String)
+    Public Sub detalleVenta(productosSeleccionados As DataGridView, subtotal As String, descuento As String, total As String, num_venta As String, rut_vendedor As String)
 
         'Insertar en Detalle_Venta
         '           Id_Producto ( con el for ) 
@@ -62,6 +62,13 @@
             idProducto = productosSeleccionados.Rows(index).Cells(0).Value
             precio = productosSeleccionados.Rows(index).Cells(2).Value
             cantidad = productosSeleccionados.Rows(index).Cells(3).Value
+
+            Dim bsnproductos As New BsnProducto
+            Dim producto As Producto
+            producto = bsnproductos.ObtenerObjetoProducto(idProducto)
+            producto.Stock = producto.Stock - cantidad
+            Dim num As New Enumeraciones
+            bsnproductos.ModificarProducto(producto, num.RazonAjusteStock("Vendido"), rut_vendedor)
 
             DaoVenta.detalleVenta(num_venta, idProducto, cantidad, precio, subtotal, descuento, total)
         Next

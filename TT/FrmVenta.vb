@@ -183,8 +183,23 @@
             '           descuento
             '           Total
 
-            BsnVenta.detalleVenta(dgvProductosSeleccionados, txtSubto.Text, txtDesc.Text, txtTotal.Text, BsnVenta.obtenerUltimaVenta)
+            BsnVenta.detalleVenta(dgvProductosSeleccionados, txtSubto.Text, txtDesc.Text, txtTotal.Text, BsnVenta.obtenerUltimaVenta, _usuario.Rut)
             lblTransaccion.Text = (BsnVenta.obtenerUltimaVenta + 1).ToString
+            txtRutSnDV.Clear()
+            txtDV.Clear()
+            txtNombreCliente.Clear()
+            txtBuscar.Clear()
+            dgvProductosSeleccionados.Rows.Clear()
+            dgvProductos.ClearSelection()
+            cmbTipoVenta.Text = "Seleccione un tipo de venta..."
+            cmbMetodoPago.Text = "Seleccione un metodo de pago..."
+            txtSubto.Clear()
+            txtDesc.Clear()
+            txtTotal.Clear()
+            nmudCantidad.Value = 1
+            Dim datasetProductos As DataSet = BsnProducto.ObtenerColumnasEspecificas("ID_PRODUCTO,NOMBRE,PRECIO,STOCK,STOCK_CRITICO")
+            dgvProductos.DataSource = datasetProductos.Tables(0).DefaultView
+
 
 
         End If

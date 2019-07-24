@@ -76,6 +76,7 @@ Public Class BsnProducto
         Dim valores As String
         valores = id_producto & ",SYSDATETIME( ),SYSDATETIME( )," & cantidad & "," & razon & "," & stock & "," & rut_usuario
         daoProducto.AjustarStock(valores)
+
         Dim archivo As New Archivos
         archivo.ActualizacionStockCritico(ObtenerStockCritico())
 
