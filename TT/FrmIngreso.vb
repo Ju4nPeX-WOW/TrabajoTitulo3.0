@@ -3,7 +3,6 @@
 Public Class FrmIngreso
     Dim validacion As New Validacionesv2
 
-    Dim Validaciones As New Validaciones()
     Dim bsnUsuario As New BsnUsuario
 
 
@@ -39,12 +38,15 @@ Public Class FrmIngreso
         End If
     End Sub
 
-    Private Sub txtUsua_KeyPress(sender As Object, evento As KeyPressEventArgs) Handles txtUsua.KeyPress
-        evento.Handled = validacion.MaxRut
+    Private Sub txtUsua_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtUsua.KeyPress
+        e.Handled = validacion.IRut(e)
     End Sub
-    Private Sub txtContra_KeyPress(sender As Object, evento As KeyPressEventArgs) Handles txtContra.KeyPress
-        evento.Handled = validacion.MaxPassword
+    Private Sub txtContra_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtContra.KeyPress
+        e.Handled = validacion.IPassword(e)
     End Sub
 
-
+    Private Sub FrmIngreso_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        txtUsua.MaxLength = validacion.MaxRut
+        txtContra.MaxLength = validacion.MaxPassword
+    End Sub
 End Class

@@ -156,14 +156,14 @@ Partial Class FrmIngreso
         Me.Panel3.Size = New System.Drawing.Size(609, 448)
         Me.Panel3.TabIndex = 17
         '
-        'll
+        'FrmIngreso
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.MidnightBlue
         Me.ClientSize = New System.Drawing.Size(1157, 710)
         Me.Controls.Add(Me.Panel3)
-        Me.Name = "ll"
+        Me.Name = "FrmIngreso"
         Me.Text = "ll"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)

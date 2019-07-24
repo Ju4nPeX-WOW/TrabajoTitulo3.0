@@ -174,7 +174,7 @@
             Dim medio_pago As Byte = Enumeraciones.MedioPago(cmbMetodoPago.Text)
             Dim tipo_venta As Byte = cmbTipoVenta.SelectedIndex '-> dentro de bsnVenta if-> 1 boleta
 
-            BsnVenta.realizarVenta(txtRutSnDV.Text, txtVendedor.Text, txtSubto.Text, txtDesc.Text, txtTotal.Text, Enumeraciones.getIVA, medio_pago, tipo_venta)
+            BsnVenta.realizarVenta(txtRutSnDV.Text, _usuario.Rut, txtSubto.Text, txtDesc.Text, txtTotal.Text, Enumeraciones.getIVA, medio_pago, tipo_venta)
             'Insertar en Detalle_Venta
             '           Id_Producto ( con el for ) 
             '           cantidad
@@ -214,17 +214,24 @@
 
         Dim cumple As Boolean = False
         'VALIDAR QUE LOS CAMPOS NO ESTEN VACIOS
-        Dim ListaText As New List(Of String())
-        ListaText.Add({"rut", txtRutSnDV.Text})
-        ListaText.Add({"digito verificador", txtDV.Text})
-        ListaText.Add({"nombre", txtBuscar.Text})
+        'Dim ListaText As New List(Of String())
+        'ListaText.Add({"rut", txtRutSnDV.Text})
+        'ListaText.Add({"digito verificador", txtDV.Text})
+        'ListaText.Add({"nombre", txtBuscar.Text})
 
-        Dim receptor = Validacion.Val(ListaText) '<- INGRESAR LISTA DE TXT BOX 
-        If receptor(0) Then
+        'Dim receptor = Validacion.Val(ListaText) '<- INGRESAR LISTA DE TXT BOX 
+        If True Then
             'VALIDAR QUE LOS CMD , SI EXISTEN U OTRO ELEMENTO CUMPLE CON LA VAL
-            If Not dgvProductosSeleccionados.RowCount <> 0 Then
+            If Not (dgvProductosSeleccionados.RowCount = 0) Then
 
                 'VALIDAR QUE LOS DATOS CUMPLAN ESTRUTURA -> RUT O EMAIL
+                Dim noCliente As Boolean = False
+                If txtRutSnDV.Text.Length = 0 Then
+                    noCliente = True
+                    txtRutSnDV.Text = "00000000"
+                    txtDV.Text = "0"
+                End If
+                MsgBox("no cliente:" & noCliente)
                 If Validacion.ValidarRut(txtRutSnDV.Text, txtDV.Text) Then '<- INGRESAR RUT Y DV
                     cumple = True
 
@@ -252,7 +259,7 @@
                 MsgBox("SR USUARIO FALTA QUE SELECCIONE LOS PRODUCTOS")
             End If
         Else
-            MsgBox(receptor(1))
+            MsgBox("receptor(1)")
         End If
         Return cumple
     End Function
