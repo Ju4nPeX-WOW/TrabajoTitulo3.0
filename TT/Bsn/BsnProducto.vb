@@ -76,7 +76,11 @@ Public Class BsnProducto
         Dim valores As String
         valores = id_producto & ",SYSDATETIME( ),SYSDATETIME( )," & cantidad & "," & razon & "," & stock & "," & rut_usuario
         daoProducto.AjustarStock(valores)
-        'here
+        Dim archivo As New Archivos
+        archivo.ActualizacionStockCritico(ObtenerStockCritico())
+
+
+
     End Sub
     Public Sub EliminarProducto(producto As Producto, rut_usuario As Integer)
         Dim daoProducto As New DaoProducto
@@ -106,6 +110,28 @@ Public Class BsnProducto
             AjustarStockProducto(producto.IdProducto, cantidad, razon, producto.Stock, rut_usuario)
         End If
     End Sub
+
+    Private Function ObtenerStockCritico()
+        Dim daoProducto As New DaoProducto
+        Dim datasetx As New DataSet
+        Dim text As String = ""
+
+        datasetx = daoProducto.ObtenerStockCritico()
+        Try
+            For i = 0 To datasetx.Tables(0).Rows.Count - 1
+                text = text + datasetx.Tables(0)(i)(0).ToString + "( " + datasetx.Tables(0)(i)(1).ToString + " unidades )"
+                If i <> datasetx.Tables(0).Rows.Count - 1 Then
+                    text = text + "-"
+                End If
+            Next
+
+        Catch ex As Exception
+            text = ""
+        End Try
+        Console.WriteLine(text)
+
+        Return text
+    End Function
 
 
 End Class

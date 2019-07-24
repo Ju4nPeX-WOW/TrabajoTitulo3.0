@@ -63,4 +63,10 @@ WHERE p.False_delete = 0"
         instrucciones.Insertar("Ajuste_Stock", "Id_producto,Fecha,Hora,Cantidad,Razon,Stock,Rut_empleado", valores)
     End Sub
 
+    Public Function ObtenerStockCritico()
+        Dim instrucciones As New Instructions
+        Dim text = instrucciones.SelectWithFalseDelete("Productos", "Nombre,Stock", "and (Productos.Stock <= Productos.Stock_critico)")
+        Return text
+    End Function
+
 End Class

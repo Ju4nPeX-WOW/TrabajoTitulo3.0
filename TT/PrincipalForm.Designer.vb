@@ -236,6 +236,7 @@ Partial Class PrincipalForm
         '
         'TimerStock
         '
+        Me.TimerStock.Interval = 150
         '
         'lbl_EstadoStock
         '

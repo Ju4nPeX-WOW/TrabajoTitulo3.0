@@ -39,5 +39,30 @@ Public Class Archivos
 
         Return Lista
     End Function
+    Public Sub ActualizacionStockCritico(text As String)
+        ':::Ruta donde crearemos nuestro archivo txt
+        Dim ruta As String = My.Computer.FileSystem.SpecialDirectories.Desktop + "\TrabajoTitulo3.0\Files\"
+        ':::Nombre del archivo
+        Dim archivo As String = "StockCritico.txt"
+        ':::Creamos nuestro objeto de tipo StreamReader que nos permite leer archivos
+        Dim escribir As New StreamWriter(ruta & archivo)
+
+        ':::Determinar si hay productos bajo stock
+        Dim texto As String = ""
+        If text.Length = 0 Then
+            texto = ""
+        ElseIf text.Length > 1 Then
+            texto = "ALERTA!! LOS SIGUIENTES PRODUCTOS ESTAN CON STOCK CRITICO: " + text.ToUpper
+        End If
+
+        ':::Realizamos la escritura
+        escribir.Write(texto)
+
+        ':::Cerramos el archivo
+        escribir.Close()
+
+
+    End Sub
+
 
 End Class

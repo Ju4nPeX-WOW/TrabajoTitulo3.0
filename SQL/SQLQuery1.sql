@@ -615,3 +615,18 @@ SELECT * FROM PERMISOS WHERE ACCION = 'PERSONAS'
 SELECT MAX(NUM_VENTA)FROM VENTAS 
 
 Select p from PERMISOS where VENTANA = 'PRINCIPAL' and accion = 'PRODUCTOS' and subaccion = ''
+
+
+SELECT Nombre,Stock FROM Productos where   (Productos.Stock <= Productos.Stock_critico) and Productos.False_delete = 0
+
+
+SELECT * FROM Categorias WHERE Rut_empleado = 20107427 and Contraseña = 'admin'
+
+
+Select p.Id_producto as Id ,
+	p.Nombre as Producto, 
+	c.Nombre as Categoria, 
+	p.Precio ,p.Stock , p.Stock_critico from Productos as p 
+LEFT JOIN Producto_Categoria as pc ON p.Id_producto = pc.Id_producto
+LEFT JOIN Categorias as c ON c.Id_categoria = pc.Id_categoria 
+WHERE p.False_delete = 0

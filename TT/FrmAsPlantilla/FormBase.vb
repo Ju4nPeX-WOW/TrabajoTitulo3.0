@@ -11,6 +11,7 @@
 
     Private Sub FormTamaño_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Location = New System.Drawing.Point(150, 45)
+        Me.ClientSize = New System.Drawing.Size(1173, 660)
     End Sub
 
     Protected Sub DesbloquearBotones(coleccion As List(Of Object))
