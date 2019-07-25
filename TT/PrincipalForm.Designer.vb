@@ -50,6 +50,8 @@ Partial Class PrincipalForm
         Me.BtnResetCat = New System.Windows.Forms.Button()
         Me.TimerStock = New System.Windows.Forms.Timer(Me.components)
         Me.lbl_EstadoStock = New System.Windows.Forms.Label()
+        Me.TimerArchivo = New System.Windows.Forms.Timer(Me.components)
+        Me.TmrArchivo = New System.Windows.Forms.Timer(Me.components)
         Me.MenuStrip2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -161,25 +163,25 @@ Partial Class PrincipalForm
         'BOLETAToolStripMenuItem
         '
         Me.BOLETAToolStripMenuItem.Name = "BOLETAToolStripMenuItem"
-        Me.BOLETAToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.BOLETAToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.BOLETAToolStripMenuItem.Text = "BOLETA"
         '
         'FACTURAToolStripMenuItem
         '
         Me.FACTURAToolStripMenuItem.Name = "FACTURAToolStripMenuItem"
-        Me.FACTURAToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.FACTURAToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.FACTURAToolStripMenuItem.Text = "FACTURA"
         '
         'NOTACREDITOToolStripMenuItem
         '
         Me.NOTACREDITOToolStripMenuItem.Name = "NOTACREDITOToolStripMenuItem"
-        Me.NOTACREDITOToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.NOTACREDITOToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.NOTACREDITOToolStripMenuItem.Text = "NOTA CREDITO"
         '
         'NOTADEBITOToolStripMenuItem
         '
         Me.NOTADEBITOToolStripMenuItem.Name = "NOTADEBITOToolStripMenuItem"
-        Me.NOTADEBITOToolStripMenuItem.Size = New System.Drawing.Size(155, 22)
+        Me.NOTADEBITOToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.NOTADEBITOToolStripMenuItem.Text = "NOTA DEBITO"
         '
         'Principal_Historial
@@ -194,19 +196,19 @@ Partial Class PrincipalForm
         'VENTASToolStripMenuItem
         '
         Me.VENTASToolStripMenuItem.Name = "VENTASToolStripMenuItem"
-        Me.VENTASToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.VENTASToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.VENTASToolStripMenuItem.Text = "VENTAS"
         '
         'COMPRASToolStripMenuItem
         '
         Me.COMPRASToolStripMenuItem.Name = "COMPRASToolStripMenuItem"
-        Me.COMPRASToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.COMPRASToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.COMPRASToolStripMenuItem.Text = "COMPRAS"
         '
         'AJUSTESToolStripMenuItem
         '
         Me.AJUSTESToolStripMenuItem.Name = "AJUSTESToolStripMenuItem"
-        Me.AJUSTESToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.AJUSTESToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.AJUSTESToolStripMenuItem.Text = "AJUSTES"
         '
         'Principal_Help
@@ -252,6 +254,14 @@ Partial Class PrincipalForm
         Me.lbl_EstadoStock.TabIndex = 5
         Me.lbl_EstadoStock.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'TimerArchivo
+        '
+        Me.TimerArchivo.Interval = 60000
+        '
+        'TmrArchivo
+        '
+        Me.TmrArchivo.Interval = 300000
+        '
         'PrincipalForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -296,4 +306,6 @@ Partial Class PrincipalForm
     Friend WithEvents BtnResetCat As Button
     Friend WithEvents TimerStock As Timer
     Friend WithEvents lbl_EstadoStock As Label
+    Friend WithEvents TimerArchivo As Timer
+    Friend WithEvents TmrArchivo As Timer
 End Class

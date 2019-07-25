@@ -9,7 +9,7 @@ Public Class PrincipalForm
     Private ciclo As Short = 0
     Private ciclop As Short = 0
     Dim nlimp As Integer = 0
-    Dim key As Boolean = False
+    Dim key As Boolean = True
     'Dim nlimp As Integer = 0
 
 
@@ -226,13 +226,18 @@ Public Class PrincipalForm
     Private Sub PrincipalForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         BloquearTodo()
         Permisos()
+        Dim archivo As New Archivos
+        Dim bsnproducto As New BsnProducto
+        archivo.ActualizacionStockCritico(bsnproducto.ObtenerStockCritico())
+
         fileStock = OpenFile()
         TimerStock.Enabled = True
+        TmrArchivo.Enabled = True
     End Sub
 
     Private Sub TimerStock_Tick(sender As Object, e As EventArgs) Handles TimerStock.Tick
         'obtener maximo de caractereres
-        Dim x = Math.Truncate(lbl_EstadoStock.Width / 7.04)
+        Dim x = Math.Truncate(lbl_EstadoStock.Width / 7.04) - 1
 
         ciclop = ciclop + 1
 
@@ -249,7 +254,11 @@ Public Class PrincipalForm
                 lbl_EstadoStock.Text = lbl_EstadoStock.Text + " "
                 nlimp = nlimp + 1
 
+
+
             End If
+
+
         End If
 
 
@@ -264,9 +273,10 @@ Public Class PrincipalForm
         If nlimp > x Then
             ciclo = 0
             nlimp = 0
-            key = False
             lbl_EstadoStock.Text = ""
             fileStock = OpenFile()
+
+
 
 
         End If
@@ -285,4 +295,9 @@ Public Class PrincipalForm
         Return mensaje
     End Function
 
+    Private Sub TmrArchivo_Tick(sender As Object, e As EventArgs) Handles TmrArchivo.Tick
+        Dim archivo As New Archivos
+        Dim bsnproducto As New BsnProducto
+        archivo.ActualizacionStockCritico(bsnproducto.ObtenerStockCritico())
+    End Sub
 End Class

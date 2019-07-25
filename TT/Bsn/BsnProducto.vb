@@ -77,8 +77,6 @@ Public Class BsnProducto
         valores = id_producto & ",SYSDATETIME( ),SYSDATETIME( )," & cantidad & "," & razon & "," & stock & "," & rut_usuario
         daoProducto.AjustarStock(valores)
 
-        Dim archivo As New Archivos
-        archivo.ActualizacionStockCritico(ObtenerStockCritico())
 
 
 
@@ -112,7 +110,7 @@ Public Class BsnProducto
         End If
     End Sub
 
-    Private Function ObtenerStockCritico()
+    Public Function ObtenerStockCritico()
         Dim daoProducto As New DaoProducto
         Dim datasetx As New DataSet
         Dim text As String = ""

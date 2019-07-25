@@ -32,6 +32,7 @@
         txtBuscar.MaxLength = Validacion.MaxOtroNombre
         txtRutSnDV.MaxLength = Validacion.MaxRut
         txtDV.MaxLength = Validacion.MaxRutVerificador
+        MsgBox(BsnVenta.obtenerUltimaVenta)
         lblTransaccion.Text = (BsnVenta.obtenerUltimaVenta + 1).ToString
         MsgBox(_usuario.Nombres)
         txtVendedor.Text = _usuario.Nombres + " " + _usuario.ApelidoPaterno + " " + _usuario.ApellidoMaterno
@@ -200,6 +201,7 @@
             Dim datasetProductos As DataSet = BsnProducto.ObtenerColumnasEspecificas("ID_PRODUCTO,NOMBRE,PRECIO,STOCK,STOCK_CRITICO")
             dgvProductos.DataSource = datasetProductos.Tables(0).DefaultView
 
+            lblTransaccion.Text = (BsnVenta.obtenerUltimaVenta + 1).ToString
 
 
         End If

@@ -79,8 +79,9 @@
         Dim dataset As New DataSet
         dataset = DaoVenta.obtenerUltimaVenta()
         Try
-            If dataset.Tables(0).Rows.Count - 1 Then
+            If dataset.Tables(0).Rows.Count <> 0 Then
                 ultimaVenta = dataset.Tables(0)(0)(0)
+                MsgBox(ultimaVenta)
             End If
         Catch ex As Exception
             MsgBox("Error: " & ex.ToString)
