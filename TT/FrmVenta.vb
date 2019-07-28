@@ -150,9 +150,10 @@
                 Dim bsnVenta As New BsnVenta
                 Dim Descuento As Array = bsnVenta.ObtenerDescuento(dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(0).Value.ToString, dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(2).Value.ToString, nmudCantidad.Value.ToString)
                 'TOTAL
+                Dim subtotal = dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(2).Value * nmudCantidad.Value
                 Dim total = (dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(2).Value * nmudCantidad.Value) - Integer.Parse(Descuento(2))
                 'guardamos los datos del producto seleccionado en el primer datagridview en un arreglo fila() para luego insertarla en el segundo datagridview
-                Dim fila() As String = {dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(0).Value, dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(1).Value, dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(2).Value, nmudCantidad.Value, Descuento(2), total}
+                Dim fila() As String = {dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(0).Value, dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(1).Value, dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(2).Value, nmudCantidad.Value, subtotal, Descuento(2), total}
                 Dim existe As Boolean = False
                 If dgvProductosSeleccionados.Rows.Count > 0 Then
                     For index = 0 To dgvProductosSeleccionados.Rows.Count - 1

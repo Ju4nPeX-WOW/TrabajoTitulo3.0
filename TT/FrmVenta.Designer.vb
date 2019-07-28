@@ -70,6 +70,7 @@ Partial Class frmVenta
         Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SubTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Descuento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -298,7 +299,7 @@ Partial Class frmVenta
         Me.dgvProductosSeleccionados.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvProductosSeleccionados.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders
         Me.dgvProductosSeleccionados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgvProductosSeleccionados.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codProducto, Me.Nombre, Me.Precio, Me.Cantidad, Me.Descuento, Me.Total})
+        Me.dgvProductosSeleccionados.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codProducto, Me.Nombre, Me.Precio, Me.Cantidad, Me.SubTotal, Me.Descuento, Me.Total})
         Me.dgvProductosSeleccionados.Cursor = System.Windows.Forms.Cursors.Hand
         Me.dgvProductosSeleccionados.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvProductosSeleccionados.Location = New System.Drawing.Point(57, 355)
@@ -495,6 +496,12 @@ Partial Class frmVenta
         Me.Cantidad.Name = "Cantidad"
         Me.Cantidad.ReadOnly = True
         '
+        'SubTotal
+        '
+        Me.SubTotal.HeaderText = "SubTotal"
+        Me.SubTotal.Name = "SubTotal"
+        Me.SubTotal.ReadOnly = True
+        '
         'Descuento
         '
         Me.Descuento.HeaderText = "Descuento"
@@ -614,6 +621,7 @@ Partial Class frmVenta
     Friend WithEvents Nombre As DataGridViewTextBoxColumn
     Friend WithEvents Precio As DataGridViewTextBoxColumn
     Friend WithEvents Cantidad As DataGridViewTextBoxColumn
+    Friend WithEvents SubTotal As DataGridViewTextBoxColumn
     Friend WithEvents Descuento As DataGridViewTextBoxColumn
     Friend WithEvents Total As DataGridViewTextBoxColumn
 End Class
