@@ -45,8 +45,26 @@
         'cmbClientes.DataSource = datasetClientes.Tables(0)
         'cmbClientes.DisplayMember = "Rut_cliente"
 
-        Dim datasetProductos As DataSet = BsnProducto.ObtenerColumnasEspecificas("ID_PRODUCTO,NOMBRE,PRECIO,STOCK,STOCK_CRITICO")
-        dgvProductos.DataSource = datasetProductos.Tables(0).DefaultView
+        Dim datasetProductos As DataSet = BsnProducto.ObtenerColumnasEspecificas("ID_PRODUCTO,NOMBRE,PRECIO,STOCK")
+        Dim column = New DataColumn()
+
+        column.DataType = System.Type.GetType("System.String")
+        column.ColumnName = "DESCUENTOS"
+        column.ReadOnly = False
+        'Add the Column to the DataColumnCollection.
+        datasetProductos.Tables(0).Columns.Add(column)
+
+        For i = 0 To datasetProductos.Tables(0).Rows.Count - 1
+            Dim bsnVenta As New BsnVenta
+            Dim Descuento As String = bsnVenta.ObtenerCondicionDescuento(datasetProductos.Tables(0)(i)(0).ToString)
+            datasetProductos.Tables(0)(i)("DESCUENTOS") = Descuento
+        Next
+
+
+        ''RELLENAR DGV
+        EstructurarDGVProductos(dgvProductos)
+        dgvProductos.DataSource = datasetProductos.Tables(0)
+
 
         Timer1.Enabled = True
         txtRutSnDV.Text = ""
@@ -77,10 +95,13 @@
 
         For index = 0 To (dgvProductosSeleccionados.Rows.Count - 1) Step 1
             subtotal = subtotal + (dgvProductosSeleccionados.Rows(index).Cells(2).Value * dgvProductosSeleccionados.Rows(index).Cells(3).Value)
+            descuento = descuento + dgvProductosSeleccionados.Rows(index).Cells(4).Value
         Next
         txtSubto.Text = subtotal
+        txtDesc.Text = descuento
 
-        total = subtotal + ((subtotal * Enumeraciones.getIVA()) / 100)
+        total = subtotal - descuento
+        total = total + ((total * Enumeraciones.getIVA()) / 100)
         txtTotal.Text = total
 
     End Sub
@@ -125,8 +146,13 @@
         'Boton que lo que realiza es insertar el producto elegido en el datagridviewPRODUCTOS, hacia el datagridviewPRODUCTOSSELECCIONADOS.
         If dgvProductos.CurrentRow.Index > -1 Then                                                                                                                                      'aqui iria el descuento raro
             If nmudCantidad.Value > 0 Then
+                'obtener descuento 
+                Dim bsnVenta As New BsnVenta
+                Dim Descuento As Array = bsnVenta.ObtenerDescuento(dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(0).Value.ToString, dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(2).Value.ToString, nmudCantidad.Value.ToString)
+                'TOTAL
+                Dim total = (dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(2).Value * nmudCantidad.Value) - Integer.Parse(Descuento(2))
                 'guardamos los datos del producto seleccionado en el primer datagridview en un arreglo fila() para luego insertarla en el segundo datagridview
-                Dim fila() As String = {dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(0).Value, dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(1).Value, dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(2).Value, nmudCantidad.Value}
+                Dim fila() As String = {dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(0).Value, dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(1).Value, dgvProductos.Rows(dgvProductos.CurrentRow.Index).Cells(2).Value, nmudCantidad.Value, Descuento(2), total}
                 Dim existe As Boolean = False
                 If dgvProductosSeleccionados.Rows.Count > 0 Then
                     For index = 0 To dgvProductosSeleccionados.Rows.Count - 1
@@ -281,4 +307,21 @@
         Return cumple
     End Function
 
+    Private Sub EstructurarDGVProductos(dgv As Object)
+        dgv.Rows.Clear()
+        dgv.DefaultCellStyle.BackColor = Color.Beige
+        dgv.ColumnCount = 5
+        dgv.Columns(0).Name = "Id"
+        dgv.Columns(1).Name = "Nombre"
+        dgv.Columns(2).Name = "Precio"
+        dgv.Columns(3).Name = "Stock"
+        dgv.Columns(4).Name = "Descuento"
+
+        dgv.Columns(0).DataPropertyName = "Id_producto"
+        dgv.Columns(1).DataPropertyName = "Nombre"
+        dgv.Columns(2).DataPropertyName = "Precio"
+        dgv.Columns(3).DataPropertyName = "Stock"
+        dgv.Columns(4).DataPropertyName = "DESCUENTOS"
+
+    End Sub
 End Class

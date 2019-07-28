@@ -630,3 +630,8 @@ Select p.Id_producto as Id ,
 LEFT JOIN Producto_Categoria as pc ON p.Id_producto = pc.Id_producto
 LEFT JOIN Categorias as c ON c.Id_categoria = pc.Id_categoria 
 WHERE p.False_delete = 0
+
+
+
+
+SELECT * FROM Descuentos WHERE Descuentos.Id_producto = 1 and Fecha_termino > SYSDATETIME( )

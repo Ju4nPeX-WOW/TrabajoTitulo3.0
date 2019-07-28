@@ -376,3 +376,5 @@ C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.xml
 C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.pdb
 C:\Users\kevin\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.FormBase.resources
 C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.FormBase.resources
+C:\Users\kevin\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.PasswordDialogBox.resources
+C:\Users\kevin\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.Testeo.resources

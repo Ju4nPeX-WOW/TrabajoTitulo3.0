@@ -73,30 +73,44 @@
     Public Function IRut(e As KeyPressEventArgs)
         If IsNumeric(e.KeyChar) Or e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Back) Then ' ---> 
             bol = False
+        Else
+            bol = True
         End If
         Return bol
     End Function
     Public Function IRutVerificador(e As KeyPressEventArgs)
         If IsNumeric(e.KeyChar) Or e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Back) Or e.KeyChar = "K" Then ' ---> 
             bol = False
+        Else
+            bol = True
+
         End If
         Return bol
     End Function
     Public Function IPassword(e As KeyPressEventArgs)
         If Char.IsLetterOrDigit(e.KeyChar) Or e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Back) Then ' ---> 
             bol = False
+        Else
+            bol = True
+
         End If
         Return bol
     End Function
     Public Function INombrePersona(e As KeyPressEventArgs)
         If Char.IsLetter(e.KeyChar) Or e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Back) Then ' ---> 
             bol = False
+        Else
+            bol = True
+
         End If
         Return bol
     End Function
     Public Function IApellido(e As KeyPressEventArgs)
         If Char.IsLetter(e.KeyChar) Or e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Back) Then ' ---> 
             bol = False
+        Else
+            bol = True
+
         End If
         Return bol
     End Function
@@ -104,6 +118,9 @@
     Public Function ITelefonoF(e As KeyPressEventArgs)
         If IsNumeric(e.KeyChar) Or e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Back) Then ' ---> 
             bol = False
+        Else
+            bol = True
+
         End If
         Return bol
     End Function
@@ -111,6 +128,9 @@
     Public Function ITelefonoC(e As KeyPressEventArgs)
         If IsNumeric(e.KeyChar) Or e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Back) Then ' ---> 
             bol = False
+        Else
+            bol = True
+
         End If
         Return bol
     End Function
@@ -118,6 +138,9 @@
     Public Function IEmail(e As KeyPressEventArgs)
         If Char.IsLetterOrDigit(e.KeyChar) Or e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Back) Then ' ---> 
             bol = False
+        Else
+            bol = True
+
         End If
         Return bol
     End Function
@@ -125,6 +148,9 @@
     Public Function IDireccion(e As KeyPressEventArgs)
         If Char.IsLetterOrDigit(e.KeyChar) Or e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Back) Then ' ---> 
             bol = False
+        Else
+            bol = True
+
         End If
         Return bol
     End Function
@@ -132,12 +158,18 @@
     Public Function INumVenta(e As KeyPressEventArgs)
         If IsNumeric(e.KeyChar) Or e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Back) Then ' ---> 
             bol = False
+        Else
+            bol = True
+
         End If
         Return bol
     End Function
     Public Function IPrecio(e As KeyPressEventArgs)
         If IsNumeric(e.KeyChar) Or e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Back) Then ' ---> 
             bol = False
+        Else
+            bol = True
+
         End If
         Return bol
     End Function
@@ -145,6 +177,9 @@
     Public Function INumFolio(e As KeyPressEventArgs)
         If IsNumeric(e.KeyChar) Or e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Back) Then ' ---> 
             bol = False
+        Else
+            bol = True
+
         End If
         Return bol
     End Function
@@ -152,24 +187,36 @@
     Public Function IOtroNombre(e As KeyPressEventArgs)
         If Char.IsLetterOrDigit(e.KeyChar) Or e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Back) Or e.KeyChar = "+" Then ' ---> 
             bol = False
+        Else
+            bol = True
+
         End If
         Return bol
     End Function
     Public Function ICodProducto(e As KeyPressEventArgs)
         If Char.IsLetterOrDigit(e.KeyChar) Or e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Back) Then ' ---> 
             bol = False
+        Else
+            bol = True
+
         End If
         Return bol
     End Function
     Public Function IStock(e As KeyPressEventArgs)
         If IsNumeric(e.KeyChar) Or e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Back) Then ' ---> 
             bol = False
+        Else
+            bol = True
+
         End If
         Return bol
     End Function
     Public Function IStockCritico(e As KeyPressEventArgs)
         If IsNumeric(e.KeyChar) Or e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Back) Then ' ---> 
             bol = False
+        Else
+            bol = True
+
         End If
         Return bol
     End Function

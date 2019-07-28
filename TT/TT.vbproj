@@ -277,6 +277,12 @@
     <Compile Include="Otros\Conexion.vb" />
     <Compile Include="Otros\Instructions.vb" />
     <Compile Include="Otros\Validaciones.vb" />
+    <Compile Include="Testeo.Designer.vb">
+      <DependentUpon>Testeo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Testeo.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="FrmAcerca.resx">
@@ -314,6 +320,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAsPlantilla\FormBase.resx">
       <DependentUpon>FormBase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Otros\PasswordDialogBox.resx">
+      <DependentUpon>PasswordDialogBox.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrincipalForm.resx">
       <DependentUpon>PrincipalForm.vb</DependentUpon>
@@ -356,6 +365,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Testeo.resx">
+      <DependentUpon>Testeo.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

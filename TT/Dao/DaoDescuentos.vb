@@ -31,6 +31,13 @@
         instrucciones.Modificar("Descuentos", columnas, condicion)
 
     End Sub
+
+    Public Function GetDescuentoActivoProducto(ID As String)
+        Dim instruccion As New Instructions
+        Dim dataset As New DataSet
+        dataset = instruccion.Seleccionar("Descuentos", "*", " WHERE Descuentos.Id_producto = " & ID & " and Fecha_termino > SYSDATETIME( )")
+        Return dataset
+    End Function
 End Class
 
 

@@ -89,4 +89,28 @@
         Return ultimaVenta
     End Function
 
+    Public Function ObtenerCondicionDescuento(IDProducto As String)
+        Dim bsnDescuento As New BsnDescuentos
+        Dim condicion As String = ""
+        Dim condicioncodificada As String = bsnDescuento.GetCondicionDescuentoActivoProducto(IDProducto)
+        If condicioncodificada.Length <> 0 Then
+            condicion = bsnDescuento.Condicion(condicioncodificada)
+        End If
+        Return condicion
+    End Function
+
+
+    Public Function ObtenerDescuento(IDProducto As String, precio As Integer, cantidad As Integer)
+        Dim bsnDescuento As New BsnDescuentos
+        Dim condicion = {}
+        Dim condicioncodificada As String = bsnDescuento.GetCondicionDescuentoActivoProducto(IDProducto)
+        If condicioncodificada.Length <> 0 Then
+            condicion = bsnDescuento.Condicion(condicioncodificada, precio, cantidad)
+        End If
+        Return condicion
+    End Function
+
+
+
+
 End Class

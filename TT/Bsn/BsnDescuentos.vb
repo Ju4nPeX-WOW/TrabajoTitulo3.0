@@ -57,8 +57,6 @@
                 End If
 
             Next
-            text = {cont.ToString + " - " + txt, total.ToString}
-            Console.WriteLine(text(0) + "   -" + text(1))
         ElseIf tipo.Equals("E") Then
             For i = 0 To cant - 1
                 l += 1
@@ -71,10 +69,9 @@
 
             Next
 
-            text = {cont.ToString + " - " + txt, total.ToString}
-            Console.WriteLine(text(0) + "   -" + text(1))
 
         End If
+        text = {cont.ToString, txt, total.ToString}
 
         Return text
 
@@ -88,4 +85,25 @@
     Public Function ObtenerIdProducto(id_descuento As String)
         Return daoDescuentos.ObtenerIdProducto(id_descuento)
     End Function
+
+    Public Function GetCondicionDescuentoActivoProducto(ID As String)
+        Dim daoDescuento As New DaoDescuentos
+        Dim dataset As New DataSet
+        Dim cod As String = ""
+
+        dataset = daoDescuento.GetDescuentoActivoProducto(ID)
+
+        Try
+            If dataset.Tables(0).Rows.Count <> 0 Then
+                cod = dataset.Tables(0)(0)(4).ToString
+            End If
+        Catch ex As Exception
+            Console.WriteLine("NO SE ENCONTRO DESCUENTO ACTIVO")
+            cod = ""
+
+        End Try
+
+        Return cod
+    End Function
+
 End Class
