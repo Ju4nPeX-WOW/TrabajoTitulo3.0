@@ -18,4 +18,8 @@
         dataset = DaoCliente.obtenerClientesSinFalseDelete()
         Return dataset
     End Function
+    Public Function ObtenerCliente(rut As String)
+        dataset = DaoCliente.ObtenerCliente(rut)
+        Return dataset
+    End Function
 End Class

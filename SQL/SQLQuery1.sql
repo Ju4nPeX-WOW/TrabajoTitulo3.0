@@ -635,3 +635,4 @@ WHERE p.False_delete = 0
 
 
 SELECT * FROM Descuentos WHERE Descuentos.Id_producto = 1 and Fecha_termino > SYSDATETIME( )
+SELECT * FROM Ventas

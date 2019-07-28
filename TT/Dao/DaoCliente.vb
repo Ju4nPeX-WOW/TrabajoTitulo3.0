@@ -30,7 +30,12 @@
         Instrucciones.FalseDelete(tabla, condicion)
     End Sub
 
-
+    Public Function ObtenerCliente(rut As String)
+        columnas = "*"
+        condicion = " and Rut_cliente = " & rut
+        dataset = Instrucciones.SelectWithFalseDelete(tabla, columnas, condicion)
+        Return dataset
+    End Function
 
 
 

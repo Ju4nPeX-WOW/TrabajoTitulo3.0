@@ -49,6 +49,13 @@ Partial Class frmVenta
         Me.btnBuscar = New System.Windows.Forms.Button()
         Me.dgvProductos = New System.Windows.Forms.DataGridView()
         Me.dgvProductosSeleccionados = New System.Windows.Forms.DataGridView()
+        Me.codProducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SubTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descuento = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.btnAgregar = New System.Windows.Forms.Button()
         Me.nmudCantidad = New System.Windows.Forms.NumericUpDown()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -66,18 +73,18 @@ Partial Class frmVenta
         Me.txtVendedor = New System.Windows.Forms.TextBox()
         Me.disminuirCantidad = New System.Windows.Forms.PictureBox()
         Me.agregarCantidad = New System.Windows.Forms.PictureBox()
-        Me.codProducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Precio = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.SubTotal = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Descuento = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Total = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LblDescuentoCliente = New System.Windows.Forms.Label()
+        Me.TxtDescuentoAdicional = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.TxtDescuentoCliente = New System.Windows.Forms.TextBox()
+        Me.LblDescuentoAdicional = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         CType(Me.dgvProductos, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvProductosSeleccionados, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nmudCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.disminuirCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.agregarCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblVend
@@ -120,7 +127,7 @@ Partial Class frmVenta
         'txtSubto
         '
         Me.txtSubto.Enabled = False
-        Me.txtSubto.Location = New System.Drawing.Point(519, 520)
+        Me.txtSubto.Location = New System.Drawing.Point(529, 520)
         Me.txtSubto.Name = "txtSubto"
         Me.txtSubto.Size = New System.Drawing.Size(117, 20)
         Me.txtSubto.TabIndex = 8
@@ -129,7 +136,7 @@ Partial Class frmVenta
         'txtDesc
         '
         Me.txtDesc.Enabled = False
-        Me.txtDesc.Location = New System.Drawing.Point(519, 546)
+        Me.txtDesc.Location = New System.Drawing.Point(529, 546)
         Me.txtDesc.Name = "txtDesc"
         Me.txtDesc.Size = New System.Drawing.Size(117, 20)
         Me.txtDesc.TabIndex = 9
@@ -138,7 +145,7 @@ Partial Class frmVenta
         'txtTotal
         '
         Me.txtTotal.Enabled = False
-        Me.txtTotal.Location = New System.Drawing.Point(519, 599)
+        Me.txtTotal.Location = New System.Drawing.Point(692, 598)
         Me.txtTotal.Name = "txtTotal"
         Me.txtTotal.Size = New System.Drawing.Size(117, 20)
         Me.txtTotal.TabIndex = 10
@@ -147,7 +154,7 @@ Partial Class frmVenta
         'txtIva
         '
         Me.txtIva.Enabled = False
-        Me.txtIva.Location = New System.Drawing.Point(519, 572)
+        Me.txtIva.Location = New System.Drawing.Point(528, 596)
         Me.txtIva.Name = "txtIva"
         Me.txtIva.Size = New System.Drawing.Size(117, 20)
         Me.txtIva.TabIndex = 11
@@ -156,7 +163,7 @@ Partial Class frmVenta
         'lblSubto
         '
         Me.lblSubto.AutoSize = True
-        Me.lblSubto.Location = New System.Drawing.Point(446, 522)
+        Me.lblSubto.Location = New System.Drawing.Point(425, 522)
         Me.lblSubto.Name = "lblSubto"
         Me.lblSubto.Size = New System.Drawing.Size(49, 13)
         Me.lblSubto.TabIndex = 15
@@ -165,7 +172,7 @@ Partial Class frmVenta
         'lblDesc
         '
         Me.lblDesc.AutoSize = True
-        Me.lblDesc.Location = New System.Drawing.Point(445, 546)
+        Me.lblDesc.Location = New System.Drawing.Point(425, 546)
         Me.lblDesc.Name = "lblDesc"
         Me.lblDesc.Size = New System.Drawing.Size(62, 13)
         Me.lblDesc.TabIndex = 16
@@ -174,7 +181,7 @@ Partial Class frmVenta
         'lblIva
         '
         Me.lblIva.AutoSize = True
-        Me.lblIva.Location = New System.Drawing.Point(445, 575)
+        Me.lblIva.Location = New System.Drawing.Point(424, 599)
         Me.lblIva.Name = "lblIva"
         Me.lblIva.Size = New System.Drawing.Size(27, 13)
         Me.lblIva.TabIndex = 17
@@ -183,7 +190,7 @@ Partial Class frmVenta
         'lblTotal
         '
         Me.lblTotal.AutoSize = True
-        Me.lblTotal.Location = New System.Drawing.Point(446, 602)
+        Me.lblTotal.Location = New System.Drawing.Point(654, 601)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(34, 13)
         Me.lblTotal.TabIndex = 18
@@ -311,6 +318,48 @@ Partial Class frmVenta
         Me.dgvProductosSeleccionados.Size = New System.Drawing.Size(639, 133)
         Me.dgvProductosSeleccionados.TabIndex = 74
         '
+        'codProducto
+        '
+        Me.codProducto.HeaderText = "ID"
+        Me.codProducto.Name = "codProducto"
+        Me.codProducto.ReadOnly = True
+        '
+        'Nombre
+        '
+        Me.Nombre.HeaderText = "Nombre"
+        Me.Nombre.Name = "Nombre"
+        Me.Nombre.ReadOnly = True
+        '
+        'Precio
+        '
+        Me.Precio.HeaderText = "Precio"
+        Me.Precio.Name = "Precio"
+        Me.Precio.ReadOnly = True
+        '
+        'Cantidad
+        '
+        Me.Cantidad.HeaderText = "Cantidad"
+        Me.Cantidad.Name = "Cantidad"
+        Me.Cantidad.ReadOnly = True
+        '
+        'SubTotal
+        '
+        Me.SubTotal.HeaderText = "SubTotal"
+        Me.SubTotal.Name = "SubTotal"
+        Me.SubTotal.ReadOnly = True
+        '
+        'Descuento
+        '
+        Me.Descuento.HeaderText = "Descuento"
+        Me.Descuento.Name = "Descuento"
+        Me.Descuento.ReadOnly = True
+        '
+        'Total
+        '
+        Me.Total.HeaderText = "Total"
+        Me.Total.Name = "Total"
+        Me.Total.ReadOnly = True
+        '
         'btnAgregar
         '
         Me.btnAgregar.Location = New System.Drawing.Point(752, 150)
@@ -374,7 +423,7 @@ Partial Class frmVenta
         'btnRealizarVenta
         '
         Me.btnRealizarVenta.Font = New System.Drawing.Font("Microsoft YaHei", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRealizarVenta.Location = New System.Drawing.Point(679, 530)
+        Me.btnRealizarVenta.Location = New System.Drawing.Point(840, 525)
         Me.btnRealizarVenta.Name = "btnRealizarVenta"
         Me.btnRealizarVenta.Size = New System.Drawing.Size(167, 73)
         Me.btnRealizarVenta.TabIndex = 81
@@ -472,47 +521,60 @@ Partial Class frmVenta
         Me.agregarCantidad.TabIndex = 30
         Me.agregarCantidad.TabStop = False
         '
-        'codProducto
+        'LblDescuentoCliente
         '
-        Me.codProducto.HeaderText = "ID"
-        Me.codProducto.Name = "codProducto"
-        Me.codProducto.ReadOnly = True
+        Me.LblDescuentoCliente.AutoSize = True
+        Me.LblDescuentoCliente.ForeColor = System.Drawing.Color.Red
+        Me.LblDescuentoCliente.Location = New System.Drawing.Point(755, 102)
+        Me.LblDescuentoCliente.Name = "LblDescuentoCliente"
+        Me.LblDescuentoCliente.Size = New System.Drawing.Size(0, 13)
+        Me.LblDescuentoCliente.TabIndex = 107
+        Me.LblDescuentoCliente.Visible = False
         '
-        'Nombre
+        'TxtDescuentoAdicional
         '
-        Me.Nombre.HeaderText = "Nombre"
-        Me.Nombre.Name = "Nombre"
-        Me.Nombre.ReadOnly = True
+        Me.TxtDescuentoAdicional.Location = New System.Drawing.Point(692, 546)
+        Me.TxtDescuentoAdicional.Name = "TxtDescuentoAdicional"
+        Me.TxtDescuentoAdicional.Size = New System.Drawing.Size(117, 20)
+        Me.TxtDescuentoAdicional.TabIndex = 108
+        Me.TxtDescuentoAdicional.Text = "0"
         '
-        'Precio
+        'Label9
         '
-        Me.Precio.HeaderText = "Precio"
-        Me.Precio.Name = "Precio"
-        Me.Precio.ReadOnly = True
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(423, 572)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(97, 13)
+        Me.Label9.TabIndex = 110
+        Me.Label9.Text = "Descuento Cliente:"
         '
-        'Cantidad
+        'TxtDescuentoCliente
         '
-        Me.Cantidad.HeaderText = "Cantidad"
-        Me.Cantidad.Name = "Cantidad"
-        Me.Cantidad.ReadOnly = True
+        Me.TxtDescuentoCliente.Enabled = False
+        Me.TxtDescuentoCliente.Location = New System.Drawing.Point(529, 570)
+        Me.TxtDescuentoCliente.Name = "TxtDescuentoCliente"
+        Me.TxtDescuentoCliente.Size = New System.Drawing.Size(117, 20)
+        Me.TxtDescuentoCliente.TabIndex = 109
+        Me.TxtDescuentoCliente.Text = "0"
         '
-        'SubTotal
+        'LblDescuentoAdicional
         '
-        Me.SubTotal.HeaderText = "SubTotal"
-        Me.SubTotal.Name = "SubTotal"
-        Me.SubTotal.ReadOnly = True
+        Me.LblDescuentoAdicional.AutoSize = True
+        Me.LblDescuentoAdicional.Location = New System.Drawing.Point(690, 520)
+        Me.LblDescuentoAdicional.Name = "LblDescuentoAdicional"
+        Me.LblDescuentoAdicional.Size = New System.Drawing.Size(108, 13)
+        Me.LblDescuentoAdicional.TabIndex = 112
+        Me.LblDescuentoAdicional.Text = "Descuento Adicional:"
         '
-        'Descuento
+        'PictureBox1
         '
-        Me.Descuento.HeaderText = "Descuento"
-        Me.Descuento.Name = "Descuento"
-        Me.Descuento.ReadOnly = True
-        '
-        'Total
-        '
-        Me.Total.HeaderText = "Total"
-        Me.Total.Name = "Total"
-        Me.Total.ReadOnly = True
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(805, 544)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(29, 22)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 113
+        Me.PictureBox1.TabStop = False
         '
         'frmVenta
         '
@@ -520,6 +582,12 @@ Partial Class frmVenta
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ControlLightLight
         Me.ClientSize = New System.Drawing.Size(1157, 631)
+        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.LblDescuentoAdicional)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.TxtDescuentoCliente)
+        Me.Controls.Add(Me.TxtDescuentoAdicional)
+        Me.Controls.Add(Me.LblDescuentoCliente)
         Me.Controls.Add(Me.txtVendedor)
         Me.Controls.Add(Me.txtNombreCliente)
         Me.Controls.Add(Me.lblNombreCliente)
@@ -570,6 +638,7 @@ Partial Class frmVenta
         CType(Me.nmudCantidad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.disminuirCantidad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.agregarCantidad, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -624,4 +693,10 @@ Partial Class frmVenta
     Friend WithEvents SubTotal As DataGridViewTextBoxColumn
     Friend WithEvents Descuento As DataGridViewTextBoxColumn
     Friend WithEvents Total As DataGridViewTextBoxColumn
+    Friend WithEvents LblDescuentoCliente As Label
+    Friend WithEvents TxtDescuentoAdicional As TextBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents TxtDescuentoCliente As TextBox
+    Friend WithEvents LblDescuentoAdicional As Label
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

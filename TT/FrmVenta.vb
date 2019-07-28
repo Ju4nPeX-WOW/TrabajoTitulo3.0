@@ -16,6 +16,8 @@
     Protected Enumeraciones As New Enumeraciones
 
     Dim Validacion As New Validacionesv2
+    Dim permiso As Boolean = False
+    Dim descuentoCliente As Short = 0
 
     Dim Instructions As New Instructions 'es una clase y no es publica
     Public Sub RecibirUsuario(objeto As Usuario)
@@ -29,6 +31,7 @@
     End Sub
     Private Sub frmVenta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'establecer maximos
+        TxtDescuentoAdicional.MaxLength = 5
         txtBuscar.MaxLength = Validacion.MaxOtroNombre
         txtRutSnDV.MaxLength = Validacion.MaxRut
         txtDV.MaxLength = Validacion.MaxRutVerificador
@@ -41,10 +44,7 @@
         'cmbVendedor.DataSource = datasetEmpleados.Tables(0)
         'cmbVendedor.DisplayMember = "Rut_Empleado"
 
-        Dim datasetClientes As DataSet = BsnCliente.obtenerTodosClientes
-        'cmbClientes.DataSource = datasetClientes.Tables(0)
-        'cmbClientes.DisplayMember = "Rut_cliente"
-
+        'CLIENTES
         Dim datasetProductos As DataSet = BsnProducto.ObtenerColumnasEspecificas("ID_PRODUCTO,NOMBRE,PRECIO,STOCK")
         Dim column = New DataColumn()
 
@@ -78,48 +78,62 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnBuscar.Click
         If txtBuscar.Text.Length > 0 Then
             Dim datasetIncremental As New DataSet
-            datasetIncremental = BsnProducto.BusquedaIncremental("ID_PRODUCTO,NOMBRE,PRECIO,STOCK,STOCK_CRITICO", "Productos", "Nombre", txtBuscar.Text)
+            datasetIncremental = BsnProducto.BusquedaIncremental("ID_PRODUCTO,NOMBRE,PRECIO,STOCK", "Productos", "Nombre", txtBuscar.Text)
             dgvProductos.DataSource = datasetIncremental.Tables(0).DefaultView
         End If
     End Sub
     Private Sub txtBuscar_TextChanged(sender As Object, e As EventArgs) Handles txtBuscar.TextChanged
         If txtBuscar.Text.Length = 0 Then
-            Dim datasetProductos As DataSet = BsnProducto.ObtenerColumnasEspecificas("ID_PRODUCTO,NOMBRE,PRECIO,STOCK,STOCK_CRITICO ")
+            Dim datasetProductos As DataSet = BsnProducto.ObtenerColumnasEspecificas("ID_PRODUCTO,NOMBRE,PRECIO,STOCK")
             dgvProductos.DataSource = datasetProductos.Tables(0).DefaultView
         End If
     End Sub
     Public Sub calculoTotal()
         Dim subtotal As Integer = 0
-        Dim descuento As Integer = 0 'aqui NASA
+        Dim descuento As Integer = 0
+        Dim descCliente As Integer = 0
         Dim total As Integer = 0
 
         For index = 0 To (dgvProductosSeleccionados.Rows.Count - 1) Step 1
-            subtotal = subtotal + (dgvProductosSeleccionados.Rows(index).Cells(2).Value * dgvProductosSeleccionados.Rows(index).Cells(3).Value)
-            descuento = descuento + dgvProductosSeleccionados.Rows(index).Cells(4).Value
+            subtotal = subtotal + dgvProductosSeleccionados.Rows(index).Cells(4).Value
+            descuento = descuento + dgvProductosSeleccionados.Rows(index).Cells(5).Value
         Next
         txtSubto.Text = subtotal
         txtDesc.Text = descuento
 
-        total = subtotal - descuento
-        total = total + ((total * Enumeraciones.getIVA()) / 100)
+        descCliente = subtotal - descuento
+        descCliente = Math.Round((descCliente * descuentoCliente) / 100)
+        TxtDescuentoCliente.Text = descCliente.ToString
+        ''revisar el descuento adicional
+        total = subtotal - descuento - descCliente - Integer.Parse(TxtDescuentoAdicional.Text)
+        If total < 0 Then
+            total = 0
+        End If
+        If total <> 0 Then
+            total = total + ((total * Enumeraciones.getIVA()) / 100)
+        End If
         txtTotal.Text = total
 
     End Sub
 
     Private Sub dgvProductosSeleccionados_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dgvProductosSeleccionados.UserDeletingRow
         'evento que sucede cuando se esta eliminando una fila del dgvPRODUCTOSSELECCIONADOS->CARRITO DE COMPRAS (cuando se apreta el boton suprimir)
-        Dim subtotal As Integer = Integer.Parse(txtSubto.Text)
-        Dim total As Integer = 0
-        subtotal = subtotal - (dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(2).Value * dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(3).Value)
-        txtSubto.Text = subtotal
+        'Dim subtotal As Integer = Integer.Parse(txtSubto.Text)
+        'Dim total As Integer = 0
+        'SubTotal = subtotal - (dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(2).Value * dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(3).Value)
+        'txtSubto.Text = subtotal
 
-        total = subtotal + ((subtotal * 19) / 100)
-        txtTotal.Text = total
+        'Total = subtotal + ((subtotal * 19) / 100)
+        'txtTotal.Text = total
+        calculoTotal()
+
     End Sub
     Private Sub disminuirCantidad_MouseClick(sender As Object, e As MouseEventArgs) Handles disminuirCantidad.MouseClick
         'Evento que ocurre cuando se selecciona el boton de disminuir la cantidad
         If dgvProductosSeleccionados.Rows.Count > 0 Then
             dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(3).Value = dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(3).Value - 1
+            RefreshRow()
+
             If dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(3).Value = 0 Then
                 'si el usuario disminuyo el producto hasta que llego a cero, pues, se elimina de la tabla
                 dgvProductosSeleccionados.Rows.RemoveAt(dgvProductosSeleccionados.CurrentRow.Index)
@@ -136,6 +150,8 @@
 
         If dgvProductosSeleccionados.Rows.Count > 0 Then
             dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(3).Value = dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(3).Value + 1
+
+            RefreshRow()
             calculoTotal()
         Else
             MsgBox("Por favor agregue productos al carro de compras...")
@@ -308,6 +324,24 @@
         Return cumple
     End Function
 
+    Private Sub RefreshRow()
+        Dim bsnVenta As New BsnVenta
+        'ID - CANTIDAD - PRECIO
+        Dim id = dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(0).Value.ToString
+        Dim cant = dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(3).Value
+        Dim precio = dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(2).Value
+
+        'PREPARAR EL SUBTOTAL - DESCUENTO  - TOTAL 
+        Dim subtotal = precio * cant
+        Dim Descuento As Array = bsnVenta.ObtenerDescuento(id, precio, cant)
+        Dim total = subtotal - Integer.Parse(Descuento(2))
+
+        'ACTUALIZAR EL SUBTOTAL - DESCUENTO  - TOTAL 
+        dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(4).Value = subtotal
+        dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(5).Value = Descuento(2)
+        dgvProductosSeleccionados.Rows(dgvProductosSeleccionados.CurrentRow.Index).Cells(6).Value = total
+
+    End Sub
     Private Sub EstructurarDGVProductos(dgv As Object)
         dgv.Rows.Clear()
         dgv.DefaultCellStyle.BackColor = Color.Beige
@@ -323,6 +357,63 @@
         dgv.Columns(2).DataPropertyName = "Precio"
         dgv.Columns(3).DataPropertyName = "Stock"
         dgv.Columns(4).DataPropertyName = "DESCUENTOS"
+
+    End Sub
+
+    Private Sub txtDV_TextChanged(sender As Object, e As EventArgs) Handles txtDV.TextChanged
+        Dim datasetClientes As DataSet = BsnCliente.ObtenerCliente(txtRutSnDV.Text)
+        'cmbClientes.DataSource = datasetClientes.Tables(0)
+        'cmbClientes.DisplayMember = "Rut_cliente"
+        Try
+            If datasetClientes.Tables(0).Rows.Count <> 0 Then
+
+                If datasetClientes.Tables(0)(0)(4) > 0 Then
+                    LblDescuentoCliente.Visible = True
+                    LblDescuentoCliente.Text = datasetClientes.Tables(0)(0)(4) & "% descuento"
+                    descuentoCliente = datasetClientes.Tables(0)(0)(4)
+                End If
+
+            End If
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+
+
+
+
+    Private Sub TxtDescuentoAdicional_Click(sender As Object, e As EventArgs) Handles TxtDescuentoAdicional.Click
+        Dim validar As New Validaciones
+
+        If validar.ConfirmarConContraseña Then
+            MsgBox("valido")
+            permiso = True
+            LblDescuentoAdicional.Enabled = True
+        Else
+            permiso = False
+
+            MsgBox("NO CUENTA CON LOS PERMISOS PARA REALIZAR LA OPERACION")
+
+        End If
+
+    End Sub
+
+
+
+    Private Sub TxtDescuentoAdicional_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TxtDescuentoAdicional.KeyPress
+        If permiso Then
+
+            e.Handled = Validacion.IPrecio(e)
+        End If
+
+
+    End Sub
+
+
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+        calculoTotal()
 
     End Sub
 End Class
