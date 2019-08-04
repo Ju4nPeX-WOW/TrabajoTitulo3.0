@@ -10,8 +10,9 @@
     Protected dataset_padre As DataSet     ' Todos cargar un dataset al parecer
 
     Private Sub FormTamaño_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Location = New System.Drawing.Point(150, 45)
-        Me.ClientSize = New System.Drawing.Size(1173, 660)
+        Me.Location = New System.Drawing.Point(203, 57)
+        Me.ClientSize = New System.Drawing.Size(1174, 648)
+
     End Sub
 
     Protected Sub DesbloquearBotones(coleccion As List(Of Object))

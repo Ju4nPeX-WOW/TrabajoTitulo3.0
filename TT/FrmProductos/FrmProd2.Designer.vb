@@ -459,8 +459,8 @@ Partial Class frmProd2
         '
         'frmProd2
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+        Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(1173, 670)
         Me.Controls.Add(Me.BtnExit)
@@ -476,6 +476,8 @@ Partial Class frmProd2
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmProd2"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.Text = "frmProd2"
         Me.TabControl1.ResumeLayout(False)
         Me.tbpSimple.ResumeLayout(False)

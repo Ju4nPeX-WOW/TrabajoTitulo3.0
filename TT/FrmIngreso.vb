@@ -38,10 +38,10 @@ Public Class FrmIngreso
         End If
     End Sub
 
-    Private Sub txtUsua_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtUsua.KeyPress
+    Private Sub txtUsua_KeyPress(sender As Object, e As KeyPressEventArgs)
         e.Handled = validacion.IRut(e)
     End Sub
-    Private Sub txtContra_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtContra.KeyPress
+    Private Sub txtContra_KeyPress(sender As Object, e As KeyPressEventArgs)
         e.Handled = validacion.IPassword(e)
     End Sub
 
@@ -49,4 +49,13 @@ Public Class FrmIngreso
         txtUsua.MaxLength = validacion.MaxRut
         txtContra.MaxLength = validacion.MaxPassword
     End Sub
+
+
+
+
+    Private Sub btnExit_Click(sender As Object, e As EventArgs) Handles btnExit.Click
+        Application.Exit()
+    End Sub
+
+
 End Class
