@@ -1,5 +1,14 @@
 ﻿Public Class FormBase
     Private _usuario As New Usuario
+    Private _alto, _ancho, _posicionX, _posicionY As Integer
+
+
+    Public Sub Dimencion_Locacion(h As Integer, w As Integer, x As Integer, y As Integer)
+        _alto = h
+        _ancho = w
+        _posicionX = x
+        _posicionY = y
+    End Sub
 
 
     Protected listaDeObjetosForm As List(Of Object) ' Lista de objetos en la cual hare refencia a los elementos del form
@@ -10,8 +19,9 @@
     Protected dataset_padre As DataSet     ' Todos cargar un dataset al parecer
 
     Private Sub FormTamaño_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Location = New System.Drawing.Point(203, 57)
-        Me.ClientSize = New System.Drawing.Size(1174, 648)
+        Me.Location = New System.Drawing.Point(_posicionX, _posicionY)
+        Me.ClientSize = New System.Drawing.Size(_ancho, _alto)
+        Dimencion()
 
     End Sub
 
@@ -84,4 +94,9 @@
         End If
 
     End Sub
+    Private Sub Dimencion()
+        Dim ancho As Integer = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Size.Width
+        Dim alto As Integer = System.Windows.Forms.Screen.PrimaryScreen.Bounds.Size.Height
+    End Sub
+
 End Class

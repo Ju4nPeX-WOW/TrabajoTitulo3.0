@@ -2,6 +2,7 @@
 Imports System.IO
 
 Public Class PrincipalForm
+
     Protected _aux As String
     Protected _callLog As Boolean = False
     Private fileStock As String
@@ -12,8 +13,8 @@ Public Class PrincipalForm
     Dim key As Boolean = True
     'Dim nlimp As Integer = 0
 
-
     Private _usuario As New Usuario
+    Private _alto, _ancho, _posicionX, _posicionY As Integer
 
     Public Sub RecibirUsuario(objeto As Usuario)
         MsgBox("")
@@ -69,118 +70,126 @@ Public Class PrincipalForm
     End Sub
 
     Private Sub Principal_Venta_Click(sender As Object, e As EventArgs) Handles Principal_Venta.Click
-        Dim formVenta As New frmVenta
-        formVenta.RecibirUsuario(_usuario)
-        formVenta.ShowDialog()
+        Dim form As New frmVenta
+        form.RecibirUsuario(_usuario)
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
     End Sub
 
 
     Private Sub PRODUCTOSToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles PRODUCTOSToolStripMenuItem2.Click
-        Dim formproducto As New frmProd2
-        formproducto.RecibirUsuario(_usuario)
-        formproducto.ShowDialog()
+        Dim form As New frmProd2
+        form.RecibirUsuario(_usuario)
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
 
 
     End Sub
 
     Private Sub CATEGORIASToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CATEGORIASToolStripMenuItem1.Click
-        Dim formcategoria As New FrmCate
-        formcategoria.RecibirUsuario(_usuario)
-        formcategoria.ShowDialog()
-
-        'Dim formcategoria As New cather
-        'formcategoria.RecibirUsuario(usuario)
-        'formcategoria.ShowDialog()
+        Dim form As New FrmCate
+        form.RecibirUsuario(_usuario)
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
     End Sub
 
     Private Sub PROVEEDORESToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles PROVEEDORESToolStripMenuItem2.Click
-        Dim FrmProveedores As New FrmProvee
-        FrmProveedores.RecibirUsuario(_usuario)
-        FrmProveedores.ShowDialog()
+        Dim form As New FrmProvee
+        form.RecibirUsuario(_usuario)
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
     End Sub
 
     Private Sub USUARIOSToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles USUARIOSToolStripMenuItem.Click
-        Dim FrmUsuario As New FrmUsers
-        FrmUsuario.RecibirUsuario(_usuario)
-        FrmUsuario.ShowDialog()
+        Dim form As New FrmUsers
+        form.RecibirUsuario(_usuario)
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
     End Sub
 
     Private Sub VENTASToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles VENTASToolStripMenuItem.Click
-        Dim FrmTransacciones As New FrmHistoVenta
-        FrmTransacciones.ShowDialog()
+        Dim form As New FrmHistoVenta
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
     End Sub
 
     Private Sub DESCUENTOSToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles DESCUENTOSToolStripMenuItem1.Click
-        Dim formdescuento As New FrmDesc
-        formdescuento.RecibirUsuario(_usuario)
-        formdescuento.ShowDialog()
+        Dim form As New FrmDesc
+        form.RecibirUsuario(_usuario)
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
     End Sub
 
     Private Sub CLIENTESToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CLIENTESToolStripMenuItem.Click
 
-        Dim formClientes As New FrmClientes
-
-        formClientes.ShowDialog()
+        Dim form As New FrmClientes
+        form.RecibirUsuario(_usuario)
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
     End Sub
 
     Private Sub EMPLEADOSToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles EMPLEADOSToolStripMenuItem1.Click
-        Dim formEmpleados As New FrmEmpleados
-
-        formEmpleados.ShowDialog()
+        Dim form As New FrmEmpleados
+        form.RecibirUsuario(_usuario)
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
     End Sub
 
     Private Sub Principal_Help_Click(sender As Object, e As EventArgs) Handles Principal_Help.Click
-        Dim formAcerca As New FrmAcerca
-
-        formAcerca.ShowDialog()
+        Dim form As New FrmAcerca
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
     End Sub
 
     Private Sub COMPRASToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles COMPRASToolStripMenuItem.Click
-        Dim formHistoCompras As New FrmHistoCompra
-
-        formHistoCompras.ShowDialog()
+        Dim form As New FrmHistoCompra
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
     End Sub
 
     Private Sub AJUSTESToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AJUSTESToolStripMenuItem.Click
-        Dim formHistoAjustes As New FrmHistoAjustes
-
-        formHistoAjustes.ShowDialog()
+        Dim form As New FrmHistoAjustes
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
     End Sub
 
     Private Sub Principal_Estadisticas_Click(sender As Object, e As EventArgs) Handles Principal_Estadisticas.Click
-        Dim formEstadistica As New FrmStadict
-
-        formEstadistica.ShowDialog()
+        Dim form As New FrmStadict
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
     End Sub
 
     Private Sub Principal_Compra_Click(sender As Object, e As EventArgs) Handles Principal_Compra.Click
-        Dim formCompra As New FrmCompra
-
-        formCompra.ShowDialog()
+        Dim form As New FrmCompra
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
     End Sub
 
     Private Sub BOLETAToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BOLETAToolStripMenuItem.Click
-        Dim formBoleta As New FrmBoleta
-
-        formBoleta.ShowDialog()
+        Dim form As New FrmBoleta
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
     End Sub
 
     Private Sub FACTURAToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FACTURAToolStripMenuItem.Click
-        Dim formFacura As New FrmFactura
-        formFacura.ShowDialog()
+        Dim form As New FrmFactura
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
     End Sub
 
     Private Sub NOTACREDITOToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NOTACREDITOToolStripMenuItem.Click
-        Dim formNotaCredito As New FrmNotaCredito
-        formNotaCredito.ShowDialog()
+        Dim form As New FrmNotaCredito
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
     End Sub
 
     Private Sub NOTADEBITOToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NOTADEBITOToolStripMenuItem.Click
-        Dim formNotaDebito As New FrmNotaDebito
-        formNotaDebito.ShowDialog()
+        Dim form As New FrmNotaDebito
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
     End Sub
 
-    Private Sub BtnResetCat_Click(sender As Object, e As EventArgs) 
+    Private Sub BtnResetCat_Click(sender As Object, e As EventArgs)
 
         Dim DD As New DefaultData
         DD.EstablecerCategorias()
@@ -233,6 +242,9 @@ Public Class PrincipalForm
         fileStock = OpenFile()
         TimerStock.Enabled = True
         TmrArchivo.Enabled = True
+
+        Dimencion() '--> OBTENEMOS DIMENCION RELACION RESOLUCION
+
     End Sub
 
     Private Sub TimerStock_Tick(sender As Object, e As EventArgs) Handles TimerStock.Tick
@@ -299,5 +311,27 @@ Public Class PrincipalForm
         Dim archivo As New Archivos
         Dim bsnproducto As New BsnProducto
         archivo.ActualizacionStockCritico(bsnproducto.ObtenerStockCritico())
+    End Sub
+    Private Sub Dimencion()
+        Dim h, w, x, y As Integer
+        Dim c As String
+        'Alto y Ancho
+        h = PictureBox1.Height
+        w = PictureBox1.Width
+
+
+        'Locacion
+        c = PictureBox1.Location.ToString  'c cadena formato : {x=nn,y=nn}
+        Dim posicion_aux = InStr(1, c, "=") 'primera posicion del =
+        x = c.Substring(posicion_aux, (InStr(1, c, ",") - posicion_aux - 1))
+        'c = c.Substring()
+        y = c.Substring(InStr(posicion_aux + 1, c, "="), c.Length - InStr(posicion_aux + 1, c, "=") - 1)
+
+        _alto = h
+        _ancho = w
+        _posicionX = x
+        _posicionY = y + lbl_EstadoStock.Height + 3
+
+
     End Sub
 End Class

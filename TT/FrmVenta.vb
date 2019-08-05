@@ -416,4 +416,8 @@
         calculoTotal()
 
     End Sub
+
+    Private Sub txtRutSnDV_TextChanged(sender As Object, e As EventArgs) Handles txtRutSnDV.TextChanged
+
+    End Sub
 End Class
