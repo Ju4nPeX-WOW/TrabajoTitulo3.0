@@ -192,11 +192,15 @@ Partial Class frmProd2
         '
         'nupSimpleCantidad
         '
+        Me.nupSimpleCantidad.Cursor = System.Windows.Forms.Cursors.Hand
         Me.nupSimpleCantidad.Enabled = False
         Me.nupSimpleCantidad.Location = New System.Drawing.Point(138, 113)
+        Me.nupSimpleCantidad.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
         Me.nupSimpleCantidad.Name = "nupSimpleCantidad"
+        Me.nupSimpleCantidad.ReadOnly = True
         Me.nupSimpleCantidad.Size = New System.Drawing.Size(140, 20)
         Me.nupSimpleCantidad.TabIndex = 56
+        Me.nupSimpleCantidad.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'lblSimpleCantidad
         '

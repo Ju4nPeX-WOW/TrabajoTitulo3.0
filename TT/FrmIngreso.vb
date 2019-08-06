@@ -38,10 +38,10 @@ Public Class FrmIngreso
         End If
     End Sub
 
-    Private Sub txtUsua_KeyPress(sender As Object, e As KeyPressEventArgs)
+    Private Sub txtUsua_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtUsua.KeyPress
         e.Handled = validacion.IRut(e)
     End Sub
-    Private Sub txtContra_KeyPress(sender As Object, e As KeyPressEventArgs)
+    Private Sub txtContra_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtContra.KeyPress
         e.Handled = validacion.IPassword(e)
     End Sub
 

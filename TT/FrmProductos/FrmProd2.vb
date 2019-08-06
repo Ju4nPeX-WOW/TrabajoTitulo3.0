@@ -13,7 +13,7 @@ Public Class frmProd2
     Protected activeEliminar As Boolean = False 'cuando el usuario presiona el boton del menu strip eliminar se torna verdadero
     'Esto no quiere decir que se bloqueen, sino que en los procedimientos tsm[Agregar-editar-eliminar]
 
-
+    Private keyMessage As Boolean = False
 
     Protected dataset As New DataSet
     Protected dataset2 As New DataSet
@@ -139,7 +139,7 @@ Public Class frmProd2
             lblSimplePrecio.Text = "PRECIO              :"
             lblSimpleStock.Text = "STOCK               :"
             lblSimpleStockCrit.Text = "STOCK CRITICO       :"
-            nupSimpleCantidad.Value = 0
+            nupSimpleCantidad.Value = 1
             cmbSimpleRazon.SelectedIndex = -1
         End If
         If page.Equals("Avanzado") Or page.Equals("Simple-y-Avanzado") Then
@@ -314,6 +314,8 @@ Public Class frmProd2
         dgvProd.DataSource = dataset.Tables(0).DefaultView
         'Me.dgvProd.Columns(2).DefaultCellStyle.Format = "c"
 
+        'dgvProd.Rows(0).Selected = True
+
         dataset2 = bsnCategoria.ObtenerCategorias()
         For i = 0 To dataset2.Tables(0).Rows.Count - 1
             cmbAvanzadoCat.Items.Add(dataset2.Tables(0)(i)(1))
@@ -321,7 +323,7 @@ Public Class frmProd2
 
 
         If dgvProd.Rows.Count > 0 Then
-            dgvProd.Rows(0).Selected = False
+            dgvProd.Rows(0).Selected = True
         End If
 
     End Sub
@@ -371,7 +373,9 @@ Public Class frmProd2
                 'y luego en rellenarObjeto, solo se obtiene el producto y se suma o eliminar stock
 
                 If Not (validacionesAlClickearAceptar("Simple")) Then
-                    MsgBox("Por favor complete los campos faltantes...")
+                    If Not keyMessage Then
+                        MsgBox("Por favor complete los campos faltantes...")
+                    End If
                     Return
                 Else
                     producto = RellenarObjeto(TabControl1.SelectedTab.Text) ' - -> retorna objeto??            
@@ -385,8 +389,10 @@ Public Class frmProd2
                 'el objeto 'producto' es una "rellenacion" de los txt y cmb del tab avanzado
                 MsgBox("avanzado")
                 If Not (validacionesAlClickearAceptar("Avanzado")) Then
-                    MsgBox("Por favor complete los campos faltantes...")
-                    Return
+                    If Not keyMessage Then
+                        MsgBox(keyMessage)
+                        MsgBox("Por favor complete los campos faltantes...")
+                    End If
                 Else
                     MsgBox("correcto")
                     producto = RellenarObjeto(TabControl1.SelectedTab.Text) ' - -> retorna objeto??            
@@ -401,8 +407,9 @@ Public Class frmProd2
             MsgBox("rellenar ob")
 
             If Not (validacionesAlClickearAceptar("Avanzado")) Then
-                MsgBox("Por favor complete los campos faltantes...")
-                Return
+                If Not keyMessage Then
+                    MsgBox("Por favor complete los campos faltantes...")
+                End If
             Else
                 MsgBox("correcto")
                 producto = RellenarObjeto(TabControl1.SelectedTab.Text)
@@ -417,17 +424,22 @@ Public Class frmProd2
             MsgBox("ELIMINANDO PRODUCTO")
             Dim bsnProducto As New BsnProducto
             If Not (validacionesAlClickearAceptar("Simple")) Then
-                MsgBox("Por favor complete los campos faltantes...")
-                Return
+                If Not keyMessage Then
+                    MsgBox("Por favor complete los campos faltantes...")
+                End If
             Else
+                If (Integer.Parse(txtAvanzadoStock.Text) - nupSimpleCantidad.Value) < 0 Then
+                    nupSimpleCantidad.Value = Integer.Parse(txtAvanzadoStock.Text)
+                End If
+
                 producto = RellenarObjeto(TabControl1.SelectedTab.Text)
                 bsnProducto.ModificarProducto(producto, cmbAvanzadoRazon.SelectedItem, usuario.Rut)
 
-                'BsnProductoCategoria.RelacionarProductoconCategoria(cmbAvanzadoCat.SelectedItem, producto.IdProducto)
+                    'BsnProductoCategoria.RelacionarProductoconCategoria(cmbAvanzadoCat.SelectedItem, producto.IdProducto)
+
+                End If
 
             End If
-
-        End If
 
         LimpiarControl1("Simple-y-Avanzado")
         activeAgregar = False
@@ -508,7 +520,7 @@ Public Class frmProd2
         End If
     End Sub
 
-    Private Sub dgvProd_Click(sender As Object, e As EventArgs) Handles dgvProd.Click
+    Private Sub dgvProd_Click(sender As Object, e As EventArgs) Handles dgvProd.SelectionChanged
         Dim indice As Short = dgvProd.CurrentRow.Index     'Fila seleccionada
         RellenarControl1("Simple-y-Avanzado", indice)
         aux = dgvProd.Rows(indice).Cells(0).Value       'tomamos el primer campo que corresponde al id del producto        
@@ -567,7 +579,10 @@ Public Class frmProd2
             'solo el combobox razon
             If (cmbSimpleRazon.SelectedIndex = -1) Then
                 MsgBox("Por favor seleccione RAZON")
+                keyMessage = True
                 correcto = False
+            Else
+                keyMessage = false 
             End If
         Else
             MsgBox(txtAvanzadoPrecio.Text.Length & " txtavanzadoprecio")
@@ -580,15 +595,20 @@ Public Class frmProd2
                 Dim receptor = Validaciones2.Val(ListaAValidar)
                 correcto = receptor(0)
                 If Not correcto Then
-                    MsgBox(receptor(1))
+                    If Not keyMessage Then
+                        MsgBox(receptor(1))
+                    End If
                 End If
 
 
             End If
-                If activeAgregar And cmbAvanzadoRazon.SelectedIndex = -1 Then
-                    correcto = False
-                    MsgBox("Por favor seleccione RAZON")
-                End If
+            If activeAgregar And cmbAvanzadoRazon.SelectedIndex = -1 Then
+                correcto = False
+                MsgBox("Por favor seleccione RAZON")
+                keyMessage = True
+            Else
+                keyMessage = False
+            End If
 
         End If
         Return correcto
@@ -601,9 +621,9 @@ Public Class frmProd2
         'Me.Dispose()
     End Sub
 
-
-
-
-
-
+    'Private Sub nupSimpleCantidad_ValueChanged(sender As Object, e As EventArgs) Handles nupSimpleCantidad.Click
+    'If (Integer.Parse(txtAvanzadoStock.Text) - nupSimpleCantidad.Value) < 0 Then
+    '       nupSimpleCantidad.Value = 0
+    'End If
+    'End Sub
 End Class

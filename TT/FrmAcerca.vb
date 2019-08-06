@@ -7,7 +7,7 @@
 
     Private Sub FrmAcerca_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Location = New System.Drawing.Point(440, 190)
-        Me.ClientSize = New System.Drawing.Size(652, 300)
+        Me.ClientSize = New System.Drawing.Size(652 ,300)
 
     End Sub
 
