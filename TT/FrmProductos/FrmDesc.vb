@@ -300,6 +300,33 @@
 
     End Sub
 
+    Private Sub lblProducto_Click(sender As Object, e As EventArgs) Handles lblProducto.Click
+
+    End Sub
+
+    Private Sub lblFechaInicio_Click(sender As Object, e As EventArgs) Handles lblFechaInicio.Click
+
+    End Sub
+
+    Private Sub lblFechaTermino_Click(sender As Object, e As EventArgs) Handles lblFechaTermino.Click
+
+    End Sub
+
+    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
+
+    End Sub
+
+    Private Sub cbxMayor_CheckedChanged(sender As Object, e As EventArgs) Handles cbxMayor.CheckedChanged
+
+    End Sub
+
+    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
+
+    End Sub
+
+    Private Sub Label6_Click(sender As Object, e As EventArgs) Handles Label6.Click
+
+    End Sub
 End Class
 
 

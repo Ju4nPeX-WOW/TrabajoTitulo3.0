@@ -1,6 +1,6 @@
 ﻿Imports System.IO
 Public Class FrmFactura
-
+    Dim choise = 1
     Dim folderPath1, folderPath2 As String
 
     Dim bsnDocumento As New BsnDocumentos
@@ -32,22 +32,27 @@ Public Class FrmFactura
 
     Private Sub filesListBox1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles filesListBox1.MouseDoubleClick
         bsnDocumento.OpenFile(folderPath1, filesListBox1, AxAcroPDF1)
+        choise = 1
     End Sub
     Private Sub filesListBox2_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles filesListBox2.MouseDoubleClick
         bsnDocumento.OpenFile(folderPath2, filesListBox2, AxAcroPDF2)
+        choise = 2
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub btnAbrirF_Click(sender As Object, e As EventArgs) Handles btnAbrirF.Click
         If filesListBox2.SelectedIndex <> 0 Then
             bsnDocumento.OpenFile(folderPath2, filesListBox2, AxAcroPDF2)
         End If
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub btnAbrirC_Click(sender As Object, e As EventArgs) Handles btnAbrirC.Click
         If filesListBox1.SelectedIndex <> 0 Then
             bsnDocumento.OpenFile(folderPath1, filesListBox1, AxAcroPDF1)
         End If
+
     End Sub
+
+
 End Class
 
 

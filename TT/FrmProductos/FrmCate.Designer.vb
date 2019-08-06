@@ -192,6 +192,7 @@ Partial Class FrmCate
         Me.MenuStrip1.AutoSize = False
         Me.MenuStrip1.BackColor = System.Drawing.Color.DarkOrange
         Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
+        Me.MenuStrip1.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAgregar, Me.tsmEditar, Me.tsmEliminar})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 78)
         Me.MenuStrip1.Name = "MenuStrip1"
@@ -210,7 +211,7 @@ Partial Class FrmCate
         '
         Me.tsmEditar.Image = Global.TT.My.Resources.Resources.document
         Me.tsmEditar.Name = "tsmEditar"
-        Me.tsmEditar.Size = New System.Drawing.Size(65, 20)
+        Me.tsmEditar.Size = New System.Drawing.Size(66, 20)
         Me.tsmEditar.Text = "Editar"
         '
         'tsmEliminar

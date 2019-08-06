@@ -5,7 +5,7 @@ Public Class FrmBoleta
 
     Dim bsnDocumento As New BsnDocumentos
 
-    Private Sub BtnExitCat_Click(sender As Object, e As EventArgs) Handles BtnExitCat.Click
+    Private Sub BtnExitCat_Click(sender As Object, e As EventArgs) 
         Me.Close()
     End Sub
 
@@ -20,16 +20,21 @@ Public Class FrmBoleta
     End Sub
 
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If filesListBox.SelectedIndex <> 0 Then
-            bsnDocumento.OpenFile(folderPath1, filesListBox, AxAcroPDF1)
-        End If
 
-    End Sub
 
 
 
     Private Sub filesListBox_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles filesListBox.MouseDoubleClick
         bsnDocumento.OpenFile(folderPath1, filesListBox, AxAcroPDF1)
+    End Sub
+
+    Private Sub btnAbrir_Click(sender As Object, e As EventArgs) Handles btnAbrir.Click
+        If filesListBox.SelectedIndex <> 0 Then
+            bsnDocumento.OpenFile(folderPath1, filesListBox, AxAcroPDF1)
+        End If
+    End Sub
+
+    Private Sub BtnExitCat_Click_1(sender As Object, e As EventArgs) Handles BtnExitCat.Click
+        Me.Close()
     End Sub
 End Class
