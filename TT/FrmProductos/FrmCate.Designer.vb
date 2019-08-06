@@ -87,7 +87,7 @@ Partial Class FrmCate
         Me.dgvCateg.AllowUserToAddRows = False
         Me.dgvCateg.AllowUserToDeleteRows = False
         Me.dgvCateg.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvCateg.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders
+        Me.dgvCateg.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dgvCateg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvCateg.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvCateg.Location = New System.Drawing.Point(58, 134)
@@ -134,7 +134,7 @@ Partial Class FrmCate
         Me.dgvSubCat.AllowUserToAddRows = False
         Me.dgvSubCat.AllowUserToDeleteRows = False
         Me.dgvSubCat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dgvSubCat.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders
+        Me.dgvSubCat.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.dgvSubCat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvSubCat.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvSubCat.Location = New System.Drawing.Point(607, 134)

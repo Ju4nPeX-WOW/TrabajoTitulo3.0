@@ -384,8 +384,13 @@ Partial Class frmProd2
         '
         'dgvProd
         '
+        Me.dgvProd.AccessibleRole = System.Windows.Forms.AccessibleRole.None
         Me.dgvProd.AllowUserToAddRows = False
         Me.dgvProd.AllowUserToDeleteRows = False
+        Me.dgvProd.AllowUserToResizeColumns = False
+        Me.dgvProd.AllowUserToResizeRows = False
+        Me.dgvProd.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvProd.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvProd.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders
         Me.dgvProd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize

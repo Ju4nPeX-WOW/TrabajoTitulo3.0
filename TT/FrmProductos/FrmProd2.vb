@@ -309,6 +309,7 @@ Public Class frmProd2
         Dim bsnProducto As New BsnProducto()
         Dim bsnCategoria As New BsnCategoria()
         dataset = bsnProducto.ObtenerTodosLosProductos()
+        'Me.dgvProd.RowHeadersVisible = False
         Me.dgvProd.DefaultCellStyle.BackColor = Color.Beige
         dgvProd.DataSource = dataset.Tables(0).DefaultView
         'Me.dgvProd.Columns(2).DefaultCellStyle.Format = "c"
