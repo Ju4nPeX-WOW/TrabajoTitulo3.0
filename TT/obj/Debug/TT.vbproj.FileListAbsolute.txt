@@ -4,7 +4,6 @@ C:\Users\kevin\Desktop\nuevo\TrabajoTitulo3.0\TT\bin\Debug\TT.pdb
 C:\Users\kevin\Desktop\nuevo\TrabajoTitulo3.0\TT\bin\Debug\TT.xml
 C:\Users\kevin\Desktop\nuevo\TrabajoTitulo3.0\TT\bin\Debug\Interop.AcroPDFLib.dll
 C:\Users\kevin\Desktop\nuevo\TrabajoTitulo3.0\TT\bin\Debug\AxInterop.AcroPDFLib.dll
-C:\Users\kevin\Desktop\nuevo\TrabajoTitulo3.0\TT\obj\Debug\TT.vbprojAssemblyReference.cache
 C:\Users\kevin\Desktop\nuevo\TrabajoTitulo3.0\TT\obj\Debug\Interop.AcroPDFLib.dll
 C:\Users\kevin\Desktop\nuevo\TrabajoTitulo3.0\TT\obj\Debug\AxInterop.AcroPDFLib.dll
 C:\Users\kevin\Desktop\nuevo\TrabajoTitulo3.0\TT\obj\Debug\TT.vbproj.ResolveComReference.cache
@@ -41,3 +40,4 @@ C:\Users\kevin\Desktop\nuevo\TrabajoTitulo3.0\TT\obj\Debug\TT.vbproj.CoreCompile
 C:\Users\kevin\Desktop\nuevo\TrabajoTitulo3.0\TT\obj\Debug\TT.exe
 C:\Users\kevin\Desktop\nuevo\TrabajoTitulo3.0\TT\obj\Debug\TT.xml
 C:\Users\kevin\Desktop\nuevo\TrabajoTitulo3.0\TT\obj\Debug\TT.pdb
+C:\Users\kevin\Desktop\nuevo\TrabajoTitulo3.0\TT\obj\Debug\TT.vbprojAssemblyReference.cache

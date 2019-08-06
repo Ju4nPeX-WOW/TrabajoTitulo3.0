@@ -266,7 +266,7 @@ Public Class frmProd2
         activeAgregar = True
         activeEditar = False
         activeEliminar = False
-        MsgBox("Agregando")
+        'MsgBox("Agregando")
         Reset()
         RellenarCmbRazon()
         BloquearTMS()
@@ -278,7 +278,7 @@ Public Class frmProd2
         activeAgregar = False
         activeEditar = True
         activeEliminar = False
-        MsgBox("Editan")
+        'MsgBox("Editan")
         Reset()
         RellenarCmbRazon()
         BloquearTMS()
@@ -288,7 +288,7 @@ Public Class frmProd2
         activeAgregar = False
         activeEditar = False
         activeEliminar = True
-        MsgBox("Elimi")
+        'MsgBox("Elimi")
         Reset()
         RellenarCmbRazon()
         BloquearTMS()
@@ -387,14 +387,14 @@ Public Class frmProd2
             ElseIf TabControl1.SelectedTab.Text.Equals("Avanzado") Then
                 'Aqui si se agrega el producto a la coleccion
                 'el objeto 'producto' es una "rellenacion" de los txt y cmb del tab avanzado
-                MsgBox("avanzado")
+                'MsgBox("avanzado")
                 If Not (validacionesAlClickearAceptar("Avanzado")) Then
                     If Not keyMessage Then
-                        MsgBox(keyMessage)
+                        'MsgBox(keyMessage)
                         MsgBox("Por favor complete los campos faltantes...")
                     End If
                 Else
-                    MsgBox("correcto")
+                    'MsgBox("correcto")
                     producto = RellenarObjeto(TabControl1.SelectedTab.Text) ' - -> retorna objeto??            
                     bsnProducto.AgregarProducto(producto, cmbAvanzadoRazon.SelectedItem, usuario.Rut)  'si es avanzado, es para agregar un producto
                 End If
@@ -402,16 +402,16 @@ Public Class frmProd2
             End If
 
         ElseIf activeEditar Then
-            MsgBox("MODIFICANDO PRODUCTO ")
+            'MsgBox("MODIFICANDO PRODUCTO ")
             Dim bsnProducto As New BsnProducto
-            MsgBox("rellenar ob")
+            ' MsgBox("rellenar ob")
 
             If Not (validacionesAlClickearAceptar("Avanzado")) Then
                 If Not keyMessage Then
                     MsgBox("Por favor complete los campos faltantes...")
                 End If
             Else
-                MsgBox("correcto")
+                ' MsgBox("correcto")
                 producto = RellenarObjeto(TabControl1.SelectedTab.Text)
                 bsnProducto.ModificarProducto(producto, cmbAvanzadoRazon.SelectedItem, usuario.Rut)
 
@@ -419,9 +419,9 @@ Public Class frmProd2
 
             End If
         ElseIf activeEliminar Then
-            MsgBox("Eliminar --> Version Modificar ")
-            MsgBox(nupSimpleCantidad.Text)
-            MsgBox("ELIMINANDO PRODUCTO")
+            'MsgBox("Eliminar --> Version Modificar ")
+            'MsgBox(nupSimpleCantidad.Text)
+            'MsgBox("ELIMINANDO PRODUCTO")
             Dim bsnProducto As New BsnProducto
             If Not (validacionesAlClickearAceptar("Simple")) Then
                 If Not keyMessage Then
@@ -464,7 +464,7 @@ Public Class frmProd2
     Private Sub RellenarCmbRazon()
         cmbAvanzadoRazon.Items.Clear()
         If activeAgregar Then
-            MsgBox("Llenado de CMB en Agregar")
+            'MsgBox("Llenado de CMB en Agregar")
             cmbAvanzadoRazon.Items.Add("Comprado")
             cmbAvanzadoRazon.Items.Add("Econtrado")
 
@@ -472,7 +472,7 @@ Public Class frmProd2
             cmbSimpleRazon.Items.Add("Econtrado")
 
         ElseIf activeEditar Then
-            MsgBox("Llenado de CMB en Editar")
+            'MsgBox("Llenado de CMB en Editar")
             cmbAvanzadoRazon.Items.Add("Comprado")
             cmbAvanzadoRazon.Items.Add("Vendido")
             cmbAvanzadoRazon.Items.Add("Extraviado")
@@ -486,7 +486,7 @@ Public Class frmProd2
             cmbSimpleRazon.Items.Add("Econtrado")
 
         ElseIf activeEliminar Then
-            MsgBox("Llenado de CMB en Eliminar")
+            'MsgBox("Llenado de CMB en Eliminar")
 
             cmbSimpleRazon.Items.Add("Vendido")
             cmbSimpleRazon.Items.Add("Extraviado")
@@ -501,29 +501,64 @@ Public Class frmProd2
     'FIN TAB PRODUCTOS
 
     Public Sub RellenarControl1(page As String, indice As Short)
-        If page.Equals("Simple") Or page.Equals("Simple-y-Avanzado") Then
-            '//RELLENAR SIMPLE
-            lblSimpleId.Text = "ID PRODUCTO : " & dgvProd.Rows(indice).Cells(0).Value.ToString()
-            lblSimpleProd.Text = "PRODUCTO     : " & dgvProd.Rows(indice).Cells(1).Value.ToString()
-            lblSimplePrecio.Text = "PRECIO              :$" & dgvProd.Rows(indice).Cells(3).Value.ToString()
-            lblSimpleStock.Text = "STOCK               :" & dgvProd.Rows(indice).Cells(4).Value.ToString()
-            lblSimpleStockCrit.Text = "STOCK CRITICO       :" & dgvProd.Rows(indice).Cells(5).Value.ToString()
-            lblSimpleCat.Text = "CATEGORIA    : "
-        End If
-        If page.Equals("Avanzado") Or page.Equals("Simple-y-Avanzado") Then
-            '//RELLENAR AVANZADO
-            lblAvanzadoId.Text = "ID PRODUCTO : " & dgvProd.Rows(indice).Cells(0).Value.ToString()
-            txtAvanzadoProd.Text = dgvProd.Rows(indice).Cells(1).Value.ToString()
-            txtAvanzadoPrecio.Text = dgvProd.Rows(indice).Cells(3).Value.ToString()
-            txtAvanzadoStock.Text = dgvProd.Rows(indice).Cells(4).Value.ToString()
-            txtAvanzadoStockCrit.Text = dgvProd.Rows(indice).Cells(5).Value.ToString()
-        End If
+        Try
+            'MsgBox(indice & "indice ww")
+            If page.Equals("Simple") Or page.Equals("Simple-y-Avanzado") Then
+                '//RELLENAR SIMPLE
+                lblSimpleId.Text = "ID PRODUCTO : " & dgvProd.Rows(indice).Cells(0).Value.ToString()
+                lblSimpleProd.Text = "PRODUCTO     : " & dgvProd.Rows(indice).Cells(1).Value.ToString()
+                lblSimplePrecio.Text = "PRECIO              :$" & dgvProd.Rows(indice).Cells(3).Value.ToString()
+                lblSimpleStock.Text = "STOCK               :" & dgvProd.Rows(indice).Cells(4).Value.ToString()
+                lblSimpleStockCrit.Text = "STOCK CRITICO       :" & dgvProd.Rows(indice).Cells(5).Value.ToString()
+                lblSimpleCat.Text = "CATEGORIA    : "
+            End If
+            If page.Equals("Avanzado") Or page.Equals("Simple-y-Avanzado") Then
+                '//RELLENAR AVANZADO
+                lblAvanzadoId.Text = "ID PRODUCTO : " & dgvProd.Rows(indice).Cells(0).Value.ToString()
+                txtAvanzadoProd.Text = dgvProd.Rows(indice).Cells(1).Value.ToString()
+                txtAvanzadoPrecio.Text = dgvProd.Rows(indice).Cells(3).Value.ToString()
+                txtAvanzadoStock.Text = dgvProd.Rows(indice).Cells(4).Value.ToString()
+                txtAvanzadoStockCrit.Text = dgvProd.Rows(indice).Cells(5).Value.ToString()
+            End If
+        Catch ex As Exception
+            indice = 1
+            'MsgBox(indice & "indice ww")
+            If page.Equals("Simple") Or page.Equals("Simple-y-Avanzado") Then
+                '//RELLENAR SIMPLE
+                lblSimpleId.Text = "ID PRODUCTO : " & dgvProd.Rows(indice).Cells(0).Value.ToString()
+                lblSimpleProd.Text = "PRODUCTO     : " & dgvProd.Rows(indice).Cells(1).Value.ToString()
+                lblSimplePrecio.Text = "PRECIO              :$" & dgvProd.Rows(indice).Cells(3).Value.ToString()
+                lblSimpleStock.Text = "STOCK               :" & dgvProd.Rows(indice).Cells(4).Value.ToString()
+                lblSimpleStockCrit.Text = "STOCK CRITICO       :" & dgvProd.Rows(indice).Cells(5).Value.ToString()
+                lblSimpleCat.Text = "CATEGORIA    : "
+            End If
+            If page.Equals("Avanzado") Or page.Equals("Simple-y-Avanzado") Then
+                '//RELLENAR AVANZADO
+                lblAvanzadoId.Text = "ID PRODUCTO : " & dgvProd.Rows(indice).Cells(0).Value.ToString()
+                txtAvanzadoProd.Text = dgvProd.Rows(indice).Cells(1).Value.ToString()
+                txtAvanzadoPrecio.Text = dgvProd.Rows(indice).Cells(3).Value.ToString()
+                txtAvanzadoStock.Text = dgvProd.Rows(indice).Cells(4).Value.ToString()
+                txtAvanzadoStockCrit.Text = dgvProd.Rows(indice).Cells(5).Value.ToString()
+            End If
+
+        End Try
     End Sub
 
     Private Sub dgvProd_Click(sender As Object, e As EventArgs) Handles dgvProd.SelectionChanged
-        Dim indice As Short = dgvProd.CurrentRow.Index     'Fila seleccionada
-        RellenarControl1("Simple-y-Avanzado", indice)
-        aux = dgvProd.Rows(indice).Cells(0).Value       'tomamos el primer campo que corresponde al id del producto        
+        Dim indice As Short = 0
+        Try
+            'MsgBox(dgvProd.CurrentRow.Index)
+            indice = dgvProd.CurrentRow.Index     'Fila seleccionada
+            'MsgBox(indice)
+            RellenarControl1("Simple-y-Avanzado", indice)
+            aux = dgvProd.Rows(indice).Cells(0).Value       'tomamos el primer campo que corresponde al id del producto        
+
+        Catch ex As Exception
+            'MsgBox("ups")
+        End Try
+        If indice < 0 Then
+            indice = 0
+        End If
     End Sub
 
     Private Sub SeleccionTabControl1(sender As Object, e As EventArgs)
@@ -585,7 +620,7 @@ Public Class frmProd2
                 keyMessage = false 
             End If
         Else
-            MsgBox(txtAvanzadoPrecio.Text.Length & " txtavanzadoprecio")
+            'MsgBox(txtAvanzadoPrecio.Text.Length & " txtavanzadoprecio")
             If (page.Equals("Avanzado")) Then   'si esta en la pantalla avanzada
                 Dim ListaAValidar As New List(Of String())
                 ListaAValidar.Add({"precio", txtAvanzadoPrecio.Text})

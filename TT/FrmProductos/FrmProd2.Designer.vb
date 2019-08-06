@@ -402,6 +402,7 @@ Partial Class frmProd2
         Me.dgvProd.Location = New System.Drawing.Point(12, 115)
         Me.dgvProd.MultiSelect = False
         Me.dgvProd.Name = "dgvProd"
+        Me.dgvProd.ReadOnly = True
         Me.dgvProd.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.dgvProd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvProd.Size = New System.Drawing.Size(1127, 269)

@@ -20,7 +20,7 @@ Class Instructions
             dataset.Reset() ' comenta esta linea...
             'dataset.Clear() ' y descomenta esta linea, luego abre historial de ajustes y cambia de pestañas...veras algo extraño. luego de eso comenta esta linea y descomenta la de arriba
             sentencia = "Select " & columnas & " from " & tabla & condicion
-            MsgBox(sentencia)
+            'MsgBox(sentencia)
             command.CommandText = sentencia
             Console.WriteLine(sentencia)
             Dim reader As New OleDbDataAdapter
@@ -72,11 +72,11 @@ Class Instructions
             conexion.AbrirConexion()
             sentencia = "INSERT INTO " & tabla & " (" & columnas & ") VALUES(" & valores & ")"
             command.CommandText = sentencia
-            MsgBox(sentencia)   'sentencia
+            ' MsgBox(sentencia)   'sentencia
             command.ExecuteNonQuery()
             conexion.CerrarConexion()
         Catch ex As Exception
-            MsgBox("Se ha producido un error: " & ex.ToString)
+            'MsgBox("Se ha producido un error: " & ex.ToString)
         End Try
     End Sub
 
@@ -92,12 +92,12 @@ Class Instructions
             command.CommandText = sentencia
 
 
-            MsgBox(sentencia)
+            'MsgBox(sentencia)
             Console.WriteLine(sentencia)
             command.ExecuteNonQuery()
             conexion.CerrarConexion()
         Catch ex As Exception
-            MsgBox("Se ha producido un error (Modificar): " & ex.ToString())
+            'MsgBox("Se ha producido un error (Modificar): " & ex.ToString())
         End Try
 
 
@@ -131,7 +131,7 @@ Class Instructions
             conexion.AbrirConexion()
             sentencia = "SELECT " & columnas & " FROM " & tabla & " WHERE " & columnaBusqueda & " LIKE '%" & texto & "%'"
             command.CommandText = sentencia
-            MsgBox(sentencia)
+            ' MsgBox(sentencia)
             Dim reader As New OleDbDataAdapter
             dataset.Clear()
             reader.SelectCommand = command
@@ -139,7 +139,7 @@ Class Instructions
             conexion.CerrarConexion()
 
         Catch ex As Exception
-            MsgBox("Error: " & ex.ToString)
+            'MsgBox("Error: " & ex.ToString)
 
         End Try
         Return dataset
@@ -153,7 +153,7 @@ Class Instructions
             conexion.AbrirConexion()
             sentencia = "DELETE FROM " & tabla & " WHERE " & condicion
             command.CommandText = sentencia
-            MsgBox(sentencia)
+            'MsgBox(sentencia)
             command.ExecuteNonQuery()
 
             conexion.CerrarConexion()
@@ -173,7 +173,7 @@ Class Instructions
             conexion.AbrirConexion()
             sentencia = "DELETE FROM " & tabla
             command.CommandText = sentencia
-            MsgBox(sentencia)
+            ' MsgBox(sentencia)
             command.ExecuteNonQuery()
 
             conexion.CerrarConexion()
@@ -195,7 +195,7 @@ Class Instructions
             conexion.AbrirConexion()
             sentencia = "SELECT MAX(NUM_VENTA)FROM VENTAS"
             command.CommandText = sentencia
-            MsgBox(sentencia)
+            'MsgBox(sentencia)
             Dim reader As New OleDbDataAdapter
             dataset.Clear()
             reader.SelectCommand = command
@@ -203,7 +203,7 @@ Class Instructions
             conexion.CerrarConexion()
 
         Catch ex As Exception
-            MsgBox("Error: " & ex.ToString)
+            'MsgBox("Error: " & ex.ToString)
 
         End Try
 
@@ -217,7 +217,7 @@ Class Instructions
             conexion.AbrirConexion()
             sentencia = "DBCC CHECKIDENT ('" & tabla & "', RESEED,0)"
             command.CommandText = sentencia
-            MsgBox(sentencia)
+            'MsgBox(sentencia)
             command.ExecuteNonQuery()
 
             conexion.CerrarConexion()
