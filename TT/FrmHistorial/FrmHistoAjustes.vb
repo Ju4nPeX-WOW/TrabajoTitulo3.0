@@ -6,20 +6,20 @@
 
     Public Sub rellenarCmb()
         If TabControl1.SelectedIndex = 0 Then
-            cmbFiltroBusq.Items.Add("Id_producto")
-            cmbFiltroBusq.Items.Add("Fecha")
-            cmbFiltroBusq.Items.Add("Hora")
-            cmbFiltroBusq.Items.Add("Precio")
-            cmbFiltroBusq.Items.Add("Rut_empleado")
+            'cmbFiltroBusq.Items.Add("Id_producto")
+            'cmbFiltroBusq.Items.Add("Fecha")
+            'cmbFiltroBusq.Items.Add("Hora")
+            'cmbFiltroBusq.Items.Add("Precio")
+            'cmbFiltroBusq.Items.Add("Rut_empleado")
         Else
 
-            cmbFiltroBusq.Items.Add("Id_producto")
-            cmbFiltroBusq.Items.Add("Fecha")
-            cmbFiltroBusq.Items.Add("Hora")
-            cmbFiltroBusq.Items.Add("Cantidad")
-            cmbFiltroBusq.Items.Add("Razon")
-            cmbFiltroBusq.Items.Add("Stock")
-            cmbFiltroBusq.Items.Add("Rut_empleado")
+            'cmbFiltroBusq.Items.Add("Id_producto")
+            'cmbFiltroBusq.Items.Add("Fecha")
+            'cmbFiltroBusq.Items.Add("Hora")
+            'cmbFiltroBusq.Items.Add("Cantidad")
+            'cmbFiltroBusq.Items.Add("Razon")
+            'cmbFiltroBusq.Items.Add("Stock")
+            'cmbFiltroBusq.Items.Add("Rut_empleado")
 
         End If
     End Sub
@@ -53,10 +53,10 @@
         End If
     End Sub
 
-    Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
+    Private Sub btnAceptar_Click(sender As Object, e As EventArgs)
         Dim columnas As String = "*"
-        Dim busqueda As String = cmbFiltroBusq.SelectedItem
-        Dim texto As String = txtBusqueda.Text
+        Dim busqueda As String ' = cmbFiltroBusq.SelectedItem
+        Dim texto As String '= txtBusqueda.Text
         Dim tabla As String = ""
 
         If busqueda = Nothing Or texto.Equals("") Then
@@ -79,8 +79,8 @@
 
     End Sub
 
-    Private Sub txtBusqueda_TextChanged(sender As Object, e As EventArgs) Handles txtBusqueda.TextChanged
-        If txtBusqueda.Text = "" Then
+    Private Sub txtBusqueda_TextChanged(sender As Object, e As EventArgs)
+        If True Then 'txtBusqueda.Text = "" Then
             If TabControl1.SelectedIndex = 0 Or TabControl1.SelectedIndex = -1 Then
 
                 dataset = BsnHistoAjustes.obtHistPrecios()

@@ -1,4 +1,4 @@
-﻿Public Class FrmCate
+﻿Public Class FrmCate2
 
 
     Private _usuario As New Usuario    '------------------------>Recepción del usuario que usa el sistema
@@ -51,7 +51,7 @@
     Private Function CrearColeccion()
         Dim coleccion As New List(Of Object)
         'LABELES
-        'coleccion.AddRange({lblId, lblNombre, lblCodigo, lblCateBase, lblSubCate}) --> sub 
+        coleccion.AddRange({lblId, lblNombre, lblCodigo, lblCateBase, lblSubCate})
 
         'TXT , COMBO y NUD
         coleccion.AddRange({txtNombre,
@@ -125,6 +125,7 @@
     Private Sub CleanDGV()
         dgvCateg.Rows.Clear()
         dgvSubCat.Rows.Clear()
+        dgvSubSubCat.Rows.Clear()
 
 
     End Sub
@@ -168,7 +169,9 @@
         indexCodDGV2 = dgvSubCat.CurrentRow.Index
         'MsgBox("Index 2 : " & indexCodDGV2)
 
+        dgvSubSubCat.Rows.Clear()
 
+        EstructurarDGV(dgvSubSubCat) 'Estructurar y Dar formato al datagrid view
 
         idaux = dgvSubCat.CurrentRow.Cells.Item(0).Value.ToString()
 
@@ -183,7 +186,7 @@
         End If
 
 
-        'MyBase.SeleccionarCMB(cmbSubCategorias, dgvSubCat.CurrentRow.Cells.Item(0).Value.ToString())
+        MyBase.SeleccionarCMB(cmbSubCategorias, dgvSubCat.CurrentRow.Cells.Item(0).Value.ToString())
 
         ObtenerDataSet(3, ObtenerDigito(dgvSubCat.CurrentRow.Cells.Item(2).Value.ToString(), 2))
 
@@ -191,14 +194,40 @@
         ' Igual si modifico su nivel 
 
 
+        MyBase.RellenarDGV(dataset_padre, dgvSubSubCat)
 
     End Sub
 
 
+    Private Sub dgvSubSubCat_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvSubSubCat.CellClick
+        dgv1 = True
+        dgv2 = True
+        dgv3 = True
+        indexCodDGV3 = dgvSubSubCat.CurrentRow.Index
+
+        'MsgBox("Index 3 : " & indexCodDGV3)
+
+
+        idaux = dgvSubSubCat.CurrentRow.Cells.Item(0).Value.ToString()
+
+        Dim l = {dgvSubSubCat.CurrentRow.Cells.Item(0).Value.ToString(),
+                "ID CATEGORIA :" + dgvSubSubCat.CurrentRow.Cells.Item(0).Value.ToString(),
+                dgvSubSubCat.CurrentRow.Cells.Item(1).Value.ToString(),
+                dgvSubSubCat.CurrentRow.Cells.Item(2).Value.ToString()}
+
+        AfectoSubCat = True
+
+        MyBase.RellenarDatos(listaDeObjetosRellenables, l) 'Se rellenan los label's y textbox's con el item seleccionado
+        If Not activeAgregar Then
+            CheckBox3.Checked = False 'quitar el check al MODIFICAR NIVEL CAT
+        End If
+
+
+    End Sub
 
     Private Sub RellenarCMB(n As Short, cod As String)
-        'cmbSubCategorias.Text = ""
-        'cmbSubCategorias.Items.Clear()
+        cmbSubCategorias.Text = ""
+        cmbSubCategorias.Items.Clear()
 
         If n = 1 Then
             cmbCategorias.Items.Clear()
@@ -214,7 +243,7 @@
 
             For i = 0 To dataset_padre.Tables(0).Rows.Count - 1
 
-                'cmbSubCategorias.Items.Add(dataset_padre.Tables(0)(i)(0).ToString + " - " + dataset_padre.Tables(0)(i)(1).ToString)
+                cmbSubCategorias.Items.Add(dataset_padre.Tables(0)(i)(0).ToString + " - " + dataset_padre.Tables(0)(i)(1).ToString)
 
             Next
 
@@ -251,10 +280,11 @@
 
         dgvCateg.ClearSelection()
         dgvSubCat.Rows.Clear()
+        dgvSubSubCat.Rows.Clear()
 
         MyBase.LimpiarDatos(listaDeObjetosRellenables, {"", "ID CATEGORIA :", "", ""})
         cmbCategorias.Text = ""
-        'cmbSubCategorias.Items.Clear()
+        cmbSubCategorias.Items.Clear()
         CheckBox3.Checked = True
 
     End Sub
@@ -335,12 +365,12 @@
                 idCMB = cmbCategorias.SelectedItem.ToString()
                 idCMB = idCMB.Substring(0, InStr(1, idCMB, "-") - 1)
 
-                'If Not CheckBox2.Checked Then
+                If Not CheckBox2.Checked Then
 
-                ''' idCMB = cmbSubCategorias.SelectedItem.ToString()
-                'idCMB = idCMB.Substring(0, InStr(1, idCMB, "-") - 1)
+                    idCMB = cmbSubCategorias.SelectedItem.ToString()
+                    idCMB = idCMB.Substring(0, InStr(1, idCMB, "-") - 1)
 
-                'End If
+                End If
             End If
             'MsgBox("ID CMB CMB " & idCMB)
 
@@ -386,19 +416,19 @@
         Reset()
     End Sub
 
-    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs)
+    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
         'CHECK BOX 2
-        'If cmbSubCategorias.Items.Count = 0 Then
-        'CheckBox2.Checked = True
-        'End If
+        If cmbSubCategorias.Items.Count = 0 Then
+            CheckBox2.Checked = True
+        End If
         'MsgBox(cmbSubCategorias.Items.Count)
 
-        'If Not CheckBox2.Checked Then
-        'cmbSubCategorias.Enabled = True
+        If Not CheckBox2.Checked Then
+            cmbSubCategorias.Enabled = True
 
-        'Else
-        'cmbSubCategorias.Enabled = False
-        'End If
+        Else
+            cmbSubCategorias.Enabled = False
+        End If
 
 
     End Sub
@@ -417,21 +447,21 @@
         'CHECK BOX 1 
         If Not CheckBox1.Checked And cmbCategorias.Items.Count <> 0 Then
             cmbCategorias.Enabled = True
-            'CheckBox2.Enabled = True
-            '.Checked = True
+            CheckBox2.Enabled = True
+            CheckBox2.Checked = True
         Else
             cmbCategorias.Enabled = False
-            ' CheckBox2.Enabled = False
+            CheckBox2.Enabled = False
             'CheckBox2.Checked = False
-            ' cmbSubCategorias.Enabled = False
+            cmbSubCategorias.Enabled = False
         End If
 
 
     End Sub
 
-    Private Sub cmbSubCategorias_SelectedIndexChanged(sender As Object, e As EventArgs)
-        'Dim id As String = cmbSubCategorias.SelectedItem.ToString()
-        ' id = id.Substring(0, InStr(1, id, "-") - 1)
+    Private Sub cmbSubCategorias_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbSubCategorias.SelectedIndexChanged
+        Dim id As String = cmbSubCategorias.SelectedItem.ToString()
+        id = id.Substring(0, InStr(1, id, "-") - 1)
         'MsgBox("Id : " + id)
     End Sub
 
@@ -509,7 +539,7 @@
         'Limpiar TXT's - LABEL's - CMB's
         MyBase.LimpiarDatos(listaDeObjetosRellenables, {"", "ID CATEGORIA :", "", ""})
         cmbCategorias.Text = ""
-        '  cmbSubCategorias.Text = ""
+        cmbSubCategorias.Text = ""
         'BLOQUEOS
         MyBase.BloquearBotones(listaDeObjetosForm)
         MyBase.BloquearBotones(ColeccionNivelCategoria)
@@ -538,7 +568,7 @@
 
     Private Function ColeccionNivelCategoria()
         Dim CNC As New List(Of Object)
-        '  CNC.AddRange({CheckBox1, CheckBox2, cmbCategorias, cmbSubCategorias})
+        CNC.AddRange({CheckBox1, CheckBox2, cmbCategorias, cmbSubCategorias})
         Return CNC
     End Function
 
@@ -609,7 +639,7 @@
                 Dim dig As String = ""
 
                 ''Seleccionar Item Del CMD CAT
-                If True Then  'CheckBox2.Checked Then
+                If CheckBox2.Checked Then
                     'MsgBox("2 IDCMB" & id_cmb)
 
                     dig = bsnCategoria.ObtenerCodigo(id_cmb)
@@ -679,7 +709,7 @@
         Dim receptor = validacion.Val(ListaText) '<- INGRESAR LISTA DE TXT BOX 
         If receptor(0) Then
             'VALIDAR QUE LOS CMD , SI EXISTEN U OTRO ELEMENTO CUMPLE CON LA VAL
-            If True Then ''activeAgregar And (CheckBox1.Checked Or CheckBox2.Checked Or cmbCategorias.SelectedIndex < 0 Or cmbSubCategorias.SelectedIndex < 0) Then
+            If activeAgregar And (CheckBox1.Checked Or CheckBox2.Checked Or cmbCategorias.SelectedIndex < 0 Or cmbSubCategorias.SelectedIndex < 0) Then
                 cumple = True
             ElseIf activeEditar And Not txtCodigo.Equals("") Then
                 cumple = True

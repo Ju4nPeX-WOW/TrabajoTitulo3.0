@@ -90,10 +90,10 @@ Partial Class frmVenta
         'lblVend
         '
         Me.lblVend.AutoSize = True
-        Me.lblVend.Font = New System.Drawing.Font("Bahnschrift", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblVend.Location = New System.Drawing.Point(72, 71)
+        Me.lblVend.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblVend.Location = New System.Drawing.Point(72, 77)
         Me.lblVend.Name = "lblVend"
-        Me.lblVend.Size = New System.Drawing.Size(111, 23)
+        Me.lblVend.Size = New System.Drawing.Size(88, 19)
         Me.lblVend.TabIndex = 0
         Me.lblVend.Text = "Vendedor      :"
         '
@@ -110,20 +110,20 @@ Partial Class frmVenta
         'lblRut
         '
         Me.lblRut.AutoSize = True
-        Me.lblRut.Font = New System.Drawing.Font("Bahnschrift", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblRut.Location = New System.Drawing.Point(72, 102)
+        Me.lblRut.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblRut.Location = New System.Drawing.Point(72, 108)
         Me.lblRut.Name = "lblRut"
-        Me.lblRut.Size = New System.Drawing.Size(112, 23)
+        Me.lblRut.Size = New System.Drawing.Size(86, 19)
         Me.lblRut.TabIndex = 4
         Me.lblRut.Text = "Rut Cliente  :"
         '
         'lblFecha
         '
         Me.lblFecha.AutoSize = True
-        Me.lblFecha.Font = New System.Drawing.Font("Bahnschrift", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblFecha.Location = New System.Drawing.Point(426, 75)
+        Me.lblFecha.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFecha.Location = New System.Drawing.Point(426, 81)
         Me.lblFecha.Name = "lblFecha"
-        Me.lblFecha.Size = New System.Drawing.Size(65, 23)
+        Me.lblFecha.Size = New System.Drawing.Size(49, 19)
         Me.lblFecha.TabIndex = 7
         Me.lblFecha.Text = "Fecha:"
         '
@@ -153,10 +153,10 @@ Partial Class frmVenta
         '
         Me.txtTotal.BackColor = System.Drawing.Color.DarkOrange
         Me.txtTotal.Enabled = False
-        Me.txtTotal.Font = New System.Drawing.Font("Bahnschrift Condensed", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTotal.Location = New System.Drawing.Point(725, 598)
+        Me.txtTotal.Font = New System.Drawing.Font("Bahnschrift Condensed", 16.0!)
+        Me.txtTotal.Location = New System.Drawing.Point(960, 516)
         Me.txtTotal.Name = "txtTotal"
-        Me.txtTotal.Size = New System.Drawing.Size(117, 26)
+        Me.txtTotal.Size = New System.Drawing.Size(117, 33)
         Me.txtTotal.TabIndex = 10
         Me.txtTotal.Text = "0"
         '
@@ -204,10 +204,10 @@ Partial Class frmVenta
         'lblTotal
         '
         Me.lblTotal.AutoSize = True
-        Me.lblTotal.Font = New System.Drawing.Font("Bahnschrift Condensed", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotal.Location = New System.Drawing.Point(687, 601)
+        Me.lblTotal.Font = New System.Drawing.Font("Bahnschrift Condensed", 16.0!)
+        Me.lblTotal.Location = New System.Drawing.Point(900, 519)
         Me.lblTotal.Name = "lblTotal"
-        Me.lblTotal.Size = New System.Drawing.Size(33, 18)
+        Me.lblTotal.Size = New System.Drawing.Size(51, 27)
         Me.lblTotal.TabIndex = 18
         Me.lblTotal.Text = "Total:"
         '
@@ -269,11 +269,12 @@ Partial Class frmVenta
         'txtFecha
         '
         Me.txtFecha.Enabled = False
-        Me.txtFecha.Font = New System.Drawing.Font("Bahnschrift", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFecha.Location = New System.Drawing.Point(588, 68)
+        Me.txtFecha.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFecha.Location = New System.Drawing.Point(588, 74)
         Me.txtFecha.Name = "txtFecha"
-        Me.txtFecha.Size = New System.Drawing.Size(221, 30)
+        Me.txtFecha.Size = New System.Drawing.Size(221, 27)
         Me.txtFecha.TabIndex = 12
+        Me.txtFecha.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'txtBuscar
         '
@@ -448,9 +449,9 @@ Partial Class frmVenta
         Me.btnRealizarVenta.BackColor = System.Drawing.Color.DarkBlue
         Me.btnRealizarVenta.Font = New System.Drawing.Font("Bahnschrift SemiBold", 16.0!, System.Drawing.FontStyle.Bold)
         Me.btnRealizarVenta.ForeColor = System.Drawing.Color.White
-        Me.btnRealizarVenta.Location = New System.Drawing.Point(878, 529)
+        Me.btnRealizarVenta.Location = New System.Drawing.Point(888, 551)
         Me.btnRealizarVenta.Name = "btnRealizarVenta"
-        Me.btnRealizarVenta.Size = New System.Drawing.Size(230, 73)
+        Me.btnRealizarVenta.Size = New System.Drawing.Size(206, 66)
         Me.btnRealizarVenta.TabIndex = 81
         Me.btnRealizarVenta.Text = "Realizar venta"
         Me.btnRealizarVenta.UseVisualStyleBackColor = False
@@ -477,59 +478,59 @@ Partial Class frmVenta
         '
         'txtDV
         '
-        Me.txtDV.Font = New System.Drawing.Font("Bahnschrift", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDV.Location = New System.Drawing.Point(356, 104)
+        Me.txtDV.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDV.Location = New System.Drawing.Point(356, 110)
         Me.txtDV.MaxLength = 1
         Me.txtDV.Name = "txtDV"
-        Me.txtDV.Size = New System.Drawing.Size(51, 30)
+        Me.txtDV.Size = New System.Drawing.Size(51, 27)
         Me.txtDV.TabIndex = 101
         '
         'txtRutSnDV
         '
-        Me.txtRutSnDV.Font = New System.Drawing.Font("Bahnschrift", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtRutSnDV.Location = New System.Drawing.Point(189, 104)
+        Me.txtRutSnDV.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtRutSnDV.Location = New System.Drawing.Point(189, 110)
         Me.txtRutSnDV.MaxLength = 8
         Me.txtRutSnDV.Name = "txtRutSnDV"
-        Me.txtRutSnDV.Size = New System.Drawing.Size(145, 30)
+        Me.txtRutSnDV.Size = New System.Drawing.Size(145, 27)
         Me.txtRutSnDV.TabIndex = 99
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Bahnschrift", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(338, 106)
+        Me.Label2.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(338, 112)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(19, 23)
+        Me.Label2.Size = New System.Drawing.Size(16, 19)
         Me.Label2.TabIndex = 100
         Me.Label2.Text = "-"
         '
         'txtNombreCliente
         '
         Me.txtNombreCliente.Enabled = False
-        Me.txtNombreCliente.Font = New System.Drawing.Font("Bahnschrift", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNombreCliente.Location = New System.Drawing.Point(588, 103)
+        Me.txtNombreCliente.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNombreCliente.Location = New System.Drawing.Point(588, 109)
         Me.txtNombreCliente.MaxLength = 8
         Me.txtNombreCliente.Name = "txtNombreCliente"
-        Me.txtNombreCliente.Size = New System.Drawing.Size(221, 30)
+        Me.txtNombreCliente.Size = New System.Drawing.Size(221, 27)
         Me.txtNombreCliente.TabIndex = 104
         '
         'lblNombreCliente
         '
         Me.lblNombreCliente.AutoSize = True
-        Me.lblNombreCliente.Font = New System.Drawing.Font("Bahnschrift", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblNombreCliente.Location = New System.Drawing.Point(426, 111)
+        Me.lblNombreCliente.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNombreCliente.Location = New System.Drawing.Point(426, 117)
         Me.lblNombreCliente.Name = "lblNombreCliente"
-        Me.lblNombreCliente.Size = New System.Drawing.Size(144, 23)
+        Me.lblNombreCliente.Size = New System.Drawing.Size(107, 19)
         Me.lblNombreCliente.TabIndex = 103
         Me.lblNombreCliente.Text = "Nombre Cliente:"
         '
         'txtVendedor
         '
         Me.txtVendedor.Enabled = False
-        Me.txtVendedor.Font = New System.Drawing.Font("Bahnschrift", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtVendedor.Location = New System.Drawing.Point(189, 68)
+        Me.txtVendedor.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtVendedor.Location = New System.Drawing.Point(189, 74)
         Me.txtVendedor.Name = "txtVendedor"
-        Me.txtVendedor.Size = New System.Drawing.Size(218, 30)
+        Me.txtVendedor.Size = New System.Drawing.Size(218, 27)
         Me.txtVendedor.TabIndex = 105
         '
         'disminuirCantidad
@@ -555,10 +556,11 @@ Partial Class frmVenta
         'LblDescuentoCliente
         '
         Me.LblDescuentoCliente.AutoSize = True
+        Me.LblDescuentoCliente.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LblDescuentoCliente.ForeColor = System.Drawing.Color.Red
-        Me.LblDescuentoCliente.Location = New System.Drawing.Point(755, 102)
+        Me.LblDescuentoCliente.Location = New System.Drawing.Point(755, 108)
         Me.LblDescuentoCliente.Name = "LblDescuentoCliente"
-        Me.LblDescuentoCliente.Size = New System.Drawing.Size(0, 13)
+        Me.LblDescuentoCliente.Size = New System.Drawing.Size(0, 19)
         Me.LblDescuentoCliente.TabIndex = 107
         Me.LblDescuentoCliente.Visible = False
         '

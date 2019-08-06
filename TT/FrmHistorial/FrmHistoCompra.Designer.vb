@@ -22,10 +22,9 @@ Partial Class FrmHistoCompra
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.txtProv = New System.Windows.Forms.TextBox()
-        Me.cmbProv = New System.Windows.Forms.ComboBox()
-        Me.lblUsuario = New System.Windows.Forms.Label()
         Me.BtnExitCat = New System.Windows.Forms.Button()
+        Me.LblFranjaNaranja = New System.Windows.Forms.Label()
+        Me.LblTitulo = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -59,31 +58,6 @@ Partial Class FrmHistoCompra
         Me.DataGridView1.Size = New System.Drawing.Size(1100, 457)
         Me.DataGridView1.TabIndex = 0
         '
-        'txtProv
-        '
-        Me.txtProv.Location = New System.Drawing.Point(228, 108)
-        Me.txtProv.Name = "txtProv"
-        Me.txtProv.Size = New System.Drawing.Size(911, 20)
-        Me.txtProv.TabIndex = 77
-        '
-        'cmbProv
-        '
-        Me.cmbProv.FormattingEnabled = True
-        Me.cmbProv.Location = New System.Drawing.Point(12, 108)
-        Me.cmbProv.Name = "cmbProv"
-        Me.cmbProv.Size = New System.Drawing.Size(210, 21)
-        Me.cmbProv.TabIndex = 76
-        '
-        'lblUsuario
-        '
-        Me.lblUsuario.AutoSize = True
-        Me.lblUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUsuario.Location = New System.Drawing.Point(445, 59)
-        Me.lblUsuario.Name = "lblUsuario"
-        Me.lblUsuario.Size = New System.Drawing.Size(268, 25)
-        Me.lblUsuario.TabIndex = 75
-        Me.lblUsuario.Text = "HISTORIAL DE COMPRAS"
-        '
         'BtnExitCat
         '
         Me.BtnExitCat.Location = New System.Drawing.Point(1104, 12)
@@ -93,29 +67,49 @@ Partial Class FrmHistoCompra
         Me.BtnExitCat.Text = "X"
         Me.BtnExitCat.UseVisualStyleBackColor = True
         '
+        'LblFranjaNaranja
+        '
+        Me.LblFranjaNaranja.BackColor = System.Drawing.Color.DarkOrange
+        Me.LblFranjaNaranja.Location = New System.Drawing.Point(0, 78)
+        Me.LblFranjaNaranja.Name = "LblFranjaNaranja"
+        Me.LblFranjaNaranja.Size = New System.Drawing.Size(1173, 24)
+        Me.LblFranjaNaranja.TabIndex = 123
+        '
+        'LblTitulo
+        '
+        Me.LblTitulo.BackColor = System.Drawing.Color.DarkBlue
+        Me.LblTitulo.Font = New System.Drawing.Font("Bahnschrift", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTitulo.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.LblTitulo.Location = New System.Drawing.Point(0, 38)
+        Me.LblTitulo.Name = "LblTitulo"
+        Me.LblTitulo.Size = New System.Drawing.Size(1173, 40)
+        Me.LblTitulo.TabIndex = 122
+        Me.LblTitulo.Text = "HISTORIAL DE COMPRA"
+        Me.LblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'FrmHistoCompra
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 670)
+        Me.Controls.Add(Me.LblFranjaNaranja)
+        Me.Controls.Add(Me.LblTitulo)
         Me.Controls.Add(Me.TabControl1)
-        Me.Controls.Add(Me.txtProv)
-        Me.Controls.Add(Me.cmbProv)
-        Me.Controls.Add(Me.lblUsuario)
         Me.Controls.Add(Me.BtnExitCat)
+        Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "FrmHistoCompra"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents BtnExitCat As Button
-    Friend WithEvents lblUsuario As Label
-    Friend WithEvents txtProv As TextBox
-    Friend WithEvents cmbProv As ComboBox
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents TabControl1 As TabControl
+    Friend WithEvents LblFranjaNaranja As Label
+    Friend WithEvents LblTitulo As Label
 End Class

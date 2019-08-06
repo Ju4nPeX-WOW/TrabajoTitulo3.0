@@ -51,16 +51,15 @@ Partial Class frmProd2
         Me.txtAvanzadoPrecio = New System.Windows.Forms.TextBox()
         Me.txtAvanzadoStock = New System.Windows.Forms.TextBox()
         Me.txtAvanzadoProd = New System.Windows.Forms.TextBox()
-        Me.cmbBuscar = New System.Windows.Forms.ComboBox()
         Me.btnCan = New System.Windows.Forms.Button()
         Me.btnAce = New System.Windows.Forms.Button()
         Me.dgvProd = New System.Windows.Forms.DataGridView()
-        Me.txtBuscarProd = New System.Windows.Forms.TextBox()
         Me.mnsProd = New System.Windows.Forms.MenuStrip()
         Me.tsmAgregar = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmEditar = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmEliminar = New System.Windows.Forms.ToolStripMenuItem()
         Me.BtnExit = New System.Windows.Forms.Button()
+        Me.LblTitulo = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.tbpSimple.SuspendLayout()
         CType(Me.nupSimpleCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -363,16 +362,6 @@ Partial Class frmProd2
         Me.txtAvanzadoProd.Size = New System.Drawing.Size(569, 20)
         Me.txtAvanzadoProd.TabIndex = 57
         '
-        'cmbBuscar
-        '
-        Me.cmbBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbBuscar.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.cmbBuscar.Items.AddRange(New Object() {"Nombre", "Categoria", "Precio"})
-        Me.cmbBuscar.Location = New System.Drawing.Point(12, 75)
-        Me.cmbBuscar.Name = "cmbBuscar"
-        Me.cmbBuscar.Size = New System.Drawing.Size(210, 21)
-        Me.cmbBuscar.TabIndex = 63
-        '
         'btnCan
         '
         Me.btnCan.Enabled = False
@@ -409,21 +398,15 @@ Partial Class frmProd2
         Me.dgvProd.Size = New System.Drawing.Size(1127, 269)
         Me.dgvProd.TabIndex = 58
         '
-        'txtBuscarProd
-        '
-        Me.txtBuscarProd.Location = New System.Drawing.Point(228, 76)
-        Me.txtBuscarProd.Name = "txtBuscarProd"
-        Me.txtBuscarProd.Size = New System.Drawing.Size(911, 20)
-        Me.txtBuscarProd.TabIndex = 59
-        '
         'mnsProd
         '
         Me.mnsProd.AutoSize = False
+        Me.mnsProd.BackColor = System.Drawing.Color.DarkOrange
         Me.mnsProd.Dock = System.Windows.Forms.DockStyle.None
         Me.mnsProd.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAgregar, Me.tsmEditar, Me.tsmEliminar})
-        Me.mnsProd.Location = New System.Drawing.Point(0, 40)
+        Me.mnsProd.Location = New System.Drawing.Point(0, 78)
         Me.mnsProd.Name = "mnsProd"
-        Me.mnsProd.Size = New System.Drawing.Size(1139, 24)
+        Me.mnsProd.Size = New System.Drawing.Size(1173, 24)
         Me.mnsProd.TabIndex = 60
         Me.mnsProd.Text = "MenuStrip1"
         '
@@ -457,20 +440,31 @@ Partial Class frmProd2
         Me.BtnExit.Text = "X"
         Me.BtnExit.UseVisualStyleBackColor = True
         '
+        'LblTitulo
+        '
+        Me.LblTitulo.BackColor = System.Drawing.Color.DarkBlue
+        Me.LblTitulo.Font = New System.Drawing.Font("Bahnschrift", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTitulo.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.LblTitulo.Location = New System.Drawing.Point(0, 38)
+        Me.LblTitulo.Name = "LblTitulo"
+        Me.LblTitulo.Size = New System.Drawing.Size(1173, 40)
+        Me.LblTitulo.TabIndex = 122
+        Me.LblTitulo.Text = "Productos"
+        Me.LblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'frmProd2
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.ClientSize = New System.Drawing.Size(1173, 670)
+        Me.Controls.Add(Me.LblTitulo)
         Me.Controls.Add(Me.BtnExit)
         Me.Controls.Add(Me.btnSimpleEliminar)
         Me.Controls.Add(Me.TabControl1)
-        Me.Controls.Add(Me.cmbBuscar)
         Me.Controls.Add(Me.btnCan)
         Me.Controls.Add(Me.btnAce)
         Me.Controls.Add(Me.dgvProd)
-        Me.Controls.Add(Me.txtBuscarProd)
         Me.Controls.Add(Me.mnsProd)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.MaximizeBox = False
@@ -489,7 +483,6 @@ Partial Class frmProd2
         Me.mnsProd.ResumeLayout(False)
         Me.mnsProd.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
@@ -521,14 +514,13 @@ Partial Class frmProd2
     Friend WithEvents txtAvanzadoPrecio As TextBox
     Friend WithEvents txtAvanzadoStock As TextBox
     Friend WithEvents txtAvanzadoProd As TextBox
-    Friend WithEvents cmbBuscar As ComboBox
     Friend WithEvents btnCan As Button
     Friend WithEvents btnAce As Button
     Friend WithEvents dgvProd As DataGridView
-    Friend WithEvents txtBuscarProd As TextBox
     Friend WithEvents mnsProd As MenuStrip
     Friend WithEvents tsmAgregar As ToolStripMenuItem
     Friend WithEvents tsmEditar As ToolStripMenuItem
     Friend WithEvents tsmEliminar As ToolStripMenuItem
     Friend WithEvents BtnExit As Button
+    Friend WithEvents LblTitulo As Label
 End Class

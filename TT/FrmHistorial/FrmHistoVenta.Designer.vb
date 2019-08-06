@@ -19,46 +19,20 @@ Partial Class FrmHistoVenta
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.lblUsuario = New System.Windows.Forms.Label()
-        Me.txtProv = New System.Windows.Forms.TextBox()
-        Me.cmbProv = New System.Windows.Forms.ComboBox()
         Me.BtnExitCat = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.LblFranjaNaranja = New System.Windows.Forms.Label()
+        Me.LblTitulo = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'lblUsuario
-        '
-        Me.lblUsuario.AutoSize = True
-        Me.lblUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUsuario.Location = New System.Drawing.Point(445, 59)
-        Me.lblUsuario.Name = "lblUsuario"
-        Me.lblUsuario.Size = New System.Drawing.Size(246, 25)
-        Me.lblUsuario.TabIndex = 74
-        Me.lblUsuario.Text = "HISTORIAL DE VENTAS"
-        '
-        'txtProv
-        '
-        Me.txtProv.Location = New System.Drawing.Point(228, 108)
-        Me.txtProv.Name = "txtProv"
-        Me.txtProv.Size = New System.Drawing.Size(911, 20)
-        Me.txtProv.TabIndex = 73
-        '
-        'cmbProv
-        '
-        Me.cmbProv.FormattingEnabled = True
-        Me.cmbProv.Location = New System.Drawing.Point(12, 108)
-        Me.cmbProv.Name = "cmbProv"
-        Me.cmbProv.Size = New System.Drawing.Size(210, 21)
-        Me.cmbProv.TabIndex = 72
         '
         'BtnExitCat
         '
@@ -117,23 +91,44 @@ Partial Class FrmHistoVenta
         Me.DataGridView2.Size = New System.Drawing.Size(1100, 457)
         Me.DataGridView2.TabIndex = 1
         '
+        'LblFranjaNaranja
+        '
+        Me.LblFranjaNaranja.BackColor = System.Drawing.Color.DarkOrange
+        Me.LblFranjaNaranja.Location = New System.Drawing.Point(0, 78)
+        Me.LblFranjaNaranja.Name = "LblFranjaNaranja"
+        Me.LblFranjaNaranja.Size = New System.Drawing.Size(1173, 24)
+        Me.LblFranjaNaranja.TabIndex = 123
+        '
+        'LblTitulo
+        '
+        Me.LblTitulo.BackColor = System.Drawing.Color.DarkBlue
+        Me.LblTitulo.Font = New System.Drawing.Font("Bahnschrift", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTitulo.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.LblTitulo.Location = New System.Drawing.Point(0, 38)
+        Me.LblTitulo.Name = "LblTitulo"
+        Me.LblTitulo.Size = New System.Drawing.Size(1173, 40)
+        Me.LblTitulo.TabIndex = 122
+        Me.LblTitulo.Text = "HISTORIAL DE VENTA"
+        Me.LblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'FrmHistoVenta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 670)
-        Me.Controls.Add(Me.lblUsuario)
-        Me.Controls.Add(Me.txtProv)
-        Me.Controls.Add(Me.cmbProv)
+        Me.Controls.Add(Me.LblFranjaNaranja)
+        Me.Controls.Add(Me.LblTitulo)
         Me.Controls.Add(Me.BtnExitCat)
         Me.Controls.Add(Me.TabControl1)
+        Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "FrmHistoVenta"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
@@ -142,8 +137,7 @@ Partial Class FrmHistoVenta
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents BtnExitCat As Button
-    Friend WithEvents txtProv As TextBox
-    Friend WithEvents cmbProv As ComboBox
-    Friend WithEvents lblUsuario As Label
     Friend WithEvents DataGridView2 As DataGridView
+    Friend WithEvents LblFranjaNaranja As Label
+    Friend WithEvents LblTitulo As Label
 End Class

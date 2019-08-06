@@ -24,8 +24,6 @@ Partial Class FrmDesc
         Me.btnAce = New System.Windows.Forms.Button()
         Me.dgvDescuentos = New System.Windows.Forms.DataGridView()
         Me.BtnExitDes = New System.Windows.Forms.Button()
-        Me.cmbBuscarCat = New System.Windows.Forms.ComboBox()
-        Me.txtBuscarProdCat = New System.Windows.Forms.TextBox()
         Me.mnsDes = New System.Windows.Forms.MenuStrip()
         Me.tsmAgregar = New System.Windows.Forms.ToolStripMenuItem()
         Me.tsmExtender = New System.Windows.Forms.ToolStripMenuItem()
@@ -47,6 +45,7 @@ Partial Class FrmDesc
         Me.cmbP2Porcentual = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.lblIdDescuento = New System.Windows.Forms.Label()
+        Me.LblTitulo = New System.Windows.Forms.Label()
         CType(Me.dgvDescuentos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.mnsDes.SuspendLayout()
         Me.SuspendLayout()
@@ -96,31 +95,15 @@ Partial Class FrmDesc
         Me.BtnExitDes.Text = "X"
         Me.BtnExitDes.UseVisualStyleBackColor = True
         '
-        'cmbBuscarCat
-        '
-        Me.cmbBuscarCat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbBuscarCat.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.cmbBuscarCat.Items.AddRange(New Object() {"Nombre", "Categoria", "Precio"})
-        Me.cmbBuscarCat.Location = New System.Drawing.Point(12, 75)
-        Me.cmbBuscarCat.Name = "cmbBuscarCat"
-        Me.cmbBuscarCat.Size = New System.Drawing.Size(210, 21)
-        Me.cmbBuscarCat.TabIndex = 78
-        '
-        'txtBuscarProdCat
-        '
-        Me.txtBuscarProdCat.Location = New System.Drawing.Point(228, 76)
-        Me.txtBuscarProdCat.Name = "txtBuscarProdCat"
-        Me.txtBuscarProdCat.Size = New System.Drawing.Size(911, 20)
-        Me.txtBuscarProdCat.TabIndex = 76
-        '
         'mnsDes
         '
         Me.mnsDes.AutoSize = False
+        Me.mnsDes.BackColor = System.Drawing.Color.DarkOrange
         Me.mnsDes.Dock = System.Windows.Forms.DockStyle.None
         Me.mnsDes.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAgregar, Me.tsmExtender, Me.tsmFinalizar})
-        Me.mnsDes.Location = New System.Drawing.Point(0, 40)
+        Me.mnsDes.Location = New System.Drawing.Point(0, 78)
         Me.mnsDes.Name = "mnsDes"
-        Me.mnsDes.Size = New System.Drawing.Size(1139, 24)
+        Me.mnsDes.Size = New System.Drawing.Size(1173, 24)
         Me.mnsDes.TabIndex = 77
         Me.mnsDes.Text = "MenuStrip1"
         Me.mnsDes.UseWaitCursor = True
@@ -292,10 +275,23 @@ Partial Class FrmDesc
         Me.lblIdDescuento.TabIndex = 102
         Me.lblIdDescuento.Visible = False
         '
+        'LblTitulo
+        '
+        Me.LblTitulo.BackColor = System.Drawing.Color.DarkBlue
+        Me.LblTitulo.Font = New System.Drawing.Font("Bahnschrift", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTitulo.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.LblTitulo.Location = New System.Drawing.Point(0, 38)
+        Me.LblTitulo.Name = "LblTitulo"
+        Me.LblTitulo.Size = New System.Drawing.Size(1173, 40)
+        Me.LblTitulo.TabIndex = 122
+        Me.LblTitulo.Text = "DESCUENTOS"
+        Me.LblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'FrmDesc
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 670)
+        Me.Controls.Add(Me.LblTitulo)
         Me.Controls.Add(Me.lblIdDescuento)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.cmbP2Porcentual)
@@ -317,8 +313,6 @@ Partial Class FrmDesc
         Me.Controls.Add(Me.btnAce)
         Me.Controls.Add(Me.dgvDescuentos)
         Me.Controls.Add(Me.BtnExitDes)
-        Me.Controls.Add(Me.cmbBuscarCat)
-        Me.Controls.Add(Me.txtBuscarProdCat)
         Me.Controls.Add(Me.mnsDes)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "FrmDesc"
@@ -333,8 +327,6 @@ Partial Class FrmDesc
     Friend WithEvents btnAce As Button
     Friend WithEvents dgvDescuentos As DataGridView
     Friend WithEvents BtnExitDes As Button
-    Friend WithEvents cmbBuscarCat As ComboBox
-    Friend WithEvents txtBuscarProdCat As TextBox
     Friend WithEvents mnsDes As MenuStrip
     Friend WithEvents tsmAgregar As ToolStripMenuItem
     Friend WithEvents tsmExtender As ToolStripMenuItem
@@ -356,4 +348,5 @@ Partial Class FrmDesc
     Friend WithEvents cmbP2Porcentual As ComboBox
     Friend WithEvents Label7 As Label
     Friend WithEvents lblIdDescuento As Label
+    Friend WithEvents LblTitulo As Label
 End Class

@@ -23,7 +23,6 @@ Partial Class FrmEmpleados
         Me.BtnExit = New System.Windows.Forms.Button()
         Me.txtProv = New System.Windows.Forms.TextBox()
         Me.cmbProv = New System.Windows.Forms.ComboBox()
-        Me.lblUsuario = New System.Windows.Forms.Label()
         Me.pnlComponentes = New System.Windows.Forms.Panel()
         Me.txtFono = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -46,6 +45,8 @@ Partial Class FrmEmpleados
         Me.picEliminar = New System.Windows.Forms.PictureBox()
         Me.picEditar = New System.Windows.Forms.PictureBox()
         Me.dgvEmpleados = New System.Windows.Forms.DataGridView()
+        Me.LblFranjaNaranja = New System.Windows.Forms.Label()
+        Me.LblTitulo = New System.Windows.Forms.Label()
         Me.pnlComponentes.SuspendLayout()
         Me.pnlAcciones.SuspendLayout()
         CType(Me.picAgregar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -77,16 +78,6 @@ Partial Class FrmEmpleados
         Me.cmbProv.Name = "cmbProv"
         Me.cmbProv.Size = New System.Drawing.Size(210, 21)
         Me.cmbProv.TabIndex = 70
-        '
-        'lblUsuario
-        '
-        Me.lblUsuario.AutoSize = True
-        Me.lblUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUsuario.Location = New System.Drawing.Point(542, 54)
-        Me.lblUsuario.Name = "lblUsuario"
-        Me.lblUsuario.Size = New System.Drawing.Size(143, 25)
-        Me.lblUsuario.TabIndex = 69
-        Me.lblUsuario.Text = "EMPLEADOS"
         '
         'pnlComponentes
         '
@@ -299,19 +290,46 @@ Partial Class FrmEmpleados
         Me.dgvEmpleados.Size = New System.Drawing.Size(1127, 181)
         Me.dgvEmpleados.TabIndex = 79
         '
+        'LblFranjaNaranja
+        '
+        Me.LblFranjaNaranja.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LblFranjaNaranja.BackColor = System.Drawing.Color.DarkOrange
+        Me.LblFranjaNaranja.Location = New System.Drawing.Point(0, 78)
+        Me.LblFranjaNaranja.Name = "LblFranjaNaranja"
+        Me.LblFranjaNaranja.Size = New System.Drawing.Size(1173, 24)
+        Me.LblFranjaNaranja.TabIndex = 123
+        '
+        'LblTitulo
+        '
+        Me.LblTitulo.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LblTitulo.BackColor = System.Drawing.Color.DarkBlue
+        Me.LblTitulo.Font = New System.Drawing.Font("Bahnschrift", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTitulo.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.LblTitulo.Location = New System.Drawing.Point(0, 38)
+        Me.LblTitulo.Name = "LblTitulo"
+        Me.LblTitulo.Size = New System.Drawing.Size(1173, 40)
+        Me.LblTitulo.TabIndex = 122
+        Me.LblTitulo.Text = "EMPLEADOS"
+        Me.LblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'FrmEmpleados
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 670)
+        Me.Controls.Add(Me.LblFranjaNaranja)
+        Me.Controls.Add(Me.LblTitulo)
         Me.Controls.Add(Me.dgvEmpleados)
         Me.Controls.Add(Me.pnlAcciones)
         Me.Controls.Add(Me.pnlComponentes)
         Me.Controls.Add(Me.BtnExit)
         Me.Controls.Add(Me.txtProv)
         Me.Controls.Add(Me.cmbProv)
-        Me.Controls.Add(Me.lblUsuario)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "FrmEmpleados"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.pnlComponentes.ResumeLayout(False)
         Me.pnlComponentes.PerformLayout()
         Me.pnlAcciones.ResumeLayout(False)
@@ -327,7 +345,6 @@ Partial Class FrmEmpleados
     Friend WithEvents BtnExit As Button
     Friend WithEvents txtProv As TextBox
     Friend WithEvents cmbProv As ComboBox
-    Friend WithEvents lblUsuario As Label
     Friend WithEvents pnlComponentes As Panel
     Friend WithEvents btnCancelar As Button
     Friend WithEvents btnAceptar As Button
@@ -350,4 +367,6 @@ Partial Class FrmEmpleados
     Friend WithEvents txtCelu As TextBox
     Friend WithEvents lblTeleC As Label
     Friend WithEvents dgvEmpleados As DataGridView
+    Friend WithEvents LblFranjaNaranja As Label
+    Friend WithEvents LblTitulo As Label
 End Class

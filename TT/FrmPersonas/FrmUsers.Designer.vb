@@ -21,7 +21,6 @@ Partial Class FrmUsers
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmUsers))
         Me.BtnExit = New System.Windows.Forms.Button()
-        Me.lblUsuario = New System.Windows.Forms.Label()
         Me.picEditar = New System.Windows.Forms.PictureBox()
         Me.picEliminar = New System.Windows.Forms.PictureBox()
         Me.txtProv = New System.Windows.Forms.TextBox()
@@ -39,6 +38,8 @@ Partial Class FrmUsers
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lblRut = New System.Windows.Forms.Label()
         Me.picAgregar = New System.Windows.Forms.PictureBox()
+        Me.LblFranjaNaranja = New System.Windows.Forms.Label()
+        Me.LblTitulo = New System.Windows.Forms.Label()
         CType(Me.picEditar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picEliminar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvUsua, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -54,16 +55,6 @@ Partial Class FrmUsers
         Me.BtnExit.TabIndex = 75
         Me.BtnExit.Text = "X"
         Me.BtnExit.UseVisualStyleBackColor = True
-        '
-        'lblUsuario
-        '
-        Me.lblUsuario.AutoSize = True
-        Me.lblUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUsuario.Location = New System.Drawing.Point(542, 54)
-        Me.lblUsuario.Name = "lblUsuario"
-        Me.lblUsuario.Size = New System.Drawing.Size(120, 25)
-        Me.lblUsuario.TabIndex = 69
-        Me.lblUsuario.Text = "USUARIOS"
         '
         'picEditar
         '
@@ -230,10 +221,32 @@ Partial Class FrmUsers
         Me.picAgregar.TabIndex = 82
         Me.picAgregar.TabStop = False
         '
+        'LblFranjaNaranja
+        '
+        Me.LblFranjaNaranja.BackColor = System.Drawing.Color.DarkOrange
+        Me.LblFranjaNaranja.Location = New System.Drawing.Point(0, 78)
+        Me.LblFranjaNaranja.Name = "LblFranjaNaranja"
+        Me.LblFranjaNaranja.Size = New System.Drawing.Size(1173, 24)
+        Me.LblFranjaNaranja.TabIndex = 123
+        '
+        'LblTitulo
+        '
+        Me.LblTitulo.BackColor = System.Drawing.Color.DarkBlue
+        Me.LblTitulo.Font = New System.Drawing.Font("Bahnschrift", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTitulo.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.LblTitulo.Location = New System.Drawing.Point(0, 38)
+        Me.LblTitulo.Name = "LblTitulo"
+        Me.LblTitulo.Size = New System.Drawing.Size(1173, 40)
+        Me.LblTitulo.TabIndex = 122
+        Me.LblTitulo.Text = "USUARIOS"
+        Me.LblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'FrmUsers
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 670)
+        Me.Controls.Add(Me.LblFranjaNaranja)
+        Me.Controls.Add(Me.LblTitulo)
         Me.Controls.Add(Me.picAgregar)
         Me.Controls.Add(Me.pnlComponentes)
         Me.Controls.Add(Me.dgvUsua)
@@ -242,9 +255,10 @@ Partial Class FrmUsers
         Me.Controls.Add(Me.BtnExit)
         Me.Controls.Add(Me.picEditar)
         Me.Controls.Add(Me.picEliminar)
-        Me.Controls.Add(Me.lblUsuario)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "FrmUsers"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         CType(Me.picEditar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picEliminar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvUsua, System.ComponentModel.ISupportInitialize).EndInit()
@@ -259,7 +273,6 @@ Partial Class FrmUsers
     Friend WithEvents BtnExit As Button
     Friend WithEvents picEditar As PictureBox
     Friend WithEvents picEliminar As PictureBox
-    Friend WithEvents lblUsuario As Label
     Friend WithEvents txtProv As TextBox
     Friend WithEvents cmbProv As ComboBox
     Friend WithEvents dgvUsua As DataGridView
@@ -275,4 +288,6 @@ Partial Class FrmUsers
     Friend WithEvents Label7 As Label
     Friend WithEvents txtRut As TextBox
     Friend WithEvents picAgregar As PictureBox
+    Friend WithEvents LblFranjaNaranja As Label
+    Friend WithEvents LblTitulo As Label
 End Class

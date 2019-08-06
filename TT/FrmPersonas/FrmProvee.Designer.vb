@@ -25,9 +25,10 @@ Partial Class FrmProvee
         Me.picAgregar = New System.Windows.Forms.PictureBox()
         Me.txtProv = New System.Windows.Forms.TextBox()
         Me.cmbProv = New System.Windows.Forms.ComboBox()
-        Me.lblUsuario = New System.Windows.Forms.Label()
         Me.dgvProv = New System.Windows.Forms.DataGridView()
         Me.BtnExit = New System.Windows.Forms.Button()
+        Me.LblFranjaNaranja = New System.Windows.Forms.Label()
+        Me.LblTitulo = New System.Windows.Forms.Label()
         CType(Me.picEditar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picEliminar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picAgregar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -79,16 +80,6 @@ Partial Class FrmProvee
         Me.cmbProv.Size = New System.Drawing.Size(210, 21)
         Me.cmbProv.TabIndex = 19
         '
-        'lblUsuario
-        '
-        Me.lblUsuario.AutoSize = True
-        Me.lblUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUsuario.Location = New System.Drawing.Point(542, 54)
-        Me.lblUsuario.Name = "lblUsuario"
-        Me.lblUsuario.Size = New System.Drawing.Size(173, 25)
-        Me.lblUsuario.TabIndex = 18
-        Me.lblUsuario.Text = "PROVEEDORES"
-        '
         'dgvProv
         '
         Me.dgvProv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -106,19 +97,43 @@ Partial Class FrmProvee
         Me.BtnExit.Text = "X"
         Me.BtnExit.UseVisualStyleBackColor = True
         '
+        'LblFranjaNaranja
+        '
+        Me.LblFranjaNaranja.BackColor = System.Drawing.Color.DarkOrange
+        Me.LblFranjaNaranja.Location = New System.Drawing.Point(0, 78)
+        Me.LblFranjaNaranja.Name = "LblFranjaNaranja"
+        Me.LblFranjaNaranja.Size = New System.Drawing.Size(1173, 24)
+        Me.LblFranjaNaranja.TabIndex = 123
+        '
+        'LblTitulo
+        '
+        Me.LblTitulo.BackColor = System.Drawing.Color.DarkBlue
+        Me.LblTitulo.Font = New System.Drawing.Font("Bahnschrift", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTitulo.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.LblTitulo.Location = New System.Drawing.Point(0, 38)
+        Me.LblTitulo.Name = "LblTitulo"
+        Me.LblTitulo.Size = New System.Drawing.Size(1173, 40)
+        Me.LblTitulo.TabIndex = 122
+        Me.LblTitulo.Text = "PROVEEDORES"
+        Me.LblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'FrmProvee
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 670)
+        Me.Controls.Add(Me.LblFranjaNaranja)
+        Me.Controls.Add(Me.LblTitulo)
         Me.Controls.Add(Me.BtnExit)
         Me.Controls.Add(Me.picEditar)
         Me.Controls.Add(Me.picEliminar)
         Me.Controls.Add(Me.picAgregar)
         Me.Controls.Add(Me.txtProv)
         Me.Controls.Add(Me.cmbProv)
-        Me.Controls.Add(Me.lblUsuario)
         Me.Controls.Add(Me.dgvProv)
+        Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "FrmProvee"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         CType(Me.picEditar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picEliminar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picAgregar, System.ComponentModel.ISupportInitialize).EndInit()
@@ -133,7 +148,8 @@ Partial Class FrmProvee
     Friend WithEvents picAgregar As PictureBox
     Friend WithEvents txtProv As TextBox
     Friend WithEvents cmbProv As ComboBox
-    Friend WithEvents lblUsuario As Label
     Friend WithEvents dgvProv As DataGridView
     Friend WithEvents BtnExit As Button
+    Friend WithEvents LblFranjaNaranja As Label
+    Friend WithEvents LblTitulo As Label
 End Class

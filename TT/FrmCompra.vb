@@ -3,7 +3,7 @@
     Dim persona As New Persona
     Dim bsnproducto As New BsnProducto
 
-    Private Sub BtnExitCat_Click(sender As Object, e As EventArgs) Handles BtnExitCat.Click
+    Private Sub BtnExitCat_Click(sender As Object, e As EventArgs)
         Me.Close()
     End Sub
 
@@ -207,9 +207,7 @@
         End If
     End Sub
 
-
-
-
-
-
+    Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
+        Me.Close()
+    End Sub
 End Class

@@ -25,6 +25,8 @@ Partial Class FrmNotaDebito
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.filesListBox = New System.Windows.Forms.ListBox()
         Me.AxAcroPDF1 = New AxAcroPDFLib.AxAcroPDF()
+        Me.LblFranjaNaranja = New System.Windows.Forms.Label()
+        Me.LblTitulo = New System.Windows.Forms.Label()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -85,14 +87,39 @@ Partial Class FrmNotaDebito
         Me.AxAcroPDF1.Size = New System.Drawing.Size(843, 548)
         Me.AxAcroPDF1.TabIndex = 0
         '
+        'LblFranjaNaranja
+        '
+        Me.LblFranjaNaranja.BackColor = System.Drawing.Color.DarkOrange
+        Me.LblFranjaNaranja.Location = New System.Drawing.Point(0, 78)
+        Me.LblFranjaNaranja.Name = "LblFranjaNaranja"
+        Me.LblFranjaNaranja.Size = New System.Drawing.Size(1173, 24)
+        Me.LblFranjaNaranja.TabIndex = 123
+        '
+        'LblTitulo
+        '
+        Me.LblTitulo.BackColor = System.Drawing.Color.DarkBlue
+        Me.LblTitulo.Font = New System.Drawing.Font("Bahnschrift", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTitulo.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.LblTitulo.Location = New System.Drawing.Point(0, 38)
+        Me.LblTitulo.Name = "LblTitulo"
+        Me.LblTitulo.Size = New System.Drawing.Size(1173, 40)
+        Me.LblTitulo.TabIndex = 122
+        Me.LblTitulo.Text = "NOTAS DE DEBITO"
+        Me.LblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'FrmNotaDebito
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 670)
+        Me.Controls.Add(Me.LblFranjaNaranja)
+        Me.Controls.Add(Me.LblTitulo)
         Me.Controls.Add(Me.SplitContainer1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.BtnExitCat)
+        Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "FrmNotaDebito"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -107,4 +134,6 @@ Partial Class FrmNotaDebito
     Friend WithEvents SplitContainer1 As SplitContainer
     Friend WithEvents filesListBox As ListBox
     Friend WithEvents AxAcroPDF1 As AxAcroPDFLib.AxAcroPDF
+    Friend WithEvents LblFranjaNaranja As Label
+    Friend WithEvents LblTitulo As Label
 End Class

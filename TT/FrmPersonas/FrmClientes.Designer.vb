@@ -26,7 +26,6 @@ Partial Class FrmClientes
         Me.picAgregar = New System.Windows.Forms.PictureBox()
         Me.txtProv = New System.Windows.Forms.TextBox()
         Me.cmbProv = New System.Windows.Forms.ComboBox()
-        Me.lblUsuario = New System.Windows.Forms.Label()
         Me.pnlComponentes = New System.Windows.Forms.Panel()
         Me.lblDescuento = New System.Windows.Forms.Label()
         Me.btnCancelar = New System.Windows.Forms.Button()
@@ -45,6 +44,8 @@ Partial Class FrmClientes
         Me.Label1 = New System.Windows.Forms.Label()
         Me.pnlAcciones = New System.Windows.Forms.Panel()
         Me.dgvClientes = New System.Windows.Forms.DataGridView()
+        Me.LblFranjaNaranja = New System.Windows.Forms.Label()
+        Me.LblTitulo = New System.Windows.Forms.Label()
         CType(Me.picEditar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picEliminar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picAgregar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -107,16 +108,6 @@ Partial Class FrmClientes
         Me.cmbProv.Name = "cmbProv"
         Me.cmbProv.Size = New System.Drawing.Size(210, 21)
         Me.cmbProv.TabIndex = 70
-        '
-        'lblUsuario
-        '
-        Me.lblUsuario.AutoSize = True
-        Me.lblUsuario.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUsuario.Location = New System.Drawing.Point(542, 54)
-        Me.lblUsuario.Name = "lblUsuario"
-        Me.lblUsuario.Size = New System.Drawing.Size(114, 25)
-        Me.lblUsuario.TabIndex = 69
-        Me.lblUsuario.Text = "CLIENTES"
         '
         'pnlComponentes
         '
@@ -292,19 +283,42 @@ Partial Class FrmClientes
         Me.dgvClientes.Size = New System.Drawing.Size(1127, 181)
         Me.dgvClientes.TabIndex = 78
         '
+        'LblFranjaNaranja
+        '
+        Me.LblFranjaNaranja.BackColor = System.Drawing.Color.DarkOrange
+        Me.LblFranjaNaranja.Location = New System.Drawing.Point(0, 78)
+        Me.LblFranjaNaranja.Name = "LblFranjaNaranja"
+        Me.LblFranjaNaranja.Size = New System.Drawing.Size(1173, 24)
+        Me.LblFranjaNaranja.TabIndex = 123
+        '
+        'LblTitulo
+        '
+        Me.LblTitulo.BackColor = System.Drawing.Color.DarkBlue
+        Me.LblTitulo.Font = New System.Drawing.Font("Bahnschrift", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblTitulo.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.LblTitulo.Location = New System.Drawing.Point(0, 38)
+        Me.LblTitulo.Name = "LblTitulo"
+        Me.LblTitulo.Size = New System.Drawing.Size(1173, 40)
+        Me.LblTitulo.TabIndex = 122
+        Me.LblTitulo.Text = "CLIENTES"
+        Me.LblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
         'FrmClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 681)
+        Me.Controls.Add(Me.LblFranjaNaranja)
+        Me.Controls.Add(Me.LblTitulo)
         Me.Controls.Add(Me.dgvClientes)
         Me.Controls.Add(Me.pnlAcciones)
         Me.Controls.Add(Me.pnlComponentes)
         Me.Controls.Add(Me.BtnExit)
         Me.Controls.Add(Me.txtProv)
         Me.Controls.Add(Me.cmbProv)
-        Me.Controls.Add(Me.lblUsuario)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "FrmClientes"
+        Me.ShowIcon = False
+        Me.ShowInTaskbar = False
         CType(Me.picEditar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picEliminar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picAgregar, System.ComponentModel.ISupportInitialize).EndInit()
@@ -324,7 +338,6 @@ Partial Class FrmClientes
     Friend WithEvents picAgregar As PictureBox
     Friend WithEvents txtProv As TextBox
     Friend WithEvents cmbProv As ComboBox
-    Friend WithEvents lblUsuario As Label
     Friend WithEvents pnlComponentes As Panel
     Friend WithEvents Label4 As Label
     Friend WithEvents tbDescuento As TrackBar
@@ -343,4 +356,6 @@ Partial Class FrmClientes
     Friend WithEvents pnlAcciones As Panel
     Friend WithEvents lblDescuento As Label
     Friend WithEvents dgvClientes As DataGridView
+    Friend WithEvents LblFranjaNaranja As Label
+    Friend WithEvents LblTitulo As Label
 End Class
