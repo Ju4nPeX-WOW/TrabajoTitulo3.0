@@ -4,6 +4,7 @@ Public Class frmProd2
 
     Private usuario As New Usuario '------------------------>Recepción del usuario que usa el sistema
     Protected aux As Short       '------------------------>auxiliar donde guarda el id
+    'Protected itemSeleccionado As Short
     Protected Validaciones As New Validaciones
     Protected Validaciones2 As New Validacionesv2
     Private permiso As New Permisos
@@ -23,13 +24,10 @@ Public Class frmProd2
     Protected condicion As Byte
     Protected largo As Short
 
-
-
+    'Obtiene el usuario autenticado y otorga permisos...
     Public Sub RecibirUsuario(objeto As Empleado)
         usuario = objeto 'del form ingreso se recibe el objeto que es el usuario que ingreso al sistema
         'MsgBox("ID-USUARIO : " & usuario.IdUsuario)
-
-
     End Sub
     Private Sub BloquearTMS()
         tsmAgregar.Enabled = False
@@ -37,7 +35,6 @@ Public Class frmProd2
         tsmEliminar.Enabled = False
     End Sub
     Private Sub DesbloquearTMS()
-
         tsmAgregar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "AGREGAR", "")
         tsmEditar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "EDITAR", "")
         tsmEliminar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "ELIMINAR", "")
@@ -168,7 +165,7 @@ Public Class frmProd2
 
         Dim enumeracion As New Enumeraciones
         If (Not activeAgregar) And (Not activeEditar) And (Not activeEliminar) Then 'Si es que no se presiona ningun boton del menuStrip o se presiona aceptar/cancelar            
-            LimpiarControl1("Simple-y-Avanzado")              'Limpiar los componentes de los tab avanzado y simple
+            MsgBox("cancelar")
             TabControl1.Enabled = False                       'Bloqueo del tabcontrol1 ya que no se selecciona ninguna funcion agregar editar eliminar
             TabControl1.SelectedTab = tbpSimple               'El predeterminado para mostrar el tabsimple
             bloquearBotonesProd("Simple-y-Avanzado")
@@ -177,12 +174,13 @@ Public Class frmProd2
             tsmEliminar.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "EDITAR", "")
 
 
+
+
             'se desbloquean las opciones AGREGAR - EDITAR - ELIMINAR DEPENDIENDO LOS PERMISOS
 
-        ElseIf activeAgregar Then                       'Si se presiona el boton agregar del menu strip  
-
+        ElseIf activeAgregar Then                       'Si se presiona el boton agregar del menu strip              
             TabControl1.SelectedTab = tbpSimple         'se selecciona por defecto el tab simple para mostrar
-            DesbloquearBotonesProd("Simple-y-Avanzado") 'desbloqueo de botones para usuarios
+            DesbloquearBotonesProd("Simple-y-Avanzado") 'desbloqueo de botones para usuarios            
             'en agregar avanzado no debe aparecer el id
             lblAvanzadoId.Visible = False
             LimpiarControl1("Avanzado")
@@ -191,8 +189,7 @@ Public Class frmProd2
             tbpSimple.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "AGREGAR", "SIMPLE")
             'TabcontrolSimple habilitado para interactuar
             tbpAvanzado.Enabled = permiso.OtorgarAcceso(usuario.Permisos, "PRODUCTOS", "AGREGAR", "AVANZADO")
-            'TabcontrolAvanzado habilitado para interactuar
-
+            'TabcontrolAvanzado habilitado para interactuar            
 
         ElseIf activeEditar Then                 'Si se apreta el boton editar del menu strip
 
@@ -219,10 +216,6 @@ Public Class frmProd2
 
         End If
 
-        RellenarDataSet()                                       'Se rellenan los dataset
-
-
-
 
 
     End Sub
@@ -240,6 +233,7 @@ Public Class frmProd2
 
 
         'MsgBox("permiso" & usuario.Permisos)
+        RellenarDataSet()
         Reset()                                      'Al iniciar el form, se bloquean todos los componentes excepto los menuStrip
 
 
@@ -267,6 +261,7 @@ Public Class frmProd2
         activeEditar = False
         activeEliminar = False
         'MsgBox("Agregando")
+        'itemSeleccionado = dgvProd.CurrentRow.Index
         Reset()
         RellenarCmbRazon()
         BloquearTMS()
@@ -278,6 +273,7 @@ Public Class frmProd2
         activeAgregar = False
         activeEditar = True
         activeEliminar = False
+        'itemSeleccionado = dgvProd.CurrentRow.Index
         'MsgBox("Editan")
         Reset()
         RellenarCmbRazon()
@@ -288,6 +284,7 @@ Public Class frmProd2
         activeAgregar = False
         activeEditar = False
         activeEliminar = True
+        'itemSeleccionado = dgvProd.CurrentRow.Index
         'MsgBox("Elimi")
         Reset()
         RellenarCmbRazon()
@@ -303,6 +300,8 @@ Public Class frmProd2
         activeEditar = False
         activeEliminar = False
         Reset()
+
+
     End Sub
 
     Private Sub RellenarDataSet()
@@ -321,28 +320,41 @@ Public Class frmProd2
             cmbAvanzadoCat.Items.Add(dataset2.Tables(0)(i)(1))
         Next
 
-
         If dgvProd.Rows.Count > 0 Then
             dgvProd.Rows(0).Selected = True
         End If
 
+
+
+
     End Sub
 
     Public Function RellenarObjeto(page As String)
-        'MsgBox("Page: " & page)
+        MsgBox("Page: " & page)
 
         If page.Equals("Simple") Then '---> Agregar y eliminar stock
             Dim producto2 As New Producto
             'Simple ---> obtener objeto de la bd
-            Dim bsnProducto As New BsnProducto
 
-            producto2 = bsnProducto.ObtenerObjetoProducto(aux)
+            'Kevin-> Dim bsnProducto As New BsnProducto
+            'Kevin-> producto2 = bsnProducto.ObtenerObjetoProducto(aux)
+
+
+            producto2.IdProducto = dgvProd.CurrentRow.Cells(0).Value
+            producto2.Nombre = dgvProd.CurrentRow.Cells(1).Value
+            'EL cells(2) obtiene la categoria, aun no implementado...
+            producto2.Precio = dgvProd.CurrentRow.Cells(3).Value
+            producto2.Stock = dgvProd.CurrentRow.Cells(4).Value
+            'EL cells(5) obtiene el descuento, aun no implementado...
+
             If activeAgregar Then
                 producto2.Stock = producto2.Stock + Integer.Parse(nupSimpleCantidad.Text)
             ElseIf activeEliminar Then
                 producto2.Stock = producto2.Stock - Integer.Parse(nupSimpleCantidad.Text)
             End If
             Return producto2
+
+
         Else
             If page.Equals("Avanzado") Then
                 Dim producto2 As New Producto
@@ -378,9 +390,9 @@ Public Class frmProd2
                     End If
                     Return
                 Else
-                    producto = RellenarObjeto(TabControl1.SelectedTab.Text) ' - -> retorna objeto??            
+                    producto = RellenarObjeto(TabControl1.SelectedTab.Text) ' - -> retorna objeto?? SI           
                     bsnProducto.ModificarProducto(producto, cmbAvanzadoRazon.SelectedItem, usuario.Rut)
-
+                    RellenarDataSet()
                     'bsnProductoCategoria.RelacionarProductoconCategoria(cmbAvanzadoCat.SelectedItem, producto.IdProducto)
 
                 End If
@@ -395,16 +407,19 @@ Public Class frmProd2
                     End If
                 Else
                     'MsgBox("correcto")
-                    producto = RellenarObjeto(TabControl1.SelectedTab.Text) ' - -> retorna objeto??            
+                    producto = RellenarObjeto(TabControl1.SelectedTab.Text) ' - -> retorna objeto??                                
                     bsnProducto.AgregarProducto(producto, cmbAvanzadoRazon.SelectedItem, usuario.Rut)  'si es avanzado, es para agregar un producto
+                    RellenarDataSet()
+
                 End If
 
             End If
 
-        ElseIf activeEditar Then
-            'MsgBox("MODIFICANDO PRODUCTO ")
+            '=========== fin seccion agregar producto a coleccion o agregar cantidad de producto=======....
+            '==========================================================================================
+
+        ElseIf activeEditar Then 'si se esta editando un producto...            
             Dim bsnProducto As New BsnProducto
-            ' MsgBox("rellenar ob")
 
             If Not (validacionesAlClickearAceptar("Avanzado")) Then
                 If Not keyMessage Then
@@ -414,8 +429,9 @@ Public Class frmProd2
                 ' MsgBox("correcto")
                 producto = RellenarObjeto(TabControl1.SelectedTab.Text)
                 bsnProducto.ModificarProducto(producto, cmbAvanzadoRazon.SelectedItem, usuario.Rut)
-
-                BsnProductoCategoria.RelacionarProductoconCategoria(cmbAvanzadoCat.SelectedItem, producto.IdProducto)
+                'ojo son diferentes bsnProducto y bsnProductoCATEGORIA
+                bsnProductoCategoria.RelacionarProductoconCategoria(cmbAvanzadoCat.SelectedItem, producto.IdProducto)
+                RellenarDataSet()
 
             End If
         ElseIf activeEliminar Then
@@ -434,12 +450,11 @@ Public Class frmProd2
 
                 producto = RellenarObjeto(TabControl1.SelectedTab.Text)
                 bsnProducto.ModificarProducto(producto, cmbAvanzadoRazon.SelectedItem, usuario.Rut)
-
-                    'BsnProductoCategoria.RelacionarProductoconCategoria(cmbAvanzadoCat.SelectedItem, producto.IdProducto)
-
-                End If
-
+                RellenarDataSet()
+                'BsnProductoCategoria.RelacionarProductoconCategoria(cmbAvanzadoCat.SelectedItem, producto.IdProducto)
             End If
+
+        End If
 
         LimpiarControl1("Simple-y-Avanzado")
         activeAgregar = False
@@ -455,6 +470,7 @@ Public Class frmProd2
             producto = RellenarObjeto(TabControl1.SelectedTab.Text) ' - -> retorna objeto??
             bsnProducto.EliminarProducto(producto, usuario.Rut)
             'Eliminar de la tabla
+            RellenarDataSet()
         End If
         activeAgregar = False
         activeEditar = False
