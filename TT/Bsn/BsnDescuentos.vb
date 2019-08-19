@@ -18,7 +18,7 @@
         Dim tipo, p1, p2 As String
         p1 = Int(Cod.Substring(0, 2))
         tipo = Cod.Substring(2, 1)
-        p2 = Int(Cod.Substring(3, 2))
+        p2 = Int(Cod.Substring(3))
         Dim text = ""
         If tipo.Equals("X") Then
 
@@ -36,33 +36,34 @@
 
 
     Public Function Condicion(cod As String, precio As Integer, cant As Integer)
-        Dim p1 = Int(cod.Substring(0, 2))
-        Dim tipo = cod.Substring(2, 1)
-        Dim p2 = Int(cod.Substring(3, 2))
+        Dim p1 As Integer = Int(cod.Substring(0, 2))  '10
+        Dim tipo As String = cod.Substring(2, 1)      'E
+        Dim p2 As Integer = Int(cod.Substring(3))     '4
 
-        Dim text = {}
-        Dim txt = ""
-        Dim cont = 0
-        Dim total = 0
-        Dim l = 0
+        Dim text = {}   'arreglo
+        Dim txt As String = ""
+        Dim cont As Integer = 0
+        Dim total As Integer = 0
+        Dim l As Integer = 0
 
         If tipo.Equals("X") Then
             For i = 0 To cant - 1
-                l += 1
+                l = l + 1
                 If p1 = l Then
-                    cont += 1
-                    total += (p1 - p2) * precio
+                    cont = cont + 1
+                    total = total + (p1 - p2) * precio
                     txt = p1.ToString + "x" + p2.ToString
                     l = 0
                 End If
 
             Next
         ElseIf tipo.Equals("E") Then
+            MsgBox("tipo E")
             For i = 0 To cant - 1
-                l += 1
+                l = l + 1
                 If p2 = l Then
-                    cont += 1
-                    total += precio / p1
+                    cont = cont + 1
+                    total = total + precio / p1
                     txt = p1.ToString + "%X" + p2.ToString
                     l = 0
                 End If
