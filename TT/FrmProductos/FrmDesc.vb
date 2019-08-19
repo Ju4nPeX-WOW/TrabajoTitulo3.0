@@ -102,7 +102,7 @@
 
 
         Dim condicion As String = dgvDescuentos.CurrentRow.Cells(4).Value
-        MsgBox(condicion)
+
         Dim cmbP1 As String = ""
         Dim cmbP2 As String = ""
         Dim tipo As String = ""
@@ -114,10 +114,12 @@
 
         If tipo.ToLower.Equals("x") Then
             cbxMayor.Checked = True
+            cbxPorcentual.Checked = False
             cmbP1Mayor.SelectedItem = cmbP1
             cmbP2Mayor.SelectedItem = cmbP2
         Else
             cbxPorcentual.Checked = True
+            cbxMayor.Checked = False
             cmbP1Porcentual.SelectedItem = cmbP1
             cmbP2Porcentual.SelectedItem = cmbP2
         End If
@@ -312,6 +314,8 @@
 
             cmbP1Porcentual.SelectedIndex = -1
             cmbP2Porcentual.SelectedIndex = -1
+
+
         ElseIf cbxPorcentual.Checked Then 'seleccionado porcentaje
             cbxMayor.Enabled = False
             cmbP1Mayor.Enabled = False
@@ -319,6 +323,7 @@
 
             cmbP1Mayor.SelectedIndex = -1
             cmbP2Mayor.SelectedIndex = -1
+
         ElseIf Not (cbxPorcentual.Checked And cbxMayor.Checked) Then
             'desbloqueamos la condicion de porcentaje
             cbxPorcentual.Enabled = True
