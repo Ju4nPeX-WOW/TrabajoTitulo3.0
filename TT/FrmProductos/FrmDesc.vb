@@ -9,9 +9,9 @@
 
     Protected activeAgregar As Boolean = False  'cuando el usuario presiona el boton del menu strip agregar se torna verdadero
     Protected activeEditar As Boolean = False   'cuando el usuario presiona el boton del menu strip editar se torna verdadero
-    Protected activeEliminar As Boolean = False 'cuando el usuario presiona el boton del menu strip eliminar se torna verdadero
+    'Protected activeEliminar As Boolean = False 'cuando el usuario presiona el boton del menu strip eliminar se torna verdadero
     'Esto no quiere decir que se bloqueen, sino que en los procedimientos tsm[Agregar-editar-eliminar]
-    Dim auxtermino As String = ""
+    Dim auxtermino As String = ""  '???
 
     Private Sub cmbProducto_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbProducto.KeyPress
         e.Handled = Validacion.IOtroNombre(e)
@@ -55,15 +55,16 @@
         Dim bsnproducto As New BsnProducto
         Dim dataset_1 As New DataSet
 
-        dataset_1 = bsnproducto.ObtenerColumnasEspecificas("Nombre,Id_producto")
-        cmbProducto.Items.Clear()
+        dataset_1 = bsnproducto.ObtenerColumnasEspecificas("Nombre,Id_producto") 'busca los productos con columnas especificas
+        cmbProducto.Items.Clear()                                                'limpiamos los items del combo Producto para introducir los del dataset de aqui arriba xd
 
-        cmbProducto.DataSource = dataset_1.Tables(0).DefaultView
-        cmbProducto.DisplayMember = "Nombre"
-        cmbProducto.ValueMember = "Id_producto"
+        cmbProducto.DataSource = dataset_1.Tables(0).DefaultView                 'asignamos el dataset al comboproducto
+        cmbProducto.DisplayMember = "Nombre"                                     'va a mostrarse por pantalla el "nombre"    
+        cmbProducto.ValueMember = "Id_producto"                                  'el valor del item seleccionado del cmb sera el "ID_Producto"
 
         cmbP1Mayor.Items.Clear()
         cmbP2Mayor.Items.Clear()
+
         For i = 1 To 5
             cmbP1Mayor.Items.Add((i).ToString)
             cmbP2Mayor.Items.Add((i).ToString)
@@ -91,26 +92,26 @@
 
         Dim bsnDescuentos As New BsnDescuentos()
         'MsgBox(bsnDescuentos.Condicion(dgvDescuentos.CurrentRow.Cells(4).Value.ToString))
-
         'Dim x = (bsnDescuentos.Condicion(dgvDescuentos.CurrentRow.Cells(4).Value.ToString, 1000, 10))
-        'MsgBox(x(0).ToString & " " & x(1).ToString() & " " & x(2).ToString)        
+        'MsgBox(x(0).ToString & " " & x(1).ToString() & " " & x(2).ToString)
+
         lblIdDescuento.Text = dgvDescuentos.CurrentRow.Cells(0).Value.ToString()  'numero correlativo de descuento...
-        cmbProducto.Text = dgvDescuentos.CurrentRow.Cells(1).Value.ToString()
+        cmbProducto.Text = dgvDescuentos.CurrentRow.Cells(1).Value.ToString()     'texto del cmbProducto 
         dtpInicio.Value = DateTime.Now.ToString("dd/MM/yyyy")                     'fecha de inicio
         dtpTermino.Value = dgvDescuentos.CurrentRow.Cells(3).Value.ToString()     'Fecha de termino...        
-        auxtermino = dgvDescuentos.CurrentRow.Cells(3).Value.ToString()
+        auxtermino = dgvDescuentos.CurrentRow.Cells(3).Value.ToString()           'auxiliar de la fecha termino
 
+        Dim condicion As String = dgvDescuentos.CurrentRow.Cells(4).Value         'la condicion del item seleccionado
 
-        Dim condicion As String = dgvDescuentos.CurrentRow.Cells(4).Value
+        Dim cmbP1 As String = ""        'puede ser para el cmbP1mayor o cmbP1porcentual, depende del item seleccionado
+        Dim cmbP2 As String = ""        'puede ser para el cmbP2mayor o cmbP2porcentual, depende del item seleccionado
+        Dim tipo As String = ""         'Si es 'x', es al por mayor, sino es porcentual...
 
-        Dim cmbP1 As String = ""
-        Dim cmbP2 As String = ""
-        Dim tipo As String = ""
+        'la variable condicion tira = "10X05"
+        cmbP1 = Integer.Parse(condicion.Substring(0, 2)) '10
+        tipo = condicion.Substring(2, 1)                 'X
+        cmbP2 = Integer.Parse(condicion.Substring(3))    '05
 
-
-        cmbP1 = Integer.Parse(condicion.Substring(0, 2))
-        tipo = condicion.Substring(2, 1)
-        cmbP2 = Integer.Parse(condicion.Substring(3))
 
         If tipo.ToLower.Equals("x") Then
             cbxMayor.Checked = True
@@ -123,20 +124,17 @@
             cmbP1Porcentual.SelectedItem = cmbP1
             cmbP2Porcentual.SelectedItem = cmbP2
         End If
-
-
     End Sub
 
     Private Sub TsmAgregarCat_Click(sender As Object, e As EventArgs) Handles tsmAgregar.Click
         activeAgregar = True
         activeEditar = False
-        activeEliminar = False
+        'activeEliminar = False
 
         cmbProducto.Enabled = True  'es por si es que se bloquea al editar, volver a activar el cmbproducto
         dtpInicio.Enabled = True    'idem
-        dtpTermino.Enabled = True   
-        pnlComponentes.Enabled = True
-
+        dtpTermino.Enabled = True   'idem
+        pnlComponentes.Enabled = True   'idem
         'MsgBox(cmbProducto.SelectedValue)
 
     End Sub
@@ -144,7 +142,7 @@
     Private Sub TsmEditarCat_Click(sender As Object, e As EventArgs) Handles tsmExtender.Click
         activeAgregar = False
         activeEditar = True
-        activeEliminar = False
+        'activeEliminar = False
 
         cmbProducto.Enabled = False 'si se esta editando, se bloquea este combobox porque no tiene sentido que edite otro producto que no sea el que eligio
         dtpInicio.Enabled = False   'no tiene sentido que se edite el de tiempo de inicio si lo que quiere es extenderlo, para eso el de termino lo edita.
@@ -156,7 +154,7 @@
     Private Sub TsmFinalizarCat_Click(sender As Object, e As EventArgs) Handles tsmFinalizar.Click
         activeAgregar = False
         activeEditar = False
-        activeEliminar = True
+        'activeEliminar = True
 
         Dim bsnDescuento As New BsnDescuentos
         bsnDescuento.DarFin(lblIdDescuento.Text)
@@ -167,28 +165,33 @@
         Dim cumple As Boolean = False
         'VALIDAR QUE NO SE EDITEN DESCUENTOS CADUCADOS -> ok        
         If activeAgregar Then   'si se esta agregando un descuento...
-            If cmbProducto.SelectedIndex > 0 Then  '¿el combo producto tiene seleccionado un item?
+            If cmbProducto.SelectedIndex >= 0 Then  '¿el combo producto tiene seleccionado un item?
                 If cbxMayor.Checked And cmbP1Mayor.SelectedIndex >= 0 And cmbP2Mayor.SelectedIndex >= 0 Then
                     cumple = True
-                ElseIf cbxPorcentual.Checked And cmbP2Porcentual.SelectedIndex > 0 And cmbP2Porcentual.SelectedIndex > 0 Then
+                ElseIf cbxPorcentual.Checked And cmbP2Porcentual.SelectedIndex >= 0 And cmbP2Porcentual.SelectedIndex >= 0 Then
                     cumple = True
                 Else
-                    MsgBox("Sr Usuario, Ingrese una condicion", vbInformation, "Faltan ingresar datos...")
+                    MsgBox("Sr Usuario, ingrese una condicion válida", vbInformation, "Falta seleccionar campos...")
                 End If
-            Else 'No tiene selecciondo un item... mensaje de error!
-                MsgBox("Sr Usuario, seleccione un producto al cual se le realizara el descuento", vbInformation, "Falta ingresar datos...")
+            Else 'No tiene seleccionado un item... mensaje de error!
+                MsgBox("Sr Usuario, seleccione un producto al cual se le realizará el descuento", vbInformation, "Falta ingresar datos...")
             End If
 
 
         ElseIf activeEditar Then
-            If dtpTermino.Value.ToShortDateString >= DateTime.Now Then
-                If Not dtpTermino.Value.ToShortDateString < auxtermino Then
-                    cumple = True
-                Else
-                    MsgBox("SR USUARIO PUEDE REDUCIR EL TIMEPO DE VALIDES DEL DESCUENTO")
-                End If
+            Dim fecha_termino_asDate As String = dtpTermino.Value.Date.ToString("yyyy-MM-dd")
+            Dim auxiliar_fecha_termino_asDate As String = auxtermino
+
+
+            If fecha_termino_asDate > auxiliar_fecha_termino_asDate Then
+                'If Not (Format(dtpTermino.Value.ToShortDateString, "yyyy-MM-dd") < auxtermino) Then
+                '   cumple = True
+                'Else
+                '   MsgBox("Sr Usuario, no se puede reducir el tiempo de termino, mas bien, puede extender la fecha del descuento. DTPTERMINO:" & dtpTermino.Value.ToShortDateString & " < AUXTERMINO:" & auxtermino, vbInformation, "Fecha de termino no válida...")
+                'End If
+                cumple = True
             Else
-                MsgBox("SR USUARIO NO SE PUEDEN EXTENDER DESCUENTOS FINALIZADOS")
+                MsgBox("¡Usted esta reduciendo la fecha del descuento, solo se permite extender la fecha!. Si desea dar término a un descuento, seleccione el boton 'Finalizar descuento'", vbCritical, "Fecha incorrecta...")
             End If
         End If
         Return cumple
@@ -213,7 +216,7 @@
             id_prod = cmbProducto.SelectedValue
             fec_ini = dtpInicio.Value.ToShortDateString
             fec_ter = dtpTermino.Value.ToShortDateString
-            con = GetCondicion()
+            con = GetCondicion()        '10X05'
             MsgBox("CON: " & con)
 
             If activeAgregar Then
@@ -221,9 +224,7 @@
                 'fec_ini = dtpInicio.Value.ToShortDateString
                 'fec_ter = dtpTermino.Value.ToShortDateString
                 'con = GetCondicion()
-
             ElseIf activeEditar Then
-
                 id_des = lblIdDescuento.Text
                 'id_prod = cmbProducto.SelectedValue
                 'fec_ini = dtpInicio.Value.ToShortDateString
@@ -266,6 +267,7 @@
     Private Function GetCondicion() 'retorna un string concatenado con numeroletranumero
 
         Dim tipo_descto, cantidad1, cantidad2, condicion As String 'tipo: X = 4X2, E = 10% dscto en la 4 unidad... p1 y p2 equivale a las cantidades
+
         tipo_descto = ""
         cantidad1 = ""
         cantidad2 = ""

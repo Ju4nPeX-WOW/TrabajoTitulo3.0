@@ -2,7 +2,6 @@
     Protected daoDescuentos As New DaoDescuentos
 
     Public Function ObtenerDescuentos()
-
         Return daoDescuentos.ObtenerDescuentos()
     End Function
 
@@ -32,8 +31,6 @@
         Return text
 
     End Function
-
-
 
     Public Function Condicion(cod As String, precio As Integer, cant As Integer)
         Dim p1 As Integer = Int(cod.Substring(0, 2))  '10

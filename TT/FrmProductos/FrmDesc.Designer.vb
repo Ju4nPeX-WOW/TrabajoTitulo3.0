@@ -113,8 +113,8 @@ Partial Class FrmDesc
         '
         Me.tsmFinalizar.Image = CType(resources.GetObject("tsmFinalizar.Image"), System.Drawing.Image)
         Me.tsmFinalizar.Name = "tsmFinalizar"
-        Me.tsmFinalizar.Size = New System.Drawing.Size(80, 20)
-        Me.tsmFinalizar.Text = "Finalizar"
+        Me.tsmFinalizar.Size = New System.Drawing.Size(134, 20)
+        Me.tsmFinalizar.Text = "Finalizar descuento"
         '
         'lblIdDescuento
         '
