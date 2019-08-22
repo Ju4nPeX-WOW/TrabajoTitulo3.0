@@ -13,14 +13,13 @@
     'Esto no quiere decir que se bloqueen, sino que en los procedimientos tsm[Agregar-editar-eliminar]
     Dim auxtermino As String = ""  '???
 
-    Private Sub cmbProducto_KeyPress(sender As Object, e As KeyPressEventArgs) Handles cmbProducto.KeyPress
+    Private Sub cmbProducto_KeyPress(sender As Object, e As KeyPressEventArgs)
         e.Handled = Validacion.IOtroNombre(e)
     End Sub
 
     Protected dataset As New DataSet
     Public Sub RecibirUsuario(objeto As Usuario)
-        _usuario = objeto 'del form ingreso se recibe el objeto que es el usuario que ingreso al sistema 
-        MsgBox(_usuario.Nombres)
+        _usuario = objeto 'del form ingreso se recibe el objeto que es el usuario que ingreso al sistema         
     End Sub
     Private Sub BtnExitDes_Click(sender As Object, e As EventArgs) Handles BtnExitDes.Click
         Me.Close()
@@ -103,26 +102,49 @@
 
         Dim condicion As String = dgvDescuentos.CurrentRow.Cells(4).Value         'la condicion del item seleccionado
 
-        Dim cmbP1 As String = ""        'puede ser para el cmbP1mayor o cmbP1porcentual, depende del item seleccionado
-        Dim cmbP2 As String = ""        'puede ser para el cmbP2mayor o cmbP2porcentual, depende del item seleccionado
+        Dim cmbP1 As Integer = 0        'puede ser para el cmbP1mayor o cmbP1porcentual, depende del item seleccionado
+        Dim cmbP2 As Integer = 0       'puede ser para el cmbP2mayor o cmbP2porcentual, depende del item seleccionado
         Dim tipo As String = ""         'Si es 'x', es al por mayor, sino es porcentual...
 
         'la variable condicion tira = "10X05"
         cmbP1 = Integer.Parse(condicion.Substring(0, 2)) '10
         tipo = condicion.Substring(2, 1)                 'X
-        cmbP2 = Integer.Parse(condicion.Substring(3))    '05
-
+        cmbP2 = Integer.Parse(condicion.Substring(3))    '05        
 
         If tipo.ToLower.Equals("x") Then
+            'activa lo de mayor
             cbxMayor.Checked = True
             cbxPorcentual.Checked = False
-            cmbP1Mayor.SelectedItem = cmbP1
-            cmbP2Mayor.SelectedItem = cmbP2
-        Else
-            cbxPorcentual.Checked = True
+        ElseIf tipo.ToLower.Equals("e") Then
+            'activa lo de porcentual
             cbxMayor.Checked = False
-            cmbP1Porcentual.SelectedItem = cmbP1
-            cmbP2Porcentual.SelectedItem = cmbP2
+            cbxPorcentual.Checked = True
+        End If
+
+        'MsgBox(tipo.ToLower)
+
+        If tipo.ToLower.Equals("x") Then
+            'activa lo de mayor y desactiva lo de porcentual
+            cbxMayor.Checked = True
+            cmbP1Mayor.SelectedIndex = cmbP1 - 1
+            cmbP2Mayor.SelectedIndex = cmbP2 - 1
+
+            'limpiamos lo de porcentual
+            cbxPorcentual.Checked = False
+            cmbP1Porcentual.SelectedIndex = -1
+            cmbP2Porcentual.SelectedIndex = -1
+
+
+        ElseIf tipo.ToLower.Equals("e") Then
+            'limpiamos lo de porcentual  
+            cbxMayor.Checked = False 'desactivando checkbox mayor
+            cmbP1Mayor.SelectedIndex = -1   'reseteando el texto del combo mayor 1
+            cmbP2Mayor.SelectedIndex = -1
+
+            'activa lo de porcentaje y desactiva lo de mayor
+            cbxPorcentual.Checked = True                'checkbox porcentual activado
+            cmbP1Porcentual.SelectedIndex = cmbP1 - 1
+            cmbP2Porcentual.SelectedIndex = cmbP2 - 1
         End If
     End Sub
 
@@ -131,10 +153,42 @@
         activeEditar = False
         'activeEliminar = False
 
-        cmbProducto.Enabled = True  'es por si es que se bloquea al editar, volver a activar el cmbproducto
-        dtpInicio.Enabled = True    'idem
-        dtpTermino.Enabled = True   'idem
-        pnlComponentes.Enabled = True   'idem
+        cmbProducto.Enabled = True
+        dtpInicio.Enabled = True
+        dtpTermino.Enabled = True
+
+        If cbxMayor.Checked Then
+            cbxMayor.Enabled = True
+            cmbP1Mayor.Enabled = True
+            cmbP2Mayor.Enabled = True
+
+            cbxPorcentual.Checked = False
+            cbxPorcentual.Enabled = False
+            cmbP1Porcentual.Enabled = False
+            cmbP2Porcentual.Enabled = False
+        ElseIf cbxPorcentual.Checked Then
+
+            cbxPorcentual.Enabled = True
+            cmbP1Porcentual.Enabled = True
+            cmbP2Porcentual.Enabled = True
+
+            cbxMayor.Checked = False
+            cbxMayor.Enabled = False
+            cmbP1Mayor.Enabled = False
+            cmbP2Mayor.Enabled = False
+        End If
+
+
+        cmbP1Mayor.SelectedIndex = -1
+        cmbP2Mayor.SelectedIndex = -1
+        cmbProducto.SelectedIndex = -1
+        cmbP1Porcentual.SelectedIndex = -1
+        cmbP2Porcentual.SelectedIndex = -1
+        dtpInicio.Value = DateTime.Now
+        dtpTermino.Value = DateTime.Now
+
+        btnAce.Enabled = True
+        btnCan.Enabled = True
         'MsgBox(cmbProducto.SelectedValue)
 
     End Sub
@@ -147,7 +201,31 @@
         cmbProducto.Enabled = False 'si se esta editando, se bloquea este combobox porque no tiene sentido que edite otro producto que no sea el que eligio
         dtpInicio.Enabled = False   'no tiene sentido que se edite el de tiempo de inicio si lo que quiere es extenderlo, para eso el de termino lo edita.
         dtpTermino.Enabled = True
-        pnlComponentes.Enabled = True
+
+        If cbxMayor.Checked Then
+            cbxMayor.Enabled = True
+            cmbP1Mayor.Enabled = True
+            cmbP2Mayor.Enabled = True
+
+            cbxPorcentual.Checked = False
+            cbxPorcentual.Enabled = False
+            cmbP1Porcentual.Enabled = False
+            cmbP2Porcentual.Enabled = False
+        ElseIf cbxPorcentual.Checked Then
+
+            cbxPorcentual.Enabled = True
+            cmbP1Porcentual.Enabled = True
+            cmbP2Porcentual.Enabled = True
+
+            cbxMayor.Checked = False
+            cbxMayor.Enabled = False
+            cmbP1Mayor.Enabled = False
+            cmbP2Mayor.Enabled = False
+        End If
+
+        btnAce.Enabled = True
+        btnCan.Enabled = True
+
 
     End Sub
 
@@ -155,7 +233,6 @@
         activeAgregar = False
         activeEditar = False
         'activeEliminar = True
-
         Dim bsnDescuento As New BsnDescuentos
         bsnDescuento.DarFin(lblIdDescuento.Text)
         RellenarDataSet()
@@ -166,7 +243,7 @@
         'VALIDAR QUE NO SE EDITEN DESCUENTOS CADUCADOS -> ok        
         If activeAgregar Then   'si se esta agregando un descuento...
             If cmbProducto.SelectedIndex >= 0 Then  '¿el combo producto tiene seleccionado un item?
-                If cbxMayor.Checked And cmbP1Mayor.SelectedIndex >= 0 And cmbP2Mayor.SelectedIndex >= 0 Then
+                If cbxMayor.Checked And cmbP1Mayor.SelectedIndex >= 0 And (cmbP2Mayor.SelectedIndex >= 0 And cmbP2Mayor.SelectedIndex < cmbP1Mayor.SelectedIndex) Then
                     cumple = True
                 ElseIf cbxPorcentual.Checked And cmbP2Porcentual.SelectedIndex >= 0 And cmbP2Porcentual.SelectedIndex >= 0 Then
                     cumple = True
@@ -179,11 +256,10 @@
 
 
         ElseIf activeEditar Then
-            Dim fecha_termino_asDate As String = dtpTermino.Value.Date.ToString("yyyy-MM-dd")
-            Dim auxiliar_fecha_termino_asDate As String = auxtermino
+            Dim fecha_termino_asDate As String = dtpTermino.Value.Date.ToString("yyyy-MM-dd")  'del date picker que elige el usuario
+            Dim auxiliar_fecha_termino_asDate As String = auxtermino                           'del datagridview.cells(4)
 
-
-            If fecha_termino_asDate > auxiliar_fecha_termino_asDate Then
+            If fecha_termino_asDate >= auxiliar_fecha_termino_asDate And fecha_termino_asDate > DateTime.Now Then
                 'If Not (Format(dtpTermino.Value.ToShortDateString, "yyyy-MM-dd") < auxtermino) Then
                 '   cumple = True
                 'Else
@@ -191,7 +267,7 @@
                 'End If
                 cumple = True
             Else
-                MsgBox("¡Usted esta reduciendo la fecha del descuento, solo se permite extender la fecha!. Si desea dar término a un descuento, seleccione el boton 'Finalizar descuento'", vbCritical, "Fecha incorrecta...")
+                MsgBox("¡Usted esta reduciendo la fecha del descuento, solo se permite extender la fecha!. Si desea dar término a un descuento, seleccione el boton 'Finalizar descuento'", vbCritical, "Fecha no permitida...")
             End If
         End If
         Return cumple
@@ -213,11 +289,11 @@
             'fec_ter = ""
             'con = ""
 
-            id_prod = cmbProducto.SelectedValue
-            fec_ini = dtpInicio.Value.ToShortDateString
-            fec_ter = dtpTermino.Value.ToShortDateString
-            con = GetCondicion()        '10X05'
-            MsgBox("CON: " & con)
+            id_prod = cmbProducto.SelectedValue             'value tirara el id del producto, selecteditem el texto del producto
+            fec_ini = dtpInicio.Value.ToShortDateString     'fecha de inicio del descuento
+            fec_ter = dtpTermino.Value.ToShortDateString    'fecha de termino 
+            con = GetCondicion()                            '10X05'            
+
 
             If activeAgregar Then
                 'id_prod = cmbProducto.SelectedValue
@@ -242,26 +318,26 @@
             Dim bsnDescuento As New BsnDescuentos
 
             If activeAgregar Then
-                'bsnDescuento.AgregarDescuento(ObjetoDescuento)
-                MsgBox("ID DESCUENTO: " & ObjetoDescuento.IdDescuento & " ID-PRODUCTO: " & ObjetoDescuento.IdProducto & " FECHA INICIO:" & ObjetoDescuento.FechaInicio & " FECHA TERMINO:" & ObjetoDescuento.FechaTermino & " Condicion: " & ObjetoDescuento.Condicion)
+                bsnDescuento.AgregarDescuento(ObjetoDescuento)
             ElseIf activeEditar Then
-                'bsnDescuento.ModificarDescuento(ObjetoDescuento)
-                MsgBox("ID DESCUENTO: " & ObjetoDescuento.IdDescuento & " ID-PRODUCTO: " & ObjetoDescuento.IdProducto & " FECHA INICIO:" & ObjetoDescuento.FechaInicio & " FECHA TERMINO:" & ObjetoDescuento.FechaTermino & " Condicion: " & ObjetoDescuento.Condicion)
+                bsnDescuento.ModificarDescuento(ObjetoDescuento)
             End If
 
-            cmbP1Mayor.ResetText()
-            cmbP2Mayor.ResetText()
-            cmbProducto.ResetText()
-            cmbP1Porcentual.ResetText()
-            cmbP2Porcentual.ResetText()
-            dtpInicio.ResetText()
-            dtpTermino.ResetText()
+            cmbP1Mayor.SelectedIndex = -1
+            cmbP2Mayor.SelectedIndex = -1
+            cmbProducto.SelectedIndex = -1
+            cmbP1Porcentual.SelectedIndex = -1
+            cmbP2Porcentual.SelectedIndex = -1
+            dtpInicio.Value = DateTime.Now
+            dtpTermino.Value = DateTime.Now
 
-            cbxMayor.CheckState = 0
-            cbxPorcentual.CheckState = 0
+            'cbxMayor.Checked = False
+            cbxPorcentual.Checked = False
             'MsgBox(cmbProducto.SelectedValue)
             RellenarDataSet()
-            pnlComponentes.Enabled = False
+
+            btnAce.Enabled = False
+            btnCan.Enabled = False
         End If
     End Sub
     Private Function GetCondicion() 'retorna un string concatenado con numeroletranumero
@@ -284,7 +360,6 @@
             cantidad2 = "0" & cmbP2Porcentual.Text.ToString
             condicion = cantidad1 & tipo_descto & cantidad2
         End If
-        MsgBox("CONDIDIOCN: " & condicion)
         Return condicion      '04X02     o     10E4
 
     End Function
@@ -295,55 +370,84 @@
         tsmFinalizar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "DESCUENTOS", "FINALIZAR", "")
     End Sub
     Private Sub btnCan_Click(sender As Object, e As EventArgs) Handles btnCan.Click
-        pnlComponentes.Enabled = False
 
-        cmbP1Mayor.ResetText()
-        cmbP2Mayor.ResetText()
+        cmbP1Mayor.SelectedIndex = -1
+        cmbP2Mayor.SelectedIndex = -1
+        cmbProducto.SelectedIndex = -1
+        cmbP1Porcentual.SelectedIndex = -1
+        cmbP2Porcentual.SelectedIndex = -1
+        dtpInicio.Value = DateTime.Now
+        dtpTermino.Value = DateTime.Now
 
-        cmbP1Porcentual.ResetText()
-        cmbP2Porcentual.ResetText()
+        cmbProducto.Enabled = False
+        dtpInicio.Enabled = False
+        dtpTermino.Enabled = False
 
-        cbxMayor.Checked = False
+        cbxPorcentual.Enabled = False
+        cmbP1Porcentual.Enabled = False
+        cmbP2Porcentual.Enabled = False
+
         cbxPorcentual.Checked = False
 
+        cbxMayor.Enabled = False
+        cmbP1Mayor.Enabled = False
+        cmbP2Mayor.Enabled = False
 
+        activeAgregar = False
+        activeEditar = False
+
+        btnAce.Enabled = False
+        btnCan.Enabled = False
     End Sub
-    Private Sub EstadoCheckBox(sender As Object, e As EventArgs) Handles cbxMayor.CheckedChanged, cbxPorcentual.CheckedChanged
-        If cbxMayor.Checked Then    'seleccionado mayor por menor
-            cbxPorcentual.Enabled = False
-            cmbP1Porcentual.Enabled = False
-            cmbP2Porcentual.Enabled = False
 
-            cmbP1Porcentual.SelectedIndex = -1
-            cmbP2Porcentual.SelectedIndex = -1
+    Private Sub cbxMayor_CheckedChanged(sender As Object, e As EventArgs) Handles cbxMayor.CheckStateChanged
+        'MsgBox("MAYOR CHANGED: " & cbxMayor.CheckState & " " & cbxPorcentual.CheckState)
+        If activeEditar = True Or activeAgregar = True Then
+            If cbxMayor.CheckState = 0 Then
+                cbxMayor.Enabled = False
+                cmbP1Mayor.Enabled = False
+                cmbP2Mayor.Enabled = False
 
+                cmbP1Mayor.SelectedIndex = -1
+                cmbP2Mayor.SelectedIndex = -1
 
-        ElseIf cbxPorcentual.Checked Then 'seleccionado porcentaje
-            cbxMayor.Enabled = False
-            cmbP1Mayor.Enabled = False
-            cmbP2Mayor.Enabled = False
+                cbxPorcentual.CheckState = 1
+            Else
+                If cbxMayor.CheckState = 1 Then
+                    cbxMayor.Enabled = True
+                    cmbP1Mayor.Enabled = True
+                    cmbP2Mayor.Enabled = True
 
-            cmbP1Mayor.SelectedIndex = -1
-            cmbP2Mayor.SelectedIndex = -1
-
-        ElseIf Not (cbxPorcentual.Checked And cbxMayor.Checked) Then
-            'desbloqueamos la condicion de porcentaje
-            cbxPorcentual.Enabled = True
-            cmbP1Porcentual.Enabled = True
-            cmbP2Porcentual.Enabled = True
-
-            cmbP1Porcentual.SelectedIndex = -1
-            cmbP2Porcentual.SelectedIndex = -1
-            'desbloqueamos la condicion de mayor por
-            cbxMayor.Enabled = True
-            cmbP1Mayor.Enabled = True
-            cmbP2Mayor.Enabled = True
-
-            cmbP1Mayor.SelectedIndex = -1
-            cmbP2Mayor.SelectedIndex = -1
+                End If
+            End If
         End If
     End Sub
 
+    Private Sub cbxPorcentual_CheckedChanged(sender As Object, e As EventArgs) Handles cbxPorcentual.CheckStateChanged
+        'MsgBox("porcentual: " & cbxMayor.CheckState & " " & cbxPorcentual.CheckState)
+        If activeAgregar = True Or activeEditar = True Then
+            If cbxPorcentual.CheckState = 0 Then
+                cbxPorcentual.Enabled = False
+                cmbP1Porcentual.Enabled = False
+                cmbP2Porcentual.Enabled = False
+
+                cmbP1Porcentual.SelectedIndex = -1
+                cmbP2Porcentual.SelectedIndex = -1
+
+                cbxMayor.CheckState = 1
+            Else
+                If cbxPorcentual.CheckState = 1 Then
+                    cbxPorcentual.Enabled = True
+                    cmbP1Porcentual.Enabled = True
+                    cmbP2Porcentual.Enabled = True
+                End If
+            End If
+        End If
+    End Sub
+
+
+
+    'FALTA LOS PUTOS CBX
 End Class
 
 
