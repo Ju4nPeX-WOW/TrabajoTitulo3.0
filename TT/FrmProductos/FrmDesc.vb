@@ -243,13 +243,34 @@
         'VALIDAR QUE NO SE EDITEN DESCUENTOS CADUCADOS -> ok        
         If activeAgregar Then   'si se esta agregando un descuento...
             If cmbProducto.SelectedIndex >= 0 Then  '¿el combo producto tiene seleccionado un item?
+
+                Dim pal As String = ""
+
+                Dim fecha_inicio As String = dtpInicio.Value.Date.ToString("yyyy-MM-dd")
+                Dim fecha_termino As String = dtpTermino.Value.Date.ToString("yyyy-MM-dd")
+
                 If cbxMayor.Checked And cmbP1Mayor.SelectedIndex >= 0 And (cmbP2Mayor.SelectedIndex >= 0 And cmbP2Mayor.SelectedIndex < cmbP1Mayor.SelectedIndex) Then
                     cumple = True
                 ElseIf cbxPorcentual.Checked And cmbP2Porcentual.SelectedIndex >= 0 And cmbP2Porcentual.SelectedIndex >= 0 Then
                     cumple = True
                 Else
-                    MsgBox("Sr Usuario, ingrese una condicion válida", vbInformation, "Falta seleccionar campos...")
+                    cumple = False
+                    pal = pal & "-Ingrese una condicion valida" & vbCrLf
                 End If
+
+
+                If fecha_termino <= fecha_inicio Then
+                    cumple = False
+                    'MsgBox("Sr Usuario, seleccione una fecha superior a la fecha de inicio...", vbInformation, "Fecha incorrecta")
+                    pal = pal & "-Seleccione una fecha superior a la fecha de inicio"
+                Else
+                    cumple = True
+                End If
+
+                If cumple = False Then
+                    MsgBox(pal, vbInformation)
+                End If
+
             Else 'No tiene seleccionado un item... mensaje de error!
                 MsgBox("Sr Usuario, seleccione un producto al cual se le realizará el descuento", vbInformation, "Falta ingresar datos...")
             End If
@@ -331,13 +352,29 @@
             dtpInicio.Value = DateTime.Now
             dtpTermino.Value = DateTime.Now
 
-            'cbxMayor.Checked = False
+            cmbProducto.Enabled = False
+            dtpInicio.Enabled = False
+            dtpTermino.Enabled = False
+
+            cbxPorcentual.Enabled = False
+            cmbP1Porcentual.Enabled = False
+            cmbP2Porcentual.Enabled = False
+
             cbxPorcentual.Checked = False
-            'MsgBox(cmbProducto.SelectedValue)
-            RellenarDataSet()
+
+            cbxMayor.Enabled = False
+            cmbP1Mayor.Enabled = False
+            cmbP2Mayor.Enabled = False
+
+            activeAgregar = False
+            activeEditar = False
 
             btnAce.Enabled = False
             btnCan.Enabled = False
+
+            'MsgBox(cmbProducto.SelectedValue)
+            RellenarDataSet()
+
         End If
     End Sub
     Private Function GetCondicion() 'retorna un string concatenado con numeroletranumero
