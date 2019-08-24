@@ -84,3 +84,4 @@ C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.vbproj.CoreCompileI
 C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.exe
 C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.xml
 C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.pdb
+C:\Users\JUAN PABLO\Desktop\TrabajoTitulo3.0\TT\obj\Debug\TT.FrmAjustes.resources

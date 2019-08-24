@@ -75,6 +75,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmAjustes\FrmAjustes.Designer.vb">
+      <DependentUpon>FrmAjustes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAjustes\FrmAjustes.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Bsn\BsnCategoria.vb" />
     <Compile Include="Bsn\BsnCliente.vb" />
     <Compile Include="Bsn\BsnDescuentos.vb" />
@@ -294,6 +300,9 @@
     <EmbeddedResource Include="FrmAcerca.resx">
       <DependentUpon>FrmAcerca.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmAjustes\FrmAjustes.resx">
+      <DependentUpon>FrmAjustes.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPersonas\FrmClientes.resx">
       <DependentUpon>FrmClientes.vb</DependentUpon>
     </EmbeddedResource>
@@ -455,8 +464,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Ajustes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -75,8 +75,11 @@ Public Class PrincipalForm
         form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
         form.ShowDialog()
     End Sub
-
-
+    Private Sub AJUSTESToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AJUSTESToolStripMenuItem1.Click
+        Dim form As New FrmAjustes
+        form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
+        form.ShowDialog()
+    End Sub
     Private Sub PRODUCTOSToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles PRODUCTOSToolStripMenuItem2.Click
         Dim form As New frmProd2
         form.RecibirUsuario(_usuario)
@@ -299,6 +302,9 @@ Public Class PrincipalForm
 
 
     End Sub
+
+
+
     Private Function OpenFile()
         Dim folderPath = My.Computer.FileSystem.SpecialDirectories.Desktop + "\TrabajoTitulo3.0\Files\StockCritico.txt"
         Dim archivo As New StreamReader(folderPath)

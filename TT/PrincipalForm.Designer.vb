@@ -54,6 +54,7 @@ Partial Class PrincipalForm
         Me.TmrArchivo = New System.Windows.Forms.Timer(Me.components)
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.AJUSTESToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -92,7 +93,7 @@ Partial Class PrincipalForm
         '
         'Principal_Productos
         '
-        Me.Principal_Productos.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PRODUCTOSToolStripMenuItem2, Me.CATEGORIASToolStripMenuItem1, Me.DESCUENTOSToolStripMenuItem1})
+        Me.Principal_Productos.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PRODUCTOSToolStripMenuItem2, Me.CATEGORIASToolStripMenuItem1, Me.DESCUENTOSToolStripMenuItem1, Me.AJUSTESToolStripMenuItem1})
         Me.Principal_Productos.Image = Global.TT.My.Resources.Resources.product
         Me.Principal_Productos.Name = "Principal_Productos"
         Me.Principal_Productos.Padding = New System.Windows.Forms.Padding(4, 0, 4, 20)
@@ -203,19 +204,19 @@ Partial Class PrincipalForm
         'VENTASToolStripMenuItem
         '
         Me.VENTASToolStripMenuItem.Name = "VENTASToolStripMenuItem"
-        Me.VENTASToolStripMenuItem.Size = New System.Drawing.Size(146, 24)
+        Me.VENTASToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
         Me.VENTASToolStripMenuItem.Text = "VENTAS"
         '
         'COMPRASToolStripMenuItem
         '
         Me.COMPRASToolStripMenuItem.Name = "COMPRASToolStripMenuItem"
-        Me.COMPRASToolStripMenuItem.Size = New System.Drawing.Size(146, 24)
+        Me.COMPRASToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
         Me.COMPRASToolStripMenuItem.Text = "COMPRAS"
         '
         'AJUSTESToolStripMenuItem
         '
         Me.AJUSTESToolStripMenuItem.Name = "AJUSTESToolStripMenuItem"
-        Me.AJUSTESToolStripMenuItem.Size = New System.Drawing.Size(146, 24)
+        Me.AJUSTESToolStripMenuItem.Size = New System.Drawing.Size(180, 24)
         Me.AJUSTESToolStripMenuItem.Text = "AJUSTES"
         '
         'Principal_Help
@@ -282,6 +283,12 @@ Partial Class PrincipalForm
         Me.Label1.Size = New System.Drawing.Size(1053, 31)
         Me.Label1.TabIndex = 8
         '
+        'AJUSTESToolStripMenuItem1
+        '
+        Me.AJUSTESToolStripMenuItem1.Name = "AJUSTESToolStripMenuItem1"
+        Me.AJUSTESToolStripMenuItem1.Size = New System.Drawing.Size(180, 24)
+        Me.AJUSTESToolStripMenuItem1.Text = "AJUSTES"
+        '
         'PrincipalForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -332,4 +339,5 @@ Partial Class PrincipalForm
     Friend WithEvents TmrArchivo As Timer
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label1 As Label
+    Friend WithEvents AJUSTESToolStripMenuItem1 As ToolStripMenuItem
 End Class
