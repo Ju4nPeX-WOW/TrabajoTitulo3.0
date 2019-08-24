@@ -239,55 +239,47 @@
     End Sub
 
     Private Function RealizarValidacion()
-        Dim cumple As Boolean = False
-        'VALIDAR QUE NO SE EDITEN DESCUENTOS CADUCADOS -> ok        
+        Dim cumple As Boolean = True
+
+        Dim pal As String = ""
+        Dim fecha_inicio As String = dtpInicio.Value.Date.ToString("yyyy-MM-dd")
+        Dim fecha_termino As String = dtpTermino.Value.Date.ToString("yyyy-MM-dd")
+
+        'VALIDAR QUE NO SE EDITEN DESCUENTOS CADUCADOS -> ok   
+
         If activeAgregar Then   'si se esta agregando un descuento...
+
             If cmbProducto.SelectedIndex >= 0 Then  '¿el combo producto tiene seleccionado un item?
-
-                Dim pal As String = ""
-
-                Dim fecha_inicio As String = dtpInicio.Value.Date.ToString("yyyy-MM-dd")
-                Dim fecha_termino As String = dtpTermino.Value.Date.ToString("yyyy-MM-dd")
-
-                If cbxMayor.Checked And cmbP1Mayor.SelectedIndex >= 0 And (cmbP2Mayor.SelectedIndex >= 0 And cmbP2Mayor.SelectedIndex < cmbP1Mayor.SelectedIndex) Then
-                    cumple = True
-                ElseIf cbxPorcentual.Checked And cmbP2Porcentual.SelectedIndex >= 0 And cmbP2Porcentual.SelectedIndex >= 0 Then
-                    cumple = True
-                Else
-                    cumple = False
-                    pal = pal & "-Ingrese una condicion valida" & vbCrLf
+                If cbxMayor.Checked Then 'si esta seleccionado checkbox mayor                    
+                    'SI se selecciono un indice mayor a -1 en cmbP1 y cmbP2 y ademas el comboP1 debe ser mayor al indice del p2 porque ejemplo:  2x3 dos productos por el precio de 3 ¿?¿? WHAT?
+                    If Not (cmbP1Mayor.SelectedIndex > -1 And cmbP2Mayor.SelectedIndex > -1) Or Not (cmbP1Mayor.SelectedIndex > cmbP2Mayor.SelectedIndex) Then
+                        pal = pal & "-Ingrese una condición válida" & vbCrLf
+                        cumple = False
+                    End If
+                ElseIf cbxPorcentual.Checked Then
+                    'SI se selecciono un indice mayor a -1 en cmbP1 y cmbP2 y ademas el comboP1 debe ser mayor al indice del p2 porque ejemplo:  2x3 dos productos por el precio de 3 ¿?¿? WHAT?
+                    If Not (cmbP1Porcentual.SelectedIndex > -1 And cmbP2Porcentual.SelectedIndex > -1) Then
+                        cumple = False
+                        pal = pal & "-Ingrese una condición válida" & vbCrLf
+                    End If
                 End If
-
-
-                If fecha_termino <= fecha_inicio Then
+                If fecha_termino <= fecha_inicio Then 'la fecha de termino debe ser mayor que la fecha de inicio...
                     cumple = False
-                    'MsgBox("Sr Usuario, seleccione una fecha superior a la fecha de inicio...", vbInformation, "Fecha incorrecta")
                     pal = pal & "-Seleccione una fecha superior a la fecha de inicio"
-                Else
-                    cumple = True
                 End If
 
-                If cumple = False Then
-                    MsgBox(pal, vbInformation)
+                If cumple = False Then 'Esto es para mostrar el mensaje de error...
+                    MsgBox(pal, vbInformation, "Existen campos vacíos o incorrectos")
                 End If
-
             Else 'No tiene seleccionado un item... mensaje de error!
                 MsgBox("Sr Usuario, seleccione un producto al cual se le realizará el descuento", vbInformation, "Falta ingresar datos...")
             End If
-
-
         ElseIf activeEditar Then
             Dim fecha_termino_asDate As String = dtpTermino.Value.Date.ToString("yyyy-MM-dd")  'del date picker que elige el usuario
             Dim auxiliar_fecha_termino_asDate As String = auxtermino                           'del datagridview.cells(4)
 
-            If fecha_termino_asDate >= auxiliar_fecha_termino_asDate And fecha_termino_asDate > DateTime.Now Then
-                'If Not (Format(dtpTermino.Value.ToShortDateString, "yyyy-MM-dd") < auxtermino) Then
-                '   cumple = True
-                'Else
-                '   MsgBox("Sr Usuario, no se puede reducir el tiempo de termino, mas bien, puede extender la fecha del descuento. DTPTERMINO:" & dtpTermino.Value.ToShortDateString & " < AUXTERMINO:" & auxtermino, vbInformation, "Fecha de termino no válida...")
-                'End If
-                cumple = True
-            Else
+            If Not (fecha_termino_asDate >= auxiliar_fecha_termino_asDate And fecha_termino_asDate > DateTime.Now) Then
+                cumple = False
                 MsgBox("¡Usted esta reduciendo la fecha del descuento, solo se permite extender la fecha!. Si desea dar término a un descuento, seleccione el boton 'Finalizar descuento'", vbCritical, "Fecha no permitida...")
             End If
         End If
@@ -301,32 +293,18 @@
         '   Dar termino un descuento, se queda el descuento hasta el dia actual, se finaliza así xD.
         If RealizarValidacion() Then
 
-            Dim ObjetoDescuento As New Descuento()
+            Dim ObjetoDescuento As New Descuento() 'instancia objeto descuento
+            Dim id_des, id_prod, fec_ini, fec_ter, con As String 'variables pertenecientes al objeto descuento
 
-            Dim id_des, id_prod, fec_ini, fec_ter, con As String
-            id_des = ""
-            'id_prod = ""
-            'fec_ini = ""
-            'fec_ter = ""
-            'con = ""
-
+            id_des = "" 'solo al editar...
             id_prod = cmbProducto.SelectedValue             'value tirara el id del producto, selecteditem el texto del producto
             fec_ini = dtpInicio.Value.ToShortDateString     'fecha de inicio del descuento
             fec_ter = dtpTermino.Value.ToShortDateString    'fecha de termino 
             con = GetCondicion()                            '10X05'            
 
 
-            If activeAgregar Then
-                'id_prod = cmbProducto.SelectedValue
-                'fec_ini = dtpInicio.Value.ToShortDateString
-                'fec_ter = dtpTermino.Value.ToShortDateString
-                'con = GetCondicion()
-            ElseIf activeEditar Then
+            If activeEditar Then
                 id_des = lblIdDescuento.Text
-                'id_prod = cmbProducto.SelectedValue
-                'fec_ini = dtpInicio.Value.ToShortDateString
-                'fec_ter = dtpTermino.Value.ToShortDateString
-                'con = GetCondicion()
             End If
 
             'Rellenemos El Objeto
@@ -337,11 +315,12 @@
             ObjetoDescuento.Condicion = con         'Condicion concantenada, string.
 
             Dim bsnDescuento As New BsnDescuentos
-
             If activeAgregar Then
                 bsnDescuento.AgregarDescuento(ObjetoDescuento)
+                MsgBox("Descuento agregado")
             ElseIf activeEditar Then
                 bsnDescuento.ModificarDescuento(ObjetoDescuento)
+                MsgBox("Descuento editado")
             End If
 
             cmbP1Mayor.SelectedIndex = -1
