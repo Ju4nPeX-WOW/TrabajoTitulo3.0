@@ -88,25 +88,26 @@ Public Class BsnProducto
     End Sub
 
 
-    Private Sub RealizarAjuste(producto As Producto, razon As Short, rut_usuario As Integer)
+    Public Sub RealizarAjuste(producto As Producto, razon As Short, rut_usuario As Integer)
         'ObtenerProductosEspecificos valores originales para hacer las comparaciones entre objetos
         'tengo el id del producto, con lo cual puedo obtener dos valores, que son precios y stock
         'Dim productoOrig As New Producto
         Dim dataset As New DataSet
         dataset = ObtenerProductosEspecificos(" Id_producto = " & producto.IdProducto)
+        MsgBox(producto.Precio & " != " & dataset.Tables(0)(0)(2))
         If producto.Precio <> dataset.Tables(0)(0)(2) Then
-            Console.WriteLine("INVOCAR A AJUSTE PRECIO")
-            AjustarPrecioProducto(producto.IdProducto, producto.Precio, rut_usuario)
+            MsgBox("INVOCAR A AJUSTE PRECIO")
+            'AjustarPrecioProducto(producto.IdProducto, producto.Precio, rut_usuario)
         End If
-
+        MsgBox(producto.Stock & " != " & dataset.Tables(0)(0)(3))
         If producto.Stock <> dataset.Tables(0)(0)(3) Then
-            Console.WriteLine("INVOCAR A AJUSTE STOCK")
+            MsgBox("INVOCAR A AJUSTE STOCK")
             Dim cantidad As Integer
             cantidad = dataset.Tables(0)(0)(3) - producto.Stock
             If cantidad < 0 Then
                 cantidad = cantidad * -1
             End If
-            AjustarStockProducto(producto.IdProducto, cantidad, razon, producto.Stock, rut_usuario)
+            'AjustarStockProducto(producto.IdProducto, cantidad, razon, producto.Stock, rut_usuario)
         End If
     End Sub
 
