@@ -246,12 +246,14 @@ Partial Class FrmAjustes
         '
         'nupStock
         '
+        Me.nupStock.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.nupStock.Enabled = False
         Me.nupStock.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.nupStock.Location = New System.Drawing.Point(698, 525)
         Me.nupStock.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
         Me.nupStock.Minimum = New Decimal(New Integer() {999, 0, 0, -2147483648})
         Me.nupStock.Name = "nupStock"
+        Me.nupStock.ReadOnly = True
         Me.nupStock.Size = New System.Drawing.Size(259, 29)
         Me.nupStock.TabIndex = 133
         Me.nupStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
