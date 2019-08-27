@@ -22,9 +22,8 @@ Partial Class FrmAjustes
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmAjustes))
         Me.dgvProd = New System.Windows.Forms.DataGridView()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.txtBusqueda = New System.Windows.Forms.TextBox()
         Me.lblAvanzadoRazon = New System.Windows.Forms.Label()
         Me.lblAvanzadoStock = New System.Windows.Forms.Label()
         Me.cmbAvanzadoRazon = New System.Windows.Forms.ComboBox()
@@ -32,7 +31,6 @@ Partial Class FrmAjustes
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.mnsAjustes = New System.Windows.Forms.MenuStrip()
         Me.tsmAgregar = New System.Windows.Forms.ToolStripMenuItem()
-        Me.tsmEditar = New System.Windows.Forms.ToolStripMenuItem()
         Me.cmbBusqueda = New System.Windows.Forms.ComboBox()
         Me.btnCan = New System.Windows.Forms.Button()
         Me.btnAce = New System.Windows.Forms.Button()
@@ -42,8 +40,6 @@ Partial Class FrmAjustes
         Me.lblProducto = New System.Windows.Forms.Label()
         Me.btnBuscar = New System.Windows.Forms.Button()
         Me.nupStock = New System.Windows.Forms.NumericUpDown()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.txtPrecio = New System.Windows.Forms.TextBox()
         CType(Me.dgvProd, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.mnsAjustes.SuspendLayout()
         CType(Me.nupStock, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -71,13 +67,15 @@ Partial Class FrmAjustes
         Me.dgvProd.Size = New System.Drawing.Size(1127, 269)
         Me.dgvProd.TabIndex = 59
         '
-        'TextBox1
+        'txtBusqueda
         '
-        Me.TextBox1.Location = New System.Drawing.Point(189, 407)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(772, 41)
-        Me.TextBox1.TabIndex = 60
+        Me.txtBusqueda.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBusqueda.Location = New System.Drawing.Point(176, 407)
+        Me.txtBusqueda.Multiline = True
+        Me.txtBusqueda.Name = "txtBusqueda"
+        Me.txtBusqueda.Size = New System.Drawing.Size(734, 41)
+        Me.txtBusqueda.TabIndex = 60
+        Me.txtBusqueda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'lblAvanzadoRazon
         '
@@ -95,7 +93,7 @@ Partial Class FrmAjustes
         Me.lblAvanzadoStock.AutoSize = True
         Me.lblAvanzadoStock.Enabled = False
         Me.lblAvanzadoStock.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAvanzadoStock.Location = New System.Drawing.Point(619, 559)
+        Me.lblAvanzadoStock.Location = New System.Drawing.Point(619, 528)
         Me.lblAvanzadoStock.Name = "lblAvanzadoStock"
         Me.lblAvanzadoStock.Size = New System.Drawing.Size(71, 25)
         Me.lblAvanzadoStock.TabIndex = 75
@@ -141,7 +139,7 @@ Partial Class FrmAjustes
         Me.mnsAjustes.AutoSize = False
         Me.mnsAjustes.BackColor = System.Drawing.Color.DarkOrange
         Me.mnsAjustes.Dock = System.Windows.Forms.DockStyle.None
-        Me.mnsAjustes.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAgregar, Me.tsmEditar})
+        Me.mnsAjustes.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAgregar})
         Me.mnsAjustes.Location = New System.Drawing.Point(0, 78)
         Me.mnsAjustes.Name = "mnsAjustes"
         Me.mnsAjustes.Size = New System.Drawing.Size(1173, 24)
@@ -150,27 +148,20 @@ Partial Class FrmAjustes
         '
         'tsmAgregar
         '
-        Me.tsmAgregar.Image = CType(resources.GetObject("tsmAgregar.Image"), System.Drawing.Image)
+        Me.tsmAgregar.Image = Global.TT.My.Resources.Resources.document
         Me.tsmAgregar.Name = "tsmAgregar"
-        Me.tsmAgregar.Size = New System.Drawing.Size(77, 20)
-        Me.tsmAgregar.Text = "Agregar"
-        '
-        'tsmEditar
-        '
-        Me.tsmEditar.Image = CType(resources.GetObject("tsmEditar.Image"), System.Drawing.Image)
-        Me.tsmEditar.Name = "tsmEditar"
-        Me.tsmEditar.Size = New System.Drawing.Size(65, 20)
-        Me.tsmEditar.Text = "Editar"
+        Me.tsmAgregar.Size = New System.Drawing.Size(109, 20)
+        Me.tsmAgregar.Text = "Realizar ajuste"
         '
         'cmbBusqueda
         '
         Me.cmbBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.cmbBusqueda.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbBusqueda.Font = New System.Drawing.Font("Bahnschrift Condensed", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbBusqueda.FormattingEnabled = True
-        Me.cmbBusqueda.Items.AddRange(New Object() {"Producto", "Categoria"})
+        Me.cmbBusqueda.Items.AddRange(New Object() {"Producto", "ID"})
         Me.cmbBusqueda.Location = New System.Drawing.Point(26, 407)
         Me.cmbBusqueda.Name = "cmbBusqueda"
-        Me.cmbBusqueda.Size = New System.Drawing.Size(138, 41)
+        Me.cmbBusqueda.Size = New System.Drawing.Size(138, 43)
         Me.cmbBusqueda.TabIndex = 125
         '
         'btnCan
@@ -244,12 +235,11 @@ Partial Class FrmAjustes
         '
         Me.btnBuscar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnBuscar.BackColor = System.Drawing.Color.DarkOrange
-        Me.btnBuscar.Enabled = False
         Me.btnBuscar.Font = New System.Drawing.Font("Bahnschrift", 12.0!)
         Me.btnBuscar.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.btnBuscar.Location = New System.Drawing.Point(970, 405)
+        Me.btnBuscar.Location = New System.Drawing.Point(937, 405)
         Me.btnBuscar.Name = "btnBuscar"
-        Me.btnBuscar.Size = New System.Drawing.Size(162, 43)
+        Me.btnBuscar.Size = New System.Drawing.Size(193, 43)
         Me.btnBuscar.TabIndex = 132
         Me.btnBuscar.Text = "Buscar"
         Me.btnBuscar.UseVisualStyleBackColor = False
@@ -258,7 +248,7 @@ Partial Class FrmAjustes
         '
         Me.nupStock.Enabled = False
         Me.nupStock.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.nupStock.Location = New System.Drawing.Point(698, 556)
+        Me.nupStock.Location = New System.Drawing.Point(698, 525)
         Me.nupStock.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
         Me.nupStock.Minimum = New Decimal(New Integer() {999, 0, 0, -2147483648})
         Me.nupStock.Name = "nupStock"
@@ -266,35 +256,12 @@ Partial Class FrmAjustes
         Me.nupStock.TabIndex = 133
         Me.nupStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Enabled = False
-        Me.Label2.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(614, 517)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(76, 25)
-        Me.Label2.TabIndex = 134
-        Me.Label2.Text = "PRECIO:"
-        '
-        'txtPrecio
-        '
-        Me.txtPrecio.Enabled = False
-        Me.txtPrecio.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPrecio.Location = New System.Drawing.Point(699, 515)
-        Me.txtPrecio.Name = "txtPrecio"
-        Me.txtPrecio.Size = New System.Drawing.Size(259, 30)
-        Me.txtPrecio.TabIndex = 135
-        Me.txtPrecio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
         'FrmAjustes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Window
         Me.ClientSize = New System.Drawing.Size(1173, 670)
-        Me.Controls.Add(Me.txtPrecio)
-        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.nupStock)
         Me.Controls.Add(Me.btnBuscar)
         Me.Controls.Add(Me.lblProducto)
@@ -310,7 +277,7 @@ Partial Class FrmAjustes
         Me.Controls.Add(Me.lblAvanzadoRazon)
         Me.Controls.Add(Me.lblAvanzadoStock)
         Me.Controls.Add(Me.cmbAvanzadoRazon)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.txtBusqueda)
         Me.Controls.Add(Me.dgvProd)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "FrmAjustes"
@@ -325,14 +292,13 @@ Partial Class FrmAjustes
     End Sub
 
     Friend WithEvents dgvProd As DataGridView
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents txtBusqueda As TextBox
     Friend WithEvents lblAvanzadoRazon As Label
     Friend WithEvents lblAvanzadoStock As Label
     Friend WithEvents cmbAvanzadoRazon As ComboBox
     Friend WithEvents BtnExit As Button
     Friend WithEvents lblTitulo As Label
     Friend WithEvents mnsAjustes As MenuStrip
-    Friend WithEvents tsmAgregar As ToolStripMenuItem
     Friend WithEvents cmbBusqueda As ComboBox
     Friend WithEvents btnCan As Button
     Friend WithEvents btnAce As Button
@@ -342,7 +308,5 @@ Partial Class FrmAjustes
     Friend WithEvents lblProducto As Label
     Friend WithEvents btnBuscar As Button
     Friend WithEvents nupStock As NumericUpDown
-    Friend WithEvents tsmEditar As ToolStripMenuItem
-    Friend WithEvents Label2 As Label
-    Friend WithEvents txtPrecio As TextBox
+    Friend WithEvents tsmAgregar As ToolStripMenuItem
 End Class

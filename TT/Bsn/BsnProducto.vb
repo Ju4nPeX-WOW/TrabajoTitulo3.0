@@ -94,11 +94,11 @@ Public Class BsnProducto
         'Dim productoOrig As New Producto
         Dim dataset As New DataSet
         dataset = ObtenerProductosEspecificos(" Id_producto = " & producto.IdProducto)
-        MsgBox(producto.Precio & " != " & dataset.Tables(0)(0)(2))
-        If producto.Precio <> dataset.Tables(0)(0)(2) Then
-            MsgBox("INVOCAR A AJUSTE PRECIO")
-            'AjustarPrecioProducto(producto.IdProducto, producto.Precio, rut_usuario)
-        End If
+        'MsgBox(producto.Precio & " != " & dataset.Tables(0)(0)(2))
+        'If producto.Precio <> dataset.Tables(0)(0)(2) Then
+        'MsgBox("INVOCAR A AJUSTE PRECIO")
+        'AjustarPrecioProducto(producto.IdProducto, producto.Precio, rut_usuario)
+        'End If
         MsgBox(producto.Stock & " != " & dataset.Tables(0)(0)(3))
         If producto.Stock <> dataset.Tables(0)(0)(3) Then
             MsgBox("INVOCAR A AJUSTE STOCK")
@@ -107,7 +107,7 @@ Public Class BsnProducto
             If cantidad < 0 Then
                 cantidad = cantidad * -1
             End If
-            'AjustarStockProducto(producto.IdProducto, cantidad, razon, producto.Stock, rut_usuario)
+            AjustarStockProducto(producto.IdProducto, cantidad, razon, producto.Stock, rut_usuario)
         End If
     End Sub
 
