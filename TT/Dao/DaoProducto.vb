@@ -23,6 +23,11 @@ WHERE p.False_delete = 0"
         Return instrucciones.SelectWithFalseDelete("Productos", "*", recondicion)
 
     End Function
+
+    Public Function obtenerColumnasyProductosEspecificos(columnas As String, condicion As String)
+        Dim instrucciones As New Instructions
+        Return instrucciones.Seleccionar("Productos", columnas, condicion)
+    End Function
     Public Function ObtenerColumnasEspecificas(columnas)
         Dim instrucciones As New Instructions
         Return instrucciones.Seleccionar("Productos", columnas, " WHERE FALSE_DELETE = 0")

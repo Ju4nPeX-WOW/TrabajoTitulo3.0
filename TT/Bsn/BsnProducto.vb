@@ -38,6 +38,11 @@ Public Class BsnProducto
         Return daoProducto.ObtenerColumnasEspecificas(columnas)
     End Function
 
+    Public Function ObtenerColumnasYProductosEspecificos(columnas As String, condicion As String)
+        Dim daoProducto As New DaoProducto
+        Return daoProducto.obtenerColumnasyProductosEspecificos(columnas, condicion)
+    End Function
+
     Public Function BusquedaIncremental(columnas As String, tabla As String, columnaBusqueda As String, texto As String)
         Dim daoProducto As New DaoProducto
         dataset = daoProducto.busquedaIncremental(columnas, tabla, columnaBusqueda, texto)
