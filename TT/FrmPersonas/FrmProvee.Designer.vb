@@ -23,13 +23,16 @@ Partial Class FrmProvee
         Me.picEditar = New System.Windows.Forms.PictureBox()
         Me.picEliminar = New System.Windows.Forms.PictureBox()
         Me.picAgregar = New System.Windows.Forms.PictureBox()
-        Me.txtProv = New System.Windows.Forms.TextBox()
-        Me.cmbProv = New System.Windows.Forms.ComboBox()
-        Me.dgvProv = New System.Windows.Forms.DataGridView()
+        Me.txtBusqueda = New System.Windows.Forms.TextBox()
+        Me.cmbBusqueda = New System.Windows.Forms.ComboBox()
         Me.BtnExit = New System.Windows.Forms.Button()
         Me.LblFranjaNaranja = New System.Windows.Forms.Label()
         Me.LblTitulo = New System.Windows.Forms.Label()
         Me.pnlComponentes = New System.Windows.Forms.Panel()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtDireccion = New System.Windows.Forms.TextBox()
+        Me.txtEmail = New System.Windows.Forms.TextBox()
+        Me.lblEmail = New System.Windows.Forms.Label()
         Me.txtFono = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtCelu = New System.Windows.Forms.TextBox()
@@ -46,11 +49,21 @@ Partial Class FrmProvee
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.dgvProveedor = New System.Windows.Forms.DataGridView()
+        Me.pnlAcciones = New System.Windows.Forms.Panel()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.btnBuscar = New System.Windows.Forms.Button()
         CType(Me.picEditar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picEliminar, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.picAgregar, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dgvProv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.pnlComponentes.SuspendLayout()
+        CType(Me.dgvProveedor, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.pnlAcciones.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'picEditar
@@ -83,28 +96,24 @@ Partial Class FrmProvee
         Me.picAgregar.TabIndex = 21
         Me.picAgregar.TabStop = False
         '
-        'txtProv
+        'txtBusqueda
         '
-        Me.txtProv.Location = New System.Drawing.Point(228, 108)
-        Me.txtProv.Name = "txtProv"
-        Me.txtProv.Size = New System.Drawing.Size(911, 20)
-        Me.txtProv.TabIndex = 20
+        Me.txtBusqueda.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBusqueda.Location = New System.Drawing.Point(228, 108)
+        Me.txtBusqueda.Name = "txtBusqueda"
+        Me.txtBusqueda.Size = New System.Drawing.Size(708, 31)
+        Me.txtBusqueda.TabIndex = 20
+        Me.txtBusqueda.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'cmbProv
+        'cmbBusqueda
         '
-        Me.cmbProv.FormattingEnabled = True
-        Me.cmbProv.Location = New System.Drawing.Point(12, 108)
-        Me.cmbProv.Name = "cmbProv"
-        Me.cmbProv.Size = New System.Drawing.Size(210, 21)
-        Me.cmbProv.TabIndex = 19
-        '
-        'dgvProv
-        '
-        Me.dgvProv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvProv.Location = New System.Drawing.Point(12, 150)
-        Me.dgvProv.Name = "dgvProv"
-        Me.dgvProv.Size = New System.Drawing.Size(1127, 242)
-        Me.dgvProv.TabIndex = 17
+        Me.cmbBusqueda.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbBusqueda.FormattingEnabled = True
+        Me.cmbBusqueda.Items.AddRange(New Object() {"RUT PROVEEDOR", "NOMBRES", "APELLIDO PATERNO", "APELLIDO MATERNO", "TELEFONO", "CELULAR", "EMAIL", "DIRECCION"})
+        Me.cmbBusqueda.Location = New System.Drawing.Point(12, 108)
+        Me.cmbBusqueda.Name = "cmbBusqueda"
+        Me.cmbBusqueda.Size = New System.Drawing.Size(210, 33)
+        Me.cmbBusqueda.TabIndex = 19
         '
         'BtnExit
         '
@@ -137,6 +146,10 @@ Partial Class FrmProvee
         '
         'pnlComponentes
         '
+        Me.pnlComponentes.Controls.Add(Me.Label8)
+        Me.pnlComponentes.Controls.Add(Me.txtDireccion)
+        Me.pnlComponentes.Controls.Add(Me.txtEmail)
+        Me.pnlComponentes.Controls.Add(Me.lblEmail)
         Me.pnlComponentes.Controls.Add(Me.txtFono)
         Me.pnlComponentes.Controls.Add(Me.Label4)
         Me.pnlComponentes.Controls.Add(Me.txtCelu)
@@ -153,10 +166,43 @@ Partial Class FrmProvee
         Me.pnlComponentes.Controls.Add(Me.Label3)
         Me.pnlComponentes.Controls.Add(Me.Label2)
         Me.pnlComponentes.Controls.Add(Me.Label1)
+        Me.pnlComponentes.Enabled = False
         Me.pnlComponentes.Location = New System.Drawing.Point(12, 398)
         Me.pnlComponentes.Name = "pnlComponentes"
         Me.pnlComponentes.Size = New System.Drawing.Size(1127, 272)
         Me.pnlComponentes.TabIndex = 124
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(409, 184)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(55, 13)
+        Me.Label8.TabIndex = 109
+        Me.Label8.Text = "Direccion:"
+        '
+        'txtDireccion
+        '
+        Me.txtDireccion.Location = New System.Drawing.Point(466, 180)
+        Me.txtDireccion.Name = "txtDireccion"
+        Me.txtDireccion.Size = New System.Drawing.Size(217, 20)
+        Me.txtDireccion.TabIndex = 108
+        '
+        'txtEmail
+        '
+        Me.txtEmail.Location = New System.Drawing.Point(169, 177)
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(217, 20)
+        Me.txtEmail.TabIndex = 107
+        '
+        'lblEmail
+        '
+        Me.lblEmail.AutoSize = True
+        Me.lblEmail.Location = New System.Drawing.Point(113, 180)
+        Me.lblEmail.Name = "lblEmail"
+        Me.lblEmail.Size = New System.Drawing.Size(35, 13)
+        Me.lblEmail.TabIndex = 106
+        Me.lblEmail.Text = "Email:"
         '
         'txtFono
         '
@@ -290,10 +336,82 @@ Partial Class FrmProvee
         Me.Label1.TabIndex = 88
         Me.Label1.Text = "Nombres: "
         '
+        'dgvProveedor
+        '
+        Me.dgvProveedor.AllowUserToAddRows = False
+        Me.dgvProveedor.AllowUserToDeleteRows = False
+        Me.dgvProveedor.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dgvProveedor.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders
+        Me.dgvProveedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvProveedor.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.dgvProveedor.Location = New System.Drawing.Point(12, 166)
+        Me.dgvProveedor.MultiSelect = False
+        Me.dgvProveedor.Name = "dgvProveedor"
+        Me.dgvProveedor.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
+        Me.dgvProveedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dgvProveedor.Size = New System.Drawing.Size(1127, 181)
+        Me.dgvProveedor.TabIndex = 125
+        '
+        'pnlAcciones
+        '
+        Me.pnlAcciones.Controls.Add(Me.PictureBox1)
+        Me.pnlAcciones.Controls.Add(Me.PictureBox2)
+        Me.pnlAcciones.Controls.Add(Me.PictureBox3)
+        Me.pnlAcciones.Location = New System.Drawing.Point(953, 356)
+        Me.pnlAcciones.Name = "pnlAcciones"
+        Me.pnlAcciones.Size = New System.Drawing.Size(186, 36)
+        Me.pnlAcciones.TabIndex = 126
+        '
+        'PictureBox1
+        '
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(12, 0)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(39, 36)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox1.TabIndex = 72
+        Me.PictureBox1.TabStop = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
+        Me.PictureBox2.Location = New System.Drawing.Point(130, 0)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(39, 36)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 73
+        Me.PictureBox2.TabStop = False
+        '
+        'PictureBox3
+        '
+        Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
+        Me.PictureBox3.Location = New System.Drawing.Point(70, 0)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(39, 36)
+        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox3.TabIndex = 74
+        Me.PictureBox3.TabStop = False
+        '
+        'btnBuscar
+        '
+        Me.btnBuscar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnBuscar.BackColor = System.Drawing.Color.DarkOrange
+        Me.btnBuscar.Font = New System.Drawing.Font("Bahnschrift", 12.0!)
+        Me.btnBuscar.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.btnBuscar.Location = New System.Drawing.Point(953, 105)
+        Me.btnBuscar.Name = "btnBuscar"
+        Me.btnBuscar.Size = New System.Drawing.Size(193, 43)
+        Me.btnBuscar.TabIndex = 133
+        Me.btnBuscar.Text = "Buscar"
+        Me.btnBuscar.UseVisualStyleBackColor = False
+        '
         'FrmProvee
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 670)
+        Me.Controls.Add(Me.btnBuscar)
+        Me.Controls.Add(Me.pnlAcciones)
+        Me.Controls.Add(Me.dgvProveedor)
         Me.Controls.Add(Me.pnlComponentes)
         Me.Controls.Add(Me.LblFranjaNaranja)
         Me.Controls.Add(Me.LblTitulo)
@@ -301,9 +419,8 @@ Partial Class FrmProvee
         Me.Controls.Add(Me.picEditar)
         Me.Controls.Add(Me.picEliminar)
         Me.Controls.Add(Me.picAgregar)
-        Me.Controls.Add(Me.txtProv)
-        Me.Controls.Add(Me.cmbProv)
-        Me.Controls.Add(Me.dgvProv)
+        Me.Controls.Add(Me.txtBusqueda)
+        Me.Controls.Add(Me.cmbBusqueda)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "FrmProvee"
         Me.ShowIcon = False
@@ -311,9 +428,13 @@ Partial Class FrmProvee
         CType(Me.picEditar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picEliminar, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.picAgregar, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dgvProv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlComponentes.ResumeLayout(False)
         Me.pnlComponentes.PerformLayout()
+        CType(Me.dgvProveedor, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.pnlAcciones.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -322,9 +443,8 @@ Partial Class FrmProvee
     Friend WithEvents picEditar As PictureBox
     Friend WithEvents picEliminar As PictureBox
     Friend WithEvents picAgregar As PictureBox
-    Friend WithEvents txtProv As TextBox
-    Friend WithEvents cmbProv As ComboBox
-    Friend WithEvents dgvProv As DataGridView
+    Friend WithEvents txtBusqueda As TextBox
+    Friend WithEvents cmbBusqueda As ComboBox
     Friend WithEvents BtnExit As Button
     Friend WithEvents LblFranjaNaranja As Label
     Friend WithEvents LblTitulo As Label
@@ -345,4 +465,14 @@ Partial Class FrmProvee
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents dgvProveedor As DataGridView
+    Friend WithEvents pnlAcciones As Panel
+    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents PictureBox3 As PictureBox
+    Friend WithEvents Label8 As Label
+    Friend WithEvents txtDireccion As TextBox
+    Friend WithEvents txtEmail As TextBox
+    Friend WithEvents lblEmail As Label
+    Friend WithEvents btnBuscar As Button
 End Class

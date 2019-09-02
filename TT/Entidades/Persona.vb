@@ -159,7 +159,7 @@
                 dv2 = resto.ToString
             End If
         End If
-        MsgBox("dv2 comprobando: " & dv2)
+        'MsgBox("dv2 comprobando: " & dv2)
         Return dv2
     End Function
 End Class

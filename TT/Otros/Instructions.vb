@@ -72,6 +72,7 @@ Class Instructions
             conexion.AbrirConexion()
             sentencia = "INSERT INTO " & tabla & " (" & columnas & ") VALUES(" & valores & ")"
             command.CommandText = sentencia
+            MsgBox(sentencia)
             ' MsgBox(sentencia)   'sentencia
             command.ExecuteNonQuery()
             conexion.CerrarConexion()
