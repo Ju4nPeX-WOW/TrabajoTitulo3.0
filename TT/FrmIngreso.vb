@@ -9,7 +9,6 @@ Public Class FrmIngreso
     Private Sub btnIngre_Click(sender As Object, e As EventArgs) Handles btnIngre.Click
         If Not (txtUsua.Text = "" Or txtContra.Text = "") Then
             If bsnUsuario.ValidarUsuario(txtUsua.Text, txtContra.Text) Then
-                MsgBox("Ingreso Correcto")
                 'Pienso que podría mandar la instancia de objeto del usuario para usar la info en el menu de opciones, y ver que opciones tiene el usuario
                 Dim formprincipal As New PrincipalForm()
                 formprincipal.RecibirUsuario(bsnUsuario.ObtenerUsuarioEmpleado(txtUsua.Text, txtContra.Text))
@@ -18,10 +17,10 @@ Public Class FrmIngreso
                 Me.Hide()
                 formprincipal.Show()
             Else
-                MsgBox("Ingreso Incorrecto")
+                MsgBox("Usuario o contraseña incorrectas. No se pudo iniciar sesion", vbCritical, "Credenciales incorrectas")
             End If
         Else
-            MsgBox("Por favor rellene los campos vacios", vbOKOnly + vbInformation, "")
+            MsgBox("Por favor rellene los campos vacios", vbInformation, "Complete los campos...")
         End If
     End Sub
 
@@ -30,7 +29,7 @@ Public Class FrmIngreso
         Dim Msg, Style, Title, Response
         Msg = "¿Desea salir del programa?"                 ' Define mensaje del recuadro.
         Style = vbYesNo + vbQuestion + vbDefaultButton1    ' Define botones de la ventana.               
-        Title = ""
+        Title = "Cerrar programa"
         ' Ventana
         Response = MsgBox(Msg, Style, Title)
         If Response = vbYes Then    ' Usuario elige si

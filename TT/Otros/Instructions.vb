@@ -8,10 +8,6 @@ Class Instructions
     Protected command As New OleDbCommand
     Protected dataset As New DataSet
     Protected sentencia As String
-
-
-
-
     'SELECCION SIMPLE
     Public Function Seleccionar(tabla As String, columnas As String, condicion As String)
         Try
@@ -26,14 +22,11 @@ Class Instructions
             Dim reader As New OleDbDataAdapter
             reader.SelectCommand = command
             reader.Fill(dataset)
-
-            conexion.CerrarConexion()
-
-
+            'conexion.CerrarConexion
         Catch ex As Exception
-
             Console.WriteLine(ex)
-
+        Finally
+            conexion.CerrarConexion()
         End Try
 
         Return dataset
@@ -46,21 +39,17 @@ Class Instructions
             command.Connection = conexion.GetConexion()
             conexion.AbrirConexion()
             sentencia = "SELECT " & columnas & " FROM " & tabla & " WHERE False_delete = 0 " & condicion
-
             command.CommandText = sentencia
             Console.WriteLine(sentencia)
             Dim reader As New OleDbDataAdapter
             dataset.Clear()
             reader.SelectCommand = command
             reader.Fill(dataset)
-
-            conexion.CerrarConexion()
-
-
         Catch ex As Exception
             Console.WriteLine("SE HA PRODUCIDO UN ERROR EN 'SelectWithFalseDelete'")
             Console.WriteLine(ex)
-
+        Finally
+            conexion.CerrarConexion()
         End Try
         Return dataset
     End Function
@@ -75,9 +64,10 @@ Class Instructions
             MsgBox(sentencia)
             ' MsgBox(sentencia)   'sentencia
             command.ExecuteNonQuery()
-            conexion.CerrarConexion()
         Catch ex As Exception
             'MsgBox("Se ha producido un error: " & ex.ToString)
+        Finally
+            conexion.CerrarConexion()
         End Try
     End Sub
 
@@ -96,9 +86,11 @@ Class Instructions
             'MsgBox(sentencia)
             Console.WriteLine(sentencia)
             command.ExecuteNonQuery()
-            conexion.CerrarConexion()
+            'conexion.CerrarConexion()
         Catch ex As Exception
             'MsgBox("Se ha producido un error (Modificar): " & ex.ToString())
+        Finally
+            conexion.CerrarConexion()
         End Try
 
 
@@ -116,13 +108,14 @@ Class Instructions
             Console.WriteLine(sentencia)
             command.ExecuteNonQuery()
 
-            conexion.CerrarConexion()
+            'conexion.CerrarConexion()
 
 
         Catch ex As Exception
             Console.WriteLine("SE HA PRODUCIDO UN ERROR EN 'False_delete'")
             Console.WriteLine(ex)
-
+        Finally
+            conexion.CerrarConexion()
         End Try
     End Sub
 
@@ -137,11 +130,12 @@ Class Instructions
             dataset.Clear()
             reader.SelectCommand = command
             reader.Fill(dataset)
-            conexion.CerrarConexion()
+            'conexion.CerrarConexion()
 
         Catch ex As Exception
             'MsgBox("Error: " & ex.ToString)
-
+        Finally
+            conexion.CerrarConexion()
         End Try
         Return dataset
     End Function
@@ -156,14 +150,11 @@ Class Instructions
             command.CommandText = sentencia
             'MsgBox(sentencia)
             command.ExecuteNonQuery()
-
-            conexion.CerrarConexion()
-
-
         Catch ex As Exception
             Console.WriteLine("SE HA PRODUCIDO UN ERROR AL ELIMINAR")
             Console.WriteLine(ex)
-
+        Finally
+            conexion.CerrarConexion()
         End Try
 
     End Sub
@@ -176,14 +167,11 @@ Class Instructions
             command.CommandText = sentencia
             ' MsgBox(sentencia)
             command.ExecuteNonQuery()
-
-            conexion.CerrarConexion()
-
-
         Catch ex As Exception
             Console.WriteLine("SE HA PRODUCIDO UN ERROR AL ELIMINAR")
             Console.WriteLine(ex)
-
+        Finally
+            conexion.CerrarConexion()
         End Try
 
     End Sub
@@ -201,11 +189,12 @@ Class Instructions
             dataset.Clear()
             reader.SelectCommand = command
             reader.Fill(dataset)
-            conexion.CerrarConexion()
+            'conexion.CerrarConexion()
 
         Catch ex As Exception
             'MsgBox("Error: " & ex.ToString)
-
+        Finally
+            conexion.CerrarConexion()
         End Try
 
 
@@ -221,13 +210,14 @@ Class Instructions
             'MsgBox(sentencia)
             command.ExecuteNonQuery()
 
-            conexion.CerrarConexion()
+            'conexion.CerrarConexion()
 
 
         Catch ex As Exception
             Console.WriteLine("SE HA PRODUCIDO RESETAR IDENTITY")
             Console.WriteLine(ex)
-
+        Finally
+            conexion.CerrarConexion()
         End Try
 
     End Sub
