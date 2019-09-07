@@ -91,7 +91,7 @@ Public Class PrincipalForm
     End Sub
 
     Private Sub CATEGORIASToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CATEGORIASToolStripMenuItem1.Click
-        Dim form As New FrmCate
+        Dim form As New FrmCate3
         form.RecibirUsuario(_usuario)
         form.Dimencion_Locacion(_alto, _ancho, _posicionX, _posicionY)
         form.ShowDialog()

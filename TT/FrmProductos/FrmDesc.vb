@@ -249,9 +249,9 @@
 
         If activeAgregar Then   'si se esta agregando un descuento...
 
-            If cmbProducto.SelectedIndex >= 0 Then  '¿el combo producto tiene seleccionado un item?
+            If cmbProducto.SelectedIndex >= 0 Then  '¿el combo producto tiene seleccionado un item?                
                 If cbxMayor.Checked Then 'si esta seleccionado checkbox mayor                    
-                    'SI se selecciono un indice mayor a -1 en cmbP1 y cmbP2 y ademas el comboP1 debe ser mayor al indice del p2 porque ejemplo:  2x3 dos productos por el precio de 3 ¿?¿? WHAT?
+                    'SI se selecciono un indice mayor a -1 en cmbP1 y cmbP2 y ademas el comboP1 debe ser mayor al indice del p2 porque ejemplo:  2x3 dos productos por el precio de 3 ¿?¿? WHAT?                    
                     If Not (cmbP1Mayor.SelectedIndex > -1 And cmbP2Mayor.SelectedIndex > -1) Or Not (cmbP1Mayor.SelectedIndex > cmbP2Mayor.SelectedIndex) Then
                         pal = pal & "-Ingrese una condición válida" & vbCrLf
                         cumple = False
@@ -263,16 +263,17 @@
                         pal = pal & "-Ingrese una condición válida" & vbCrLf
                     End If
                 End If
+
                 If fecha_termino <= fecha_inicio Then 'la fecha de termino debe ser mayor que la fecha de inicio...
                     cumple = False
                     pal = pal & "-Seleccione una fecha superior a la fecha de inicio"
                 End If
-
                 If cumple = False Then 'Esto es para mostrar el mensaje de error...
                     MsgBox(pal, vbInformation, "Existen campos vacíos o incorrectos")
                 End If
             Else 'No tiene seleccionado un item... mensaje de error!
                 MsgBox("Sr Usuario, seleccione un producto al cual se le realizará el descuento", vbInformation, "Falta ingresar datos...")
+                cumple = False
             End If
         ElseIf activeEditar Then
             Dim fecha_termino_asDate As String = dtpTermino.Value.Date.ToString("yyyy-MM-dd")  'del date picker que elige el usuario
@@ -283,6 +284,8 @@
                 MsgBox("¡Usted esta reduciendo la fecha del descuento, solo se permite extender la fecha!. Si desea dar término a un descuento, seleccione el boton 'Finalizar descuento'", vbCritical, "Fecha no permitida...")
             End If
         End If
+
+        MsgBox(cumple)
         Return cumple
     End Function
 

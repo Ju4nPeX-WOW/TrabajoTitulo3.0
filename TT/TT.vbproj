@@ -158,6 +158,12 @@
     <Compile Include="FrmProductos\FrmCate2.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FrmProductos\FrmCate3.designer.vb">
+      <DependentUpon>FrmCate3.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProductos\FrmCate3.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Otros\Archivos.vb" />
     <Compile Include="Otros\DefaultData.vb" />
     <Compile Include="Otros\eztwain.vb" />
