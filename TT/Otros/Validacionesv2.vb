@@ -237,7 +237,7 @@
                 'Que cumplan con lo minimo establecido
                 If Not lista(i)(1).Length >= Num.LimiteMin(lista(i)(0)) Then
                     cumple = False
-                    aviso = aviso + msg_default + lista(i)(0) + " debe tener al menos " & Num.LimiteMin(lista(i)(0))
+                    aviso = aviso + msg_default + lista(i)(0) + " debe tener al menos " & Num.LimiteMin(lista(i)(0)) & vbCrLf
                 End If
             End If
         Next

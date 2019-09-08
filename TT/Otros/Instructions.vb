@@ -248,11 +248,12 @@ Class Instructions
         Finally
             conexion.CerrarConexion()
         End Try
-        If existe = 0 Then
-            MsgBox("no existe")
-        Else
-            MsgBox("existe")
-        End If
+
+        'If existe = 0 Then
+        'MsgBox("no existe")
+        'Else
+        'MsgBox("existe")
+        'End If
         Return existe
     End Function
 

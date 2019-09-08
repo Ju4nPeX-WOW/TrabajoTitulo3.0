@@ -26,7 +26,7 @@
     End Sub
 
     Public Function obtenerTodosEmpleados()
-        columnas = "RUT_EMPLEADO,NOMBRES,APELLIDO_P,APELLIDO_M,TELEFONO_F,TELEFONO_C,FALSE_DELETE"
+        columnas = "RUT_EMPLEADO,NOMBRES,APELLIDO_P,APELLIDO_M,TELEFONO_F,TELEFONO_C"
         condicion = ""
 
         dataset = instrucciones.SelectWithFalseDelete(tabla, columnas, condicion)
