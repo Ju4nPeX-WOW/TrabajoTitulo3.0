@@ -245,26 +245,28 @@
             Dim tipoBusqueda As String = cmbBusqueda.Text.ToLower()
             Dim tabla As String = "Clientes"
             Dim dataset_b As New DataSet
+            Dim busqueda2 As New Busqueda2
+
             'MsgBox(txtBusqueda.Text)
             Select Case tipoBusqueda
                 Case "rut cliente"
-                    dataset_b = instructions.busquedaIncremental("Rut_cliente,Nombres,apellido_p,apellido_m,Descuento", tabla, "Rut_cliente", txtBusqueda.Text)
+                    dataset_b = busqueda2.busquedaIncremental("Rut_cliente,Nombres,apellido_p,apellido_m,Descuento", tabla, "Rut_cliente", txtBusqueda.Text)
                     dgvClientes.DataSource = dataset_b.Tables(0).DefaultView
                     llenado()
                 Case "nombres"
-                    dataset_b = instructions.busquedaIncremental("Rut_cliente,Nombres,apellido_p,apellido_m,Descuento", tabla, "Nombres", txtBusqueda.Text)
+                    dataset_b = busqueda2.busquedaIncremental("Rut_cliente,Nombres,apellido_p,apellido_m,Descuento", tabla, "Nombres", txtBusqueda.Text)
                     dgvClientes.DataSource = dataset_b.Tables(0).DefaultView
                     llenado()
                 Case "apellido paterno"
-                    dataset_b = instructions.busquedaIncremental("Rut_cliente,Nombres,apellido_p,apellido_m,Descuento", tabla, "Apellido_p", txtBusqueda.Text)
+                    dataset_b = busqueda2.busquedaIncremental("Rut_cliente,Nombres,apellido_p,apellido_m,Descuento", tabla, "Apellido_p", txtBusqueda.Text)
                     dgvClientes.DataSource = dataset_b.Tables(0).DefaultView
                     llenado()
                 Case "apellido materno"
-                    dataset_b = instructions.busquedaIncremental("Rut_cliente,Nombres,apellido_p,apellido_m,Descuento", tabla, "Apellido_m", txtBusqueda.Text)
+                    dataset_b = busqueda2.busquedaIncremental("Rut_cliente,Nombres,apellido_p,apellido_m,Descuento", tabla, "Apellido_m", txtBusqueda.Text)
                     dgvClientes.DataSource = dataset_b.Tables(0).DefaultView
                     llenado()
                 Case "descuento"
-                    dataset_b = instructions.busquedaIncremental("Rut_cliente,Nombres,apellido_p,apellido_m,Descuento", tabla, "Descuento", txtBusqueda.Text)
+                    dataset_b = busqueda2.busquedaIncremental("Rut_cliente,Nombres,apellido_p,apellido_m,Descuento", tabla, "Descuento", txtBusqueda.Text)
                     dgvClientes.DataSource = dataset_b.Tables(0).DefaultView
                     llenado()
                 Case ""
