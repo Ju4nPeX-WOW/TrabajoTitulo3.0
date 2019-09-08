@@ -24,7 +24,7 @@ Class Instructions
             reader.Fill(dataset)
             'conexion.CerrarConexion
         Catch ex As Exception
-            Console.WriteLine(ex)
+            MsgBox(ex.ToString)
         Finally
             conexion.CerrarConexion()
         End Try
@@ -47,7 +47,7 @@ Class Instructions
             reader.Fill(dataset)
         Catch ex As Exception
             Console.WriteLine("SE HA PRODUCIDO UN ERROR EN 'SelectWithFalseDelete'")
-            Console.WriteLine(ex)
+            MsgBox(ex.ToString)
         Finally
             conexion.CerrarConexion()
         End Try
@@ -64,8 +64,10 @@ Class Instructions
             MsgBox(sentencia)
             ' MsgBox(sentencia)   'sentencia
             command.ExecuteNonQuery()
-        Catch ex As Exception
-            'MsgBox("Se ha producido un error: " & ex.ToString)
+            'Catch ex2 As OleDbException When ex2.ErrorCode = -2147217873
+            '   MsgBox("No se agrego debido a que ya existia", vbInformation, "Ya existe")
+        Catch ex As Exception 'debe ir ultimo
+            MsgBox("Se ha producido un error: " & ex.ToString)
         Finally
             conexion.CerrarConexion()
         End Try
@@ -88,7 +90,7 @@ Class Instructions
             command.ExecuteNonQuery()
             'conexion.CerrarConexion()
         Catch ex As Exception
-            'MsgBox("Se ha producido un error (Modificar): " & ex.ToString())
+            MsgBox("Se ha producido un error (Modificar): " & ex.ToString())
         Finally
             conexion.CerrarConexion()
         End Try
@@ -113,19 +115,20 @@ Class Instructions
 
         Catch ex As Exception
             Console.WriteLine("SE HA PRODUCIDO UN ERROR EN 'False_delete'")
-            Console.WriteLine(ex)
+            MsgBox(ex.ToString)
         Finally
             conexion.CerrarConexion()
         End Try
     End Sub
 
     Public Function busquedaIncremental(columnas As String, tabla As String, columnaBusqueda As String, texto As String)
+        'MsgBox("entre")
         Try
             command.Connection = conexion.GetConexion()
             conexion.AbrirConexion()
             sentencia = "SELECT " & columnas & " FROM " & tabla & " WHERE " & columnaBusqueda & " LIKE '%" & texto & "%'"
             command.CommandText = sentencia
-            ' MsgBox(sentencia)
+            'MsgBox(sentencia)
             Dim reader As New OleDbDataAdapter
             dataset.Clear()
             reader.SelectCommand = command
@@ -133,7 +136,7 @@ Class Instructions
             'conexion.CerrarConexion()
 
         Catch ex As Exception
-            'MsgBox("Error: " & ex.ToString)
+            MsgBox("Error: " & ex.ToString)
         Finally
             conexion.CerrarConexion()
         End Try
@@ -150,9 +153,12 @@ Class Instructions
             command.CommandText = sentencia
             'MsgBox(sentencia)
             command.ExecuteNonQuery()
+        Catch ex_oledb As OleDbException When ex_oledb.ErrorCode = -2147217873
+            MsgBox("No se pudo eliminar ya que existen datos asociados", vbInformation, "Existen datos asociados")
+
         Catch ex As Exception
             Console.WriteLine("SE HA PRODUCIDO UN ERROR AL ELIMINAR")
-            Console.WriteLine(ex)
+            MsgBox(ex.ToString)
         Finally
             conexion.CerrarConexion()
         End Try
@@ -169,7 +175,7 @@ Class Instructions
             command.ExecuteNonQuery()
         Catch ex As Exception
             Console.WriteLine("SE HA PRODUCIDO UN ERROR AL ELIMINAR")
-            Console.WriteLine(ex)
+            MsgBox(ex.ToString)
         Finally
             conexion.CerrarConexion()
         End Try
@@ -192,7 +198,7 @@ Class Instructions
             'conexion.CerrarConexion()
 
         Catch ex As Exception
-            'MsgBox("Error: " & ex.ToString)
+            MsgBox("Error: " & ex.ToString)
         Finally
             conexion.CerrarConexion()
         End Try
@@ -215,13 +221,33 @@ Class Instructions
 
         Catch ex As Exception
             Console.WriteLine("SE HA PRODUCIDO RESETAR IDENTITY")
-            Console.WriteLine(ex)
+            MsgBox(ex.ToString)
         Finally
             conexion.CerrarConexion()
         End Try
 
     End Sub
 
+    Public Function obtenerUnicaFila(tabla As String, condicion As String) 'executescalar da una fila y esta funcion retorna 0 no encontrado o 1 encontrado
+        Dim existe = 0
+        Try
+            command.Connection = conexion.GetConexion
+            conexion.AbrirConexion()
+            sentencia = "SELECT RUT_CLIENTE FROM " & tabla & " WHERE " & condicion
+
+        Catch ex As Exception
+            Console.WriteLine("SE HA PRODUCIDO RESETAR IDENTITY")
+            MsgBox(ex.ToString)
+        Finally
+            conexion.CerrarConexion()
+        End Try
+        If existe = 0 Then
+            MsgBox("no existe")
+        Else
+            MsgBox("existe")
+        End If
+        Return existe
+    End Function
 
 End Class
 

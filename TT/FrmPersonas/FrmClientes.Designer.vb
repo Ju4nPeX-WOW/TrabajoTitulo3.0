@@ -21,17 +21,13 @@ Partial Class FrmClientes
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FrmClientes))
         Me.BtnExit = New System.Windows.Forms.Button()
-        Me.picEditar = New System.Windows.Forms.PictureBox()
-        Me.picEliminar = New System.Windows.Forms.PictureBox()
-        Me.picAgregar = New System.Windows.Forms.PictureBox()
-        Me.txtProv = New System.Windows.Forms.TextBox()
-        Me.cmbProv = New System.Windows.Forms.ComboBox()
+        Me.txtBusqueda = New System.Windows.Forms.TextBox()
+        Me.cmbBusqueda = New System.Windows.Forms.ComboBox()
         Me.pnlComponentes = New System.Windows.Forms.Panel()
-        Me.lblDescuento = New System.Windows.Forms.Label()
+        Me.cmbDescuento = New System.Windows.Forms.ComboBox()
         Me.btnCancelar = New System.Windows.Forms.Button()
         Me.btnAceptar = New System.Windows.Forms.Button()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.tbDescuento = New System.Windows.Forms.TrackBar()
         Me.txtDV = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtRutSnDV = New System.Windows.Forms.TextBox()
@@ -42,17 +38,16 @@ Partial Class FrmClientes
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.pnlAcciones = New System.Windows.Forms.Panel()
         Me.dgvClientes = New System.Windows.Forms.DataGridView()
-        Me.LblFranjaNaranja = New System.Windows.Forms.Label()
         Me.LblTitulo = New System.Windows.Forms.Label()
-        CType(Me.picEditar, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picEliminar, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.picAgregar, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.mnsProd = New System.Windows.Forms.MenuStrip()
+        Me.tsmAgregar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmEditar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tsmEliminar = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnBuscar = New System.Windows.Forms.Button()
         Me.pnlComponentes.SuspendLayout()
-        CType(Me.tbDescuento, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlAcciones.SuspendLayout()
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.mnsProd.SuspendLayout()
         Me.SuspendLayout()
         '
         'BtnExit
@@ -64,58 +59,33 @@ Partial Class FrmClientes
         Me.BtnExit.Text = "X"
         Me.BtnExit.UseVisualStyleBackColor = True
         '
-        'picEditar
+        'txtBusqueda
         '
-        Me.picEditar.Image = CType(resources.GetObject("picEditar.Image"), System.Drawing.Image)
-        Me.picEditar.Location = New System.Drawing.Point(70, 0)
-        Me.picEditar.Name = "picEditar"
-        Me.picEditar.Size = New System.Drawing.Size(39, 36)
-        Me.picEditar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.picEditar.TabIndex = 74
-        Me.picEditar.TabStop = False
+        Me.txtBusqueda.Font = New System.Drawing.Font("Bahnschrift Condensed", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtBusqueda.Location = New System.Drawing.Point(228, 108)
+        Me.txtBusqueda.Name = "txtBusqueda"
+        Me.txtBusqueda.Size = New System.Drawing.Size(680, 33)
+        Me.txtBusqueda.TabIndex = 71
         '
-        'picEliminar
+        'cmbBusqueda
         '
-        Me.picEliminar.Image = CType(resources.GetObject("picEliminar.Image"), System.Drawing.Image)
-        Me.picEliminar.Location = New System.Drawing.Point(130, 0)
-        Me.picEliminar.Name = "picEliminar"
-        Me.picEliminar.Size = New System.Drawing.Size(39, 36)
-        Me.picEliminar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.picEliminar.TabIndex = 73
-        Me.picEliminar.TabStop = False
-        '
-        'picAgregar
-        '
-        Me.picAgregar.Image = CType(resources.GetObject("picAgregar.Image"), System.Drawing.Image)
-        Me.picAgregar.Location = New System.Drawing.Point(12, 0)
-        Me.picAgregar.Name = "picAgregar"
-        Me.picAgregar.Size = New System.Drawing.Size(39, 36)
-        Me.picAgregar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.picAgregar.TabIndex = 72
-        Me.picAgregar.TabStop = False
-        '
-        'txtProv
-        '
-        Me.txtProv.Location = New System.Drawing.Point(228, 108)
-        Me.txtProv.Name = "txtProv"
-        Me.txtProv.Size = New System.Drawing.Size(911, 20)
-        Me.txtProv.TabIndex = 71
-        '
-        'cmbProv
-        '
-        Me.cmbProv.FormattingEnabled = True
-        Me.cmbProv.Location = New System.Drawing.Point(12, 108)
-        Me.cmbProv.Name = "cmbProv"
-        Me.cmbProv.Size = New System.Drawing.Size(210, 21)
-        Me.cmbProv.TabIndex = 70
+        Me.cmbBusqueda.BackColor = System.Drawing.SystemColors.Info
+        Me.cmbBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.cmbBusqueda.Font = New System.Drawing.Font("Bahnschrift Condensed", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbBusqueda.FormattingEnabled = True
+        Me.cmbBusqueda.Items.AddRange(New Object() {"RUT CLIENTE", "NOMBRES", "APELLIDO PATERNO", "APELLIDO MATERNO", "DESCUENTO"})
+        Me.cmbBusqueda.Location = New System.Drawing.Point(12, 108)
+        Me.cmbBusqueda.Name = "cmbBusqueda"
+        Me.cmbBusqueda.Size = New System.Drawing.Size(210, 33)
+        Me.cmbBusqueda.TabIndex = 70
         '
         'pnlComponentes
         '
-        Me.pnlComponentes.Controls.Add(Me.lblDescuento)
+        Me.pnlComponentes.Controls.Add(Me.cmbDescuento)
         Me.pnlComponentes.Controls.Add(Me.btnCancelar)
         Me.pnlComponentes.Controls.Add(Me.btnAceptar)
         Me.pnlComponentes.Controls.Add(Me.Label4)
-        Me.pnlComponentes.Controls.Add(Me.tbDescuento)
         Me.pnlComponentes.Controls.Add(Me.txtDV)
         Me.pnlComponentes.Controls.Add(Me.Label7)
         Me.pnlComponentes.Controls.Add(Me.txtRutSnDV)
@@ -131,141 +101,151 @@ Partial Class FrmClientes
         Me.pnlComponentes.Size = New System.Drawing.Size(1127, 272)
         Me.pnlComponentes.TabIndex = 76
         '
-        'lblDescuento
+        'cmbDescuento
         '
-        Me.lblDescuento.AutoSize = True
-        Me.lblDescuento.Location = New System.Drawing.Point(264, 173)
-        Me.lblDescuento.Name = "lblDescuento"
-        Me.lblDescuento.Size = New System.Drawing.Size(0, 13)
-        Me.lblDescuento.TabIndex = 102
+        Me.cmbDescuento.BackColor = System.Drawing.SystemColors.InactiveBorder
+        Me.cmbDescuento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbDescuento.FlatStyle = System.Windows.Forms.FlatStyle.Popup
+        Me.cmbDescuento.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cmbDescuento.FormattingEnabled = True
+        Me.cmbDescuento.Items.AddRange(New Object() {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20"})
+        Me.cmbDescuento.Location = New System.Drawing.Point(138, 123)
+        Me.cmbDescuento.Name = "cmbDescuento"
+        Me.cmbDescuento.Size = New System.Drawing.Size(171, 31)
+        Me.cmbDescuento.TabIndex = 102
         '
         'btnCancelar
         '
+        Me.btnCancelar.BackColor = System.Drawing.Color.DarkBlue
+        Me.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCancelar.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 14.25!)
+        Me.btnCancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight
         Me.btnCancelar.Location = New System.Drawing.Point(766, 196)
         Me.btnCancelar.Name = "btnCancelar"
         Me.btnCancelar.Size = New System.Drawing.Size(116, 45)
         Me.btnCancelar.TabIndex = 101
         Me.btnCancelar.Text = "Cancelar"
-        Me.btnCancelar.UseVisualStyleBackColor = True
+        Me.btnCancelar.UseVisualStyleBackColor = False
         '
         'btnAceptar
         '
-        Me.btnAceptar.Location = New System.Drawing.Point(766, 145)
+        Me.btnAceptar.BackColor = System.Drawing.Color.DarkBlue
+        Me.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAceptar.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 14.25!)
+        Me.btnAceptar.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.btnAceptar.Location = New System.Drawing.Point(631, 196)
         Me.btnAceptar.Name = "btnAceptar"
         Me.btnAceptar.Size = New System.Drawing.Size(116, 45)
         Me.btnAceptar.TabIndex = 100
         Me.btnAceptar.Text = "Aceptar"
-        Me.btnAceptar.UseVisualStyleBackColor = True
+        Me.btnAceptar.UseVisualStyleBackColor = False
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(111, 137)
+        Me.Label4.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 14.25!)
+        Me.Label4.Location = New System.Drawing.Point(34, 122)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(65, 13)
+        Me.Label4.Size = New System.Drawing.Size(94, 23)
         Me.Label4.TabIndex = 99
         Me.Label4.Text = "Descuento: "
         '
-        'tbDescuento
-        '
-        Me.tbDescuento.Location = New System.Drawing.Point(182, 125)
-        Me.tbDescuento.Maximum = 99
-        Me.tbDescuento.Name = "tbDescuento"
-        Me.tbDescuento.Size = New System.Drawing.Size(334, 45)
-        Me.tbDescuento.TabIndex = 98
-        Me.tbDescuento.TickStyle = System.Windows.Forms.TickStyle.Both
-        '
         'txtDV
         '
-        Me.txtDV.Location = New System.Drawing.Point(335, 30)
+        Me.txtDV.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDV.Location = New System.Drawing.Point(304, 52)
         Me.txtDV.MaxLength = 1
         Me.txtDV.Name = "txtDV"
-        Me.txtDV.Size = New System.Drawing.Size(51, 20)
+        Me.txtDV.Size = New System.Drawing.Size(51, 30)
         Me.txtDV.TabIndex = 97
+        Me.txtDV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(319, 32)
+        Me.Label7.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 14.25!)
+        Me.Label7.Location = New System.Drawing.Point(288, 50)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(10, 13)
+        Me.Label7.Size = New System.Drawing.Size(18, 23)
         Me.Label7.TabIndex = 96
         Me.Label7.Text = "-"
         '
         'txtRutSnDV
         '
-        Me.txtRutSnDV.Location = New System.Drawing.Point(168, 30)
+        Me.txtRutSnDV.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtRutSnDV.Location = New System.Drawing.Point(137, 52)
         Me.txtRutSnDV.MaxLength = 8
         Me.txtRutSnDV.Name = "txtRutSnDV"
-        Me.txtRutSnDV.Size = New System.Drawing.Size(145, 20)
+        Me.txtRutSnDV.Size = New System.Drawing.Size(145, 30)
         Me.txtRutSnDV.TabIndex = 95
+        Me.txtRutSnDV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(111, 32)
+        Me.Label6.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 14.25!)
+        Me.Label6.Location = New System.Drawing.Point(82, 52)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(27, 13)
+        Me.Label6.Size = New System.Drawing.Size(39, 23)
         Me.Label6.TabIndex = 94
         Me.Label6.Text = "Rut:"
         '
         'txtApellidoM
         '
-        Me.txtApellidoM.Location = New System.Drawing.Point(692, 93)
+        Me.txtApellidoM.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtApellidoM.Location = New System.Drawing.Point(645, 126)
         Me.txtApellidoM.Name = "txtApellidoM"
-        Me.txtApellidoM.Size = New System.Drawing.Size(324, 20)
+        Me.txtApellidoM.Size = New System.Drawing.Size(324, 30)
         Me.txtApellidoM.TabIndex = 93
+        Me.txtApellidoM.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'txtApellidoP
         '
-        Me.txtApellidoP.Location = New System.Drawing.Point(692, 67)
+        Me.txtApellidoP.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtApellidoP.Location = New System.Drawing.Point(645, 91)
         Me.txtApellidoP.Name = "txtApellidoP"
-        Me.txtApellidoP.Size = New System.Drawing.Size(324, 20)
+        Me.txtApellidoP.Size = New System.Drawing.Size(324, 30)
         Me.txtApellidoP.TabIndex = 92
+        Me.txtApellidoP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'txtNombres
         '
-        Me.txtNombres.Location = New System.Drawing.Point(169, 67)
+        Me.txtNombres.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNombres.Location = New System.Drawing.Point(137, 89)
         Me.txtNombres.Name = "txtNombres"
-        Me.txtNombres.Size = New System.Drawing.Size(410, 20)
+        Me.txtNombres.Size = New System.Drawing.Size(343, 30)
         Me.txtNombres.TabIndex = 91
+        Me.txtNombres.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(598, 96)
+        Me.Label3.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 14.25!)
+        Me.Label3.Location = New System.Drawing.Point(498, 121)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(85, 13)
+        Me.Label3.Size = New System.Drawing.Size(140, 23)
         Me.Label3.TabIndex = 90
-        Me.Label3.Text = "Apellido materno"
+        Me.Label3.Text = "Apellido materno:"
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(597, 70)
+        Me.Label2.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 14.25!)
+        Me.Label2.Location = New System.Drawing.Point(502, 86)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(89, 13)
+        Me.Label2.Size = New System.Drawing.Size(138, 23)
         Me.Label2.TabIndex = 89
         Me.Label2.Text = "Apellido paterno: "
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(113, 70)
+        Me.Label1.Font = New System.Drawing.Font("Bahnschrift SemiCondensed", 14.25!)
+        Me.Label1.Location = New System.Drawing.Point(40, 86)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(55, 13)
+        Me.Label1.Size = New System.Drawing.Size(84, 23)
         Me.Label1.TabIndex = 88
         Me.Label1.Text = "Nombres: "
-        '
-        'pnlAcciones
-        '
-        Me.pnlAcciones.Controls.Add(Me.picAgregar)
-        Me.pnlAcciones.Controls.Add(Me.picEliminar)
-        Me.pnlAcciones.Controls.Add(Me.picEditar)
-        Me.pnlAcciones.Location = New System.Drawing.Point(953, 337)
-        Me.pnlAcciones.Name = "pnlAcciones"
-        Me.pnlAcciones.Size = New System.Drawing.Size(186, 36)
-        Me.pnlAcciones.TabIndex = 77
         '
         'dgvClientes
         '
@@ -283,14 +263,6 @@ Partial Class FrmClientes
         Me.dgvClientes.Size = New System.Drawing.Size(1127, 181)
         Me.dgvClientes.TabIndex = 78
         '
-        'LblFranjaNaranja
-        '
-        Me.LblFranjaNaranja.BackColor = System.Drawing.Color.DarkOrange
-        Me.LblFranjaNaranja.Location = New System.Drawing.Point(0, 78)
-        Me.LblFranjaNaranja.Name = "LblFranjaNaranja"
-        Me.LblFranjaNaranja.Size = New System.Drawing.Size(1173, 24)
-        Me.LblFranjaNaranja.TabIndex = 123
-        '
         'LblTitulo
         '
         Me.LblTitulo.BackColor = System.Drawing.Color.DarkBlue
@@ -303,44 +275,83 @@ Partial Class FrmClientes
         Me.LblTitulo.Text = "CLIENTES"
         Me.LblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
+        'mnsProd
+        '
+        Me.mnsProd.AutoSize = False
+        Me.mnsProd.BackColor = System.Drawing.Color.DarkOrange
+        Me.mnsProd.Dock = System.Windows.Forms.DockStyle.None
+        Me.mnsProd.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.tsmAgregar, Me.tsmEditar, Me.tsmEliminar})
+        Me.mnsProd.Location = New System.Drawing.Point(0, 77)
+        Me.mnsProd.Name = "mnsProd"
+        Me.mnsProd.Size = New System.Drawing.Size(1173, 24)
+        Me.mnsProd.TabIndex = 124
+        Me.mnsProd.Text = "MenuStrip1"
+        '
+        'tsmAgregar
+        '
+        Me.tsmAgregar.Image = CType(resources.GetObject("tsmAgregar.Image"), System.Drawing.Image)
+        Me.tsmAgregar.Name = "tsmAgregar"
+        Me.tsmAgregar.Size = New System.Drawing.Size(77, 20)
+        Me.tsmAgregar.Text = "Agregar"
+        '
+        'tsmEditar
+        '
+        Me.tsmEditar.Image = CType(resources.GetObject("tsmEditar.Image"), System.Drawing.Image)
+        Me.tsmEditar.Name = "tsmEditar"
+        Me.tsmEditar.Size = New System.Drawing.Size(65, 20)
+        Me.tsmEditar.Text = "Editar"
+        '
+        'tsmEliminar
+        '
+        Me.tsmEliminar.Image = CType(resources.GetObject("tsmEliminar.Image"), System.Drawing.Image)
+        Me.tsmEliminar.Name = "tsmEliminar"
+        Me.tsmEliminar.Size = New System.Drawing.Size(78, 20)
+        Me.tsmEliminar.Text = "Eliminar"
+        '
+        'btnBuscar
+        '
+        Me.btnBuscar.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnBuscar.BackColor = System.Drawing.Color.DarkOrange
+        Me.btnBuscar.Font = New System.Drawing.Font("Bahnschrift", 12.0!)
+        Me.btnBuscar.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.btnBuscar.Location = New System.Drawing.Point(946, 106)
+        Me.btnBuscar.Name = "btnBuscar"
+        Me.btnBuscar.Size = New System.Drawing.Size(193, 39)
+        Me.btnBuscar.TabIndex = 133
+        Me.btnBuscar.Text = "Buscar"
+        Me.btnBuscar.UseVisualStyleBackColor = False
+        '
         'FrmClientes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(1173, 681)
-        Me.Controls.Add(Me.LblFranjaNaranja)
+        Me.Controls.Add(Me.btnBuscar)
+        Me.Controls.Add(Me.mnsProd)
         Me.Controls.Add(Me.LblTitulo)
         Me.Controls.Add(Me.dgvClientes)
-        Me.Controls.Add(Me.pnlAcciones)
         Me.Controls.Add(Me.pnlComponentes)
         Me.Controls.Add(Me.BtnExit)
-        Me.Controls.Add(Me.txtProv)
-        Me.Controls.Add(Me.cmbProv)
+        Me.Controls.Add(Me.txtBusqueda)
+        Me.Controls.Add(Me.cmbBusqueda)
         Me.Location = New System.Drawing.Point(0, 0)
         Me.Name = "FrmClientes"
         Me.ShowIcon = False
         Me.ShowInTaskbar = False
-        CType(Me.picEditar, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picEliminar, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.picAgregar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.pnlComponentes.ResumeLayout(False)
         Me.pnlComponentes.PerformLayout()
-        CType(Me.tbDescuento, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlAcciones.ResumeLayout(False)
         CType(Me.dgvClientes, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.mnsProd.ResumeLayout(False)
+        Me.mnsProd.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents BtnExit As Button
-    Friend WithEvents picEditar As PictureBox
-    Friend WithEvents picEliminar As PictureBox
-    Friend WithEvents picAgregar As PictureBox
-    Friend WithEvents txtProv As TextBox
-    Friend WithEvents cmbProv As ComboBox
+    Friend WithEvents txtBusqueda As TextBox
+    Friend WithEvents cmbBusqueda As ComboBox
     Friend WithEvents pnlComponentes As Panel
     Friend WithEvents Label4 As Label
-    Friend WithEvents tbDescuento As TrackBar
     Friend WithEvents txtDV As TextBox
     Friend WithEvents Label7 As Label
     Friend WithEvents txtRutSnDV As TextBox
@@ -353,9 +364,12 @@ Partial Class FrmClientes
     Friend WithEvents Label1 As Label
     Friend WithEvents btnCancelar As Button
     Friend WithEvents btnAceptar As Button
-    Friend WithEvents pnlAcciones As Panel
-    Friend WithEvents lblDescuento As Label
     Friend WithEvents dgvClientes As DataGridView
-    Friend WithEvents LblFranjaNaranja As Label
     Friend WithEvents LblTitulo As Label
+    Friend WithEvents cmbDescuento As ComboBox
+    Friend WithEvents mnsProd As MenuStrip
+    Friend WithEvents tsmAgregar As ToolStripMenuItem
+    Friend WithEvents tsmEditar As ToolStripMenuItem
+    Friend WithEvents tsmEliminar As ToolStripMenuItem
+    Friend WithEvents btnBuscar As Button
 End Class

@@ -27,7 +27,9 @@
         'eliminado   - suaveeeeeeeeeeeeeee
         '            - exaaaaaacto.
         condicion = "RUT_CLIENTE=" & Cliente.Rut
-        Instrucciones.FalseDelete(tabla, condicion)
+        'Instrucciones.FalseDelete(tabla, condicion)
+        Instrucciones.Eliminar(tabla, condicion) 'en clientes es sin false_delete :O
+
     End Sub
 
     Public Function ObtenerCliente(rut As String)

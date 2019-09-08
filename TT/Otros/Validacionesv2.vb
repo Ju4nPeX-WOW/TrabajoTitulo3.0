@@ -231,13 +231,13 @@
             'Primero que no este en blanco
             If lista(i)(1).Equals("") Then
                 cumple = False
-                aviso = "HAY ELEMENTOS VACIOS POR FAVOR LLENAR TODOS LOS CAMPOS"
+                aviso = "Existen campos vacios. Complete los campos."
             Else
+                'MsgBox(lista(i)(0) & " " & Num.LimiteMin(lista(i)(1)))
                 'Que cumplan con lo minimo establecido
                 If Not lista(i)(1).Length >= Num.LimiteMin(lista(i)(0)) Then
                     cumple = False
                     aviso = aviso + msg_default + lista(i)(0) + " debe tener al menos " & Num.LimiteMin(lista(i)(0))
-
                 End If
             End If
         Next
