@@ -165,6 +165,7 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Otros\Archivos.vb" />
+    <Compile Include="Otros\Busqueda2.vb" />
     <Compile Include="Otros\DefaultData.vb" />
     <Compile Include="Otros\eztwain.vb" />
     <Compile Include="FrmAcerca.Designer.vb">
