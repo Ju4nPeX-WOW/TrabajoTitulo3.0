@@ -108,11 +108,11 @@
             End If
             sum = sum + dig_rut
         Next
-        MsgBox(sum)
+        'MsgBox(sum)
         resto = sum Mod 11
         resto = 11 - resto
 
-        MsgBox(resto)
+        'MsgBox(resto)
         If resto = 10 Then
             dv2 = "K"
         Else
@@ -123,7 +123,7 @@
             End If
         End If
 
-        MsgBox(dv2)
+        'MsgBox(dv2)
 
         If dv2.Equals(dv) Then
             correcto = True

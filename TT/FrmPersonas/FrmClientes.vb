@@ -93,6 +93,7 @@
         txtRutSnDV.Enabled = True
         txtDV.Enabled = True
         dgvClientes.Enabled = True
+        mnsProd.Enabled = True
     End Sub
 
     Private Sub btnAceptar_Click(sender As Object, e As EventArgs) Handles btnAceptar.Click
@@ -105,20 +106,23 @@
             Cliente.ApellidoMaterno = txtApellidoM.Text
             Cliente.Descuento = cmbDescuento.Text
             If activeAgregar Then
-                MsgBox("agregado")
+                'MsgBox("agregado")
                 BsnCliente.agregarCliente(Cliente)
             End If
             If activeEditar Then
-                MsgBox("editado")
+                'MsgBox("editado")
                 BsnCliente.editarCliente(Cliente)
             End If
             pnlComponentes.Enabled = False
+            txtRutSnDV.Enabled = True
+            txtDV.Enabled = True
             activeEditar = False
             activeAgregar = False
             dgvClientes.Enabled = True
             recargarDGV()
             limpiarTextos()
             llenado()
+            mnsProd.Enabled = True
         End If
     End Sub
 
@@ -139,14 +143,14 @@
             If validacion.ValidarRut(txtRutSnDV.Text, txtDV.Text) Then '<- INGRESAR RUT Y DV
                 cumple = True 'el rut es valido entonces se procede a ver si existe o no...
                 If activeAgregar = True Then
-                    Dim hola As Byte = instructions.obtenerUnicaFila("Clientes", "20107427")
-                    Dim rut As String = txtRutSnDV.Text
-                    For index = 0 To dgvClientes.Rows.Count - 1
-                        If dgvClientes.Rows(index).Cells(0).Value = rut Then
-                            cumple = False
-                            MsgBox("El cliente ya existe en la base de datos, ingrese otro rut de cliente para ingresarlo a la base de datos.", vbInformation, "Cliente ya registrado")
-                        End If
-                    Next
+                    Dim tabla As String = "Clientes"
+                    Dim campo As String = "Rut_cliente"
+                    Dim condicion As String = " Rut_cliente=" & txtRutSnDV.Text
+                    Dim existe_en_bd As Byte = instructions.obtenerUnicaFila(tabla, campo, condicion)
+                    If existe_en_bd > 0 Then
+                        cumple = False
+                        MsgBox("El cliente ya se encuentra registrado en la base de datos", vbInformation, "Cliente ya registrado")
+                    End If
                 End If
             Else
                 MsgBox("Sr administrador, el rut no es valido.", vbCritical, "Rut incorrecto")
@@ -166,6 +170,7 @@
         activeAgregar = True
         pnlComponentes.Enabled = True
         dgvClientes.Enabled = False
+        mnsProd.Enabled = False
         limpiarTextos()
     End Sub
 
@@ -176,6 +181,7 @@
             txtDV.Enabled = False         'para que no DV.
             activeEditar = True           'active editar es true y se ocupa para que al momento de aceptar se diferencie de agregar.
             dgvClientes.Enabled = False
+            mnsProd.Enabled = False
             llenado()
         Else
             MsgBox("No hay clientes para editar. agregue uno para poder utilizar esta funcion", vbInformation, "No existen clientes en la base de datos")
@@ -185,6 +191,7 @@
     Private Sub tsmEliminar_Click(sender As Object, e As EventArgs) Handles tsmEliminar.Click
         'EVENTO CLICK EN ELIMINAR
         If dgvClientes.Rows.Count > 0 Then
+            mnsProd.Enabled = False
             If dgvClientes.CurrentRow.Index >= 0 Then
                 llenado()
                 Cliente.Rut = dgvClientes.CurrentRow.Cells(0).Value
@@ -193,9 +200,11 @@
                 'MsgBox(response)
                 If response = 6 Then
                     BsnCliente.eliminarCliente(Cliente)
+                    limpiarTextos()
                     recargarDGV()
                 End If
             End If
+            mnsProd.Enabled = True
         Else
             MsgBox("No hay clientes para eliminar. agregue uno para poder utilizar esta funcion", vbInformation, "No existen clientes en la base de datos")
         End If

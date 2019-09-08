@@ -228,13 +228,20 @@ Class Instructions
 
     End Sub
 
-    Public Function obtenerUnicaFila(tabla As String, condicion As String) 'executescalar da una fila y esta funcion retorna 0 no encontrado o 1 encontrado
+    Public Function obtenerUnicaFila(tabla As String, campo As String, condicion As String) 'executescalar da una fila y esta funcion retorna 0 no encontrado o 1 encontrado
         Dim existe = 0
         Try
             command.Connection = conexion.GetConexion
             conexion.AbrirConexion()
-            sentencia = "SELECT RUT_CLIENTE FROM " & tabla & " WHERE " & condicion
-
+            sentencia = "SELECT COUNT( " & campo & ") FROM " & tabla & " WHERE " & condicion
+            'MsgBox(sentencia)
+            Dim filas As Object
+            command.CommandText = sentencia
+            filas = command.ExecuteScalar()
+            'MsgBox("Retorno : " & filas.ToString & " Filas")
+            If filas > 0 Then
+                existe = 1
+            End If
         Catch ex As Exception
             Console.WriteLine("SE HA PRODUCIDO RESETAR IDENTITY")
             MsgBox(ex.ToString)
