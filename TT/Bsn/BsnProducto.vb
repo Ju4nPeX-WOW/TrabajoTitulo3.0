@@ -47,65 +47,62 @@ Public Class BsnProducto
         dataset = daoProducto.busquedaIncremental(columnas, tabla, columnaBusqueda, texto)
         Return dataset
     End Function
-
     Public Sub AgregarProducto(producto As Producto, razon As String, rut_usuario As Integer)
-        Dim enumeraciones As New Enumeraciones
-        Dim daoProducto As New DaoProducto
-        Dim valores As String
-        valores = "'" & producto.Nombre.ToString & "'," & producto.Precio & "," & producto.Stock & "," & producto.StockCritico
-        Console.WriteLine(valores)
-        RealizarAjuste(producto, enumeraciones.RazonAjusteStock(razon), rut_usuario)
-        valores = "'" & producto.Nombre.ToString & "'," & producto.Precio & "," & producto.Stock & "," & producto.StockCritico
-        daoProducto.AgregarProducto(valores)
-
+        'Dim enumeraciones As New Enumeraciones
+        'Dim daoProducto As New DaoProducto
+        'Dim valores As String
+        'valores = "'" & producto.Nombre.ToString & "'," & producto.Precio & "," & producto.Stock & "," & producto.StockCritico
+        'Console.WriteLine(valores)
+        'RealizarAjuste(producto, enumeraciones.RazonAjusteStock(razon), rut_usuario)
+        'valores = "'" & producto.Nombre.ToString & "'," & producto.Precio & "," & producto.Stock & "," & producto.StockCritico
+        'daoProducto.AgregarProducto(valores)
     End Sub
     Private Sub AjustarPrecioProducto(id_producto As Integer, precio As Integer, rut_usuario As Integer)
-        Dim daoProducto As New DaoProducto
-        Dim valores As String
-        valores = id_producto & ",SYSDATETIME( ),SYSDATETIME( )," & precio & "," & rut_usuario 'Id_producto,Fecha,Hora,Cantidad,Razon,Stock
-        daoProducto.AjustarPrecio(valores)
+        'Dim daoProducto As New DaoProducto
+        'Dim valores As String
+        'valores = id_producto & ",SYSDATETIME( ),SYSDATETIME( )," & precio & "," & rut_usuario 'Id_producto,Fecha,Hora,Cantidad,Razon,Stock
+        'daoProducto.AjustarPrecio(valores)
     End Sub
     Private Sub AjustarStockProducto(id_producto As Integer, cantidad As Integer, razon As Short, stock As Integer, rut_usuario As Integer)
-        Dim daoProducto As New DaoProducto
-        Dim valores As String
-        valores = id_producto & ",SYSDATETIME( ),SYSDATETIME( )," & cantidad & "," & razon & "," & stock & "," & rut_usuario
-        daoProducto.AjustarStock(valores)
+        'Dim daoProducto As New DaoProducto
+        'Dim valores As String
+        'valores = id_producto & ",SYSDATETIME( ),SYSDATETIME( )," & cantidad & "," & razon & "," & stock & "," & rut_usuario
+        'daoProducto.AjustarStock(valores)
     End Sub
     Public Sub EliminarProducto(producto As Producto, rut_usuario As Integer)
-        Dim daoProducto As New DaoProducto
-        daoProducto.EliminarProducto(producto.IdProducto)
-        AjustarStockProducto(producto.IdProducto, producto.Stock, 6, 0, rut_usuario)
+        'Dim daoProducto As New DaoProducto
+        'daoProducto.EliminarProducto(producto.IdProducto)
+        'AjustarStockProducto(producto.IdProducto, producto.Stock, 6, 0, rut_usuario)
     End Sub
-
     Public Sub ModificarProducto(producto As Producto, razon As String, rut_usuario As Integer)
-        Dim enumeraciones As New Enumeraciones
-        Dim daoProducto As New DaoProducto
-        Dim valorColumna As String
-        valorColumna = "Nombre='" & producto.Nombre & "',Precio=" & producto.Precio & ",Stock=" & producto.Stock & ",Stock_critico=" & producto.StockCritico
-        RealizarAjuste(producto, enumeraciones.RazonAjusteStock(razon), rut_usuario) 'Realiza ajuste        
-        daoProducto.ModificarProducto(valorColumna, producto.IdProducto)             'modificar producto
+        'Dim enumeraciones As New Enumeraciones
+        'Dim daoProducto As New DaoProducto
+        'Dim valorColumna As String
+        'valorColumna = "Nombre='" & producto.Nombre & "',Precio=" & producto.Precio & ",Stock=" & producto.Stock & ",Stock_critico=" & producto.StockCritico
+        'RealizarAjuste(producto, enumeraciones.RazonAjusteStock(razon), rut_usuario) 'Realiza ajuste        
+        'daoProducto.ModificarProducto(valorColumna, producto.IdProducto)             'modificar producto
     End Sub
     Public Sub RealizarAjuste(producto As Producto, razon As Short, rut_usuario As Integer)
         'ObtenerProductosEspecificos valores originales para hacer las comparaciones entre objetos
         'tengo el id del producto, con lo cual puedo obtener dos valores, que son precios y stock
         'Dim productoOrig As New Producto
-        Dim dataset As New DataSet
-        dataset = ObtenerProductosEspecificos(" Id_producto = " & producto.IdProducto)
+        'Dim dataset As New DataSet
+        'dataset = ObtenerProductosEspecificos(" Id_producto = " & producto.IdProducto)
         'MsgBox(producto.Precio & " != " & dataset.Tables(0)(0)(2))
         'If producto.Precio <> dataset.Tables(0)(0)(2) Then
         'MsgBox("INVOCAR A AJUSTE PRECIO")
         'AjustarPrecioProducto(producto.IdProducto, producto.Precio, rut_usuario)
         'End If
-        MsgBox(producto.Stock & " != " & dataset.Tables(0)(0)(3))
-        If producto.Stock <> dataset.Tables(0)(0)(3) Then
-            MsgBox("INVOCAR A AJUSTE STOCK")
-            cantidad = dataset.Tables(0)(0)(3) - producto.Stock
-            MsgBox(dataset.Tables(0)(0)(3) & " - " & producto.Stock)
-            If cantidad < 0 Then
-                cantidad = cantidad * -1
-            End If
-            AjustarStockProducto(producto.IdProducto, cantidad, razon, producto.Stock, rut_usuario)
-        End If
+        'MsgBox(producto.Stock & " != " & dataset.Tables(0)(0)(3))
+        'If producto.Stock <> dataset.Tables(0)(0)(3) Then
+        'MsgBox("INVOCAR A AJUSTE STOCK")
+        'cantidad = dataset.Tables(0)(0)(3) - producto.Stock
+        'MsgBox(dataset.Tables(0)(0)(3) & " - " & producto.Stock)
+        'If cantidad < 0 Then
+        'cantidad = cantidad * -1
+        'End If
+        'AjustarStockProducto(producto.IdProducto, cantidad, razon, producto.Stock, rut_usuario)
+        'End If
     End Sub
 
     Public Function ObtenerStockCritico()
@@ -130,5 +127,21 @@ Public Class BsnProducto
         Return text
     End Function
 
+    Public Sub agregarProducto(producto As Producto)
+        Dim valores As String
+        Dim columnas As String
+        columnas = ""
+        valores = "'" & producto.Nombre.ToString & "'," & producto.Precio & "," & producto.Stock & "," & producto.StockCritico
+        daoProducto.AgregarProducto(valores)
+    End Sub
+    Public Sub ModificarProducto(producto As Producto)
+        Dim condicion As String = producto.IdProducto
+        Dim valorColumn As String = "Nombre='" & producto.Nombre & "',Precio=" & producto.Precio & ",Stock=" & producto.Stock & ",Stock_critico=" & producto.StockCritico
+        daoProducto.ModificarProducto(valorColumn, condicion)
+    End Sub
+    Public Sub eliminarProducto(producto As Producto)
+        Dim id_producto As String = producto.IdProducto
+        daoProducto.EliminarProducto(id_producto)
+    End Sub
 
 End Class

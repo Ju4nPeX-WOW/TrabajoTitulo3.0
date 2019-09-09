@@ -26,21 +26,25 @@ Partial Class frmProd2
         Me.btnSimpleEliminar = New System.Windows.Forms.Button()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.tbpSimple = New System.Windows.Forms.TabPage()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.lblSimpleRazon = New System.Windows.Forms.Label()
         Me.lblSimpleStock = New System.Windows.Forms.Label()
-        Me.cmbSimpleRazon = New System.Windows.Forms.ComboBox()
         Me.lblSimpleStockCrit = New System.Windows.Forms.Label()
         Me.lblSimplePrecio = New System.Windows.Forms.Label()
         Me.lblSimpleCat = New System.Windows.Forms.Label()
         Me.lblSimpleProd = New System.Windows.Forms.Label()
         Me.lblSimpleId = New System.Windows.Forms.Label()
-        Me.nupSimpleCantidad = New System.Windows.Forms.NumericUpDown()
         Me.lblSimpleCantidad = New System.Windows.Forms.Label()
         Me.tbpAvanzado = New System.Windows.Forms.TabPage()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.lblAvanzadoId = New System.Windows.Forms.Label()
         Me.lblAvanzadoRazon = New System.Windows.Forms.Label()
         Me.lblAvanzadoStock = New System.Windows.Forms.Label()
-        Me.cmbAvanzadoRazon = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.cmbAvanzadoCat = New System.Windows.Forms.ComboBox()
         Me.lblAvanzadoCat = New System.Windows.Forms.Label()
@@ -62,7 +66,6 @@ Partial Class frmProd2
         Me.LblTitulo = New System.Windows.Forms.Label()
         Me.TabControl1.SuspendLayout()
         Me.tbpSimple.SuspendLayout()
-        CType(Me.nupSimpleCantidad, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tbpAvanzado.SuspendLayout()
         CType(Me.dgvProd, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.mnsProd.SuspendLayout()
@@ -70,13 +73,17 @@ Partial Class frmProd2
         '
         'btnSimpleEliminar
         '
+        Me.btnSimpleEliminar.BackColor = System.Drawing.Color.DarkBlue
         Me.btnSimpleEliminar.Enabled = False
-        Me.btnSimpleEliminar.Location = New System.Drawing.Point(975, 567)
+        Me.btnSimpleEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSimpleEliminar.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnSimpleEliminar.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.btnSimpleEliminar.Location = New System.Drawing.Point(952, 567)
         Me.btnSimpleEliminar.Name = "btnSimpleEliminar"
         Me.btnSimpleEliminar.Size = New System.Drawing.Size(132, 43)
         Me.btnSimpleEliminar.TabIndex = 65
         Me.btnSimpleEliminar.Text = "ELIMINAR POR COMPLETO"
-        Me.btnSimpleEliminar.UseVisualStyleBackColor = True
+        Me.btnSimpleEliminar.UseVisualStyleBackColor = False
         Me.btnSimpleEliminar.Visible = False
         '
         'TabControl1
@@ -93,15 +100,19 @@ Partial Class frmProd2
         '
         'tbpSimple
         '
+        Me.tbpSimple.Controls.Add(Me.Label7)
+        Me.tbpSimple.Controls.Add(Me.Label6)
+        Me.tbpSimple.Controls.Add(Me.Label5)
+        Me.tbpSimple.Controls.Add(Me.Label3)
+        Me.tbpSimple.Controls.Add(Me.Label2)
+        Me.tbpSimple.Controls.Add(Me.Label1)
         Me.tbpSimple.Controls.Add(Me.lblSimpleRazon)
         Me.tbpSimple.Controls.Add(Me.lblSimpleStock)
-        Me.tbpSimple.Controls.Add(Me.cmbSimpleRazon)
         Me.tbpSimple.Controls.Add(Me.lblSimpleStockCrit)
         Me.tbpSimple.Controls.Add(Me.lblSimplePrecio)
         Me.tbpSimple.Controls.Add(Me.lblSimpleCat)
         Me.tbpSimple.Controls.Add(Me.lblSimpleProd)
         Me.tbpSimple.Controls.Add(Me.lblSimpleId)
-        Me.tbpSimple.Controls.Add(Me.nupSimpleCantidad)
         Me.tbpSimple.Controls.Add(Me.lblSimpleCantidad)
         Me.tbpSimple.Location = New System.Drawing.Point(4, 22)
         Me.tbpSimple.Name = "tbpSimple"
@@ -111,13 +122,74 @@ Partial Class frmProd2
         Me.tbpSimple.Text = "Simple"
         Me.tbpSimple.UseVisualStyleBackColor = True
         '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(24, 39)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(93, 23)
+        Me.Label7.TabIndex = 82
+        Me.Label7.Text = "ID PRODUCTO:"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.Location = New System.Drawing.Point(428, 157)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(104, 23)
+        Me.Label6.TabIndex = 81
+        Me.Label6.Text = "STOCK CRITICO:"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.Location = New System.Drawing.Point(478, 118)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(54, 23)
+        Me.Label5.TabIndex = 80
+        Me.Label5.Text = "STOCK:"
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(478, 78)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(57, 23)
+        Me.Label3.TabIndex = 79
+        Me.Label3.Text = "PRECIO:"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(108, 118)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(81, 23)
+        Me.Label2.TabIndex = 78
+        Me.Label2.Text = "CATEGORIA:"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(108, 78)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(78, 23)
+        Me.Label1.TabIndex = 77
+        Me.Label1.Text = "PRODUCTO:"
+        '
         'lblSimpleRazon
         '
         Me.lblSimpleRazon.AutoSize = True
         Me.lblSimpleRazon.Enabled = False
-        Me.lblSimpleRazon.Location = New System.Drawing.Point(34, 158)
+        Me.lblSimpleRazon.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSimpleRazon.Location = New System.Drawing.Point(782, 44)
         Me.lblSimpleRazon.Name = "lblSimpleRazon"
-        Me.lblSimpleRazon.Size = New System.Drawing.Size(84, 13)
+        Me.lblSimpleRazon.Size = New System.Drawing.Size(90, 23)
         Me.lblSimpleRazon.TabIndex = 76
         Me.lblSimpleRazon.Text = "RAZON            :"
         '
@@ -125,99 +197,85 @@ Partial Class frmProd2
         '
         Me.lblSimpleStock.AutoSize = True
         Me.lblSimpleStock.Enabled = False
-        Me.lblSimpleStock.Location = New System.Drawing.Point(421, 130)
+        Me.lblSimpleStock.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSimpleStock.Location = New System.Drawing.Point(538, 118)
         Me.lblSimpleStock.Name = "lblSimpleStock"
-        Me.lblSimpleStock.Size = New System.Drawing.Size(94, 13)
+        Me.lblSimpleStock.Size = New System.Drawing.Size(82, 23)
         Me.lblSimpleStock.TabIndex = 75
-        Me.lblSimpleStock.Text = "STOCK                :"
-        '
-        'cmbSimpleRazon
-        '
-        Me.cmbSimpleRazon.Enabled = False
-        Me.cmbSimpleRazon.FormattingEnabled = True
-        Me.cmbSimpleRazon.Location = New System.Drawing.Point(138, 155)
-        Me.cmbSimpleRazon.Name = "cmbSimpleRazon"
-        Me.cmbSimpleRazon.Size = New System.Drawing.Size(140, 21)
-        Me.cmbSimpleRazon.TabIndex = 74
+        Me.lblSimpleStock.Text = "AQUI STOCK"
         '
         'lblSimpleStockCrit
         '
         Me.lblSimpleStockCrit.AutoSize = True
         Me.lblSimpleStockCrit.Enabled = False
-        Me.lblSimpleStockCrit.Location = New System.Drawing.Point(421, 155)
+        Me.lblSimpleStockCrit.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSimpleStockCrit.Location = New System.Drawing.Point(539, 157)
         Me.lblSimpleStockCrit.Name = "lblSimpleStockCrit"
-        Me.lblSimpleStockCrit.Size = New System.Drawing.Size(95, 13)
+        Me.lblSimpleStockCrit.Size = New System.Drawing.Size(134, 23)
         Me.lblSimpleStockCrit.TabIndex = 73
-        Me.lblSimpleStockCrit.Text = "STOCK CRITICO :"
+        Me.lblSimpleStockCrit.Text = "AQUI STOCK CRITICO"
         '
         'lblSimplePrecio
         '
         Me.lblSimplePrecio.AutoSize = True
         Me.lblSimplePrecio.Enabled = False
-        Me.lblSimplePrecio.Location = New System.Drawing.Point(421, 65)
+        Me.lblSimplePrecio.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSimplePrecio.Location = New System.Drawing.Point(539, 78)
         Me.lblSimplePrecio.Name = "lblSimplePrecio"
-        Me.lblSimplePrecio.Size = New System.Drawing.Size(92, 13)
+        Me.lblSimplePrecio.Size = New System.Drawing.Size(87, 23)
         Me.lblSimplePrecio.TabIndex = 68
-        Me.lblSimplePrecio.Text = "PRECIO              :"
+        Me.lblSimplePrecio.Text = "AQUI PRECIO"
         '
         'lblSimpleCat
         '
         Me.lblSimpleCat.AutoSize = True
         Me.lblSimpleCat.Enabled = False
-        Me.lblSimpleCat.Location = New System.Drawing.Point(34, 65)
+        Me.lblSimpleCat.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSimpleCat.Location = New System.Drawing.Point(192, 116)
         Me.lblSimpleCat.Name = "lblSimpleCat"
-        Me.lblSimpleCat.Size = New System.Drawing.Size(84, 13)
+        Me.lblSimpleCat.Size = New System.Drawing.Size(110, 23)
         Me.lblSimpleCat.TabIndex = 67
-        Me.lblSimpleCat.Text = "CATEGORIA    :"
+        Me.lblSimpleCat.Text = "AQUI CATEGORIA"
         '
         'lblSimpleProd
         '
         Me.lblSimpleProd.AutoSize = True
         Me.lblSimpleProd.Enabled = False
-        Me.lblSimpleProd.Location = New System.Drawing.Point(34, 24)
+        Me.lblSimpleProd.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSimpleProd.Location = New System.Drawing.Point(192, 78)
         Me.lblSimpleProd.Name = "lblSimpleProd"
-        Me.lblSimpleProd.Size = New System.Drawing.Size(89, 13)
+        Me.lblSimpleProd.Size = New System.Drawing.Size(131, 23)
         Me.lblSimpleProd.TabIndex = 63
-        Me.lblSimpleProd.Text = "PRODUCTO     : "
+        Me.lblSimpleProd.Text = "AQUI NOMBRE PROD"
         '
         'lblSimpleId
         '
         Me.lblSimpleId.AutoSize = True
         Me.lblSimpleId.Enabled = False
-        Me.lblSimpleId.Location = New System.Drawing.Point(613, 24)
+        Me.lblSimpleId.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSimpleId.Location = New System.Drawing.Point(117, 39)
         Me.lblSimpleId.Name = "lblSimpleId"
-        Me.lblSimpleId.Size = New System.Drawing.Size(88, 13)
+        Me.lblSimpleId.Size = New System.Drawing.Size(91, 23)
         Me.lblSimpleId.TabIndex = 58
-        Me.lblSimpleId.Text = "ID PRODUCTO :"
-        '
-        'nupSimpleCantidad
-        '
-        Me.nupSimpleCantidad.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.nupSimpleCantidad.Enabled = False
-        Me.nupSimpleCantidad.Location = New System.Drawing.Point(138, 113)
-        Me.nupSimpleCantidad.Minimum = New Decimal(New Integer() {1, 0, 0, 0})
-        Me.nupSimpleCantidad.Name = "nupSimpleCantidad"
-        Me.nupSimpleCantidad.ReadOnly = True
-        Me.nupSimpleCantidad.Size = New System.Drawing.Size(140, 20)
-        Me.nupSimpleCantidad.TabIndex = 56
-        Me.nupSimpleCantidad.Value = New Decimal(New Integer() {1, 0, 0, 0})
+        Me.lblSimpleId.Text = "AQUI ID PROD"
         '
         'lblSimpleCantidad
         '
         Me.lblSimpleCantidad.AutoSize = True
         Me.lblSimpleCantidad.Enabled = False
-        Me.lblSimpleCantidad.Location = New System.Drawing.Point(34, 115)
+        Me.lblSimpleCantidad.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSimpleCantidad.Location = New System.Drawing.Point(782, 21)
         Me.lblSimpleCantidad.Name = "lblSimpleCantidad"
-        Me.lblSimpleCantidad.Size = New System.Drawing.Size(83, 13)
+        Me.lblSimpleCantidad.Size = New System.Drawing.Size(90, 23)
         Me.lblSimpleCantidad.TabIndex = 55
         Me.lblSimpleCantidad.Text = "CANTIDAD      :"
         '
         'tbpAvanzado
         '
+        Me.tbpAvanzado.Controls.Add(Me.Label8)
         Me.tbpAvanzado.Controls.Add(Me.lblAvanzadoId)
         Me.tbpAvanzado.Controls.Add(Me.lblAvanzadoRazon)
         Me.tbpAvanzado.Controls.Add(Me.lblAvanzadoStock)
-        Me.tbpAvanzado.Controls.Add(Me.cmbAvanzadoRazon)
         Me.tbpAvanzado.Controls.Add(Me.Label4)
         Me.tbpAvanzado.Controls.Add(Me.cmbAvanzadoCat)
         Me.tbpAvanzado.Controls.Add(Me.lblAvanzadoCat)
@@ -236,21 +294,32 @@ Partial Class frmProd2
         Me.tbpAvanzado.Text = "Avanzado"
         Me.tbpAvanzado.UseVisualStyleBackColor = True
         '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(29, 13)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(93, 23)
+        Me.Label8.TabIndex = 83
+        Me.Label8.Text = "ID PRODUCTO:"
+        '
         'lblAvanzadoId
         '
         Me.lblAvanzadoId.AutoSize = True
         Me.lblAvanzadoId.Enabled = False
-        Me.lblAvanzadoId.Location = New System.Drawing.Point(77, 19)
+        Me.lblAvanzadoId.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAvanzadoId.Location = New System.Drawing.Point(128, 13)
         Me.lblAvanzadoId.Name = "lblAvanzadoId"
-        Me.lblAvanzadoId.Size = New System.Drawing.Size(88, 13)
+        Me.lblAvanzadoId.Size = New System.Drawing.Size(84, 23)
         Me.lblAvanzadoId.TabIndex = 61
-        Me.lblAvanzadoId.Text = "ID PRODUCTO :"
+        Me.lblAvanzadoId.Text = "AQUI PRODU"
         '
         'lblAvanzadoRazon
         '
         Me.lblAvanzadoRazon.AutoSize = True
         Me.lblAvanzadoRazon.Enabled = False
-        Me.lblAvanzadoRazon.Location = New System.Drawing.Point(77, 156)
+        Me.lblAvanzadoRazon.Location = New System.Drawing.Point(800, 38)
         Me.lblAvanzadoRazon.Name = "lblAvanzadoRazon"
         Me.lblAvanzadoRazon.Size = New System.Drawing.Size(45, 13)
         Me.lblAvanzadoRazon.TabIndex = 72
@@ -260,20 +329,12 @@ Partial Class frmProd2
         '
         Me.lblAvanzadoStock.AutoSize = True
         Me.lblAvanzadoStock.Enabled = False
-        Me.lblAvanzadoStock.Location = New System.Drawing.Point(388, 106)
+        Me.lblAvanzadoStock.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAvanzadoStock.Location = New System.Drawing.Point(549, 109)
         Me.lblAvanzadoStock.Name = "lblAvanzadoStock"
-        Me.lblAvanzadoStock.Size = New System.Drawing.Size(43, 13)
+        Me.lblAvanzadoStock.Size = New System.Drawing.Size(50, 23)
         Me.lblAvanzadoStock.TabIndex = 71
         Me.lblAvanzadoStock.Text = "STOCK"
-        '
-        'cmbAvanzadoRazon
-        '
-        Me.cmbAvanzadoRazon.Enabled = False
-        Me.cmbAvanzadoRazon.FormattingEnabled = True
-        Me.cmbAvanzadoRazon.Location = New System.Drawing.Point(80, 175)
-        Me.cmbAvanzadoRazon.Name = "cmbAvanzadoRazon"
-        Me.cmbAvanzadoRazon.Size = New System.Drawing.Size(140, 21)
-        Me.cmbAvanzadoRazon.TabIndex = 69
         '
         'Label4
         '
@@ -287,20 +348,24 @@ Partial Class frmProd2
         '
         'cmbAvanzadoCat
         '
+        Me.cmbAvanzadoCat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbAvanzadoCat.Enabled = False
+        Me.cmbAvanzadoCat.FlatStyle = System.Windows.Forms.FlatStyle.System
+        Me.cmbAvanzadoCat.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbAvanzadoCat.FormattingEnabled = True
-        Me.cmbAvanzadoCat.Location = New System.Drawing.Point(80, 122)
+        Me.cmbAvanzadoCat.Location = New System.Drawing.Point(111, 144)
         Me.cmbAvanzadoCat.Name = "cmbAvanzadoCat"
-        Me.cmbAvanzadoCat.Size = New System.Drawing.Size(140, 21)
+        Me.cmbAvanzadoCat.Size = New System.Drawing.Size(350, 31)
         Me.cmbAvanzadoCat.TabIndex = 67
         '
         'lblAvanzadoCat
         '
         Me.lblAvanzadoCat.AutoSize = True
         Me.lblAvanzadoCat.Enabled = False
-        Me.lblAvanzadoCat.Location = New System.Drawing.Point(77, 106)
+        Me.lblAvanzadoCat.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAvanzadoCat.Location = New System.Drawing.Point(27, 147)
         Me.lblAvanzadoCat.Name = "lblAvanzadoCat"
-        Me.lblAvanzadoCat.Size = New System.Drawing.Size(69, 13)
+        Me.lblAvanzadoCat.Size = New System.Drawing.Size(78, 23)
         Me.lblAvanzadoCat.TabIndex = 66
         Me.lblAvanzadoCat.Text = "CATEGORIA"
         '
@@ -308,9 +373,10 @@ Partial Class frmProd2
         '
         Me.lblAvanzadoStockCrit.AutoSize = True
         Me.lblAvanzadoStockCrit.Enabled = False
-        Me.lblAvanzadoStockCrit.Location = New System.Drawing.Point(388, 156)
+        Me.lblAvanzadoStockCrit.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAvanzadoStockCrit.Location = New System.Drawing.Point(497, 147)
         Me.lblAvanzadoStockCrit.Name = "lblAvanzadoStockCrit"
-        Me.lblAvanzadoStockCrit.Size = New System.Drawing.Size(89, 13)
+        Me.lblAvanzadoStockCrit.Size = New System.Drawing.Size(102, 23)
         Me.lblAvanzadoStockCrit.TabIndex = 65
         Me.lblAvanzadoStockCrit.Text = "STOCK CRITICO"
         '
@@ -318,9 +384,10 @@ Partial Class frmProd2
         '
         Me.lblAvanzadoPrecio.AutoSize = True
         Me.lblAvanzadoPrecio.Enabled = False
-        Me.lblAvanzadoPrecio.Location = New System.Drawing.Point(384, 19)
+        Me.lblAvanzadoPrecio.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAvanzadoPrecio.Location = New System.Drawing.Point(29, 109)
         Me.lblAvanzadoPrecio.Name = "lblAvanzadoPrecio"
-        Me.lblAvanzadoPrecio.Size = New System.Drawing.Size(47, 13)
+        Me.lblAvanzadoPrecio.Size = New System.Drawing.Size(55, 23)
         Me.lblAvanzadoPrecio.TabIndex = 64
         Me.lblAvanzadoPrecio.Text = "PRECIO"
         '
@@ -328,63 +395,76 @@ Partial Class frmProd2
         '
         Me.lblAvanzadoProd.AutoSize = True
         Me.lblAvanzadoProd.Enabled = False
-        Me.lblAvanzadoProd.Location = New System.Drawing.Point(77, 63)
+        Me.lblAvanzadoProd.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAvanzadoProd.Location = New System.Drawing.Point(29, 66)
         Me.lblAvanzadoProd.Name = "lblAvanzadoProd"
-        Me.lblAvanzadoProd.Size = New System.Drawing.Size(68, 13)
+        Me.lblAvanzadoProd.Size = New System.Drawing.Size(76, 23)
         Me.lblAvanzadoProd.TabIndex = 62
         Me.lblAvanzadoProd.Text = "PRODUCTO"
         '
         'txtAvanzadoStockCrit
         '
         Me.txtAvanzadoStockCrit.Enabled = False
-        Me.txtAvanzadoStockCrit.Location = New System.Drawing.Point(387, 173)
+        Me.txtAvanzadoStockCrit.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAvanzadoStockCrit.Location = New System.Drawing.Point(605, 147)
         Me.txtAvanzadoStockCrit.Name = "txtAvanzadoStockCrit"
-        Me.txtAvanzadoStockCrit.Size = New System.Drawing.Size(262, 20)
+        Me.txtAvanzadoStockCrit.Size = New System.Drawing.Size(181, 30)
         Me.txtAvanzadoStockCrit.TabIndex = 60
         '
         'txtAvanzadoPrecio
         '
         Me.txtAvanzadoPrecio.Enabled = False
-        Me.txtAvanzadoPrecio.Location = New System.Drawing.Point(387, 35)
+        Me.txtAvanzadoPrecio.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAvanzadoPrecio.Location = New System.Drawing.Point(111, 106)
         Me.txtAvanzadoPrecio.Name = "txtAvanzadoPrecio"
-        Me.txtAvanzadoPrecio.Size = New System.Drawing.Size(262, 20)
+        Me.txtAvanzadoPrecio.Size = New System.Drawing.Size(188, 30)
         Me.txtAvanzadoPrecio.TabIndex = 59
         '
         'txtAvanzadoStock
         '
         Me.txtAvanzadoStock.Enabled = False
-        Me.txtAvanzadoStock.Location = New System.Drawing.Point(387, 123)
+        Me.txtAvanzadoStock.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAvanzadoStock.Location = New System.Drawing.Point(605, 106)
         Me.txtAvanzadoStock.Name = "txtAvanzadoStock"
-        Me.txtAvanzadoStock.Size = New System.Drawing.Size(262, 20)
+        Me.txtAvanzadoStock.Size = New System.Drawing.Size(181, 30)
         Me.txtAvanzadoStock.TabIndex = 58
         '
         'txtAvanzadoProd
         '
         Me.txtAvanzadoProd.Enabled = False
-        Me.txtAvanzadoProd.Location = New System.Drawing.Point(80, 79)
+        Me.txtAvanzadoProd.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAvanzadoProd.Location = New System.Drawing.Point(111, 66)
         Me.txtAvanzadoProd.Name = "txtAvanzadoProd"
-        Me.txtAvanzadoProd.Size = New System.Drawing.Size(569, 20)
+        Me.txtAvanzadoProd.Size = New System.Drawing.Size(675, 30)
         Me.txtAvanzadoProd.TabIndex = 57
         '
         'btnCan
         '
+        Me.btnCan.BackColor = System.Drawing.Color.DarkBlue
         Me.btnCan.Enabled = False
-        Me.btnCan.Location = New System.Drawing.Point(975, 509)
+        Me.btnCan.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCan.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCan.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.btnCan.Location = New System.Drawing.Point(952, 509)
         Me.btnCan.Name = "btnCan"
         Me.btnCan.Size = New System.Drawing.Size(132, 43)
         Me.btnCan.TabIndex = 62
         Me.btnCan.Text = "Cancelar"
-        Me.btnCan.UseVisualStyleBackColor = True
+        Me.btnCan.UseVisualStyleBackColor = False
         '
         'btnAce
         '
+        Me.btnAce.BackColor = System.Drawing.Color.DarkBlue
         Me.btnAce.Enabled = False
-        Me.btnAce.Location = New System.Drawing.Point(975, 444)
+        Me.btnAce.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAce.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAce.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.btnAce.Location = New System.Drawing.Point(952, 444)
         Me.btnAce.Name = "btnAce"
         Me.btnAce.Size = New System.Drawing.Size(132, 43)
         Me.btnAce.TabIndex = 61
         Me.btnAce.Text = "Aceptar"
-        Me.btnAce.UseVisualStyleBackColor = True
+        Me.btnAce.UseVisualStyleBackColor = False
         '
         'dgvProd
         '
@@ -486,7 +566,6 @@ Partial Class frmProd2
         Me.TabControl1.ResumeLayout(False)
         Me.tbpSimple.ResumeLayout(False)
         Me.tbpSimple.PerformLayout()
-        CType(Me.nupSimpleCantidad, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tbpAvanzado.ResumeLayout(False)
         Me.tbpAvanzado.PerformLayout()
         CType(Me.dgvProd, System.ComponentModel.ISupportInitialize).EndInit()
@@ -499,21 +578,16 @@ Partial Class frmProd2
     Friend WithEvents btnSimpleEliminar As Button
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents tbpSimple As TabPage
-    Friend WithEvents lblSimpleRazon As Label
     Friend WithEvents lblSimpleStock As Label
-    Friend WithEvents cmbSimpleRazon As ComboBox
     Friend WithEvents lblSimpleStockCrit As Label
     Friend WithEvents lblSimplePrecio As Label
     Friend WithEvents lblSimpleCat As Label
     Friend WithEvents lblSimpleProd As Label
     Friend WithEvents lblSimpleId As Label
-    Friend WithEvents nupSimpleCantidad As NumericUpDown
     Friend WithEvents lblSimpleCantidad As Label
     Friend WithEvents tbpAvanzado As TabPage
     Friend WithEvents lblAvanzadoId As Label
-    Friend WithEvents lblAvanzadoRazon As Label
     Friend WithEvents lblAvanzadoStock As Label
-    Friend WithEvents cmbAvanzadoRazon As ComboBox
     Friend WithEvents Label4 As Label
     Friend WithEvents cmbAvanzadoCat As ComboBox
     Friend WithEvents lblAvanzadoCat As Label
@@ -533,4 +607,13 @@ Partial Class frmProd2
     Friend WithEvents tsmEliminar As ToolStripMenuItem
     Friend WithEvents BtnExit As Button
     Friend WithEvents LblTitulo As Label
+    Friend WithEvents lblSimpleRazon As Label
+    Friend WithEvents lblAvanzadoRazon As Label
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label1 As Label
+    Friend WithEvents Label8 As Label
 End Class

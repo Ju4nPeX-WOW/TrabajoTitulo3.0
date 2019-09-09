@@ -48,6 +48,10 @@ WHERE p.False_delete = 0"
         Dim instrucciones As New Instructions
         instrucciones.Insertar("Productos", "Nombre,Precio,Stock,Stock_critico", valores)
     End Sub
+    Public Sub modificarProducto(columValor, condicion)
+        Dim instructiones As New Instructions
+        instructiones.Modificar("Productos", columValor, condicion)
+    End Sub
 
     Public Sub EliminarProducto(idProducto As String)
         Dim instrucciones As New Instructions
