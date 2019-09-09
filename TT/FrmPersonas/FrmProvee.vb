@@ -114,6 +114,9 @@
     Private Sub txtApellidoM_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtApellidoM.KeyPress
         e.Handled = validacion.IApellido(e)
     End Sub
+    Private Sub txtBusqueda_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtBusqueda.KeyPress
+        e.Handled = validacion.IOtroNombre(e)
+    End Sub
 
     Private Sub txtBusqueda_TextChanged(sender As Object, e As EventArgs) Handles txtBusqueda.TextChanged
         If btnSeleccionadoPrimeraVez = True Then

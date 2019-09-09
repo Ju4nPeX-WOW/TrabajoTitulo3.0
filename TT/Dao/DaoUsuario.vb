@@ -3,7 +3,7 @@
     Dim tabla As String = "Usuarios"
     Public Function ObtenerTodosLosUsuarios()
 
-        Return instrucciones.SelectWithFalseDelete(tabla, "*", "")
+        Return instrucciones.SelectWithFalseDelete(tabla, "Id_usuario,Rut_empleado,Contraseña,Permisos", "")
 
     End Function
 

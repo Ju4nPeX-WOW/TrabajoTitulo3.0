@@ -9,6 +9,8 @@
     Dim _usuario As New Usuario
     Dim btnSeleccionadoPrimeraVez As Boolean = False
     Dim instructions As New Instructions
+    Dim dataset_b As New DataSet
+    Dim busqueda2 As New Busqueda2
     Public Sub RecibirUsuario(objeto As Usuario)
         _usuario = objeto 'del form ingreso se recibe el objeto que es el usuario que ingreso al sistema 
         MsgBox(_usuario.Nombres)
@@ -229,6 +231,15 @@
     Private Sub txtApellidoM_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtApellidoM.KeyPress
         e.Handled = validacion.IApellido(e)
     End Sub
+    Private Sub txtBusqueda_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtBusqueda.KeyPress
+        If cmbBusqueda.SelectedIndex = 0 Or cmbBusqueda.SelectedIndex = 4 Then 'si se escoge rut o descuento
+            e.Handled = validacion.IRut(e)
+        Else
+            If cmbBusqueda.SelectedIndex > 0 And cmbBusqueda.SelectedIndex < 4 Then
+                e.Handled = validacion.INombrePersona(e)
+            End If
+        End If
+    End Sub
     Private Sub reset()
         Dim permiso As New Permisos
         tsmAgregar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "CLIENTES", "AGREGAR", "")
@@ -244,8 +255,6 @@
             btnSeleccionadoPrimeraVez = True
             Dim tipoBusqueda As String = cmbBusqueda.Text.ToLower()
             Dim tabla As String = "Clientes"
-            Dim dataset_b As New DataSet
-            Dim busqueda2 As New Busqueda2
 
             'MsgBox(txtBusqueda.Text)
             Select Case tipoBusqueda
@@ -283,4 +292,5 @@
             End If
         End If
     End Sub
+
 End Class

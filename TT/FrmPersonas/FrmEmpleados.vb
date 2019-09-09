@@ -59,6 +59,9 @@
     Private Sub txtFono_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtFono.KeyPress
         e.Handled = validacion.ITelefonoF(e)
     End Sub
+    Private Sub txtBusqueda_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtBusqueda.KeyPress
+        e.Handled = validacion.IOtroNombre(e)
+    End Sub
     Private Sub Reset()
         Dim permiso As New Permisos
         tsmAgregar.Enabled = permiso.OtorgarAcceso(_usuario.Permisos, "EMPLEADOS", "AGREGAR", "")
