@@ -106,7 +106,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bsn\BsnAjustes.vb" />
     <Compile Include="Bsn\BsnProveedores.vb" />
+    <Compile Include="Dao\DaoAjustes.vb" />
     <Compile Include="Dao\DaoProveedor.vb" />
     <Compile Include="Entidades\Proveedor.vb" />
     <Compile Include="FrmAjustes\FrmAjustes.Designer.vb">

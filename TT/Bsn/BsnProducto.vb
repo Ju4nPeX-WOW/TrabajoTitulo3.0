@@ -3,9 +3,8 @@ Public Class BsnProducto
 
     Protected dataset As New DataSet
     Protected adapter As New OleDb.OleDbDataAdapter
-
-
-
+    Dim cantidad As Integer
+    Dim daoProducto As New DaoProducto
 
     Public Function ObtenerTodosLosProductos()
         Dim daoProducto As New DaoProducto
@@ -55,21 +54,11 @@ Public Class BsnProducto
         Dim valores As String
         valores = "'" & producto.Nombre.ToString & "'," & producto.Precio & "," & producto.Stock & "," & producto.StockCritico
         Console.WriteLine(valores)
-
         RealizarAjuste(producto, enumeraciones.RazonAjusteStock(razon), rut_usuario)
+        valores = "'" & producto.Nombre.ToString & "'," & producto.Precio & "," & producto.Stock & "," & producto.StockCritico
         daoProducto.AgregarProducto(valores)
 
     End Sub
-    Public Sub ModificarProducto(producto As Producto, razon As String, rut_usuario As Integer)
-
-        Dim enumeraciones As New Enumeraciones
-        Dim daoProducto As New DaoProducto
-        Dim valorColumna As String
-        valorColumna = "Nombre='" & producto.Nombre & "',Precio=" & producto.Precio & ",Stock=" & producto.Stock & ",Stock_critico=" & producto.StockCritico
-        RealizarAjuste(producto, enumeraciones.RazonAjusteStock(razon), rut_usuario)
-        daoProducto.ModificarProducto(valorColumna, producto.IdProducto)
-    End Sub
-
     Private Sub AjustarPrecioProducto(id_producto As Integer, precio As Integer, rut_usuario As Integer)
         Dim daoProducto As New DaoProducto
         Dim valores As String
@@ -81,10 +70,6 @@ Public Class BsnProducto
         Dim valores As String
         valores = id_producto & ",SYSDATETIME( ),SYSDATETIME( )," & cantidad & "," & razon & "," & stock & "," & rut_usuario
         daoProducto.AjustarStock(valores)
-
-
-
-
     End Sub
     Public Sub EliminarProducto(producto As Producto, rut_usuario As Integer)
         Dim daoProducto As New DaoProducto
@@ -92,7 +77,14 @@ Public Class BsnProducto
         AjustarStockProducto(producto.IdProducto, producto.Stock, 6, 0, rut_usuario)
     End Sub
 
-
+    Public Sub ModificarProducto(producto As Producto, razon As String, rut_usuario As Integer)
+        Dim enumeraciones As New Enumeraciones
+        Dim daoProducto As New DaoProducto
+        Dim valorColumna As String
+        valorColumna = "Nombre='" & producto.Nombre & "',Precio=" & producto.Precio & ",Stock=" & producto.Stock & ",Stock_critico=" & producto.StockCritico
+        RealizarAjuste(producto, enumeraciones.RazonAjusteStock(razon), rut_usuario) 'Realiza ajuste        
+        daoProducto.ModificarProducto(valorColumna, producto.IdProducto)             'modificar producto
+    End Sub
     Public Sub RealizarAjuste(producto As Producto, razon As Short, rut_usuario As Integer)
         'ObtenerProductosEspecificos valores originales para hacer las comparaciones entre objetos
         'tengo el id del producto, con lo cual puedo obtener dos valores, que son precios y stock
@@ -107,8 +99,8 @@ Public Class BsnProducto
         MsgBox(producto.Stock & " != " & dataset.Tables(0)(0)(3))
         If producto.Stock <> dataset.Tables(0)(0)(3) Then
             MsgBox("INVOCAR A AJUSTE STOCK")
-            Dim cantidad As Integer
             cantidad = dataset.Tables(0)(0)(3) - producto.Stock
+            MsgBox(dataset.Tables(0)(0)(3) & " - " & producto.Stock)
             If cantidad < 0 Then
                 cantidad = cantidad * -1
             End If

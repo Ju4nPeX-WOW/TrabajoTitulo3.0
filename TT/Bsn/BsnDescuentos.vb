@@ -76,8 +76,8 @@
     End Function
 
 
-    Public Sub DarFin(id_descuento As String)
-        daoDescuentos.DarFin(id_descuento)
+    Public Sub DarFin(id_descuento As String, fecha_termino As String)
+        daoDescuentos.DarFin(id_descuento, fecha_termino)
     End Sub
 
     Public Function ObtenerIdProducto(id_descuento As String)

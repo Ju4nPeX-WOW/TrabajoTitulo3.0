@@ -85,7 +85,7 @@ Class Instructions
             command.CommandText = sentencia
 
 
-            'MsgBox(sentencia)
+            MsgBox(sentencia)
             Console.WriteLine(sentencia)
             command.ExecuteNonQuery()
             'conexion.CerrarConexion()

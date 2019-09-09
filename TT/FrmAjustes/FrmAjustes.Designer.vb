@@ -155,6 +155,7 @@ Partial Class FrmAjustes
         '
         'cmbBusqueda
         '
+        Me.cmbBusqueda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmbBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.cmbBusqueda.Font = New System.Drawing.Font("Bahnschrift Condensed", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cmbBusqueda.FormattingEnabled = True
@@ -253,7 +254,6 @@ Partial Class FrmAjustes
         Me.nupStock.Maximum = New Decimal(New Integer() {999, 0, 0, 0})
         Me.nupStock.Minimum = New Decimal(New Integer() {999, 0, 0, -2147483648})
         Me.nupStock.Name = "nupStock"
-        Me.nupStock.ReadOnly = True
         Me.nupStock.Size = New System.Drawing.Size(259, 29)
         Me.nupStock.TabIndex = 133
         Me.nupStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Center

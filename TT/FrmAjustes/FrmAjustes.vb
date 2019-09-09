@@ -1,9 +1,11 @@
 ﻿Public Class FrmAjustes
     Dim activeAgregar As Boolean = False
     Dim BsnProducto As New BsnProducto
+    Dim busqueda2 As New Busqueda2
     Dim dataset As New DataSet
     Dim usuario As New Usuario
     Dim val2 As New Validacionesv2
+    Dim BsnAjuste As New BsnAjustes
     Dim btnSeleccionadoPrimeraVez As Boolean = False
     Public Sub RecibirUsuario(objeto As Empleado)
         usuario = objeto 'del form ingreso se recibe el objeto que es el usuario que ingreso al sistema
@@ -15,6 +17,8 @@
     End Sub
     Private Sub FrmAjustes_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         recargarDGV()
+        cmbAvanzadoRazon.SelectedIndex = 0
+        cmbBusqueda.SelectedIndex = 0
         llenado()
     End Sub
     Private Sub BtnExit_Click(sender As Object, e As EventArgs) Handles BtnExit.Click
@@ -29,6 +33,7 @@
                 cmbAvanzadoRazon.Enabled = True
                 btnAce.Enabled = True
                 btnCan.Enabled = True
+                llenado()
             Else
                 MsgBox("Seleccione un item de la lista", vbInformation, "Información")
             End If
@@ -43,6 +48,7 @@
         btnAce.Enabled = False
         btnCan.Enabled = False
         activeAgregar = False
+        cmbAvanzadoRazon.SelectedIndex = 0
     End Sub
     Public Function validacion()
         Dim isCorrect As Boolean = False
@@ -62,16 +68,15 @@
     End Function
     Private Sub btnAce_Click(sender As Object, e As EventArgs) Handles btnAce.Click
         If validacion() Then
-            Dim Producto As New Producto With {
-                    .IdProducto = dgvProd.CurrentRow.Cells(0).Value,
-                    .Stock = nupStock.Value.ToString
-            }
-            If activeAgregar Then 'Si selecciono agregar del menustrip   
-                BsnProducto.RealizarAjuste(Producto, cmbAvanzadoRazon.SelectedIndex, usuario.Rut)
+            Dim Producto As New Producto
+            Producto = BsnProducto.ObtenerObjetoProducto(dgvProd.CurrentRow.Cells(0).Value)
+            If activeAgregar Then 'Si selecciono agregar del menustrip 
+                'BsnProducto.ModificarProducto(Producto, cmbAvanzadoRazon.SelectedIndex, usuario.Rut)
+                BsnAjuste.realizarAjusteSTOCK(Producto, nupStock.Value, cmbAvanzadoRazon.SelectedIndex, usuario.Rut)
                 recargarDGV()
                 llenado()
             End If
-            cmbAvanzadoRazon.SelectedIndex = -1
+            cmbAvanzadoRazon.SelectedIndex = 0
         End If
     End Sub
     Public Sub llenado()
@@ -98,11 +103,11 @@
             Dim tabla As String = "Productos"
             Select Case tipoBusqueda
                 Case "Producto"
-                    dataset = BsnProducto.BusquedaIncremental("Id_producto,nombre,precio,stock,codigo_producto", tabla, "nombre", txtBusqueda.Text)
+                    dataset = busqueda2.busquedaIncremental("Id_producto,nombre,precio,stock,codigo_producto", tabla, "nombre", txtBusqueda.Text)
                     dgvProd.DataSource = dataset.Tables(0).DefaultView
                     llenado()
                 Case "ID"
-                    dataset = BsnProducto.BusquedaIncremental("Id_producto,nombre,precio,stock,codigo_producto", tabla, "Id_producto", txtBusqueda.Text)
+                    dataset = busqueda2.busquedaIncremental("Id_producto,nombre,precio,stock,codigo_producto", tabla, "Id_producto", txtBusqueda.Text)
                     dgvProd.DataSource = dataset.Tables(0).DefaultView
                     llenado()
                 Case ""
@@ -120,4 +125,7 @@
         End If
     End Sub
 
+    Private Sub txtBusqueda_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtBusqueda.KeyPress
+        e.Handled = val2.IOtroNombre(e)
+    End Sub
 End Class

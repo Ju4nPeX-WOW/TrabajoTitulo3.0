@@ -374,7 +374,6 @@ Public Class frmProd2
 
     Private Sub btnAce_Click(sender As Object, e As EventArgs) Handles btnAce.Click
         Dim bsnProductoCategoria As New BsnProductoCategoria
-
         Dim producto As Producto
         If activeAgregar Then   'Si se esta agregando un producto            
             Dim bsnProducto As New BsnProducto
