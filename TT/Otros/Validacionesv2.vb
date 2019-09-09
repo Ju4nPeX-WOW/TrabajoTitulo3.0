@@ -185,7 +185,7 @@
     End Function
 
     Public Function IOtroNombre(e As KeyPressEventArgs)
-        MsgBox(Char.IsLetterOrDigit(e.KeyChar))
+        'MsgBox(Char.IsLetterOrDigit(e.KeyChar))
         If Char.IsLetterOrDigit(e.KeyChar) Or e.KeyChar = Microsoft.VisualBasic.ChrW(Keys.Back) Or e.KeyChar = "+" Then ' ---> 
             bol = False
         Else
