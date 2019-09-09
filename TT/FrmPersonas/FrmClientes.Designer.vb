@@ -63,6 +63,7 @@ Partial Class FrmClientes
         '
         Me.txtBusqueda.Font = New System.Drawing.Font("Bahnschrift Condensed", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtBusqueda.Location = New System.Drawing.Point(228, 108)
+        Me.txtBusqueda.MaxLength = 40
         Me.txtBusqueda.Name = "txtBusqueda"
         Me.txtBusqueda.Size = New System.Drawing.Size(680, 33)
         Me.txtBusqueda.TabIndex = 71
