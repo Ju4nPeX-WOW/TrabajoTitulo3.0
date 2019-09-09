@@ -135,7 +135,7 @@
         Dim list = {{"rut", 8},
                     {"password", 8},
                     {"nombre persona", 5},
-                    {"apellido", 1},
+                    {"apellido", 2},
                     {"telefono fijo", 8},
                     {"telefono celular", 9},
                     {"email", 10},

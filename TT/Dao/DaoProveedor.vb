@@ -15,7 +15,7 @@
     End Sub
 
     Public Function obtenerProv()
-        Return instrucciones.Seleccionar(tabla, "*", " WHERE False_delete=0")
+        Return instrucciones.Seleccionar(tabla, "Rut_proveedor,Nombres,Apellido_p,Apellido_m,Telefono_f,Telefono_c,Email,Direccion", " WHERE False_delete=0")
     End Function
 
 

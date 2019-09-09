@@ -201,7 +201,7 @@ Partial Class FrmEmpleados
         'txtApellidoP
         '
         Me.txtApellidoP.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtApellidoP.Location = New System.Drawing.Point(642, 70)
+        Me.txtApellidoP.Location = New System.Drawing.Point(642, 65)
         Me.txtApellidoP.Name = "txtApellidoP"
         Me.txtApellidoP.Size = New System.Drawing.Size(324, 30)
         Me.txtApellidoP.TabIndex = 92
@@ -230,7 +230,7 @@ Partial Class FrmEmpleados
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Bahnschrift Condensed", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(519, 73)
+        Me.Label2.Location = New System.Drawing.Point(519, 68)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(118, 23)
         Me.Label2.TabIndex = 89
